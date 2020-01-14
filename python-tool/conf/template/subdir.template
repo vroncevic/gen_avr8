@@ -1,0 +1,36 @@
+# subdir.mk
+# Copyright (C) 2020 Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+# ${PRO} is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# ${PRO} is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program_name.  If not, see <http://www.gnu.org/licenses/>.
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../main.c 
+
+OBJS += \
+./main.o 
+
+C_DEPS += \
+./main.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+%.o: ../%.c
+	@echo 'Building file: $$<'
+	@echo 'Invoking: AVR Compiler'
+	avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=${MCU} -DF_CPU=${OSC} -MMD -MP -MF"$$(@:%.o=%.d)" -MT"$$(@)" -c -o "$$@" "$$<"
+	@echo 'Finished building: $$<'
+	@echo ' '
+
+
