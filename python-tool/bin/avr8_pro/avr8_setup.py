@@ -20,6 +20,11 @@ import sys
 from inspect import stack
 
 try:
+    from avr8_pro.mcu_selector import MCUSelector
+    from avr8_pro.osc_selector import OSCSelector
+    from avr8_pro.read_template import ReadTemplate
+    from avr8_pro.write_template import WriteTemplate
+
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.error import error_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -41,11 +46,13 @@ __status__ = 'Updated'
 class AVR8Setup(object):
     """
         Define class AVR8Setup with attribute(s) and method(s).
-        Generate project skeleton.
+        Generate AVR project skeleton.
         It defines:
             attribute:
                 __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
+                __mcu_sel - MCU selector API
+                __fosc_sel - FOSC selector API
                 __reader - Reader API
                 __writer - Writer API
             method:
@@ -53,7 +60,7 @@ class AVR8Setup(object):
                 gen_pro_setup - Generate project skeleton
     """
 
-    __slots__ = ('VERBOSE')
+    __slots__ = ('VERBOSE', '__mcu_sel', '__fosc_sel','__reader', '__writer')
     VERBOSE = 'GEN_AVR8::AVR8_SETUP::AVR8SETUP'
 
     def __init__(self, verbose=False):
@@ -64,7 +71,10 @@ class AVR8Setup(object):
             :exceptions: None
         """
         verbose_message(AVR8Setup.VERBOSE, verbose, 'Initial setup')
-        pass
+        self.__mcu_sel = MCUSelector(verbose=verbose)
+        self.__fosc_sel = OSCSelector(verbose=verbose)
+        self.__reader = ReadTemplate(verbose=verbose)
+        self.__writer = WriteTemplate(verbose=verbose)
 
     def gen_pro_setup(self, project_name, verbose=False):
         """
@@ -77,6 +87,23 @@ class AVR8Setup(object):
             :rtype: <bool>
             :exceptions: ATSBadCallError | ATSTypeError
         """
-        func, status, setup_content = stack()[0][3], False, None
-        return True
+        func, status, project_data = stack()[0][3], False, {}
+        project_txt = 'Argument: expected project_name <str> object'
+        project_msg = "{0} {1} {2}".format('def', func, project_txt)
+        if project_name is None or not project_name:
+            raise ATSBadCallError(project_msg)
+        if not isinstance(project_name, str):
+            raise ATSTypeError(project_msg)
+        verbose_message(
+            AVR8Setup.VERBOSE, verbose, 'Generating project', project_name
+        )
+        project_data['templates'] = self.__reader.read(verbose=verbose)
+        project_data['name'] = project_name
+        mcu = self.__mcu_sel.choose_mcu(verbose=verbose)
+        project_data['mcu'] = mcu
+        fosc = self.__fosc_sel.choose_osc(verbose=verbose)
+        project_data['osc'] = fosc
+        if project_data:
+            status = self.__writer.write(project_data, verbose=verbose)
+        return True if status else False
 
