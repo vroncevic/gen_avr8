@@ -20,6 +20,37 @@ This module requires these other modules and libraries:
 
 * ats_utilities https://vroncevic.github.io/ats_utilities
 
+### Tool structure
+
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/python-tool-docs/gen_avr8.png)
+
+```
+.
+├── bin
+│   ├── avr8_pro
+│   │   ├── avr8_setup.py
+│   │   ├── __init__.py
+│   │   ├── mcu_selector.py
+│   │   ├── osc_selector.py
+│   │   ├── read_template.py
+│   │   └── write_template.py
+│   ├── gen_avr8.py
+│   └── gen_avr8_run.py
+├── conf
+│   ├── fosc.yaml
+│   ├── gen_avr8.cfg
+│   ├── gen_avr8_util.cfg
+│   ├── mcu.yaml
+│   └── template
+│       ├── Makefile.template
+│       ├── module.template
+│       ├── objects.template
+│       ├── sources.template
+│       └── subdir.template
+└── log
+    └── gen_avr8.log
+```
+
 ### COPYRIGHT AND LICENCE
 
 Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/

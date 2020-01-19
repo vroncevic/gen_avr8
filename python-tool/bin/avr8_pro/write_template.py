@@ -18,7 +18,8 @@
 
 import sys
 from inspect import stack
-from os import getcwd, chmod
+from os import getcwd, chmod, mkdir
+from os.path import exists, isdir
 from string import Template
 
 try:
@@ -84,7 +85,7 @@ class WriteTemplate(object):
             :rtype: <bool>
             :exception: ATSBadCallError | ATSTypeError
         """
-        status, template = False, None
+        status, template, setup = False, None, None
         func, current_dir = stack()[0][3], getcwd()
         setup_txt = 'First argument: expected project_data <dict> object'
         setup_msg = "{0} {1} {2}".format('def', func, setup_txt)
@@ -96,10 +97,16 @@ class WriteTemplate(object):
         project_name = project_data['name']
         project_mcu = project_data['mcu']
         project_osc = project_data['osc']
+        build_dir = "{0}/{1}".format(current_dir, 'build')
         for tmp_index in WriteTemplate.__SETUP_FILES.keys():
-            setup = "{0}/{1}".format(
-                current_dir, WriteTemplate.__SETUP_FILES[tmp_index]
-            )
+            if tmp_index == 1:
+                setup = "{0}/{1}".format(
+                    current_dir, WriteTemplate.__SETUP_FILES[tmp_index]
+                )
+            else:
+                setup = "{0}/{1}".format(
+                    build_dir, WriteTemplate.__SETUP_FILES[tmp_index]
+                )
             verbose_message(
                 WriteTemplate.VERBOSE, verbose,
                 'Write project setup file', setup
@@ -111,6 +118,8 @@ class WriteTemplate(object):
             }
             template = Template(project_content[tmp_index])
             if template:
+                if not exists(build_dir):
+                    mkdir(build_dir)
                 with open(setup, 'w') as setup_file:
                     setup_file.write(template.substitute(project))
                     chmod(setup, 0o666)

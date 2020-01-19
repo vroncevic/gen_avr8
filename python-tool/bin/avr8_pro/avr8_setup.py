@@ -20,6 +20,8 @@ import sys
 from inspect import stack
 
 try:
+    from avr8_pro.mcu_selector import MCUSelector
+    from avr8_pro.osc_selector import OSCSelector
     from avr8_pro.read_template import ReadTemplate
     from avr8_pro.write_template import WriteTemplate
 
@@ -44,11 +46,13 @@ __status__ = 'Updated'
 class AVR8Setup(object):
     """
         Define class AVR8Setup with attribute(s) and method(s).
-        Generate project skeleton.
+        Generate AVR project skeleton.
         It defines:
             attribute:
                 __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
+                __mcu_sel - MCU selector API
+                __fosc_sel - FOSC selector API
                 __reader - Reader API
                 __writer - Writer API
             method:
@@ -56,7 +60,7 @@ class AVR8Setup(object):
                 gen_pro_setup - Generate project skeleton
     """
 
-    __slots__ = ('VERBOSE', '__reader', '__writer')
+    __slots__ = ('VERBOSE', '__mcu_sel', '__fosc_sel','__reader', '__writer')
     VERBOSE = 'GEN_AVR8::AVR8_SETUP::AVR8SETUP'
 
     def __init__(self, verbose=False):
@@ -67,6 +71,8 @@ class AVR8Setup(object):
             :exceptions: None
         """
         verbose_message(AVR8Setup.VERBOSE, verbose, 'Initial setup')
+        self.__mcu_sel = MCUSelector(verbose=verbose)
+        self.__fosc_sel = OSCSelector(verbose=verbose)
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(verbose=verbose)
 
@@ -93,8 +99,10 @@ class AVR8Setup(object):
         )
         project_data['templates'] = self.__reader.read(verbose=verbose)
         project_data['name'] = project_name
-        project_data['mcu'] = 'atmega8'
-        project_data['osc'] = '16000000UL'
+        mcu = self.__mcu_sel.choose_mcu(verbose=verbose)
+        project_data['mcu'] = mcu
+        fosc = self.__fosc_sel.choose_osc(verbose=verbose)
+        project_data['osc'] = fosc
         if project_data:
             status = self.__writer.write(project_data, verbose=verbose)
         return True if status else False
