@@ -25,7 +25,7 @@ gen_avr8 tool-module requires other modules and libraries:
 
 * ats_utilities https://vroncevic.github.io/ats_utilities
 
-### SUPPRTED MCUS
+### SUPPORTED MCUS
 
 Current list of supported microcontrollers:
 
