@@ -20,6 +20,10 @@ This module requires these other modules and libraries:
 
 * ats_utilities https://vroncevic.github.io/ats_utilities
 
+### GENERATION FLOW OF PROJECT SETUP
+
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/python-tool-docs/gen_avr8_flow.png)
+
 ### Tool structure
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/python-tool-docs/gen_avr8.png)
