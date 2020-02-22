@@ -98,31 +98,36 @@ class WriteTemplate(object):
         project_mcu = project_data['mcu']
         project_osc = project_data['osc']
         build_dir = "{0}/{1}".format(current_dir, 'build')
-        for tmp_index in WriteTemplate.__SETUP_FILES.keys():
-            if tmp_index == 1:
-                setup = "{0}/{1}".format(
-                    current_dir, WriteTemplate.__SETUP_FILES[tmp_index]
+        project_status = [
+            bool(project_content), bool(project_name),
+            bool(project_mcu), bool(project_osc)
+        ]
+        if all(project_status):
+            for tmp_index in WriteTemplate.__SETUP_FILES.keys():
+                if tmp_index == 1:
+                    setup = "{0}/{1}".format(
+                        current_dir, WriteTemplate.__SETUP_FILES[tmp_index]
+                    )
+                else:
+                    setup = "{0}/{1}".format(
+                        build_dir, WriteTemplate.__SETUP_FILES[tmp_index]
+                    )
+                verbose_message(
+                    WriteTemplate.VERBOSE, verbose,
+                    'Write project setup file', setup
                 )
-            else:
-                setup = "{0}/{1}".format(
-                    build_dir, WriteTemplate.__SETUP_FILES[tmp_index]
-                )
-            verbose_message(
-                WriteTemplate.VERBOSE, verbose,
-                'Write project setup file', setup
-            )
-            project = {
-                'PRO': "{0}".format(project_name),
-                'MCU': "{0}".format(project_mcu),
-                'OSC': "{0}".format(project_osc)
-            }
-            template = Template(project_content[tmp_index])
-            if template:
-                if not exists(build_dir):
-                    mkdir(build_dir)
-                with open(setup, 'w') as setup_file:
-                    setup_file.write(template.substitute(project))
-                    chmod(setup, 0o666)
-                    status = True
+                project = {
+                    'PRO': "{0}".format(project_name),
+                    'MCU': "{0}".format(project_mcu),
+                    'OSC': "{0}".format(project_osc)
+                }
+                template = Template(project_content[tmp_index])
+                if template:
+                    if not exists(build_dir):
+                        mkdir(build_dir)
+                    with open(setup, 'w') as setup_file:
+                        setup_file.write(template.substitute(project))
+                        chmod(setup, 0o666)
+                        status = True
         return True if status else False
 
