@@ -103,7 +103,7 @@ class AVR8Setup(object):
         project_data['mcu'] = mcu
         fosc = self.__fosc_sel.choose_osc(verbose=verbose)
         project_data['osc'] = fosc
-        if project_data:
+        if bool(project_data):
             status = self.__writer.write(project_data, verbose=verbose)
         return True if status else False
 
