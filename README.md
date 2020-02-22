@@ -1,7 +1,12 @@
 # AVR project skeleton generator.
 
-The README is used to introduce the modules and provide instructions on
-how to install the modules, any machine dependencies it may have and any
+gen_avr8 is toolset for generation of AVR8 project skeleton for
+development embedded applications.
+
+Developed in python code: 100%.
+
+The README is used to introduce the tool modules and provide instructions on
+how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
 ### INSTALLATION
@@ -16,17 +21,64 @@ cp -R ~/gen_avr8_scripts/log/   /root/scripts/gen_avr8/ver.1.0/
 
 ### DEPENDENCIES
 
-This module requires these other modules and libraries:
+gen_avr8 tool-module requires other modules and libraries:
 
 * ats_utilities https://vroncevic.github.io/ats_utilities
 
+### SUPPRTED MCUS
+
+Current list of supported microcontrollers:
+
+```
+attiny2313    atmega128      at90s2313
+attiny24      atmega1280     at90s2333
+attiny25      atmega1281     at90s4414
+attiny26      atmega1284p    at90s4433
+attiny261     atmega16       at90s4434
+attiny44      atmega163      at90s8515
+attiny45      atmega164p     at90s8535
+attiny461     atmega165
+attiny84      atmega165p
+attiny85      atmega168
+attiny861     atmega169
+              atmega169p
+              atmega2560
+              atmega2561
+              atmega32
+              atmega324p
+              atmega325
+              atmega3250
+              atmega329
+              atmega3290
+              atmega32u4
+              atmega48
+              atmega64
+              atmega640
+              atmega644
+              atmega644p
+              atmega645
+              atmega6450
+              atmega649
+              atmega6490
+              atmega8
+              atmega8515
+              atmega8535
+              atmega88
+```
+
 ### GENERATION FLOW OF PROJECT SETUP
+
+Base flow of generation process:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/python-tool-docs/gen_avr8_flow.png)
 
-### Tool structure
+### TOOL STRUCTURE
+
+gen_avr8 is based on Template mechanism:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/python-tool-docs/gen_avr8.png)
+
+Generator structure:
 
 ```
 .
