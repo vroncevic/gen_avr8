@@ -97,6 +97,7 @@ Generator structure:
 │   ├── gen_avr8.cfg
 │   ├── gen_avr8_util.cfg
 │   ├── mcu.yaml
+│   ├── project.yaml
 │   └── template
 │       ├── Makefile.template
 │       ├── module.template
