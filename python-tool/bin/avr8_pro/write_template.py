@@ -49,21 +49,13 @@ class WriteTemplate(object):
             attribute:
                 __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
-                __SETUP_FILES - File names for setup project
             method:
                 __init__ - Initial constructor
                 write - Write a template content to a project setup
     """
 
-    __slots__ = ('VERBOSE', '__SETUP_FILES')
+    __slots__ = ('VERBOSE')
     VERBOSE = 'GEN_AVR8::AVR8_PRO::WRITE_TEMPLATE'
-    __SETUP_FILES = {
-        1: 'main.c',
-        2: 'sources.mk',
-        3: 'objects.mk',
-        4: 'subdir.mk',
-        5: 'Makefile'
-    }
 
     def __init__(self, verbose=False):
         """
@@ -98,36 +90,38 @@ class WriteTemplate(object):
         project_mcu = project_data['mcu']
         project_osc = project_data['osc']
         build_dir = "{0}/{1}".format(current_dir, 'build')
-        project_status = [
-            bool(project_content), bool(project_name),
-            bool(project_mcu), bool(project_osc)
-        ]
-        if all(project_status):
-            for tmp_index in WriteTemplate.__SETUP_FILES.keys():
-                if tmp_index == 1:
-                    setup = "{0}/{1}".format(
-                        current_dir, WriteTemplate.__SETUP_FILES[tmp_index]
+        project_status = all(
+            [
+                bool(project_content), bool(project_name),
+                bool(project_mcu), bool(project_osc)
+            ]
+        )
+        if project_status:
+            for pro_item in project_content.keys():
+                if '.c' in project_content[pro_item][0]:
+                    module = "{0}/{1}".format(
+                        current_dir, project_content[pro_item][0]
                     )
                 else:
-                    setup = "{0}/{1}".format(
-                        build_dir, WriteTemplate.__SETUP_FILES[tmp_index]
+                    module = "{0}/{1}".format(
+                        build_dir, project_content[pro_item][0]
                     )
                 verbose_message(
                     WriteTemplate.VERBOSE, verbose,
-                    'Write project setup file', setup
+                    'Write project module file', module
                 )
                 project = {
                     'PRO': "{0}".format(project_name),
                     'MCU': "{0}".format(project_mcu),
                     'OSC': "{0}".format(project_osc)
                 }
-                template = Template(project_content[tmp_index])
+                template = Template(project_content[pro_item][1])
                 if template:
                     if not exists(build_dir):
                         mkdir(build_dir)
-                    with open(setup, 'w') as setup_file:
-                        setup_file.write(template.substitute(project))
-                        chmod(setup, 0o666)
+                    with open(module, 'w') as module_file:
+                        module_file.write(template.substitute(project))
+                        chmod(module, 0o666)
                         status = True
         return True if status else False
 
