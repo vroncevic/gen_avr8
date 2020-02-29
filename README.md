@@ -99,9 +99,13 @@ Generator structure:
 │   ├── mcu.yaml
 │   ├── project.yaml
 │   └── template
+│       ├── cflags.template
+│       ├── csflags.template
 │       ├── Makefile.template
 │       ├── module.template
 │       ├── objects.template
+│       ├── ocflags.template
+│       ├── odflags.template
 │       ├── sources.template
 │       └── subdir.template
 └── log

@@ -3,6 +3,10 @@ templates:
     sources.template
     objects.template
     subdir.template
+    cflags.template
+    csflags.template
+    ocflags.template
+    odflags.template
     Makefile.template
 
 modules:
@@ -10,5 +14,9 @@ modules:
     sources.mk
     objects.mk
     subdir.mk
+    cflags.mk
+    csflags.mk
+    ocflags.mk
+    odflags.mk
     Makefile
 
