@@ -12,13 +12,21 @@
 # See the GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with this program_name.  If not, see <http://www.gnu.org/licenses/>.
-
-RM := rm -rf
+# with this program_name. If not, see <http://www.gnu.org/licenses/>.
 
 include sources.mk
 include subdir.mk
 include objects.mk
+include cflags.mk
+include odflags.mk
+include ocflags.mk
+include csflags.mk
+
+RM := rm -rf
+CC := avr-gcc
+OD := avr-objdump
+OC := avr-objcopy
+CS := avr-size
 
 ifneq ($$(MAKECMDGOALS),clean)
     ifneq ($$(strip $$(I_DEPS)),)
@@ -45,47 +53,60 @@ ifneq ($$(MAKECMDGOALS),clean)
 endif
 
 LSS += \
-${PRO}.lss \
+	${PRO}.lss \
 
 FLASH_IMAGE += \
-${PRO}.hex \
+	${PRO}.hex \
 
 SIZEDUMMY += \
-sizedummy \
+	sizedummy \
 
+CLEAN_LIST += \
+	$$(FLASH_IMAGE) \
+	$$(ELFS) \
+	$$(I_DEPS) \
+	$$(OBJS) \
+	$$(ASM_DEPS) \
+	$$(M_DEPS) \
+	$$(MI_DEPS) \
+	$$(S_DEPS) \
+	$$(SIZEDUMMY) \
+	$$(S_UPPER_DEPS) \
+	$$(LSS) \
+	$$(C_DEPS) \
+	${PRO}.map \
+	${PRO}.elf \
 
 all: ${PRO}.elf secondary-outputs
 
 ${PRO}.elf: $$(OBJS) $$(USER_OBJS)
 	@echo 'Building target: $$@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,${PRO}.map -mmcu=${MCU} -o "${PRO}.elf" $$(OBJS) $$(USER_OBJS) $$(LIBS)
+	$$(CC) $$(CFLAGS) -o "${PRO}.elf" $$(OBJS) $$(USER_OBJS) $$(LIBS)
 	@echo 'Finished building target: $$@'
 	@echo ' '
 
 ${PRO}.lss: ${PRO}.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	avr-objdump -h -S ${PRO}.elf > "${PRO}.lss"
+	$$(OD) $$(ODFLAGS) ${PRO}.elf > "${PRO}.lss"
 	@echo 'Finished building: $$@'
 	@echo ' '
 
 ${PRO}.hex: ${PRO}.elf
 	@echo 'Create Flash image (ihex format)'
-	avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ${PRO}.elf "${PRO}.hex"
+	$$(OC) $$(OCFLAGS) -O ihex ${PRO}.elf "${PRO}.hex"
 	@echo 'Finished building: $$@'
 	@echo ' '
 
 sizedummy: ${PRO}.elf
 	@echo 'Invoking: Print Size'
-	avr-size --format=avr --mcu=${MCU} ${PRO}.elf
+	$$(CS) $$(CSFLAGS) ${PRO}.elf
 	@echo 'Finished building: $$@'
 	@echo ' '
 
 clean:
-	$$(RM) $$(FLASH_IMAGE)$$(ELFS)$$(I_DEPS)$$(OBJS)$$(ASM_DEPS)$$(M_DEPS)$$(MI_DEPS)$$(S_DEPS)$$(SIZEDUMMY)$$(S_UPPER_DEPS)$$(LSS)$$(C_DEPS) ${PRO}.map ${PRO}.elf
+	@for item in $$(CLEAN_LIST);do echo "$$(RM) $$$$item";$$(RM) $$$$item;done
 	@echo ' '
 
 secondary-outputs: $$(LSS) $$(FLASH_IMAGE) $$(SIZEDUMMY)
-
-.PHONY: all clean dependents
 
