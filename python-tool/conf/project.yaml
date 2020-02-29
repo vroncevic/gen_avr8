@@ -1,0 +1,14 @@
+templates:
+    module.template
+    sources.template
+    objects.template
+    subdir.template
+    Makefile.template
+
+modules:
+    main.c
+    sources.mk
+    objects.mk
+    subdir.mk
+    Makefile
+
