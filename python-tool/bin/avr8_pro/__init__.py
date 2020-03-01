@@ -3,4 +3,3 @@
 """
     Generating AVR8 project setup
 """
-

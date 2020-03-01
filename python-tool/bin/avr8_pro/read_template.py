@@ -1,20 +1,23 @@
 # -*- coding: UTF-8 -*-
-# read_template.py
-# Copyright (C) 2020 Vladimir Roncevic <elektron.ronca@gmail.com>
-#
-# gen_avr8 is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# gen_avr8 is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program. If not, see <http://www.gnu.org/licenses/>.
-#
+
+"""
+ Module
+     read_template.py
+ Copyright
+     Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
+     gen_avr8 is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     gen_avr8 is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Define class ReadTemplate with attribute(s) and method(s).
+"""
 
 import sys
 from os.path import isdir
@@ -25,9 +28,9 @@ try:
     from ats_utilities.config.yaml.yaml2object import Yaml2Object
     from ats_utilities.config.file_checking import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
-except ImportError as e:
-    msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ##################################
+except ImportError as error:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
@@ -54,6 +57,8 @@ class ReadTemplate(FileChecking):
                 __pro_cfg - Yaml object for template/project description
             method:
                 __init__ - Initial constructor
+                get_template_dir - Getter for template dir object
+                get_pro_cfg - Getter for project configuration object
                 read - Read a template and return a string representation
     """
 
@@ -96,6 +101,20 @@ class ReadTemplate(FileChecking):
             self.__template_dir = None
             self.__pro_cfg = None
 
+    def get_template_dir(self):
+        """
+            Getter for template dir object.
+            :exceptions: None
+        """
+        return self.__template_dir
+
+    def get_pro_cfg(self):
+        """
+            Getter for project configuration object.
+            :exceptions: None
+        """
+        return self.__pro_cfg
+
     def read(self, verbose=False):
         """
             Read template structure.
@@ -125,4 +144,3 @@ class ReadTemplate(FileChecking):
                         iteam_list.append(tmpl.read())
                         setup_content[template_file] = iteam_list
         return setup_content
-

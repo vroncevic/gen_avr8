@@ -1,20 +1,23 @@
 # -*- coding: UTF-8 -*-
-# osc_selector.py
-# Copyright (C) 2020 Vladimir Roncevic <elektron.ronca@gmail.com>
-#
-# gen_avr8 is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# gen_avr8 is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program. If not, see <http://www.gnu.org/licenses/>.
-#
+
+"""
+ Module
+     osc_selector.py
+ Copyright
+     Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
+     gen_avr8 is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     gen_avr8 is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Define class OSCSelector with attribute(s) and method(s).
+"""
 
 import sys
 
@@ -24,9 +27,9 @@ try:
     from ats_utilities.config.yaml.yaml2object import Yaml2Object
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.error import error_message
-except ImportError as e:
-    msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ##################################
+except ImportError as error:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2020, Free software to use and distributed it."
@@ -51,6 +54,7 @@ class OSCSelector(object):
                 __fosc_cfg - Yaml object for configuration
             method:
                 __init__ - Initial constructor
+                get_osc_cfg - Getter for OSC configuration object
                 choose_osc - Selecting FOSC for target
     """
 
@@ -72,6 +76,13 @@ class OSCSelector(object):
         mcu = "{0}{1}".format(template_dir, OSCSelector.__FOSC_LIST)
         self.__fosc_cfg = Yaml2Object(mcu)
 
+    def get_osc_cfg(self):
+        """
+            Getter for OSC configuration object.
+            :exceptions: None
+        """
+        return self.__fosc_cfg
+
     def choose_osc(self, verbose=False):
         """
             Selecting FOSC for target.
@@ -87,10 +98,10 @@ class OSCSelector(object):
         fosc_cfg_list = fosc_cfg_list['osc']
         fosc_cfg_list = fosc_cfg_list.split(' ')
         while True:
-            print('\n')
-            for index in range(len(fosc_cfg_list)):
+            print("{0}\n".format('#' * 30))
+            for index in enumerate(fosc_cfg_list):
                 print("\t{0}: {1}".format(index, fosc_cfg_list[index]))
-            print('\n')
+            print("{0}\n".format('#' * 30))
             fosc_name_index = int(raw_input(' Select FOSC: '))
             if fosc_name_index not in range(len(fosc_cfg_list)):
                 error_message(
@@ -98,7 +109,6 @@ class OSCSelector(object):
                 )
             else:
                 fosc_name = fosc_cfg_list[fosc_name_index]
-                print('\n')
+                print("{0}\n".format('#' * 30))
                 break
         return fosc_name
-

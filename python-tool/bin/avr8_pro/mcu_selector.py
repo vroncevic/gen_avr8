@@ -1,20 +1,23 @@
 # -*- coding: UTF-8 -*-
-# mcu_selector.py
-# Copyright (C) 2020 Vladimir Roncevic <elektron.ronca@gmail.com>
-#
-# gen_avr8 is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# gen_avr8 is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program. If not, see <http://www.gnu.org/licenses/>.
-#
+
+"""
+ Module
+     mcu_selector.py
+ Copyright
+     Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
+     gen_avr8 is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     gen_avr8 is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Define class MCUSelector with attribute(s) and method(s).
+"""
 
 import sys
 
@@ -24,9 +27,9 @@ try:
     from ats_utilities.config.yaml.yaml2object import Yaml2Object
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.error import error_message
-except ImportError as e:
-    msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ##################################
+except ImportError as error:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2020, Free software to use and distributed it."
@@ -51,6 +54,7 @@ class MCUSelector(object):
                 __mcu_cfg - Yaml object for configuration
             method:
                 __init__ - Initial constructor
+                get_mcu_cfg - Getter for MCU configuration object
                 choose_mcu - Selecting MCU target
     """
 
@@ -72,6 +76,13 @@ class MCUSelector(object):
         mcu = "{0}{1}".format(template_dir, MCUSelector.__MCU_LIST)
         self.__mcu_cfg = Yaml2Object(mcu)
 
+    def get_mcu_cfg(self):
+        """
+            Getter for MCU configuration object.
+            :exceptions: None
+        """
+        return self.__mcu_cfg
+
     def choose_mcu(self, verbose=False):
         """
             Selecting MCU target.
@@ -87,10 +98,10 @@ class MCUSelector(object):
         mcu_cfg_list = mcu_cfg_list['mcu']
         mcu_cfg_list = mcu_cfg_list.split(' ')
         while True:
-            print('\n')
-            for index in range(len(mcu_cfg_list)):
+            print("{0}\n".format('#' * 30))
+            for index in enumerate(mcu_cfg_list):
                 print("\t{0}: {1}".format(index, mcu_cfg_list[index]))
-            print('\n')
+            print("{0}\n".format('#' * 30))
             mcu_name_index = int(raw_input(' Select MCU: '))
             if mcu_name_index not in range(len(mcu_cfg_list)):
                 error_message(
@@ -100,4 +111,3 @@ class MCUSelector(object):
                 mcu_name = mcu_cfg_list[mcu_name_index]
                 break
         return mcu_name
-

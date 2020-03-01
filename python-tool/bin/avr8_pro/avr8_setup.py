@@ -1,20 +1,23 @@
 # -*- coding: UTF-8 -*-
-# avr8_setup.py
-# Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-#
-# gen_avr8 is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# gen_avr8 is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program. If not, see <http://www.gnu.org/licenses/>.
-#
+
+"""
+ Module
+     avr8_setup.py
+ Copyright
+     Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
+     gen_avr8 is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     gen_avr8 is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Define class AVR8Setup with attribute(s) and method(s).
+"""
 
 import sys
 from inspect import stack
@@ -26,12 +29,11 @@ try:
     from avr8_pro.write_template import WriteTemplate
 
     from ats_utilities.console_io.verbose import verbose_message
-    from ats_utilities.console_io.error import error_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as e:
-    msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ##################################
+except ImportError as error:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2019, Free software to use and distributed it.'
@@ -60,7 +62,7 @@ class AVR8Setup(object):
                 gen_pro_setup - Generate project skeleton
     """
 
-    __slots__ = ('VERBOSE', '__mcu_sel', '__fosc_sel','__reader', '__writer')
+    __slots__ = ('VERBOSE', '__mcu_sel', '__fosc_sel', '__reader', '__writer')
     VERBOSE = 'GEN_AVR8::AVR8_SETUP::AVR8SETUP'
 
     def __init__(self, verbose=False):
@@ -75,6 +77,34 @@ class AVR8Setup(object):
         self.__fosc_sel = OSCSelector(verbose=verbose)
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(verbose=verbose)
+
+    def get_mcu_selector(self):
+        """
+            Getter for MCU selector.
+            :exceptions: None
+        """
+        return self.__mcu_sel
+
+    def get_fosc_selector(self):
+        """
+            Getter for FOSC selector.
+            :exceptions: None
+        """
+        return self.__fosc_sel
+
+    def get_reader(self):
+        """
+            Getter for reader object.
+            :exceptions: None
+        """
+        return self.__reader
+
+    def get_writer(self):
+        """
+            Getter for writer object.
+            :exceptions: None
+        """
+        return self.__writer
 
     def gen_pro_setup(self, project_name, verbose=False):
         """
@@ -106,4 +136,3 @@ class AVR8Setup(object):
         if bool(project_data):
             status = self.__writer.write(project_data, verbose=verbose)
         return True if status else False
-
