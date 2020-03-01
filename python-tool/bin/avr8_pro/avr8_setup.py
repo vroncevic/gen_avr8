@@ -59,6 +59,10 @@ class AVR8Setup(object):
                 __writer - Writer API
             method:
                 __init__ - Initial constructor
+                get_mcu_selector - Getter for MCU selector
+                get_fosc_selector - Getter for FOSC selector
+                get_reader - Getter for reader object
+                get_writer - Getter for writer object
                 gen_pro_setup - Generate project skeleton
     """
 
