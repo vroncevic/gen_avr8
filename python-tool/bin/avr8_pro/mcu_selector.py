@@ -99,7 +99,7 @@ class MCUSelector(object):
         mcu_cfg_list = mcu_cfg_list.split(' ')
         while True:
             print("{0}\n".format('#' * 30))
-            for index in enumerate(mcu_cfg_list):
+            for index in range(len(mcu_cfg_list)):
                 print("\t{0}: {1}".format(index, mcu_cfg_list[index]))
             print("{0}\n".format('#' * 30))
             try:
@@ -107,7 +107,7 @@ class MCUSelector(object):
             except NameError:
                 pass
                 mcu_name_index = int(input(' Select MCU: '))
-            if mcu_name_index not in enumerate(mcu_cfg_list):
+            if mcu_name_index not in range(len(mcu_cfg_list)):
                 error_message(
                     MCUSelector.VERBOSE, 'Not an appropriate choice.'
                 )
