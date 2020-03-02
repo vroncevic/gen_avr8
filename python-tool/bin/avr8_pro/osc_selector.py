@@ -100,7 +100,7 @@ class OSCSelector(object):
         line = '#' * 30
         while True:
             print(line)
-            for index in enumerate(fosc_cfg_list):
+            for index in range(len(fosc_cfg_list)):
                 print("\t{0}: {1}".format(index, fosc_cfg_list[index]))
             print(line)
             try:
@@ -108,7 +108,7 @@ class OSCSelector(object):
             except NameError:
                 pass
                 fosc_name_index = int(input(' Select FOSC: '))
-            if fosc_name_index not in enumerate(fosc_cfg_list):
+            if fosc_name_index not in range(len(fosc_cfg_list)):
                 error_message(
                     OSCSelector.VERBOSE, 'Not an appropriate choice.'
                 )
