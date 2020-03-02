@@ -97,18 +97,22 @@ class OSCSelector(object):
         fosc_cfg_list = self.__fosc_cfg.read_configuration(verbose=verbose)
         fosc_cfg_list = fosc_cfg_list['osc']
         fosc_cfg_list = fosc_cfg_list.split(' ')
+        line = '#' * 30
         while True:
-            print("{0}\n".format('#' * 30))
+            print(line)
             for index in enumerate(fosc_cfg_list):
                 print("\t{0}: {1}".format(index, fosc_cfg_list[index]))
-            print("{0}\n".format('#' * 30))
-            fosc_name_index = int(raw_input(' Select FOSC: '))
-            if fosc_name_index not in range(len(fosc_cfg_list)):
+            print(line)
+            if sys.version_info > (3, 0):
+                fosc_name_index = int(input(' Select FOSC: '))
+            else:
+                fosc_name_index = int(raw_input(' Select FOSC: '))
+            if fosc_name_index not in enumerate(fosc_cfg_list):
                 error_message(
                     OSCSelector.VERBOSE, 'Not an appropriate choice.'
                 )
             else:
                 fosc_name = fosc_cfg_list[fosc_name_index]
-                print("{0}\n".format('#' * 30))
+                print(line)
                 break
         return fosc_name
