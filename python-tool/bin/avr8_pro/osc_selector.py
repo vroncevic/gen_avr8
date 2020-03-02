@@ -103,10 +103,11 @@ class OSCSelector(object):
             for index in enumerate(fosc_cfg_list):
                 print("\t{0}: {1}".format(index, fosc_cfg_list[index]))
             print(line)
-            if sys.version_info > (3, 0):
-                fosc_name_index = int(input(' Select FOSC: '))
-            else:
-                fosc_name_index = int(raw_input(' Select FOSC: '))
+            try:
+                mcu_name_index = int(raw_input(' Select FOSC: '))
+            except NameError:
+                pass
+                mcu_name_index = int(input(' Select FOSC: '))
             if fosc_name_index not in enumerate(fosc_cfg_list):
                 error_message(
                     OSCSelector.VERBOSE, 'Not an appropriate choice.'
