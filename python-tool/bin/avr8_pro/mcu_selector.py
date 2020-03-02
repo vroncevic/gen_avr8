@@ -102,10 +102,11 @@ class MCUSelector(object):
             for index in enumerate(mcu_cfg_list):
                 print("\t{0}: {1}".format(index, mcu_cfg_list[index]))
             print("{0}\n".format('#' * 30))
-            if sys.version_info > (3, 0):
-                mcu_name_index = int(input(' Select MCU: '))
-            else:
+            try:
                 mcu_name_index = int(raw_input(' Select MCU: '))
+            except NameError:
+                pass
+                mcu_name_index = int(input(' Select MCU: '))
             if mcu_name_index not in enumerate(mcu_cfg_list):
                 error_message(
                     MCUSelector.VERBOSE, 'Not an appropriate choice.'
