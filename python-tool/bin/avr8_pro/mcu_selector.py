@@ -17,6 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class MCUSelector with attribute(s) and method(s).
+     Selecting MCU target for generating process of project structure.
 """
 
 import sys

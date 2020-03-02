@@ -17,6 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class WriteTemplate with attribute(s) and method(s).
+     Write template content with parameters to a project setup.
 """
 
 import sys

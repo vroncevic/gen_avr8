@@ -17,6 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class ReadTemplate with attribute(s) and method(s).
+     Read a template files and return a content.
 """
 
 import sys
