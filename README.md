@@ -12,13 +12,16 @@ other information that should be provided before the modules are installed.
 ![Python package](https://github.com/vroncevic/gen_avr8/workflows/Python%20package/badge.svg)
 
 ### INSTALLATION
+Navigate to release [page](https://github.com/vroncevic/gen_avr8/releases/tag/v1.0) download and extract release archive.
 
 To install this set of modules type the following:
 
 ```
-cp -R ~/gen_avr8_scripts/bin/   /root/scripts/gen_avr8/ver.1.0/
-cp -R ~/gen_avr8_scripts/conf/  /root/scripts/gen_avr8/ver.1.0/
-cp -R ~/gen_avr8_scripts/log/   /root/scripts/gen_avr8/ver.1.0/
+tar xvzf gen_avr8-1.0.tar.gz
+cd gen_avr8-1.0/python-tool
+cp -R ~/bin/   /root/scripts/gen_avr8/ver.1.0/
+cp -R ~/conf/  /root/scripts/gen_avr8/ver.1.0/
+cp -R ~/log/   /root/scripts/gen_avr8/ver.1.0/
 ```
 
 ### DEPENDENCIES
