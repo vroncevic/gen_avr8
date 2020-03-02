@@ -9,6 +9,8 @@ The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
+![Python package](https://github.com/vroncevic/gen_avr8/workflows/Python%20package/badge.svg)
+
 ### INSTALLATION
 
 To install this set of modules type the following:
