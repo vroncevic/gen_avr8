@@ -17,6 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class AVR8Setup with attribute(s) and method(s).
+     Generate AVR project skeleton.
 """
 
 import sys
