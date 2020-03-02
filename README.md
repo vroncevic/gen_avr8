@@ -19,9 +19,9 @@ To install this set of modules type the following:
 ```
 tar xvzf gen_avr8-1.0.tar.gz
 cd gen_avr8-1.0/python-tool
-cp -R ~/bin/   /root/scripts/gen_avr8/ver.1.0/
-cp -R ~/conf/  /root/scripts/gen_avr8/ver.1.0/
-cp -R ~/log/   /root/scripts/gen_avr8/ver.1.0/
+cp -R ~/bin/   /root/scripts/gen_avr8/
+cp -R ~/conf/  /root/scripts/gen_avr8/
+cp -R ~/log/   /root/scripts/gen_avr8/
 ```
 
 ### DEPENDENCIES
