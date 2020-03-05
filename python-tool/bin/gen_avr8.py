@@ -27,6 +27,7 @@ try:
     from pathlib import Path
 
     from avr8_pro.avr8_setup import AVR8Setup
+
     from ats_utilities.cfg_base import CfgBase
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message

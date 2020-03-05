@@ -86,6 +86,8 @@ class AVR8Setup(object):
     def get_mcu_selector(self):
         """
             Getter for MCU selector.
+            :return: MCU Seletor
+            :rtype: <MCUSelector>
             :exceptions: None
         """
         return self.__mcu_sel
@@ -93,6 +95,8 @@ class AVR8Setup(object):
     def get_fosc_selector(self):
         """
             Getter for FOSC selector.
+            :return: FOSC Seletor
+            :rtype: <OSCSelector>
             :exceptions: None
         """
         return self.__fosc_sel
@@ -100,6 +104,8 @@ class AVR8Setup(object):
     def get_reader(self):
         """
             Getter for reader object.
+            :return: Read template object
+            :rtype: <ReadTemplate>
             :exceptions: None
         """
         return self.__reader
@@ -107,6 +113,8 @@ class AVR8Setup(object):
     def get_writer(self):
         """
             Getter for writer object.
+            :return: Write template object
+            :rtype: <WriteTemplate>
             :exceptions: None
         """
         return self.__writer

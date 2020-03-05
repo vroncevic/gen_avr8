@@ -112,6 +112,8 @@ class ReadTemplate(FileChecking):
     def get_pro_cfg(self):
         """
             Getter for project configuration object.
+            :retunr: Configuration object
+            :rtype: <Yaml2Object>
             :exceptions: None
         """
         return self.__pro_cfg

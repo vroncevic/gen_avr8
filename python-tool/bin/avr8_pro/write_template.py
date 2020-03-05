@@ -75,6 +75,8 @@ class WriteTemplate(object):
     def get_project_status(self):
         """
             Getter for project status object.
+            :return: Ptoject status
+            :rtype: <bool>
             :exceptions: None
         """
         return self.__project_status
