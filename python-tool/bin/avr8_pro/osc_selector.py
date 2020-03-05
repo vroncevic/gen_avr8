@@ -80,6 +80,8 @@ class OSCSelector(object):
     def get_osc_cfg(self):
         """
             Getter for OSC configuration object.
+            :return: OSC Configuration
+            :rtype: <Yaml2Object>
             :exceptions: None
         """
         return self.__fosc_cfg
@@ -107,7 +109,6 @@ class OSCSelector(object):
             try:
                 fosc_name_index = int(raw_input(' Select FOSC: '))
             except NameError:
-                pass
                 fosc_name_index = int(input(' Select FOSC: '))
             if fosc_name_index not in range(len(fosc_cfg_list)):
                 error_message(

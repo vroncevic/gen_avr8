@@ -80,6 +80,8 @@ class MCUSelector(object):
     def get_mcu_cfg(self):
         """
             Getter for MCU configuration object.
+            :return: MCU Configuration
+            :rtype: <Yaml2Object>
             :exceptions: None
         """
         return self.__mcu_cfg
@@ -106,7 +108,6 @@ class MCUSelector(object):
             try:
                 mcu_name_index = int(raw_input(' Select MCU: '))
             except NameError:
-                pass
                 mcu_name_index = int(input(' Select MCU: '))
             if mcu_name_index not in range(len(mcu_cfg_list)):
                 error_message(
