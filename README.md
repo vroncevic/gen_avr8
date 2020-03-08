@@ -120,6 +120,8 @@ Generator structure:
 
 ### COPYRIGHT AND LICENCE
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
 
 This tool is free software; you can redistribute it and/or modify
