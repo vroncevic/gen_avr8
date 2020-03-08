@@ -11,6 +11,7 @@ other information that should be provided before the modules are installed.
 
 ![Python package](https://github.com/vroncevic/gen_avr8/workflows/Python%20package/badge.svg)
 [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
 ### INSTALLATION
 Navigate to release [page](https://github.com/vroncevic/gen_avr8/releases/tag/v1.0) download and extract release archive.
