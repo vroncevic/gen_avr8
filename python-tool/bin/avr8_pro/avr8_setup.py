@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2019, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -119,11 +119,11 @@ class AVR8Setup(object):
         """
         return self.__writer
 
-    def gen_pro_setup(self, project_name, verbose=False):
+    def gen_pro_setup(self, project_setup, verbose=False):
         """
             Generate setup.py for python package.
-            :param project_name: Project name
-            :type project_name: <str>
+            :param project_setup: Project setup
+            :type project_setup: <dict>
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :return: True (success) | False
@@ -131,21 +131,25 @@ class AVR8Setup(object):
             :exceptions: ATSBadCallError | ATSTypeError
         """
         func, status, project_data = stack()[0][3], False, {}
-        project_txt = 'Argument: expected project_name <str> object'
+        project_txt = 'Argument: expected project_setup <dict> object'
         project_msg = "{0} {1} {2}".format('def', func, project_txt)
-        if project_name is None or not project_name:
+        if project_setup is None or not project_setup:
             raise ATSBadCallError(project_msg)
-        if not isinstance(project_name, str):
+        if not isinstance(project_setup, dict):
             raise ATSTypeError(project_msg)
         verbose_message(
-            AVR8Setup.VERBOSE, verbose, 'Generating project', project_name
+            AVR8Setup.VERBOSE, verbose, 'Generating project', project_setup
         )
         project_data['templates'] = self.__reader.read(verbose=verbose)
-        project_data['name'] = project_name
-        mcu = self.__mcu_sel.choose_mcu(verbose=verbose)
-        project_data['mcu'] = mcu
-        fosc = self.__fosc_sel.choose_osc(verbose=verbose)
-        project_data['osc'] = fosc
+        project_data['name'] = project_setup['name']
+        if bool(project_setup['conf']['MCU']):
+            project_data['mcu'] = project_setup['conf']['MCU']
+        else:
+            project_data['mcu'] = self.__mcu_sel.choose_mcu(verbose=verbose)
+        if bool(project_setup['conf']['OSC']):
+            project_data['osc'] = project_setup['conf']['OSC']
+        else:
+            project_data['osc'] = self.__fosc_sel.choose_osc(verbose=verbose)
         if bool(project_data):
             status = self.__writer.write(project_data, verbose=verbose)
         return True if status else False

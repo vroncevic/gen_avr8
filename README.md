@@ -14,16 +14,35 @@ other information that should be provided before the modules are installed.
  [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
 ### INSTALLATION
-Navigate to release [page](https://github.com/vroncevic/gen_avr8/releases/tag/v1.0) download and extract release archive.
+Navigate to release [page](https://github.com/vroncevic/gen_avr8/releases) download and extract release archive.
 
 To install this set of modules type the following:
 
 ```
-tar xvzf gen_avr8-1.0.tar.gz
-cd gen_avr8-1.0/python-tool
+tar xvzf gen_avr8-x.y.z.tar.gz
+cd gen_avr8-x.y.z/python-tool
 cp -R ~/bin/   /root/scripts/gen_avr8/
 cp -R ~/conf/  /root/scripts/gen_avr8/
 cp -R ~/log/   /root/scripts/gen_avr8/
+```
+
+### USAGE
+
+```
+# Create AVR8 Project Blink, MCU/FOSC will be selected during generation process
+python gen_avr8_run -g Blink
+
+# Crete AVR8 Project Blink, by using parameters from yaml file
+python gen_avr8_run -g Blink -c avr8.yaml
+
+# Content of configuration file avr8.yaml
+cat avr8.yaml
+
+MCU:
+    atmega8
+
+OSC:
+    16000000UL
 ```
 
 ### DEPENDENCIES
@@ -126,7 +145,7 @@ Generator structure:
 Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
 
 This tool is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.7/3.4 or,
+it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
 
 :sparkles:
