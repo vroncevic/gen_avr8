@@ -32,6 +32,7 @@ try:
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
+    from ats_utilities.config.yaml.yaml2object import Yaml2Object
 except ImportError as error:
     MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
@@ -40,7 +41,7 @@ __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2019, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
 __license__ = "GNU General Public License (GPL)"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
@@ -64,7 +65,7 @@ class GenAVR8(CfgBase):
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
     VERBOSE = 'GEN_AVR8'
     __CONFIG = '/../conf/gen_avr8.cfg'
-    __OPS = ['-g', '--gen', '-h', '--version']
+    __OPS = ['-g', '--gen', '-c', '--conf', '-h', '--version']
 
     def __init__(self, verbose=False):
         """
@@ -74,13 +75,17 @@ class GenAVR8(CfgBase):
             :exceptions: None
         """
         verbose_message(GenAVR8.VERBOSE, verbose, 'Initial configuration')
-        current_dir = Path(__file__).resolve().parent
-        base_config_file = "{0}{1}".format(current_dir, GenAVR8.__CONFIG)
+        tool_dir = Path(__file__).resolve().parent
+        base_config_file = "{0}{1}".format(tool_dir, GenAVR8.__CONFIG)
         CfgBase.__init__(self, base_config_file, verbose=verbose)
         if self.tool_status:
             self.add_new_option(
                 GenAVR8.__OPS[0], GenAVR8.__OPS[1], dest="pro",
                 help="generate AVR8 project skeleton"
+            )
+            self.add_new_option(
+                GenAVR8.__OPS[2], GenAVR8.__OPS[3], dest="conf",
+                help="load parameters from yaml file"
             )
 
     def process(self, verbose=False):
@@ -102,25 +107,40 @@ class GenAVR8(CfgBase):
                     sys.argv.append("-h")
             else:
                 sys.argv.append("-h")
-            opts, args = self.parse_args(sys.argv)
-            project = "{0}".format(opts.pro)
-            current_dir, num_of_args = getcwd(), len(args)
-            project_path = "{0}/{1}".format(current_dir, project)
-            project_exists = Path(project_path).exists()
-            if num_of_args == 1 and opts.pro and not project_exists:
-                generator, gen_status = AVR8Setup(verbose=verbose), False
-                print(
-                    "{0} {1} [{2}]".format(
-                        "[{0}]".format(self.name),
-                        'Generating AVR8 project skeleton', opts.pro
+            current_dir, pro_setup = getcwd(), {}
+            opts, script = self.parse_args(sys.argv)
+            if len(script) == 1 and bool(opts.pro):
+                pro_setup['name'] = opts.pro
+                if bool(opts.conf):
+                    project_setup_path = "{0}/{1}".format(
+                        current_dir, "{0}".format(opts.conf)
                     )
-                )
-                gen_status = generator.gen_pro_setup("{0}".format(opts.pro))
-                if gen_status:
-                    success_message(self.name, 'Done\n')
-                    status = True
+                    cfg = Yaml2Object(project_setup_path, verbose=verbose)
+                    pro_setup['conf'] = cfg.read_configuration(verbose=verbose)
                 else:
-                    error_message(self.name, 'Failed to generate project')
+                    pro_setup['conf'] = None
+                check_pro_cfg = any(
+                    [
+                        all([bool(opts.conf), bool(pro_setup['conf'])]),
+                        all([not bool(opts.conf), not bool(pro_setup['conf'])])
+                    ]
+                )
+                if check_pro_cfg:
+                    generator, gen_status = AVR8Setup(verbose=verbose), False
+                    print(
+                        "{0} {1} [{2}]".format(
+                            "[{0}]".format(self.name),
+                            'Generating AVR8 project skeleton', opts.pro
+                        )
+                    )
+                    gen_status = generator.gen_pro_setup(
+                        pro_setup, verbose=verbose
+                    )
+                    if gen_status:
+                        success_message(self.name, 'Done\n')
+                        status = True
+                    else:
+                        error_message(self.name, 'Failed to generate project')
             else:
                 error_message(self.name, 'project already exist !')
         else:
