@@ -1,6 +1,11 @@
 AVR project skeleton generator.
 =========================================
 
+.. toctree::
+ :numbered:
+ 
+ index
+
 gen_avr8 is toolset for generation of AVR8 project skeleton for
 development embedded applications.
 
