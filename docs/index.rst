@@ -29,12 +29,15 @@ cp -R ~/log/   /root/scripts/gen_avr8/
 USAGE
 -----------------------------
 # Create AVR8 Project Blink, MCU/FOSC will be selected during generation process
+
 python gen_avr8_run -g Blink
 
 # Crete AVR8 Project Blink, by using parameters from yaml file
+
 python gen_avr8_run -g Blink -c avr8.yaml
 
 # Content of configuration file avr8.yaml
+
 cat avr8.yaml
 
 MCU:
@@ -134,7 +137,9 @@ Generator structure:
 
 COPYRIGHT AND LICENCE
 -----------------------------
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+|License: GPL v3|
+.. |License: GPL v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
 
 Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
 
