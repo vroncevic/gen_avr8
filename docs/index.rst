@@ -1,4 +1,5 @@
-# AVR project skeleton generator.
+AVR project skeleton generator.
+=========================================
 
 gen_avr8 is toolset for generation of AVR8 project skeleton for
 development embedded applications.
@@ -13,22 +14,20 @@ other information that should be provided before the modules are installed.
  [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues)
  [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
-### INSTALLATION
+INSTALLATION
+-----------------------------
 Navigate to release [page](https://github.com/vroncevic/gen_avr8/releases) download and extract release archive.
 
 To install this set of modules type the following:
 
-```
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/python-tool
 cp -R ~/bin/   /root/scripts/gen_avr8/
 cp -R ~/conf/  /root/scripts/gen_avr8/
 cp -R ~/log/   /root/scripts/gen_avr8/
-```
 
-### USAGE
-
-```
+USAGE
+-----------------------------
 # Create AVR8 Project Blink, MCU/FOSC will be selected during generation process
 python gen_avr8_run -g Blink
 
@@ -43,19 +42,17 @@ MCU:
 
 OSC:
     16000000UL
-```
 
-### DEPENDENCIES
-
+DEPENDENCIES
+-----------------------------
 gen_avr8 tool-module requires other modules and libraries:
 
 * ats_utilities https://vroncevic.github.io/ats_utilities
 
-### SUPPORTED MCUS
-
+SUPPORTED MCUS
+-----------------------------
 Current list of supported microcontrollers:
 
-```
 attiny2313    atmega128      at90s2313
 attiny24      atmega1280     at90s2333
 attiny25      atmega1281     at90s4414
@@ -90,23 +87,21 @@ attiny861     atmega169
               atmega8515
               atmega8535
               atmega88
-```
 
-### GENERATION FLOW OF PROJECT SETUP
-
+GENERATION FLOW OF PROJECT SETUP
+-----------------------------
 Base flow of generation process:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png)
 
-### TOOL STRUCTURE
-
+TOOL STRUCTURE
+-----------------------------
 gen_avr8 is based on Template mechanism:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
 
 Generator structure:
 
-```
 .
 ├── bin
 │   ├── avr8_pro
@@ -136,10 +131,9 @@ Generator structure:
 │       └── subdir.template
 └── log
     └── gen_avr8.log
-```
 
-### COPYRIGHT AND LICENCE
-
+COPYRIGHT AND LICENCE
+-----------------------------
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
