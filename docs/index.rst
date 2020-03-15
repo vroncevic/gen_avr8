@@ -19,13 +19,11 @@ Navigate to release `page`_ download and extract release archive.
 To install this set of modules type the following:
 
 .. code-block:: bash
-
     tar xvzf gen_avr8-x.y.z.tar.gz
     cd gen_avr8-x.y.z/python-tool
     cp -R ~/bin/   /root/scripts/gen_avr8/
     cp -R ~/conf/  /root/scripts/gen_avr8/
     cp -R ~/log/   /root/scripts/gen_avr8/
-
 
 USAGE
 -----------------------------
@@ -38,11 +36,9 @@ python gen_avr8_run -g Blink -c avr8.yaml
 # Content of configuration file avr8.yaml
 
 .. code-block:: bash
-
     cat avr8.yaml
     MCU:
         atmega8
-
     OSC:
         16000000UL
 
@@ -57,7 +53,6 @@ SUPPORTED MCUS
 Current list of supported microcontrollers:
 
 .. code-block:: bash
-
     attiny2313    atmega128      at90s2313
     attiny24      atmega1280     at90s2333
     attiny25      atmega1281     at90s4414
@@ -108,7 +103,6 @@ gen_avr8 is based on Template mechanism:
 Generator structure:
 
 .. code-block:: bash
-
     .
     ├── bin
     │   ├── avr8_pro
@@ -142,9 +136,8 @@ Generator structure:
 COPYRIGHT AND LICENCE
 -----------------------------
 
-GPL v3 https://www.gnu.org/licenses/gpl-3.0
-
-Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
+| GPL v3 https://www.gnu.org/licenses/gpl-3.0
+| Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
 
 This tool is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
