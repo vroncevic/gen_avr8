@@ -12,9 +12,9 @@ other information that should be provided before the modules are installed.
 
 INSTALLATION
 -----------------------------
-Navigate to release `page` download and extract release archive.
+Navigate to release `page`_ download and extract release archive.
 
-.. page: https://github.com/vroncevic/gen_avr8/releases
+.. _page: https://github.com/vroncevic/gen_avr8/releases
 
 To install this set of modules type the following:
 
