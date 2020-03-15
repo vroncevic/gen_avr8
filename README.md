@@ -96,13 +96,13 @@ attiny861     atmega169
 
 Base flow of generation process:
 
-![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/python-tool-docs/gen_avr8_flow.png)
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png)
 
 ### TOOL STRUCTURE
 
 gen_avr8 is based on Template mechanism:
 
-![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/python-tool-docs/gen_avr8.png)
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
 
 Generator structure:
 
