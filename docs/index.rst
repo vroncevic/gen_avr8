@@ -138,8 +138,7 @@ COPYRIGHT AND LICENCE
 
 | GPL v3 https://www.gnu.org/licenses/gpl-3.0
 | Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
-
-
+| 
 This tool is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
