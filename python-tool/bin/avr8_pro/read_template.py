@@ -143,7 +143,8 @@ class ReadTemplate(FileChecking):
                 )
                 if template_file_exists:
                     with open(template_file, 'r') as tmpl:
-                        iteam_list.append(pro_item)
-                        iteam_list.append(tmpl.read())
-                        setup_content[template_file] = iteam_list
+                        if bool(tmpl):
+                            iteam_list.append(pro_item)
+                            iteam_list.append(tmpl.read())
+                            setup_content[template_file] = iteam_list
         return setup_content
