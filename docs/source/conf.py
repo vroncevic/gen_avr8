@@ -16,23 +16,17 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import sphinx_rtd_theme
-
-html_theme = 'sphinx_rtd_theme'
-
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
 
 # -- Project information -----------------------------------------------------
 
 project = u'gen_avr8'
-copyright = u'2020, Vladimir Roncevic'
-author = u'Vladimir Roncevic'
+copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
+author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
 
 # The short X.Y version
-version = u''
+version = u'1.1.0'
 # The full version, including alpha/beta/rc tags
-release = u'1.1.0'
+release = u'https://github.com/vroncevic/gen_avr8/releases'
 
 
 # -- General configuration ---------------------------------------------------
@@ -46,10 +40,6 @@ release = u'1.1.0'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -85,7 +75,7 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -140,7 +130,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'gen_avr8.tex', u'gen\\_avr8 Documentation',
-     u'Vladimir Roncevic', 'manual'),
+     u'Vladimir Roncevic \\textless{}elektron.ronca@gmail.com\\textgreater{}', 'manual'),
 ]
 
 
@@ -185,8 +175,3 @@ epub_exclude_files = ['search.html']
 
 
 # -- Extension configuration -------------------------------------------------
-
-# -- Options for intersphinx extension ---------------------------------------
-
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
