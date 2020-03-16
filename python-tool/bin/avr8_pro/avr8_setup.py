@@ -68,7 +68,7 @@ class AVR8Setup(object):
     """
 
     __slots__ = ('VERBOSE', '__mcu_sel', '__fosc_sel', '__reader', '__writer')
-    VERBOSE = 'GEN_AVR8::AVR8_SETUP::AVR8SETUP'
+    VERBOSE = 'GEN_AVR8::AVR8_PRO::AVR8SETUP'
 
     def __init__(self, verbose=False):
         """

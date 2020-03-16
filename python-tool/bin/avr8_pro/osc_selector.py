@@ -60,7 +60,7 @@ class OSCSelector(object):
     """
 
     __slots__ = ('VERBOSE', '__CONF_DIR', '__FOSC_LIST', '__fosc_cfg')
-    VERBOSE = 'GEN_AVR8::AVR8_SETUP::OSC_SELECTOR'
+    VERBOSE = 'GEN_AVR8::AVR8_PRO::OSC_SELECTOR'
     __CONF_DIR = '/../../conf/'
     __FOSC_LIST = 'fosc.yaml'
 

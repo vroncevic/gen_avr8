@@ -132,7 +132,8 @@ class WriteTemplate(object):
                     if not exists(build_dir):
                         mkdir(build_dir)
                     with open(module, 'w') as module_file:
-                        module_file.write(template.substitute(project))
-                        chmod(module, 0o666)
-                        status = True
+                        if bool(module_file):
+                            module_file.write(template.substitute(project))
+                            chmod(module, 0o666)
+                            status = True
         return True if status else False

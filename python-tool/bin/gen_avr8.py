@@ -142,7 +142,7 @@ class GenAVR8(CfgBase):
                     else:
                         error_message(self.name, 'Failed to generate project')
             else:
-                error_message(self.name, 'project already exist !')
+                error_message(self.name, 'Failed to generate project')
         else:
             error_message('gen_avr8', 'Tool is not operational')
         return True if status else False
