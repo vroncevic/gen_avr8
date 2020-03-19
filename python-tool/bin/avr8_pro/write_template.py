@@ -49,14 +49,15 @@ class WriteTemplate(object):
         Define class WriteTemplate with attribute(s) and method(s).
         Write template content with parameters to a project setup.
         It defines:
-            attribute:
-                __slots__ - Setting class slots
-                VERBOSE - Console text indicator for current process-phase
-                __project_status - Project status
-            method:
-                __init__ - Initial constructor
-                get_project_status - Getter for project status object
-                write - Write a template content to a project setup
+
+            :attributes:
+                | __slots__ - Setting class slots
+                | VERBOSE - Console text indicator for current process-phase
+                | __project_status - Project status
+            :methods:
+                | __init__ - Initial constructor
+                | get_project_status - Getter for project status object
+                | write - Write a template content to a project setup
     """
 
     __slots__ = ('VERBOSE', '__project_status')
@@ -65,6 +66,7 @@ class WriteTemplate(object):
     def __init__(self, verbose=False):
         """
             Initial constructor
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :exceptions: None
@@ -75,6 +77,7 @@ class WriteTemplate(object):
     def get_project_status(self):
         """
             Getter for project status object.
+
             :return: Ptoject status
             :rtype: <bool>
             :exceptions: None
@@ -84,6 +87,7 @@ class WriteTemplate(object):
     def write(self, project_data, verbose=False):
         """
             Write setup content to file.
+
             :param project_data: Project data
             :type project_data: <dict>
             :param verbose: Enable/disable verbose option

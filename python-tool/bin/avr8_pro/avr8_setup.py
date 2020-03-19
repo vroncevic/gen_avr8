@@ -51,20 +51,21 @@ class AVR8Setup(object):
         Define class AVR8Setup with attribute(s) and method(s).
         Generate AVR project skeleton.
         It defines:
-            attribute:
-                __slots__ - Setting class slots
-                VERBOSE - Console text indicator for current process-phase
-                __mcu_sel - MCU selector API
-                __fosc_sel - FOSC selector API
-                __reader - Reader API
-                __writer - Writer API
-            method:
-                __init__ - Initial constructor
-                get_mcu_selector - Getter for MCU selector
-                get_fosc_selector - Getter for FOSC selector
-                get_reader - Getter for reader object
-                get_writer - Getter for writer object
-                gen_pro_setup - Generate project skeleton
+
+            :attributes:
+                | __slots__ - Setting class slots
+                | VERBOSE - Console text indicator for current process-phase
+                | __mcu_sel - MCU selector API
+                | __fosc_sel - FOSC selector API
+                | __reader - Reader API
+                | __writer - Writer API
+            :methods:
+                | __init__ - Initial constructor
+                | get_mcu_selector - Getter for MCU selector
+                | get_fosc_selector - Getter for FOSC selector
+                | get_reader - Getter for reader object
+                | get_writer - Getter for writer object
+                | gen_pro_setup - Generate project skeleton
     """
 
     __slots__ = ('VERBOSE', '__mcu_sel', '__fosc_sel', '__reader', '__writer')
@@ -73,6 +74,7 @@ class AVR8Setup(object):
     def __init__(self, verbose=False):
         """
             Initial constructor
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :exceptions: None
@@ -86,6 +88,7 @@ class AVR8Setup(object):
     def get_mcu_selector(self):
         """
             Getter for MCU selector.
+
             :return: MCU Seletor
             :rtype: <MCUSelector>
             :exceptions: None
@@ -95,6 +98,7 @@ class AVR8Setup(object):
     def get_fosc_selector(self):
         """
             Getter for FOSC selector.
+
             :return: FOSC Seletor
             :rtype: <OSCSelector>
             :exceptions: None
@@ -104,6 +108,7 @@ class AVR8Setup(object):
     def get_reader(self):
         """
             Getter for reader object.
+
             :return: Read template object
             :rtype: <ReadTemplate>
             :exceptions: None
@@ -113,6 +118,7 @@ class AVR8Setup(object):
     def get_writer(self):
         """
             Getter for writer object.
+
             :return: Write template object
             :rtype: <WriteTemplate>
             :exceptions: None
@@ -122,6 +128,7 @@ class AVR8Setup(object):
     def gen_pro_setup(self, project_setup, verbose=False):
         """
             Generate setup.py for python package.
+
             :param project_setup: Project setup
             :type project_setup: <dict>
             :param verbose: Enable/disable verbose option

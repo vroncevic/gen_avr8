@@ -48,19 +48,20 @@ class ReadTemplate(FileChecking):
         Define class ReadTemplate with attribute(s) and method(s).
         Read a template files and return a content.
         It defines:
-            attribute:
-                __slots__ - Setting class slots
-                VERBOSE - Console text indicator for current process-phase
-                __TEMPLATE_DIR - Template dir path
-                __PROJECT - template/project structure
-                __FORMAT - File format for template
-                __template_dir - Absolute file path of template dir
-                __pro_cfg - Yaml object for template/project description
-            method:
-                __init__ - Initial constructor
-                get_template_dir - Getter for template dir object
-                get_pro_cfg - Getter for project configuration object
-                read - Read a template and return a string representation
+
+            :attributes:
+                | __slots__ - Setting class slots
+                | VERBOSE - Console text indicator for current process-phase
+                | __TEMPLATE_DIR - Template dir path
+                | __PROJECT - template/project structure
+                | __FORMAT - File format for template
+                | __template_dir - Absolute file path of template dir
+                | __pro_cfg - Yaml object for template/project description
+            :methods:
+                | __init__ - Initial constructor
+                | get_template_dir - Getter for template dir object
+                | get_pro_cfg - Getter for project configuration object
+                | read - Read a template and return a string representation
     """
 
     __slots__ = (
@@ -79,6 +80,7 @@ class ReadTemplate(FileChecking):
     def __init__(self, verbose=False):
         """
             Setting template dir from configuration directory.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :exceptions: None
@@ -105,6 +107,7 @@ class ReadTemplate(FileChecking):
     def get_template_dir(self):
         """
             Getter for template dir object.
+
             :exceptions: None
         """
         return self.__template_dir
@@ -112,6 +115,7 @@ class ReadTemplate(FileChecking):
     def get_pro_cfg(self):
         """
             Getter for project configuration object.
+
             :retunr: Configuration object
             :rtype: <Yaml2Object>
             :exceptions: None
@@ -121,6 +125,7 @@ class ReadTemplate(FileChecking):
     def read(self, verbose=False):
         """
             Read template structure.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :return: Template content for setup module | None

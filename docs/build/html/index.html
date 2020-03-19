@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AVR project skeleton generator. &mdash; gen_avr8 https://github.com/vroncevic/gen_avr8/releases documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="python_tool" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> gen_avr8
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AVR project skeleton generator.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">python_tool</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">gen_avr8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>AVR project skeleton generator.</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="avr-project-skeleton-generator">
+<h1>AVR project skeleton generator.<a class="headerlink" href="#avr-project-skeleton-generator" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>gen_avr8 is toolset for generation of AVR8 project skeleton for
+development embedded applications.</p>
+<p>Developed in python code: 100%.</p>
+<p>The README is used to introduce the tool modules and provide instructions on
+how to install the tool modules, any machine dependencies it may have and any
+other information that should be provided before the modules are installed.</p>
+<div class="section" id="installation">
+<h2>INSTALLATION<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/gen_avr8/releases">page</a> download and extract release archive.</p>
+<p>To install this set of modules type the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf gen_avr8-x.y.z.tar.gz
+<span class="nb">cd</span> gen_avr8-x.y.z/python-tool
+cp -R ~/bin/   /root/scripts/gen_avr8/
+cp -R ~/conf/  /root/scripts/gen_avr8/
+cp -R ~/log/   /root/scripts/gen_avr8/
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>USAGE<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Create AVR8 Project Blink, MCU/FOSC will be selected during generation process:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python gen_avr8_run -g Blink
+</pre></div>
+</div>
+<p>Crete AVR8 Project Blink, by using parameters from yaml file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python gen_avr8_run -g Blink -c avr8.yaml
+</pre></div>
+</div>
+<p>Content of configuration file avr8.yaml:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat avr8.yaml
+MCU:
+    atmega8
+OSC:
+    16000000UL
+</pre></div>
+</div>
+</div>
+<div class="section" id="dependencies">
+<h2>DEPENDENCIES<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>gen_avr8 tool-module requires other modules and libraries:</p>
+<ul class="simple">
+<li>ats_utilities <a class="reference external" href="https://vroncevic.github.io/ats_utilities">https://vroncevic.github.io/ats_utilities</a></li>
+</ul>
+</div>
+<div class="section" id="supported-mcus">
+<h2>SUPPORTED MCUS<a class="headerlink" href="#supported-mcus" title="Permalink to this headline">¶</a></h2>
+<p>Current list of supported microcontrollers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>attiny2313    atmega128      at90s2313
+attiny24      atmega1280     at90s2333
+attiny25      atmega1281     at90s4414
+attiny26      atmega1284p    at90s4433
+attiny261     atmega16       at90s4434
+attiny44      atmega163      at90s8515
+attiny45      atmega164p     at90s8535
+attiny461     atmega165
+attiny84      atmega165p
+attiny85      atmega168
+attiny861     atmega169
+              atmega169p
+              atmega2560
+              atmega2561
+              atmega32
+              atmega324p
+              atmega325
+              atmega3250
+              atmega329
+              atmega3290
+              atmega32u4
+              atmega48
+              atmega64
+              atmega640
+              atmega644
+              atmega644p
+              atmega645
+              atmega6450
+              atmega649
+              atmega6490
+              atmega8
+              atmega8515
+              atmega8535
+              atmega88
+</pre></div>
+</div>
+</div>
+<div class="section" id="generation-flow-of-project-setup">
+<h2>GENERATION FLOW OF PROJECT SETUP<a class="headerlink" href="#generation-flow-of-project-setup" title="Permalink to this headline">¶</a></h2>
+<p>Base flow of generation process:</p>
+<img alt="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png" />
+</div>
+<div class="section" id="tool-structure">
+<h2>TOOL STRUCTURE<a class="headerlink" href="#tool-structure" title="Permalink to this headline">¶</a></h2>
+<p>gen_avr8 is based on Template mechanism:</p>
+<img alt="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png" />
+<p>Generator structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+├── bin
+│   ├── avr8_pro
+│   │   ├── avr8_setup.py
+│   │   ├── __init__.py
+│   │   ├── mcu_selector.py
+│   │   ├── osc_selector.py
+│   │   ├── read_template.py
+│   │   └── write_template.py
+│   ├── gen_avr8.py
+│   └── gen_avr8_run.py
+├── conf
+│   ├── fosc.yaml
+│   ├── gen_avr8.cfg
+│   ├── gen_avr8_util.cfg
+│   ├── mcu.yaml
+│   ├── project.yaml
+│   └── template
+│       ├── cflags.template
+│       ├── csflags.template
+│       ├── Makefile.template
+│       ├── module.template
+│       ├── objects.template
+│       ├── ocflags.template
+│       ├── odflags.template
+│       ├── sources.template
+│       └── subdir.template
+└── log
+     └── gen_avr8.log
+</pre></div>
+</div>
+</div>
+<div class="section" id="copyright-and-licence">
+<h2>COPYRIGHT AND LICENCE<a class="headerlink" href="#copyright-and-licence" title="Permalink to this headline">¶</a></h2>
+<p>GPL v3 <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0">https://www.gnu.org/licenses/gpl-3.0</a></p>
+<p>Copyright (C) 2019 by <a class="reference external" href="https://vroncevic.github.io/gen_avr8/">https://vroncevic.github.io/gen_avr8/</a></p>
+<p>This tool is free software; you can redistribute it and/or modify
+it under the same terms as Python itself, either Python version 2.x/3.x or,
+at your option, any later version of Python 3 you may have available.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="python_tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

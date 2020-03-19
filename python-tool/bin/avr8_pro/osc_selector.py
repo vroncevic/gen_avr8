@@ -47,16 +47,17 @@ class OSCSelector(object):
         Define class OSCSelector with attribute(s) and method(s).
         Selecting FOSC for generating process of project structure.
         It defines:
-            attribute:
-                __slots__ - Setting class slots
-                VERBOSE - Console text indicator for current process-phase
-                __CONF_DIR - Directory for configuration
-                __FOSC_LIST - Configuration file with FOSC list
-                __fosc_cfg - Yaml object for configuration
-            method:
-                __init__ - Initial constructor
-                get_osc_cfg - Getter for OSC configuration object
-                choose_osc - Selecting FOSC for target
+
+            :attributes:
+                | __slots__ - Setting class slots
+                | VERBOSE - Console text indicator for current process-phase
+                | __CONF_DIR - Directory for configuration
+                | __FOSC_LIST - Configuration file with FOSC list
+                | __fosc_cfg - Yaml object for configuration
+            :methods:
+                | __init__ - Initial constructor
+                | get_osc_cfg - Getter for OSC configuration object
+                | choose_osc - Selecting FOSC for target
     """
 
     __slots__ = ('VERBOSE', '__CONF_DIR', '__FOSC_LIST', '__fosc_cfg')
@@ -67,6 +68,7 @@ class OSCSelector(object):
     def __init__(self, verbose=False):
         """
             Initial constructor.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :exceptions: None
@@ -80,6 +82,7 @@ class OSCSelector(object):
     def get_osc_cfg(self):
         """
             Getter for OSC configuration object.
+
             :return: OSC Configuration
             :rtype: <Yaml2Object>
             :exceptions: None
@@ -89,6 +92,7 @@ class OSCSelector(object):
     def choose_osc(self, verbose=False):
         """
             Selecting FOSC for target.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :return: FOSC | None

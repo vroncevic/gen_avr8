@@ -52,14 +52,15 @@ class GenAVR8(CfgBase):
         Define class GenAVR8 with attribute(s) and method(s).
         Load a settings, create an interface and run operation(s).
         It defines:
-            attribute:
-                __slots__ - Setting class slots
-                VERBOSE - Console text indicator for current process-phase
-                __CONFIG - Configuration file path
-                __OPS - Tool options (list)
-            method:
-                __init__ - Initial constructor
-                process - Process and run tool option
+
+            :attributes:
+                | __slots__ - Setting class slots
+                | VERBOSE - Console text indicator for current process-phase
+                | __CONFIG - Configuration file path
+                | __OPS - Tool options (list)
+            :methods:
+                | __init__ - Initial constructor
+                | process - Process and run tool option
     """
 
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
@@ -70,6 +71,7 @@ class GenAVR8(CfgBase):
     def __init__(self, verbose=False):
         """
             Loading configuration and setting argument options.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :exceptions: None
@@ -91,6 +93,7 @@ class GenAVR8(CfgBase):
     def process(self, verbose=False):
         """
             Process and run operation.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :return: True (success) | False
