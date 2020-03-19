@@ -47,16 +47,17 @@ class MCUSelector(object):
         Define class MCUSelector with attribute(s) and method(s).
         Selecting MCU target for generating process of project structure.
         It defines:
-            attribute:
-                __slots__ - Setting class slots
-                VERBOSE - Console text indicator for current process-phase
-                __CONF_DIR - Directory for configuration
-                __MCU_LIST - Configuration file with MCU list
-                __mcu_cfg - Yaml object for configuration
-            method:
-                __init__ - Initial constructor
-                get_mcu_cfg - Getter for MCU configuration object
-                choose_mcu - Selecting MCU target
+
+            :attributes:
+                | __slots__ - Setting class slots
+                | VERBOSE - Console text indicator for current process-phase
+                | __CONF_DIR - Directory for configuration
+                | __MCU_LIST - Configuration file with MCU list
+                | __mcu_cfg - Yaml object for configuration
+            :methods:
+                | __init__ - Initial constructor
+                | get_mcu_cfg - Getter for MCU configuration object
+                | choose_mcu - Selecting MCU target
     """
 
     __slots__ = ('VERBOSE', '__CONF_DIR', '__MCU_LIST', '__mcu_cfg')
@@ -67,6 +68,7 @@ class MCUSelector(object):
     def __init__(self, verbose=False):
         """
             Initial constructor.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :exceptions: None
@@ -80,6 +82,7 @@ class MCUSelector(object):
     def get_mcu_cfg(self):
         """
             Getter for MCU configuration object.
+
             :return: MCU Configuration
             :rtype: <Yaml2Object>
             :exceptions: None
@@ -89,6 +92,7 @@ class MCUSelector(object):
     def choose_mcu(self, verbose=False):
         """
             Selecting MCU target.
+
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :return: MCU name | None

@@ -12,9 +12,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../python-tool/bin/'))
 
 
 # -- Project information -----------------------------------------------------
@@ -24,7 +25,7 @@ copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
 
 # The short X.Y version
-version = u'1.1.0'
+version = u''
 # The full version, including alpha/beta/rc tags
 release = u'https://github.com/vroncevic/gen_avr8/releases'
 
@@ -40,6 +41,7 @@ release = u'https://github.com/vroncevic/gen_avr8/releases'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
