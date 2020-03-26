@@ -150,6 +150,8 @@ gen_avr8_run.py
 
 ### DOCS
 
+[![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
+
 More documentation and info at:
 
 * https://gen-avr8.readthedocs.io/en/latest/
