@@ -26,6 +26,10 @@ cp -R ~/conf/  /root/scripts/gen_avr8/
 cp -R ~/log/   /root/scripts/gen_avr8/
 ```
 
+Or You can use docker to create image/container.
+
+:sparkles:
+
 ### USAGE
 
 ```
@@ -144,9 +148,11 @@ More documentation and info at:
 
 * https://gen-avr8.readthedocs.io/en/latest/
 
+:sparkles:
+
 ### COPYRIGHT AND LICENCE
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
 
