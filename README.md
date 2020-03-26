@@ -20,10 +20,11 @@ To install this set of modules type the following:
 
 ```
 tar xvzf gen_avr8-x.y.z.tar.gz
-cd gen_avr8-x.y.z/python-tool
-cp -R ~/bin/   /root/scripts/gen_avr8/
-cp -R ~/conf/  /root/scripts/gen_avr8/
-cp -R ~/log/   /root/scripts/gen_avr8/
+cd gen_avr8-x.y.z/
+cp -R gen_avr8_run.py /root/scripts/avr8/
+cp -R gen_avr8/       /root/scripts/avr8/
+cp -R conf/           /root/scripts/avr8/
+cp -R log/            /root/scripts/avr8/
 ```
 
 Or You can use docker to create image/container.
@@ -33,6 +34,9 @@ Or You can use docker to create image/container.
 ### USAGE
 
 ```
+# Setting PYTHONPATH
+export PYTHONPATH=${PYTHONPATH}:/root/scripts/avr8/
+
 # Create AVR8 Project Blink, MCU/FOSC will be selected during generation process
 python gen_avr8_run -g Blink
 
@@ -111,24 +115,15 @@ gen_avr8 is based on Template mechanism:
 Generator structure:
 
 ```
-.
-├── bin
-│   ├── avr8_pro
-│   │   ├── avr8_setup.py
-│   │   ├── __init__.py
-│   │   ├── mcu_selector.py
-│   │   ├── osc_selector.py
-│   │   ├── read_template.py
-│   │   └── write_template.py
-│   ├── gen_avr8.py
-│   └── gen_avr8_run.py
-├── conf
+gen_avr8_run.py
+│
+├── conf/
 │   ├── fosc.yaml
 │   ├── gen_avr8.cfg
 │   ├── gen_avr8_util.cfg
 │   ├── mcu.yaml
 │   ├── project.yaml
-│   └── template
+│   └── template/
 │       ├── cflags.template
 │       ├── csflags.template
 │       ├── Makefile.template
@@ -138,8 +133,19 @@ Generator structure:
 │       ├── odflags.template
 │       ├── sources.template
 │       └── subdir.template
-└── log
-    └── gen_avr8.log
+│
+├── gen_avr8/
+│   ├── avr8_pro/
+│   │   ├── avr8_setup.py
+│   │   ├── __init__.py
+│   │   ├── mcu_selector.py
+│   │   ├── osc_selector.py
+│   │   ├── read_template.py
+│   │   └── write_template.py
+│   └── __init__.py
+│
+└── log/
+    └── gen_avr8.log
 ```
 
 ### DOCS
