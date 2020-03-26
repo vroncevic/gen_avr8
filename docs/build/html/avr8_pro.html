@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="gen_avr8 module" href="gen_avr8.html" />
-    <link rel="prev" title="python_tool" href="modules.html" /> 
+    <link rel="next" title="avr8_pro.avr8_setup module" href="avr8_pro.avr8_setup.html" />
+    <link rel="prev" title="bin" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -58,6 +58,10 @@
 
           
             
+            
+              <div class="version">
+                1.1.0
+              </div>
             
           
 
@@ -82,14 +86,16 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">AVR project skeleton generator.</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">python_tool</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">bin</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">avr8_pro package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-avr8_pro.avr8_setup">avr8_pro.avr8_setup module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-avr8_pro.mcu_selector">avr8_pro.mcu_selector module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-avr8_pro.osc_selector">avr8_pro.osc_selector module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-avr8_pro.read_template">avr8_pro.read_template module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-avr8_pro.write_template">avr8_pro.write_template module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="avr8_pro.avr8_setup.html">avr8_pro.avr8_setup module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avr8_pro.mcu_selector.html">avr8_pro.mcu_selector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avr8_pro.osc_selector.html">avr8_pro.osc_selector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avr8_pro.read_template.html">avr8_pro.read_template module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avr8_pro.write_template.html">avr8_pro.write_template module</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-avr8_pro">Module contents</a></li>
 </ul>
 </li>
@@ -142,7 +148,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="modules.html">python_tool</a> &raquo;</li>
+          <li><a href="modules.html">bin</a> &raquo;</li>
         
       <li>avr8_pro package</li>
     
@@ -167,583 +173,15 @@
 <h1>avr8_pro package<a class="headerlink" href="#avr8-pro-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-avr8_pro.avr8_setup">
-<span id="avr8-pro-avr8-setup-module"></span><h2>avr8_pro.avr8_setup module<a class="headerlink" href="#module-avr8_pro.avr8_setup" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Module</dt>
-<dd>avr8_setup.py</dd>
-<dt>Copyright</dt>
-<dd>Copyright (C) 2019 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
-gen_avr8 is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-gen_avr8 is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along
-with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
-<dt>Info</dt>
-<dd>Define class AVR8Setup with attribute(s) and method(s).
-Generate AVR project skeleton.</dd>
-</dl>
-<dl class="class">
-<dt id="avr8_pro.avr8_setup.AVR8Setup">
-<em class="property">class </em><code class="descclassname">avr8_pro.avr8_setup.</code><code class="descname">AVR8Setup</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/avr8_setup.html#AVR8Setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.avr8_setup.AVR8Setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Define class AVR8Setup with attribute(s) and method(s).
-Generate AVR project skeleton.
-It defines:</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__mcu_sel - MCU selector API</div>
-<div class="line">__fosc_sel - FOSC selector API</div>
-<div class="line">__reader - Reader API</div>
-<div class="line">__writer - Writer API</div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_mcu_selector - Getter for MCU selector</div>
-<div class="line">get_fosc_selector - Getter for FOSC selector</div>
-<div class="line">get_reader - Getter for reader object</div>
-<div class="line">get_writer - Getter for writer object</div>
-<div class="line">gen_pro_setup - Generate project skeleton</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<dl class="attribute">
-<dt id="avr8_pro.avr8_setup.AVR8Setup.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::AVR8_PRO::AVR8SETUP'</em><a class="headerlink" href="#avr8_pro.avr8_setup.AVR8Setup.VERBOSE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.avr8_setup.AVR8Setup.gen_pro_setup">
-<code class="descname">gen_pro_setup</code><span class="sig-paren">(</span><em>project_setup</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/avr8_setup.html#AVR8Setup.gen_pro_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.avr8_setup.AVR8Setup.gen_pro_setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate setup.py for python package.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>project_setup</strong> (<em>&lt;dict&gt;</em>) – Project setup</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="avr8_pro.avr8_setup.html">avr8_pro.avr8_setup module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avr8_pro.mcu_selector.html">avr8_pro.mcu_selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avr8_pro.osc_selector.html">avr8_pro.osc_selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avr8_pro.read_template.html">avr8_pro.read_template module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avr8_pro.write_template.html">avr8_pro.write_template module</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True (success) | False</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">ATSBadCallError | ATSTypeError</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.avr8_setup.AVR8Setup.get_fosc_selector">
-<code class="descname">get_fosc_selector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/avr8_setup.html#AVR8Setup.get_fosc_selector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.avr8_setup.AVR8Setup.get_fosc_selector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for FOSC selector.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">FOSC Seletor</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;OSCSelector&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.avr8_setup.AVR8Setup.get_mcu_selector">
-<code class="descname">get_mcu_selector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/avr8_setup.html#AVR8Setup.get_mcu_selector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.avr8_setup.AVR8Setup.get_mcu_selector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for MCU selector.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">MCU Seletor</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;MCUSelector&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.avr8_setup.AVR8Setup.get_reader">
-<code class="descname">get_reader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/avr8_setup.html#AVR8Setup.get_reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.avr8_setup.AVR8Setup.get_reader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for reader object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Read template object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;ReadTemplate&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.avr8_setup.AVR8Setup.get_writer">
-<code class="descname">get_writer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/avr8_setup.html#AVR8Setup.get_writer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.avr8_setup.AVR8Setup.get_writer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for writer object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Write template object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;WriteTemplate&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
-<div class="section" id="module-avr8_pro.mcu_selector">
-<span id="avr8-pro-mcu-selector-module"></span><h2>avr8_pro.mcu_selector module<a class="headerlink" href="#module-avr8_pro.mcu_selector" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Module</dt>
-<dd>mcu_selector.py</dd>
-<dt>Copyright</dt>
-<dd>Copyright (C) 2019 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
-gen_avr8 is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-gen_avr8 is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along
-with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
-<dt>Info</dt>
-<dd>Define class MCUSelector with attribute(s) and method(s).
-Selecting MCU target for generating process of project structure.</dd>
-</dl>
-<dl class="class">
-<dt id="avr8_pro.mcu_selector.MCUSelector">
-<em class="property">class </em><code class="descclassname">avr8_pro.mcu_selector.</code><code class="descname">MCUSelector</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/mcu_selector.html#MCUSelector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.mcu_selector.MCUSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Define class MCUSelector with attribute(s) and method(s).
-Selecting MCU target for generating process of project structure.
-It defines:</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__CONF_DIR - Directory for configuration</div>
-<div class="line">__MCU_LIST - Configuration file with MCU list</div>
-<div class="line">__mcu_cfg - Yaml object for configuration</div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_mcu_cfg - Getter for MCU configuration object</div>
-<div class="line">choose_mcu - Selecting MCU target</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<dl class="attribute">
-<dt id="avr8_pro.mcu_selector.MCUSelector.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::AVR8_PRO::MCU_SELECTOR'</em><a class="headerlink" href="#avr8_pro.mcu_selector.MCUSelector.VERBOSE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.mcu_selector.MCUSelector.choose_mcu">
-<code class="descname">choose_mcu</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/mcu_selector.html#MCUSelector.choose_mcu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.mcu_selector.MCUSelector.choose_mcu" title="Permalink to this definition">¶</a></dt>
-<dd><p>Selecting MCU target.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">MCU name | None</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.mcu_selector.MCUSelector.get_mcu_cfg">
-<code class="descname">get_mcu_cfg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/mcu_selector.html#MCUSelector.get_mcu_cfg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.mcu_selector.MCUSelector.get_mcu_cfg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for MCU configuration object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">MCU Configuration</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;Yaml2Object&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-avr8_pro.osc_selector">
-<span id="avr8-pro-osc-selector-module"></span><h2>avr8_pro.osc_selector module<a class="headerlink" href="#module-avr8_pro.osc_selector" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Module</dt>
-<dd>osc_selector.py</dd>
-<dt>Copyright</dt>
-<dd>Copyright (C) 2019 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
-gen_avr8 is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-gen_avr8 is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along
-with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
-<dt>Info</dt>
-<dd>Define class OSCSelector with attribute(s) and method(s).
-Selecting FOSC for generating process of project structure.</dd>
-</dl>
-<dl class="class">
-<dt id="avr8_pro.osc_selector.OSCSelector">
-<em class="property">class </em><code class="descclassname">avr8_pro.osc_selector.</code><code class="descname">OSCSelector</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/osc_selector.html#OSCSelector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.osc_selector.OSCSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Define class OSCSelector with attribute(s) and method(s).
-Selecting FOSC for generating process of project structure.
-It defines:</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__CONF_DIR - Directory for configuration</div>
-<div class="line">__FOSC_LIST - Configuration file with FOSC list</div>
-<div class="line">__fosc_cfg - Yaml object for configuration</div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_osc_cfg - Getter for OSC configuration object</div>
-<div class="line">choose_osc - Selecting FOSC for target</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<dl class="attribute">
-<dt id="avr8_pro.osc_selector.OSCSelector.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::AVR8_PRO::OSC_SELECTOR'</em><a class="headerlink" href="#avr8_pro.osc_selector.OSCSelector.VERBOSE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.osc_selector.OSCSelector.choose_osc">
-<code class="descname">choose_osc</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/osc_selector.html#OSCSelector.choose_osc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.osc_selector.OSCSelector.choose_osc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Selecting FOSC for target.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">FOSC | None</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.osc_selector.OSCSelector.get_osc_cfg">
-<code class="descname">get_osc_cfg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/osc_selector.html#OSCSelector.get_osc_cfg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.osc_selector.OSCSelector.get_osc_cfg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for OSC configuration object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">OSC Configuration</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;Yaml2Object&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-avr8_pro.read_template">
-<span id="avr8-pro-read-template-module"></span><h2>avr8_pro.read_template module<a class="headerlink" href="#module-avr8_pro.read_template" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Module</dt>
-<dd>read_template.py</dd>
-<dt>Copyright</dt>
-<dd>Copyright (C) 2019 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
-gen_avr8 is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-gen_avr8 is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along
-with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
-<dt>Info</dt>
-<dd>Define class ReadTemplate with attribute(s) and method(s).
-Read a template files and return a content.</dd>
-</dl>
-<dl class="class">
-<dt id="avr8_pro.read_template.ReadTemplate">
-<em class="property">class </em><code class="descclassname">avr8_pro.read_template.</code><code class="descname">ReadTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/read_template.html#ReadTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.read_template.ReadTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config.file_checking.FileChecking</span></code></p>
-<p>Define class ReadTemplate with attribute(s) and method(s).
-Read a template files and return a content.
-It defines:</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__TEMPLATE_DIR - Template dir path</div>
-<div class="line">__PROJECT - template/project structure</div>
-<div class="line">__FORMAT - File format for template</div>
-<div class="line">__template_dir - Absolute file path of template dir</div>
-<div class="line">__pro_cfg - Yaml object for template/project description</div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_template_dir - Getter for template dir object</div>
-<div class="line">get_pro_cfg - Getter for project configuration object</div>
-<div class="line">read - Read a template and return a string representation</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<dl class="attribute">
-<dt id="avr8_pro.read_template.ReadTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::AVR8_PRO::READ_TEMPLATE'</em><a class="headerlink" href="#avr8_pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.read_template.ReadTemplate.get_pro_cfg">
-<code class="descname">get_pro_cfg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/read_template.html#ReadTemplate.get_pro_cfg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.read_template.ReadTemplate.get_pro_cfg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for project configuration object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Retunr:</th><td class="field-body">Configuration object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;Yaml2Object&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.read_template.ReadTemplate.get_template_dir">
-<code class="descname">get_template_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/read_template.html#ReadTemplate.get_template_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.read_template.ReadTemplate.get_template_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for template dir object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.read_template.ReadTemplate.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/read_template.html#ReadTemplate.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.read_template.ReadTemplate.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read template structure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Template content for setup module | None</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;dict&gt; | &lt;NoneType&gt;</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-avr8_pro.write_template">
-<span id="avr8-pro-write-template-module"></span><h2>avr8_pro.write_template module<a class="headerlink" href="#module-avr8_pro.write_template" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Module</dt>
-<dd>write_template.py</dd>
-<dt>Copyright</dt>
-<dd>Copyright (C) 2019 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
-gen_avr8 is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-gen_avr8 is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along
-with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
-<dt>Info</dt>
-<dd>Define class WriteTemplate with attribute(s) and method(s).
-Write template content with parameters to a project setup.</dd>
-</dl>
-<dl class="class">
-<dt id="avr8_pro.write_template.WriteTemplate">
-<em class="property">class </em><code class="descclassname">avr8_pro.write_template.</code><code class="descname">WriteTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/write_template.html#WriteTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.write_template.WriteTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Define class WriteTemplate with attribute(s) and method(s).
-Write template content with parameters to a project setup.
-It defines:</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__project_status - Project status</div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_project_status - Getter for project status object</div>
-<div class="line">write - Write a template content to a project setup</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<dl class="attribute">
-<dt id="avr8_pro.write_template.WriteTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::AVR8_PRO::WRITE_TEMPLATE'</em><a class="headerlink" href="#avr8_pro.write_template.WriteTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.write_template.WriteTemplate.get_project_status">
-<code class="descname">get_project_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/write_template.html#WriteTemplate.get_project_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.write_template.WriteTemplate.get_project_status" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for project status object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Ptoject status</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;bool&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="avr8_pro.write_template.WriteTemplate.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>project_data</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avr8_pro/write_template.html#WriteTemplate.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avr8_pro.write_template.WriteTemplate.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write setup content to file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>project_data</strong> (<em>&lt;dict&gt;</em>) – Project data</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True (success) | False</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Exception:</th><td class="field-body"><p class="first last">ATSBadCallError | ATSTypeError</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="module-avr8_pro">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-avr8_pro" title="Permalink to this headline">¶</a></h2>
@@ -759,10 +197,10 @@ It defines:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gen_avr8.html" class="btn btn-neutral float-right" title="gen_avr8 module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="avr8_pro.avr8_setup.html" class="btn btn-neutral float-right" title="avr8_pro.avr8_setup module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="modules.html" class="btn btn-neutral float-left" title="python_tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="bin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

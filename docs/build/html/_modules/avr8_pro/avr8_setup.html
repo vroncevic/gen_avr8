@@ -57,6 +57,10 @@
           
             
             
+              <div class="version">
+                1.1.0
+              </div>
+            
           
 
           
@@ -80,7 +84,7 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">AVR project skeleton generator.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">python_tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">bin</a></li>
 </ul>
 
             
@@ -192,7 +196,7 @@
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
-<div class="viewcode-block" id="AVR8Setup"><a class="viewcode-back" href="../../avr8_pro.html#avr8_pro.avr8_setup.AVR8Setup">[docs]</a><span class="k">class</span> <span class="nc">AVR8Setup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="AVR8Setup"><a class="viewcode-back" href="../../avr8_pro.avr8_setup.html#avr8_pro.avr8_setup.AVR8Setup">[docs]</a><span class="k">class</span> <span class="nc">AVR8Setup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Define class AVR8Setup with attribute(s) and method(s).</span>
 <span class="sd">        Generate AVR project skeleton.</span>
@@ -231,7 +235,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span> <span class="o">=</span> <span class="n">ReadTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
 
-<div class="viewcode-block" id="AVR8Setup.get_mcu_selector"><a class="viewcode-back" href="../../avr8_pro.html#avr8_pro.avr8_setup.AVR8Setup.get_mcu_selector">[docs]</a>    <span class="k">def</span> <span class="nf">get_mcu_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AVR8Setup.get_mcu_selector"><a class="viewcode-back" href="../../avr8_pro.avr8_setup.html#avr8_pro.avr8_setup.AVR8Setup.get_mcu_selector">[docs]</a>    <span class="k">def</span> <span class="nf">get_mcu_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Getter for MCU selector.</span>
 
@@ -241,7 +245,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mcu_sel</span></div>
 
-<div class="viewcode-block" id="AVR8Setup.get_fosc_selector"><a class="viewcode-back" href="../../avr8_pro.html#avr8_pro.avr8_setup.AVR8Setup.get_fosc_selector">[docs]</a>    <span class="k">def</span> <span class="nf">get_fosc_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AVR8Setup.get_fosc_selector"><a class="viewcode-back" href="../../avr8_pro.avr8_setup.html#avr8_pro.avr8_setup.AVR8Setup.get_fosc_selector">[docs]</a>    <span class="k">def</span> <span class="nf">get_fosc_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Getter for FOSC selector.</span>
 
@@ -251,7 +255,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fosc_sel</span></div>
 
-<div class="viewcode-block" id="AVR8Setup.get_reader"><a class="viewcode-back" href="../../avr8_pro.html#avr8_pro.avr8_setup.AVR8Setup.get_reader">[docs]</a>    <span class="k">def</span> <span class="nf">get_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AVR8Setup.get_reader"><a class="viewcode-back" href="../../avr8_pro.avr8_setup.html#avr8_pro.avr8_setup.AVR8Setup.get_reader">[docs]</a>    <span class="k">def</span> <span class="nf">get_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Getter for reader object.</span>
 
@@ -261,7 +265,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span></div>
 
-<div class="viewcode-block" id="AVR8Setup.get_writer"><a class="viewcode-back" href="../../avr8_pro.html#avr8_pro.avr8_setup.AVR8Setup.get_writer">[docs]</a>    <span class="k">def</span> <span class="nf">get_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AVR8Setup.get_writer"><a class="viewcode-back" href="../../avr8_pro.avr8_setup.html#avr8_pro.avr8_setup.AVR8Setup.get_writer">[docs]</a>    <span class="k">def</span> <span class="nf">get_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Getter for writer object.</span>
 
@@ -271,7 +275,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span></div>
 
-<div class="viewcode-block" id="AVR8Setup.gen_pro_setup"><a class="viewcode-back" href="../../avr8_pro.html#avr8_pro.avr8_setup.AVR8Setup.gen_pro_setup">[docs]</a>    <span class="k">def</span> <span class="nf">gen_pro_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_setup</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="AVR8Setup.gen_pro_setup"><a class="viewcode-back" href="../../avr8_pro.avr8_setup.html#avr8_pro.avr8_setup.AVR8Setup.gen_pro_setup">[docs]</a>    <span class="k">def</span> <span class="nf">gen_pro_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_setup</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Generate setup.py for python package.</span>
 

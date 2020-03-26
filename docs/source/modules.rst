@@ -1,5 +1,5 @@
-python_tool
-============
+bin
+===
 
 .. toctree::
    :maxdepth: 4

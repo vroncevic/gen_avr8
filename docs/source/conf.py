@@ -15,7 +15,7 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../python-tool/bin'))
+sys.path.insert(0, os.path.abspath('../../python-tool/bin/'))
 
 
 # -- Project information -----------------------------------------------------
@@ -25,7 +25,7 @@ copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
 
 # The short X.Y version
-version = u''
+version = u'1.1.0'
 # The full version, including alpha/beta/rc tags
 release = u'https://github.com/vroncevic/gen_avr8/releases'
 
