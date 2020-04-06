@@ -65,7 +65,7 @@ class GenAVR8(CfgBase):
 
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
     VERBOSE = 'GEN_AVR8'
-    __CONFIG = '/../conf/gen_avr8.cfg'
+    __CONFIG = '/conf/gen_avr8.cfg'
     __OPS = ['-g', '--gen', '-c', '--conf', '-h', '--version']
 
     def __init__(self, verbose=False):
