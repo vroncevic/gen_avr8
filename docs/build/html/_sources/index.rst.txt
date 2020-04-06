@@ -3,9 +3,10 @@ AVR project skeleton generator.
 
 .. toctree::
  :hidden:
- 
- self
+
  modules
+ self
+
 
 gen_avr8 is toolset for generation of AVR8 project skeleton for
 development embedded applications.
@@ -27,10 +28,11 @@ To install this set of modules type the following:
 .. code-block:: bash
 
     tar xvzf gen_avr8-x.y.z.tar.gz
-    cd gen_avr8-x.y.z/python-tool
-    cp -R ~/bin/   /root/scripts/gen_avr8/
-    cp -R ~/conf/  /root/scripts/gen_avr8/
-    cp -R ~/log/   /root/scripts/gen_avr8/
+    cd gen_avr8-x.y.z/
+    cp run/gen_avr8_run.py /root/scripts/avr8/
+    cp -R gen_avr8/        /root/scripts/avr8/
+    cp -R conf/            /root/scripts/avr8/
+    cp -R log/             /root/scripts/avr8/
 
 USAGE
 -----------------------------
@@ -121,38 +123,42 @@ Generator structure:
 
 .. code-block:: bash
 
-    .
-    ├── bin
-    │   ├── avr8_pro
-    │   │   ├── avr8_setup.py
-    │   │   ├── __init__.py
-    │   │   ├── mcu_selector.py
-    │   │   ├── osc_selector.py
-    │   │   ├── read_template.py
-    │   │   └── write_template.py
-    │   ├── gen_avr8.py
-    │   └── gen_avr8_run.py
-    ├── conf
-    │   ├── fosc.yaml
-    │   ├── gen_avr8.cfg
-    │   ├── gen_avr8_util.cfg
-    │   ├── mcu.yaml
-    │   ├── project.yaml
-    │   └── template
-    │       ├── cflags.template
-    │       ├── csflags.template
-    │       ├── Makefile.template
-    │       ├── module.template
-    │       ├── objects.template
-    │       ├── ocflags.template
-    │       ├── odflags.template
-    │       ├── sources.template
-    │       └── subdir.template
-    └── log
-         └── gen_avr8.log
+    gen_avr8_run.py
+    │
+    ├── conf/
+    │   ├── fosc.yaml
+    │   ├── gen_avr8.cfg
+    │   ├── gen_avr8_util.cfg
+    │   ├── mcu.yaml
+    │   ├── project.yaml
+    │   └── template/
+    │       ├── cflags.template
+    │       ├── csflags.template
+    │       ├── Makefile.template
+    │       ├── module.template
+    │       ├── objects.template
+    │       ├── ocflags.template
+    │       ├── odflags.template
+    │       ├── sources.template
+    │       └── subdir.template
+    │
+    ├── gen_avr8/
+    │   ├── avr8_pro/
+    │   │   ├── avr8_setup.py
+    │   │   ├── __init__.py
+    │   │   ├── mcu_selector.py
+    │   │   ├── osc_selector.py
+    │   │   ├── read_template.py
+    │   │   └── write_template.py
+    │   └── __init__.py
+    │
+    └── log/
+        └── gen_avr8.log
 
 COPYRIGHT AND LICENCE
 -----------------------------
+
+Apache 2.0 https://opensource.org/licenses/Apache-2.0
 
 GPL v3 https://www.gnu.org/licenses/gpl-3.0
 

@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="python_tool" href="modules.html" /> 
+    <link rel="next" title="gen_avr8" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,8 +80,8 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">gen_avr8</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">AVR project skeleton generator.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">python_tool</a></li>
 </ul>
 
             
@@ -161,10 +161,11 @@ other information that should be provided before the modules are installed.</p>
 <p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/gen_avr8/releases">page</a> download and extract release archive.</p>
 <p>To install this set of modules type the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf gen_avr8-x.y.z.tar.gz
-<span class="nb">cd</span> gen_avr8-x.y.z/python-tool
-cp -R ~/bin/   /root/scripts/gen_avr8/
-cp -R ~/conf/  /root/scripts/gen_avr8/
-cp -R ~/log/   /root/scripts/gen_avr8/
+<span class="nb">cd</span> gen_avr8-x.y.z/
+cp run/gen_avr8_run.py /root/scripts/avr8/
+cp -R gen_avr8/        /root/scripts/avr8/
+cp -R conf/            /root/scripts/avr8/
+cp -R log/             /root/scripts/avr8/
 </pre></div>
 </div>
 </div>
@@ -244,40 +245,43 @@ attiny861     atmega169
 <p>gen_avr8 is based on Template mechanism:</p>
 <img alt="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png" />
 <p>Generator structure:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
-├── bin
-│   ├── avr8_pro
-│   │   ├── avr8_setup.py
-│   │   ├── __init__.py
-│   │   ├── mcu_selector.py
-│   │   ├── osc_selector.py
-│   │   ├── read_template.py
-│   │   └── write_template.py
-│   ├── gen_avr8.py
-│   └── gen_avr8_run.py
-├── conf
-│   ├── fosc.yaml
-│   ├── gen_avr8.cfg
-│   ├── gen_avr8_util.cfg
-│   ├── mcu.yaml
-│   ├── project.yaml
-│   └── template
-│       ├── cflags.template
-│       ├── csflags.template
-│       ├── Makefile.template
-│       ├── module.template
-│       ├── objects.template
-│       ├── ocflags.template
-│       ├── odflags.template
-│       ├── sources.template
-│       └── subdir.template
-└── log
-     └── gen_avr8.log
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_avr8_run.py
+│
+├── conf/
+│   ├── fosc.yaml
+│   ├── gen_avr8.cfg
+│   ├── gen_avr8_util.cfg
+│   ├── mcu.yaml
+│   ├── project.yaml
+│   └── template/
+│       ├── cflags.template
+│       ├── csflags.template
+│       ├── Makefile.template
+│       ├── module.template
+│       ├── objects.template
+│       ├── ocflags.template
+│       ├── odflags.template
+│       ├── sources.template
+│       └── subdir.template
+│
+├── gen_avr8/
+│   ├── avr8_pro/
+│   │   ├── avr8_setup.py
+│   │   ├── __init__.py
+│   │   ├── mcu_selector.py
+│   │   ├── osc_selector.py
+│   │   ├── read_template.py
+│   │   └── write_template.py
+│   └── __init__.py
+│
+└── log/
+    └── gen_avr8.log
 </pre></div>
 </div>
 </div>
 <div class="section" id="copyright-and-licence">
 <h2>COPYRIGHT AND LICENCE<a class="headerlink" href="#copyright-and-licence" title="Permalink to this headline">¶</a></h2>
+<p>Apache 2.0 <a class="reference external" href="https://opensource.org/licenses/Apache-2.0">https://opensource.org/licenses/Apache-2.0</a></p>
 <p>GPL v3 <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0">https://www.gnu.org/licenses/gpl-3.0</a></p>
 <p>Copyright (C) 2019 by <a class="reference external" href="https://vroncevic.github.io/gen_avr8/">https://vroncevic.github.io/gen_avr8/</a></p>
 <p>This tool is free software; you can redistribute it and/or modify
@@ -294,7 +298,7 @@ at your option, any later version of Python 3 you may have available.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modules.html" class="btn btn-neutral float-right" title="python_tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="gen_avr8" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

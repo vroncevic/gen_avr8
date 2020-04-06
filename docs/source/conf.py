@@ -15,7 +15,7 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../python-tool/bin/'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 
 # -- Project information -----------------------------------------------------
@@ -41,6 +41,8 @@ release = u'https://github.com/vroncevic/gen_avr8/releases'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.doctest',
+    'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
 ]
 
