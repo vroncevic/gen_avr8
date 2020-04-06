@@ -21,10 +21,10 @@ To install this set of modules type the following:
 ```
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
-cp -R gen_avr8_run.py /root/scripts/avr8/
-cp -R gen_avr8/       /root/scripts/avr8/
-cp -R conf/           /root/scripts/avr8/
-cp -R log/            /root/scripts/avr8/
+cp -R run/gen_avr8_run.py /root/scripts/avr8/
+cp -R gen_avr8/           /root/scripts/avr8/
+cp -R conf/               /root/scripts/avr8/
+cp -R log/                /root/scripts/avr8/
 ```
 
 Or You can use docker to create image/container.

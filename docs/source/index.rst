@@ -3,9 +3,10 @@ AVR project skeleton generator.
 
 .. toctree::
  :hidden:
- 
+
+ gen_avr8
  self
- modules
+
 
 gen_avr8 is toolset for generation of AVR8 project skeleton for
 development embedded applications.
@@ -28,10 +29,10 @@ To install this set of modules type the following:
 
     tar xvzf gen_avr8-x.y.z.tar.gz
     cd gen_avr8-x.y.z/
-    cp -R gen_avr8_run.py /root/scripts/avr8/
-    cp -R gen_avr8/       /root/scripts/avr8/
-    cp -R conf/           /root/scripts/avr8/
-    cp -R log/            /root/scripts/avr8/
+    cp run/gen_avr8_run.py /root/scripts/avr8/
+    cp -R gen_avr8/        /root/scripts/avr8/
+    cp -R conf/            /root/scripts/avr8/
+    cp -R log/             /root/scripts/avr8/
 
 USAGE
 -----------------------------
