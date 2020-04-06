@@ -3,9 +3,10 @@ AVR project skeleton generator.
 
 .. toctree::
  :hidden:
- 
+
+ gen_avr8
  self
- modules
+
 
 gen_avr8 is toolset for generation of AVR8 project skeleton for
 development embedded applications.
