@@ -4,7 +4,7 @@ AVR project skeleton generator.
 .. toctree::
  :hidden:
 
- gen_avr8
+ modules
  self
 
 
