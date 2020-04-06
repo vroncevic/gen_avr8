@@ -15,19 +15,19 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = u'gen_avr8'
-copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
-author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
+project = 'gen_avr8'
+copyright = '2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
+author = 'Vladimir Roncevic <elektron.ronca@gmail.com>'
 
 # The short X.Y version
-version = u'1.1.0'
+version = '1.1.0'
 # The full version, including alpha/beta/rc tags
-release = u'https://github.com/vroncevic/gen_avr8/releases'
+release = 'https://github.com/vroncevic/gen_avr8/releases'
 
 
 # -- General configuration ---------------------------------------------------
@@ -131,8 +131,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'gen_avr8.tex', u'gen\\_avr8 Documentation',
-     u'Vladimir Roncevic \\textless{}elektron.ronca@gmail.com\\textgreater{}', 'manual'),
+    (master_doc, 'gen_avr8.tex', 'gen\\_avr8 Documentation',
+     'Vladimir Roncevic \\textless{}elektron.ronca@gmail.com\\textgreater{}', 'manual'),
 ]
 
 
@@ -141,7 +141,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'gen_avr8', u'gen_avr8 Documentation',
+    (master_doc, 'gen_avr8', 'gen_avr8 Documentation',
      [author], 1)
 ]
 
@@ -152,7 +152,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'gen_avr8', u'gen_avr8 Documentation',
+    (master_doc, 'gen_avr8', 'gen_avr8 Documentation',
      author, 'gen_avr8', 'One line description of project.',
      'Miscellaneous'),
 ]
