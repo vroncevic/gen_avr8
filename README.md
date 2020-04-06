@@ -115,8 +115,14 @@ gen_avr8 is based on Template mechanism:
 Generator structure:
 
 ```
-gen_avr8_run.py
-│
+gen_avr8/
+├── avr8_pro/
+│   ├── avr8_setup.py
+│   ├── __init__.py
+│   ├── mcu_selector.py
+│   ├── osc_selector.py
+│   ├── read_template.py
+│   └── write_template.py
 ├── conf/
 │   ├── fosc.yaml
 │   ├── gen_avr8.cfg
@@ -133,19 +139,9 @@ gen_avr8_run.py
 │       ├── odflags.template
 │       ├── sources.template
 │       └── subdir.template
-│
-├── gen_avr8/
-│   ├── avr8_pro/
-│   │   ├── avr8_setup.py
-│   │   ├── __init__.py
-│   │   ├── mcu_selector.py
-│   │   ├── osc_selector.py
-│   │   ├── read_template.py
-│   │   └── write_template.py
-│   └── __init__.py
-│
+├── __init__.py
 └── log/
-    └── gen_avr8.log
+    └── gen_avr8.log
 ```
 
 ### DOCS

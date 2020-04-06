@@ -62,7 +62,7 @@ class MCUSelector(object):
 
     __slots__ = ('VERBOSE', '__CONF_DIR', '__MCU_LIST', '__mcu_cfg')
     VERBOSE = 'GEN_AVR8::AVR8_PRO::MCU_SELECTOR'
-    __CONF_DIR = '/../../conf/'
+    __CONF_DIR = '/../conf/'
     __MCU_LIST = 'mcu.yaml'
 
     def __init__(self, verbose=False):

@@ -73,7 +73,7 @@ class ReadTemplate(FileChecking):
         '__pro_cfg'
     )
     VERBOSE = 'GEN_AVR8::AVR8_PRO::READ_TEMPLATE'
-    __TEMPLATE_DIR = '/../../conf/template/'
+    __TEMPLATE_DIR = '/../conf/template/'
     __PROJECT = 'project.yaml'
     __FORMAT = 'template'
 
@@ -96,7 +96,7 @@ class ReadTemplate(FileChecking):
         check_template_dir = isdir(template_dir)
         if check_template_dir:
             self.__template_dir = template_dir
-            pro = "{0}/../../conf/{1}".format(
+            pro = "{0}/../conf/{1}".format(
                 current_dir, ReadTemplate.__PROJECT
             )
             self.__pro_cfg = Yaml2Object(pro)
