@@ -15,16 +15,16 @@ other information that should be provided before the modules are installed.
 
 ### TABLE OF CONTENTS
 
-- [INSTALLATION](#INSTALLATION)
-    * [INSTALL USING SETUPTOOLS](#INSTALL%20USING%20SETUPTOOLS)
-    * [INSTALL USING DOCKER](#INSTALL%20USING%20DOCKER)
-- [USAGE](#USAGE)
-- [DEPENDENCIES](#DEPENDENCIES)
-- [SUPPORTED MCUS](#SUPPORTED%20MCUS)
-- [GENERATION FLOW OF PROJECT SETUP](#GENERATION%20FLOW%20OF%20PROJECT%20SETUP)
-- [TOOL STRUCTURE](#TOOL%20STRUCTURE)
-- [DOCS](#DOCS)
-- [COPYRIGHT AND LICENCE](#COPYRIGHT%20AND%20LICENCE)
+- [INSTALLATION](https://github.com/vroncevic/gen_avr8#installation)
+    * [INSTALL USING SETUPTOOLS](https://github.com/vroncevic/gen_avr8#install-using-setuptools)
+    * [INSTALL USING DOCKER](https://github.com/vroncevic/gen_avr8#install-using-docker)
+- [USAGE](https://github.com/vroncevic/gen_avr8#usage)
+- [DEPENDENCIES](https://github.com/vroncevic/gen_avr8#dependencies)
+- [SUPPORTED MCUS](https://github.com/vroncevic/gen_avr8#supported-mcus)
+- [GENERATION FLOW OF PROJECT SETUP](https://github.com/vroncevic/gen_avr8#generation-flow-of-project-setup)
+- [TOOL STRUCTURE](https://github.com/vroncevic/gen_avr8#tool-structure)
+- [DOCS](https://github.com/vroncevic/gen_avr8#docs)
+- [COPYRIGHT AND LICENCE](https://github.com/vroncevic/gen_avr8#copyright-and-licence)
 
 :sparkles:
 
