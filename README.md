@@ -49,6 +49,13 @@ a user could call on the command line to assemble an image.
 
 :sparkles:
 
+### DEPENDENCIES
+gen_avr8 tool requires other modules/libraries:
+
+* **ats_utilities**, url: https://vroncevic.github.io/ats_utilities
+
+:sparkles:
+
 ### USAGE
 Short example of usage gen_avr8 tool
 
@@ -89,13 +96,6 @@ Install directly from the shell as root user (**debian**):
 ```
 apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
 ```
-
-:sparkles:
-
-### DEPENDENCIES
-gen_avr8 tool requires other modules/libraries:
-
-* **ats_utilities**, url: https://vroncevic.github.io/ats_utilities
 
 :sparkles:
 
