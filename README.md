@@ -12,6 +12,20 @@ other information that should be provided before the modules are installed.
  [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues)
  [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
+
+### TABLE OF CONTENTS
+
+- [INSTALLATION](#INSTALLATION)
+    * [INSTALL USING SETUPTOOLS](#INSTALL USING SETUPTOOLS)
+    * [INSTALL USING DOCKER](#INSTALL USING DOCKER)
+- [USAGE](#USAGE)
+- [DEPENDENCIES](#DEPENDENCIES)
+- [SUPPORTED MCUS](#SUPPORTED MCUS)
+- [GENERATION FLOW OF PROJECT SETUP](#GENERATION FLOW OF PROJECT SETUP)
+- [TOOL STRUCTURE](#TOOL STRUCTURE)
+- [DOCS](#DOCS)
+- [COPYRIGHT AND LICENCE](#COPYRIGHT AND LICENCE)
+
 :sparkles:
 
 ### INSTALLATION
@@ -138,8 +152,6 @@ gen_avr8 is based on Template mechanism:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
 
-:sparkles:
-
 Generator structure:
 ```
 gen_avr8/
@@ -172,6 +184,8 @@ gen_avr8/
 └── run/
     └── gen_avr8_run.py
 ```
+
+:sparkles:
 
 ### DOCS
 
