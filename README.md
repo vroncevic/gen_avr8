@@ -1,9 +1,8 @@
 # AVR project skeleton generator.
+**gen_avr8** is tool for generation of AVR8 project skeleton for development
+of embedded applications.
 
-gen_avr8 is toolset for generation of AVR8 project skeleton for
-development embedded applications.
-
-Developed in python code: 100%.
+Developed in python code: **100%**.
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
@@ -13,56 +12,81 @@ other information that should be provided before the modules are installed.
  [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues)
  [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
+:sparkles:
+
 ### INSTALLATION
-Navigate to release [page](https://github.com/vroncevic/gen_avr8/releases) download and extract release archive.
+Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
 
+Currently there are two ways to install tool:
+* Install process based on setup.py (setuptools)
+* Install process based on docker mechanism
+
+##### INSTALL USING SETUPTOOLS
 To install this set of modules type the following:
-
 ```
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
-cp -R run/gen_avr8_run.py /root/scripts/avr8/
-cp -R gen_avr8/           /root/scripts/avr8/
-cp -R conf/               /root/scripts/avr8/
-cp -R log/                /root/scripts/avr8/
+python setup.py install
 ```
 
-Or You can use docker to create image/container.
+##### INSTALL USING DOCKER
+You can use docker to load Dockerfile which contains all the commands
+a user could call on the command line to assemble an image.
 
 :sparkles:
 
 ### USAGE
+Short example of usage gen_avr8 tool
 
+Create workspace directory Blink:
 ```
-# Setting PYTHONPATH
-export PYTHONPATH=${PYTHONPATH}:/root/scripts/avr8/
+mkdir Blink
+cd Blink/
+```
 
-# Create AVR8 Project Blink, MCU/FOSC will be selected during generation process
-python gen_avr8_run -g Blink
-
-# Crete AVR8 Project Blink, by using parameters from yaml file
-python gen_avr8_run -g Blink -c avr8.yaml
-
-# Content of configuration file avr8.yaml
-cat avr8.yaml
-
+Create configuration file **avr8.yaml**, with next content:
+```
 MCU:
     atmega8
-
 OSC:
     16000000UL
 ```
 
+Crete AVR8 project files, by using parameters from yaml file:
+```
+python gen_avr8_run.py -g Blink -c avr8.yaml
+```
+
+Running build process:
+```
+cd build/
+make all
+```
+
+In case for missing subtool from toolchain, please install the following packages
+with your favorite package manager:
+* gcc-avr
+* binutils-avr
+* gdb-avr
+* avr-libc
+* avrdude
+
+Install directly from the shell as root user (**debian**):
+```
+apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
+```
+
+:sparkles:
+
 ### DEPENDENCIES
+gen_avr8 tool requires other modules/libraries:
 
-gen_avr8 tool-module requires other modules and libraries:
+* **ats_utilities**, url: https://vroncevic.github.io/ats_utilities
 
-* ats_utilities https://vroncevic.github.io/ats_utilities
+:sparkles:
 
 ### SUPPORTED MCUS
-
 Current list of supported microcontrollers:
-
 ```
 attiny2313    atmega128      at90s2313
 attiny24      atmega1280     at90s2333
@@ -100,20 +124,23 @@ attiny861     atmega169
               atmega88
 ```
 
-### GENERATION FLOW OF PROJECT SETUP
+:sparkles:
 
+### GENERATION FLOW OF PROJECT SETUP
 Base flow of generation process:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png)
 
-### TOOL STRUCTURE
+:sparkles:
 
+### TOOL STRUCTURE
 gen_avr8 is based on Template mechanism:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
 
-Generator structure:
+:sparkles:
 
+Generator structure:
 ```
 gen_avr8/
 ├── avr8_pro/
@@ -140,8 +167,10 @@ gen_avr8/
 │       ├── sources.template
 │       └── subdir.template
 ├── __init__.py
-└── log/
-    └── gen_avr8.log
+├── log/
+│   └── gen_avr8.log
+└── run/
+    └── gen_avr8_run.py
 ```
 
 ### DOCS
