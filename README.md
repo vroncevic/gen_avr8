@@ -18,8 +18,8 @@ other information that should be provided before the modules are installed.
 - [INSTALLATION](https://github.com/vroncevic/gen_avr8#installation)
     * [INSTALL USING SETUPTOOLS](https://github.com/vroncevic/gen_avr8#install-using-setuptools)
     * [INSTALL USING DOCKER](https://github.com/vroncevic/gen_avr8#install-using-docker)
-- [USAGE](https://github.com/vroncevic/gen_avr8#usage)
 - [DEPENDENCIES](https://github.com/vroncevic/gen_avr8#dependencies)
+- [USAGE](https://github.com/vroncevic/gen_avr8#usage)
 - [SUPPORTED MCUS](https://github.com/vroncevic/gen_avr8#supported-mcus)
 - [GENERATION FLOW OF PROJECT SETUP](https://github.com/vroncevic/gen_avr8#generation-flow-of-project-setup)
 - [TOOL STRUCTURE](https://github.com/vroncevic/gen_avr8#tool-structure)
@@ -50,14 +50,14 @@ a user could call on the command line to assemble an image.
 :sparkles:
 
 ### DEPENDENCIES
-gen_avr8 tool requires other modules/libraries:
+**gen_avr8** tool requires other modules/libraries:
 
 * **ats_utilities**, url: https://vroncevic.github.io/ats_utilities
 
 :sparkles:
 
 ### USAGE
-Short example of usage gen_avr8 tool
+Short example of usage **gen_avr8** tool
 
 Create workspace directory Blink:
 ```
@@ -148,7 +148,7 @@ Base flow of generation process:
 :sparkles:
 
 ### TOOL STRUCTURE
-gen_avr8 is based on Template mechanism:
+**gen_avr8** is based on Template mechanism:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
 
