@@ -48,6 +48,9 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'License :: OSI Approved :: GPL',
         'Operating System :: OS Independent',
     ],
@@ -55,8 +58,50 @@ setup(
         'gen_avr8',
         'gen_avr8.avr8_pro',
     ], requires=['colorama', 'bs4', 'yaml', 'configparser', 'pathlib'],
-    package_data={
-        'gen_avr8.conf': ['*'],
-        'gen_avr8.log': ['*.']
-    }
+    package_dir={'gen_avr8':'gen_avr8'},
+    data_files=[
+        ('/usr/bin/', ['gen_avr8/run/gen_avr8_run.py']),
+        ('gen_avr8/conf/', ['gen_avr8/conf/fosc.yaml']),
+        ('gen_avr8/conf/', ['gen_avr8/conf/gen_avr8.cfg']),
+        ('gen_avr8/conf/', ['gen_avr8/conf/gen_avr8_util.cfg']),
+        ('gen_avr8/conf/', ['gen_avr8/conf/mcu.yaml']),
+        ('gen_avr8/conf/', ['gen_avr8/conf/project.yaml']),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/cflags.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/csflags.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/Makefile.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/module.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/objects.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/ocflags.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/odflags.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/sources.template']
+        ),
+        (
+            'gen_avr8/conf/template/',
+            ['gen_avr8/conf/template/subdir.template']
+        ),
+        ('gen_avr8/log/', ['gen_avr8/log/gen_avr8.log'])
+    ]
 )
