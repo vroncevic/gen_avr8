@@ -1,3 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AVR project skeleton generator.](#avr-project-skeleton-generator)
+    - [TABLE OF CONTENTS](#table-of-contents)
+    - [INSTALLATION](#installation)
+        - [INSTALL USING SETUPTOOLS](#install-using-setuptools)
+        - [INSTALL USING DOCKER](#install-using-docker)
+    - [DEPENDENCIES](#dependencies)
+    - [USAGE](#usage)
+    - [SUPPORTED MCUS](#supported-mcus)
+    - [GENERATION FLOW OF PROJECT SETUP](#generation-flow-of-project-setup)
+    - [TOOL STRUCTURE](#tool-structure)
+    - [DOCS](#docs)
+    - [COPYRIGHT AND LICENCE](#copyright-and-licence)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # AVR project skeleton generator.
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
