@@ -12,8 +12,22 @@ other information that should be provided before the modules are installed.
  [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues)
  [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Installation](#installation)
+    - [Install using setuptools](#install-using-setuptools)
+    - [Install using docker](#install-using-docker)
+- [Dependencies](#dependencies)
+- [Usage](#usage)
+- [Supported MCUS](#supported-mcus)
+- [Generation flow of project setup](#generation-flow-of-project-setup)
+- [Tool structure](#tool-structure)
+- [Docs](#docs)
+- [Copyright and Licence](#copyright-and-licence)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 :sparkles:
 
