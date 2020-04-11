@@ -1,22 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [AVR project skeleton generator.](#avr-project-skeleton-generator)
-    - [TABLE OF CONTENTS](#table-of-contents)
-    - [INSTALLATION](#installation)
-        - [INSTALL USING SETUPTOOLS](#install-using-setuptools)
-        - [INSTALL USING DOCKER](#install-using-docker)
-    - [DEPENDENCIES](#dependencies)
-    - [USAGE](#usage)
-    - [SUPPORTED MCUS](#supported-mcus)
-    - [GENERATION FLOW OF PROJECT SETUP](#generation-flow-of-project-setup)
-    - [TOOL STRUCTURE](#tool-structure)
-    - [DOCS](#docs)
-    - [COPYRIGHT AND LICENCE](#copyright-and-licence)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # AVR project skeleton generator.
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
@@ -31,30 +12,19 @@ other information that should be provided before the modules are installed.
  [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues)
  [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
-
-### TABLE OF CONTENTS
-
-- [INSTALLATION](https://github.com/vroncevic/gen_avr8#installation)
-    * [INSTALL USING SETUPTOOLS](https://github.com/vroncevic/gen_avr8#install-using-setuptools)
-    * [INSTALL USING DOCKER](https://github.com/vroncevic/gen_avr8#install-using-docker)
-- [DEPENDENCIES](https://github.com/vroncevic/gen_avr8#dependencies)
-- [USAGE](https://github.com/vroncevic/gen_avr8#usage)
-- [SUPPORTED MCUS](https://github.com/vroncevic/gen_avr8#supported-mcus)
-- [GENERATION FLOW OF PROJECT SETUP](https://github.com/vroncevic/gen_avr8#generation-flow-of-project-setup)
-- [TOOL STRUCTURE](https://github.com/vroncevic/gen_avr8#tool-structure)
-- [DOCS](https://github.com/vroncevic/gen_avr8#docs)
-- [COPYRIGHT AND LICENCE](https://github.com/vroncevic/gen_avr8#copyright-and-licence)
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 :sparkles:
 
-### INSTALLATION
+### Installation
 Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
 
 Currently there are two ways to install tool:
 * Install process based on setup.py (setuptools)
 * Install process based on docker mechanism
 
-##### INSTALL USING SETUPTOOLS
+##### Install using setuptools
 To install this set of modules type the following:
 ```
 tar xvzf gen_avr8-x.y.z.tar.gz
@@ -62,20 +32,20 @@ cd gen_avr8-x.y.z/
 python setup.py install
 ```
 
-##### INSTALL USING DOCKER
+##### Install using docker
 You can use docker to load Dockerfile which contains all the commands
 a user could call on the command line to assemble an image.
 
 :sparkles:
 
-### DEPENDENCIES
+### Dependencies
 **gen_avr8** tool requires other modules/libraries:
 
 * **ats_utilities**, url: https://vroncevic.github.io/ats_utilities
 
 :sparkles:
 
-### USAGE
+### Usage
 Short example of usage **gen_avr8** tool
 
 Create workspace directory Blink:
@@ -118,7 +88,7 @@ apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
 
 :sparkles:
 
-### SUPPORTED MCUS
+### Supported MCUS
 Current list of supported microcontrollers:
 ```
 attiny2313    atmega128      at90s2313
@@ -159,14 +129,14 @@ attiny861     atmega169
 
 :sparkles:
 
-### GENERATION FLOW OF PROJECT SETUP
+### Generation flow of project setup
 Base flow of generation process:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png)
 
 :sparkles:
 
-### TOOL STRUCTURE
+### Tool structure
 **gen_avr8** is based on Template mechanism:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
@@ -206,7 +176,7 @@ gen_avr8/
 
 :sparkles:
 
-### DOCS
+### Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
 
@@ -216,7 +186,7 @@ More documentation and info at:
 
 :sparkles:
 
-### COPYRIGHT AND LICENCE
+### Copyright and Licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
