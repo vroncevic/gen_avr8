@@ -31,7 +31,7 @@ other information that should be provided before the modules are installed.
 
 ### Installation
 
-![Install Python2 Package](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python2%20Package/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python3%20Package/badge.svg?branch=master)
+![Install Python2 Package gen_avr8](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python2%20Package%20gen_avr8/badge.svg?branch=master) ![Install Python3 Package gen_avr8](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python3%20Package%20gen_avr8/badge.svg?branch=master)
 
 Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
 
