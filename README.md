@@ -29,9 +29,10 @@ other information that should be provided before the modules are installed.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-:sparkles:
-
 ### Installation
+
+![Install Python2 Package](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python2%20Package/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python3%20Package/badge.svg?branch=master)
+
 Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
 
 Currently there are two ways to install tool:
@@ -50,14 +51,10 @@ python setup.py install
 You can use docker to load Dockerfile which contains all the commands
 a user could call on the command line to assemble an image.
 
-:sparkles:
-
 ### Dependencies
 **gen_avr8** tool requires other modules/libraries:
 
-* **ats_utilities**, url: https://vroncevic.github.io/ats_utilities
-
-:sparkles:
+* **ats_utilities**, [vroncevic.github.io/ats_utilities](https://vroncevic.github.io/ats_utilities)
 
 ### Usage
 Short example of usage **gen_avr8** tool
@@ -100,8 +97,6 @@ Install directly from the shell as root user (**debian**):
 apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
 ```
 
-:sparkles:
-
 ### Supported MCUS
 Current list of supported microcontrollers:
 ```
@@ -141,14 +136,10 @@ attiny861     atmega169
               atmega88
 ```
 
-:sparkles:
-
 ### Generation flow of project setup
 Base flow of generation process:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png)
-
-:sparkles:
 
 ### Tool structure
 **gen_avr8** is based on Template mechanism:
@@ -188,26 +179,20 @@ gen_avr8/
     └── gen_avr8_run.py
 ```
 
-:sparkles:
-
 ### Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
 
 More documentation and info at:
 
-* https://gen-avr8.readthedocs.io/en/latest/
-
-:sparkles:
+* [gen-avr8.readthedocs.io](https://gen-avr8.readthedocs.io/en/latest/)
 
 ### Copyright and Licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2019 by https://vroncevic.github.io/gen_avr8/
+Copyright (C) 2019 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
 
 This tool is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
-
-:sparkles:
