@@ -1,4 +1,5 @@
 # AVR project skeleton generator.
+
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
 
@@ -44,7 +45,9 @@ To install this set of modules type the following:
 ```
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
-python setup.py install
+python setup.py install_lib
+python setup.py install_data
+python setup.py install_egg_info
 ```
 
 ##### Install using docker
@@ -193,6 +196,6 @@ More documentation and info at:
 
 Copyright (C) 2019 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
 
-This tool is free software; you can redistribute it and/or modify
+**gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.

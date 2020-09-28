@@ -39,7 +39,7 @@ setup(
     author_email='elektron.ronca@gmail.com',
     url='https://vroncevic.github.io/gen_avr8/',
     license='GPL 2019 Free software to use and distributed it.',
-    long_description='Package gen_avr8 for python App/Tool/Script.',
+    long_description='Package gen_avr8 for AVR projects.',
     keywords='AVR, AVR8, Atmel, Microchip',
     platforms='POSIX',
     classifiers=[
@@ -48,60 +48,78 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'License :: OSI Approved :: GPL',
-        'Operating System :: OS Independent',
+        'License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)',
+        'License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)',
+        'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
+        'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
+        'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)'
     ],
     packages=[
         'gen_avr8',
         'gen_avr8.avr8_pro',
-    ], requires=['colorama', 'bs4', 'yaml', 'configparser', 'pathlib'],
-    package_dir={'gen_avr8':'gen_avr8'},
+    ],
+    install_requires=['ats-utilities'],
     data_files=[
-        ('/usr/bin/', ['gen_avr8/run/gen_avr8_run.py']),
-        ('gen_avr8/conf/', ['gen_avr8/conf/fosc.yaml']),
-        ('gen_avr8/conf/', ['gen_avr8/conf/gen_avr8.cfg']),
-        ('gen_avr8/conf/', ['gen_avr8/conf/gen_avr8_util.cfg']),
-        ('gen_avr8/conf/', ['gen_avr8/conf/mcu.yaml']),
-        ('gen_avr8/conf/', ['gen_avr8/conf/project.yaml']),
+        ('/usr/local/bin/', ['gen_avr8/run/gen_avr8_run.py']),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/',
+            ['gen_avr8/conf/fosc.yaml']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/',
+            ['gen_avr8/conf/gen_avr8.cfg']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/',
+            ['gen_avr8/conf/gen_avr8_util.cfg']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/',
+            ['gen_avr8/conf/mcu.yaml']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/',
+            ['gen_avr8/conf/project.yaml']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/cflags.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/csflags.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/Makefile.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/module.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/objects.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/ocflags.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/odflags.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/sources.template']
         ),
         (
-            'gen_avr8/conf/template/',
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
             ['gen_avr8/conf/template/subdir.template']
         ),
-        ('gen_avr8/log/', ['gen_avr8/log/gen_avr8.log'])
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/log/',
+            ['gen_avr8/log/gen_avr8.log']
+        )
     ]
 )
