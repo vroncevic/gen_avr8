@@ -18,12 +18,15 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
  python \
  python-pip \
+ python-wheel \
+ libyaml-dev \
  gcc-avr \
  binutils-avr \
  gdb-avr \
  avr-libc \
  avrdude \
- tree
+ tree \
+ htop
 
 # Install dependency
 RUN pip install --upgrade setuptools
@@ -38,6 +41,5 @@ RUN python setup.py install_lib && python setup.py install_data && python setup.
 RUN rm -rf /gen_avr8/
 RUN rm -f setup.py
 RUN chmod -R 755 /usr/local/lib/python2.7/dist-packages/gen_avr8/
-RUN chmod -R 644 /usr/local/lib/python2.7/dist-packages/gen_avr8-1.1.0.egg-info/
 RUN tree /usr/local/lib/python2.7/dist-packages/gen_avr8/
 RUN ln -s /usr/local/bin/gen_avr8_run.py /usr/bin/gen_avr8
