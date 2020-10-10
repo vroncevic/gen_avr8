@@ -1,4 +1,4 @@
-# AVR project skeleton generator.
+# AVR project skeleton generator
 
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
@@ -57,7 +57,7 @@ a user could call on the command line to assemble an image.
 ### Dependencies
 **gen_avr8** tool requires other modules/libraries:
 
-* **ats_utilities**, [vroncevic.github.io/ats_utilities](https://vroncevic.github.io/ats_utilities)
+* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
 ### Usage
 Short example of usage **gen_avr8** tool

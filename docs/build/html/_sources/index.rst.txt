@@ -22,10 +22,11 @@ other information that should be provided before the modules are installed.
    :target: https://gen_avr8.readthedocs.io/projects/gen_avr8/en/latest/?badge=latest
 
 .. toctree::
-    :hidden:
+   :maxdepth: 4
+   :caption: Contents:
 
-    modules
-    self
+   modules
+   self
 
 Installation
 -------------
@@ -34,7 +35,7 @@ Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_avr8/releases
 
-To install this set of modules type the following:
+To install **gen_avr8** type the following:
 
 .. code-block:: bash
 
@@ -204,3 +205,10 @@ Lets help and support PSF.
 
 .. |Donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
    :target: https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
