@@ -1,17 +1,10 @@
 AVR project skeleton generator
 ===============================
 
-.. toctree::
- :hidden:
-
- modules
- self
-
-
 **gen_avr8** is toolset for generation of AVR8 project skeleton for
 development embedded applications.
 
-Developed in python code: **100%**.
+Developed in `python <https://www.python.org/>`_ code: **100%**.
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
@@ -27,6 +20,12 @@ other information that should be provided before the modules are installed.
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/gen_avr8/badge/?version=latest
    :target: https://gen_avr8.readthedocs.io/projects/gen_avr8/en/latest/?badge=latest
+
+.. toctree::
+    :hidden:
+
+    modules
+    self
 
 Installation
 -------------
@@ -44,6 +43,13 @@ To install this set of modules type the following:
     python setup.py install_lib
     python setup.py install_data
     python setup.py install_egg_info
+
+You can use Docker to create image/container.
+
+|GitHub docker checker|
+
+.. |GitHub docker checker| image:: https://github.com/vroncevic/gen_avr8/workflows/gen_avr8%20docker%20checker/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/actions?query=workflow%3A%22gen_avr8+docker+checker%22
 
 Usage
 ------
@@ -186,3 +192,15 @@ Copyright (C) 2019 by `vroncevic.github.io/gen_avr8 <https://vroncevic.github.io
 **gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
+
+Lets help and support PSF.
+
+|Python Software Foundation|
+
+.. |Python Software Foundation| image:: https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/psf-logo-alpha.png
+   :target: https://www.python.org/psf/
+
+|Donate|
+
+.. |Donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
+   :target: https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2
