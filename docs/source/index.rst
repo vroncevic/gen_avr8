@@ -10,7 +10,10 @@ The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-|GitHub issues| |Documentation Status| |GitHub contributors|
+|Python package| |GitHub issues| |Documentation Status| |GitHub contributors|
+
+.. |Python package| image:: https://github.com/vroncevic/gen_avr8/workflows/Python%20package/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/workflows/Python%20package/badge.svg?branch=master
 
 .. |GitHub issues| image:: https://img.shields.io/github/issues/vroncevic/gen_avr8.svg
    :target: https://github.com/vroncevic/gen_avr8/issues
