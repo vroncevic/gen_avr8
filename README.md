@@ -3,15 +3,13 @@
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
 
-Developed in python code: **100%**.
+Developed in **[python](https://www.python.org/)** code: **100%**.
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-![Python package](https://github.com/vroncevic/gen_avr8/workflows/Python%20package%20gen_avr8/badge.svg?branch=master)
- [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues)
- [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
+![Python package](https://github.com/vroncevic/gen_avr8/workflows/Python%20package%20gen_avr8/badge.svg?branch=master) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -54,6 +52,8 @@ python setup.py install_egg_info
 You can use docker to load Dockerfile which contains all the commands
 a user could call on the command line to assemble an image.
 
+[![gen_avr8 docker checker](https://github.com/vroncevic/gen_avr8/workflows/gen_avr8%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_avr8/actions?query=workflow%3A%22gen_avr8+docker+checker%22)
+
 ### Dependencies
 **gen_avr8** tool requires other modules/libraries:
 
@@ -95,7 +95,7 @@ with your favorite package manager:
 * avr-libc
 * avrdude
 
-Install directly from the shell as root user (**debian**):
+Install directly from the shell as root user (**[debian](https://www.debian.org/)**):
 ```
 apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
 ```
@@ -189,6 +189,7 @@ gen_avr8/
 More documentation and info at:
 
 * [gen-avr8.readthedocs.io](https://gen-avr8.readthedocs.io/en/latest/)
+* [www.python.org](https://www.python.org/)
 
 ### Copyright and Licence
 
@@ -199,3 +200,9 @@ Copyright (C) 2019 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io
 **gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
+
+Lets help and support PSF.
+
+[![Python Software Foundation](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/psf-logo-alpha.png)](https://www.python.org/psf/)
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2)
