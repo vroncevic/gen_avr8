@@ -94,7 +94,8 @@ Dependencies
 -------------
 
 **gen_avr8** tool-module requires other modules and libraries:
-    sh_util `https://github.com/vroncevic/sh_util <https://github.com/vroncevic/sh_util>`_
+
+* `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
 Supported mcus
 ---------------
