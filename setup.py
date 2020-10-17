@@ -20,26 +20,32 @@
      Define setup for gen_avr8 package.
 """
 
+from os.path import abspath, dirname, join
 from setuptools import setup
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2019, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.0.0'
+__version__ = '1.2.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
+THIS_DIR, LONG_DESCRIPTION = abspath(dirname(__file__)), None
+with open(join(THIS_DIR, 'README.md')) as readme:
+    LONG_DESCRIPTION = readme.read()
+
 setup(
     name='gen_avr8',
-    version='1.1.0',
+    version='1.2.0',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
     url='https://vroncevic.github.io/gen_avr8/',
     license='GPL 2019 Free software to use and distributed it.',
-    long_description='Package gen_avr8 for AVR projects.',
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     keywords='AVR, AVR8, Atmel, Microchip',
     platforms='POSIX',
     classifiers=[

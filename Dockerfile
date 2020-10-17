@@ -33,6 +33,7 @@ RUN pip install --upgrade setuptools
 RUN mkdir /gen_avr8/
 COPY gen_avr8 /gen_avr8/
 COPY setup.py /
+COPY README.md /
 COPY requirements.txt /
 RUN pip install -r requirements.txt
 RUN rm -f requirements.txt
@@ -40,6 +41,7 @@ RUN find /gen_avr8/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
 RUN python setup.py install_lib && python setup.py install_data && python setup.py install_egg_info
 RUN rm -rf /gen_avr8/
 RUN rm -f setup.py
+RUN rm -f README.md
 RUN chmod -R 755 /usr/local/lib/python2.7/dist-packages/gen_avr8/
 RUN tree /usr/local/lib/python2.7/dist-packages/gen_avr8/
 RUN ln -s /usr/local/bin/gen_avr8_run.py /usr/bin/gen_avr8
