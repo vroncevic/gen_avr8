@@ -17,135 +17,122 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class GenAVR8 with attribute(s) and method(s).
-     Load a settings, create an interface and run operation(s).
+     Load a base info, create an CLI interface and run operation(s).
 """
 
 import sys
-from os import getcwd
 
 try:
     from pathlib import Path
-
-    from gen_avr8.avr8_pro.avr8_setup import AVR8Setup
-
-    from ats_utilities.cfg_base import CfgBase
+    from gen_avr8.pro import AVR8Setup
+    from ats_utilities.cli.cfg_cli import CfgCLI
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
-    from ats_utilities.config.yaml.yaml2object import Yaml2Object
-except ImportError as error:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+except ImportError as error_message:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2019, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
 __license__ = "GNU General Public License (GPL)"
-__version__ = "1.1.0"
+__version__ = "1.4.0"
 __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
 
-class GenAVR8(CfgBase):
+class GenAVR8(CfgCLI):
     """
         Define class GenAVR8 with attribute(s) and method(s).
-        Load a settings, create an interface and run operation(s).
+        Load a base info, create an CLI interface and run operation(s).
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots
-                | VERBOSE - Console text indicator for current process-phase
-                | __CONFIG - Configuration file path
-                | __OPS - Tool options (list)
+                | __slots__ - Setting class slots.
+                | VERBOSE - Console text indicator for current process-phase.
+                | __CONFIG - Tool info file path.
+                | __OPS - Tool options (list).
             :methods:
-                | __init__ - Initial constructor
-                | process - Process and run tool option
+                | __init__ - Initial constructor.
+                | process - Process and run tool option.
     """
 
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
     VERBOSE = 'GEN_AVR8'
     __CONFIG = '/conf/gen_avr8.cfg'
-    __OPS = ['-g', '--gen', '-c', '--conf', '-h', '--version']
+    __OPS = ['-g', '--gen', '-t', '--type', '-v']
 
     def __init__(self, verbose=False):
         """
-            Loading configuration and setting argument options.
+            Initial constructor.
 
-            :param verbose: Enable/disable verbose option
+            :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         """
-        verbose_message(GenAVR8.VERBOSE, verbose, 'Initial configuration')
-        tool_dir = Path(__file__).resolve().parent
-        base_config_file = "{0}{1}".format(tool_dir, GenAVR8.__CONFIG)
-        CfgBase.__init__(self, base_config_file, verbose=verbose)
-        if self.tool_status:
+        verbose_message(GenAVR8.VERBOSE, verbose, 'init configuration')
+        current_dir = Path(__file__).resolve().parent
+        base_info = "{0}{1}".format(current_dir, GenAVR8.__CONFIG)
+        CfgCLI.__init__(self, base_info, verbose=verbose)
+        if self.tool_operational:
             self.add_new_option(
-                GenAVR8.__OPS[0], GenAVR8.__OPS[1], dest="pro",
-                help="generate AVR8 project skeleton"
+                GenAVR8.__OPS[0], GenAVR8.__OPS[1], dest='gen',
+                help='generate AVR8 project skeleton'
             )
             self.add_new_option(
-                GenAVR8.__OPS[2], GenAVR8.__OPS[3], dest="conf",
-                help="load parameters from yaml file"
+                GenAVR8.__OPS[2], GenAVR8.__OPS[3], dest='type',
+                help='set app/lib type of project'
+            )
+            self.add_new_option(
+                GenAVR8.__OPS[4], action="store_true", default=False,
+                help='activate verbose mode for generation'
             )
 
     def process(self, verbose=False):
         """
             Process and run operation.
 
-            :param verbose: Enable/disable verbose option
+            :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
-            :return: True (success) | False
+            :return: True (success) | False.
             :rtype: <bool>
             :exceptions: None
         """
         status = False
-        if self.tool_status:
-            self.show_base_info(verbose=verbose)
-            if len(sys.argv) > 1:
-                operation = sys.argv[1]
-                if operation not in GenAVR8.__OPS:
+        if self.tool_operational:
+            if len(sys.argv) >= 4:
+                options = [arg for i, arg in enumerate(sys.argv) if i %2 != 0]
+                if any([arg not in GenAVR8.__OPS for arg in options]):
                     sys.argv = []
-                    sys.argv.append("-h")
+                    sys.argv.append('-h')
             else:
-                sys.argv.append("-h")
-            current_dir, pro_setup = getcwd(), {}
-            opts, script = self.parse_args(sys.argv)
-            if len(script) == 1 and bool(opts.pro):
-                pro_setup['name'] = opts.pro
-                if bool(opts.conf):
-                    project_setup_path = "{0}/{1}".format(
-                        current_dir, "{0}".format(opts.conf)
-                    )
-                    cfg = Yaml2Object(project_setup_path, verbose=verbose)
-                    pro_setup['conf'] = cfg.read_configuration(verbose=verbose)
-                else:
-                    pro_setup['conf'] = None
-                check_pro_cfg = any(
-                    [
-                        all([bool(opts.conf), bool(pro_setup['conf'])]),
-                        all([not bool(opts.conf), not bool(pro_setup['conf'])])
-                    ]
-                )
-                if check_pro_cfg:
-                    generator, gen_status = AVR8Setup(verbose=verbose), False
+                sys.argv.append('-h')
+            opts, args = self.parse_args(sys.argv)
+            if bool(opts.gen) and bool(opts.type):
+                pro_setup = {}
+                pro_setup['name'] = opts.gen
+                pro_setup['type'] = opts.type
+                if all([bool(pro_setup['name']), bool(pro_setup['type'])]):
+                    generator = AVR8Setup(verbose=opts.v or verbose)
+                    generator.project_setup = pro_setup
                     print(
-                        "{0} {1} [{2}]".format(
-                            "[{0}]".format(self.name),
-                            'Generating AVR8 project skeleton', opts.pro
+                        "{0} {1} {2} [{3}]".format(
+                            "[{0}]".format(GenAVR8.VERBOSE.lower()),
+                            'generating AVR8 project skeleton',
+                            opts.type, opts.gen
                         )
                     )
-                    gen_status = generator.gen_pro_setup(
-                        pro_setup, verbose=verbose
-                    )
-                    if gen_status:
-                        success_message(self.name, 'Done\n')
-                        status = True
+                    status = generator.gen_pro_setup(verbose=opts.v or verbose)
+                    if status:
+                        success_message(GenAVR8.VERBOSE, 'done\n')
                     else:
-                        error_message(self.name, 'Failed to generate project')
+                        error_message(
+                            GenAVR8.VERBOSE, 'failed to generate project'
+                        )
             else:
-                error_message(self.name, 'Failed to generate project')
+                error_message(GenAVR8.VERBOSE, 'failed to generate project')
         else:
-            error_message('gen_avr8', 'Tool is not operational')
+            error_message(GenAVR8.VERBOSE, 'tool is not operational')
         return True if status else False
