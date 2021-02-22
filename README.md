@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_logo.png" width="25%">
+
 # AVR project skeleton generator
 
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
@@ -16,6 +18,7 @@ other information that should be provided before the modules are installed.
 **Table of Contents**
 
 - [Installation](#installation)
+    - [Install using pip](#install-using-pip)
     - [Install using setuptools](#install-using-setuptools)
     - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
@@ -32,14 +35,25 @@ other information that should be provided before the modules are installed.
 
 ![Install Python2 Package gen_avr8](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python2%20Package%20gen_avr8/badge.svg?branch=master) ![Install Python3 Package gen_avr8](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python3%20Package%20gen_avr8/badge.svg?branch=master)
 
-Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
-
-Currently there are two ways to install tool:
+Currently there are three ways to install tool:
+* Install process based on pip
 * Install process based on setup.py (setuptools)
 * Install process based on docker mechanism
 
+##### Install using pip
+
+Python package is located at **[pypi.org](https://pypi.org/project/gen_avr8/)**.
+
+You can install by using pip
+```
+pip install gen_avr8
+```
+
 ##### Install using setuptools
-To install this set of modules type the following:
+
+Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
+
+To install modules, locate and run setup.py, type the following:
 ```
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
@@ -49,8 +63,8 @@ python setup.py install_egg_info
 ```
 
 ##### Install using docker
-You can use docker to load Dockerfile which contains all the commands
-a user could call on the command line to assemble an image.
+
+You can use Dockerfile to create image/container.
 
 [![gen_avr8 docker checker](https://github.com/vroncevic/gen_avr8/workflows/gen_avr8%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_avr8/actions?query=workflow%3A%22gen_avr8+docker+checker%22)
 
@@ -68,17 +82,9 @@ mkdir Blink
 cd Blink/
 ```
 
-Create configuration file **avr8.yaml**, with next content:
+Crete AVR8 project files, by using parameters:
 ```
-MCU:
-    atmega8
-OSC:
-    16000000UL
-```
-
-Crete AVR8 project files, by using parameters from yaml file:
-```
-python gen_avr8_run.py -g Blink -c avr8.yaml
+python gen_avr8_run.py -g Blink -t app
 ```
 
 Running build process:
@@ -152,32 +158,50 @@ Base flow of generation process:
 Generator structure:
 ```
 gen_avr8/
-├── avr8_pro/
-│   ├── avr8_setup.py
-│   ├── __init__.py
-│   ├── mcu_selector.py
-│   ├── osc_selector.py
-│   ├── read_template.py
-│   └── write_template.py
 ├── conf/
 │   ├── fosc.yaml
 │   ├── gen_avr8.cfg
 │   ├── gen_avr8_util.cfg
 │   ├── mcu.yaml
-│   ├── project.yaml
+│   ├── project_app.yaml
+│   ├── project_lib.yaml
 │   └── template/
-│       ├── cflags.template
-│       ├── csflags.template
-│       ├── Makefile.template
-│       ├── module.template
-│       ├── objects.template
-│       ├── ocflags.template
-│       ├── odflags.template
-│       ├── sources.template
-│       └── subdir.template
+│       ├── app/
+│       │   ├── cflags.template
+│       │   ├── csflags.template
+│       │   ├── Makefile.template
+│       │   ├── module.template
+│       │   ├── objects.template
+│       │   ├── ocflags.template
+│       │   ├── odflags.template
+│       │   ├── sources.template
+│       │   ├── subdir.template
+│       │   └── tools.template
+│       └── lib/
+│           ├── aflags.template
+│           ├── avr_lib_c.template
+│           ├── avr_lib_h.template
+│           ├── cflags.template
+│           ├── csflags.template
+│           ├── Makefile.template
+│           ├── objects.template
+│           ├── ocflags.template
+│           ├── odflags.template
+│           ├── sources.template
+│           ├── subdir.template
+│           └── tools.template
 ├── __init__.py
 ├── log/
 │   └── gen_avr8.log
+├── pro/
+│   ├── __init__.py
+│   ├── mcu_selector.py
+│   ├── module_type.py
+│   ├── osc_selector.py
+│   ├── read_template.py
+│   ├── template_dir.py
+│   ├── template_type.py
+│   └── write_template.py
 └── run/
     └── gen_avr8_run.py
 ```

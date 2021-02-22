@@ -56,7 +56,11 @@ To install **gen_avr8** type the following:
     python setup.py install_data
     python setup.py install_egg_info
 
-You can use Docker to create image/container.
+You can use Docker to create image/container, or You can use pip to install:
+
+.. code-block:: bash
+
+    pip install gen_avr8
 
 |GitHub docker checker|
 
@@ -70,25 +74,7 @@ Create AVR8 Project Blink, MCU/FOSC will be selected during generation process:
 
 .. code-block:: bash
 
-    python gen_avr8_run -g Blink
-
-
-Crete AVR8 Project Blink, by using parameters from yaml file:
-
-.. code-block:: bash
-
-    python gen_avr8_run -g Blink -c avr8.yaml
-
-
-Content of configuration file avr8.yaml:
-
-.. code-block:: bash
-
-    cat avr8.yaml
-    MCU:
-        atmega8
-    OSC:
-        16000000UL
+    python gen_avr8_run -g Blink -t app
 
 Dependencies
 -------------
@@ -157,37 +143,53 @@ Generator structure:
 
 .. code-block:: bash
 
-    gen_avr8_run.py
-    │
+    gen_avr8/
     ├── conf/
-    │   ├── fosc.yaml
-    │   ├── gen_avr8.cfg
-    │   ├── gen_avr8_util.cfg
-    │   ├── mcu.yaml
-    │   ├── project.yaml
-    │   └── template/
-    │       ├── cflags.template
-    │       ├── csflags.template
-    │       ├── Makefile.template
-    │       ├── module.template
-    │       ├── objects.template
-    │       ├── ocflags.template
-    │       ├── odflags.template
-    │       ├── sources.template
-    │       └── subdir.template
-    │
-    ├── gen_avr8/
-    │   ├── avr8_pro/
-    │   │   ├── avr8_setup.py
-    │   │   ├── __init__.py
-    │   │   ├── mcu_selector.py
-    │   │   ├── osc_selector.py
-    │   │   ├── read_template.py
-    │   │   └── write_template.py
-    │   └── __init__.py
-    │
-    └── log/
-        └── gen_avr8.log
+    │   ├── fosc.yaml
+    │   ├── gen_avr8.cfg
+    │   ├── gen_avr8_util.cfg
+    │   ├── mcu.yaml
+    │   ├── project_app.yaml
+    │   ├── project_lib.yaml
+    │   └── template/
+    │       ├── app/
+    │       │   ├── cflags.template
+    │       │   ├── csflags.template
+    │       │   ├── Makefile.template
+    │       │   ├── module.template
+    │       │   ├── objects.template
+    │       │   ├── ocflags.template
+    │       │   ├── odflags.template
+    │       │   ├── sources.template
+    │       │   ├── subdir.template
+    │       │   └── tools.template
+    │       └── lib/
+    │           ├── aflags.template
+    │           ├── avr_lib_c.template
+    │           ├── avr_lib_h.template
+    │           ├── cflags.template
+    │           ├── csflags.template
+    │           ├── Makefile.template
+    │           ├── objects.template
+    │           ├── ocflags.template
+    │           ├── odflags.template
+    │           ├── sources.template
+    │           ├── subdir.template
+    │           └── tools.template
+    ├── __init__.py
+    ├── log/
+    │   └── gen_avr8.log
+    ├── pro/
+    │   ├── __init__.py
+    │   ├── mcu_selector.py
+    │   ├── module_type.py
+    │   ├── osc_selector.py
+    │   ├── read_template.py
+    │   ├── template_dir.py
+    │   ├── template_type.py
+    │   └── write_template.py
+    └── run/
+        └── gen_avr8_run.py
 
 Copyright and licence
 ----------------------

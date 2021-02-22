@@ -1,0 +1,28 @@
+templates:
+    avr_lib_h.template
+    avr_lib_c.template
+    sources.template
+    objects.template
+    subdir.template
+    tools.template
+    cflags.template
+    csflags.template
+    ocflags.template
+    odflags.template
+    aflags.template
+    Makefile.template
+
+modules:
+    avr_lib.h
+    avr_lib.c
+    sources.mk
+    objects.mk
+    subdir.mk
+    tools.mk
+    cflags.mk
+    csflags.mk
+    ocflags.mk
+    odflags.mk
+    aflags.mk
+    Makefile
+

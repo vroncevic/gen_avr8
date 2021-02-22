@@ -27,7 +27,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2019, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.2.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -38,7 +38,7 @@ with open(join(THIS_DIR, 'README.md')) as readme:
 
 setup(
     name='gen_avr8',
-    version='1.2.0',
+    version='1.4.0',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -62,7 +62,7 @@ setup(
     ],
     packages=[
         'gen_avr8',
-        'gen_avr8.avr8_pro',
+        'gen_avr8.pro',
     ],
     install_requires=['ats-utilities'],
     data_files=[
@@ -85,43 +85,99 @@ setup(
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/',
-            ['gen_avr8/conf/project.yaml']
+            ['gen_avr8/conf/project_app.yaml']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/cflags.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/',
+            ['gen_avr8/conf/project_lib.yaml']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/csflags.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/cflags.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/Makefile.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/csflags.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/module.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/Makefile.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/objects.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/module.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/ocflags.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/objects.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/odflags.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/ocflags.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/sources.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/odflags.template']
         ),
         (
-            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/',
-            ['gen_avr8/conf/template/subdir.template']
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/sources.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/subdir.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/app/',
+            ['gen_avr8/conf/template/app/tools.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/aflags.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/cflags.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/csflags.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/Makefile.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/avr_lib_c.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/avr_lib_h.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/objects.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/ocflags.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/odflags.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/sources.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/subdir.template']
+        ),
+        (
+            '/usr/local/lib/python2.7/dist-packages/gen_avr8/conf/template/lib/',
+            ['gen_avr8/conf/template/lib/tools.template']
         ),
         (
             '/usr/local/lib/python2.7/dist-packages/gen_avr8/log/',

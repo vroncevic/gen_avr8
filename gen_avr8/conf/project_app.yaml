@@ -1,0 +1,24 @@
+templates:
+    module.template
+    sources.template
+    objects.template
+    subdir.template
+    tools.template
+    cflags.template
+    csflags.template
+    ocflags.template
+    odflags.template
+    Makefile.template
+
+modules:
+    main.c
+    sources.mk
+    objects.mk
+    subdir.mk
+    tools.mk
+    cflags.mk
+    csflags.mk
+    ocflags.mk
+    odflags.mk
+    Makefile
+

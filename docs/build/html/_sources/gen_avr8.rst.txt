@@ -6,7 +6,7 @@ Subpackages
 
 .. toctree::
 
-    gen_avr8.avr8_pro
+    gen_avr8.pro
 
 Module contents
 ---------------
