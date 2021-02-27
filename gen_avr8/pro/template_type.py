@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      template_type.py
  Copyright
@@ -18,7 +18,7 @@
  Info
      Define class TemplateType with method(s).
      Check project template type and template structure.
-"""
+'''
 
 import sys
 
@@ -28,21 +28,21 @@ try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as error_message:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2021, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.0'
+__version__ = '1.4.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
 class TemplateType(object):
-    """
+    '''
         Define class TemplateType with method(s).
         Check project template type and template structure.
         It defines:
@@ -54,7 +54,7 @@ class TemplateType(object):
             :methods:
                 | check_template_type - Check project template type.
                 | setup_template_type - Setup template type (app | lib).
-    """
+    '''
 
     __slots__ = ('VERBOSE', 'TEMPLATE_TYPE', 'APP_TEMPLATE', 'LIB_TEMPLATE')
     VERBOSE = 'GEN_AVR8::PRO::TEMPLATE_TYPE'
@@ -66,7 +66,7 @@ class TemplateType(object):
 
     @classmethod
     def check_template_type(cls, template_type, verbose=False):
-        """
+        '''
             Check project template type (App | Lib).
 
             :param template_type: Project Template type.
@@ -76,7 +76,7 @@ class TemplateType(object):
             :return: True project type ok else False.
             :rtype: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('str:template_type', template_type)]
@@ -93,7 +93,7 @@ class TemplateType(object):
 
     @classmethod
     def setup_template_type(cls, template_type, verbose=False):
-        """
+        '''
             Setup template type (App | Lib).
 
             :param template_type: Project Template type.
@@ -103,7 +103,7 @@ class TemplateType(object):
             :return: Project type (app | lib) | None.
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('str:template_type', template_type)]

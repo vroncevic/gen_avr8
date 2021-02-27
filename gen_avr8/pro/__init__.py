@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      __init__.py
  Copyright
@@ -18,7 +18,7 @@
  Info
      Define class AVR8Setup with attribute(s) and method(s).
      Generate AVR project skeleton.
-"""
+'''
 
 import sys
 
@@ -36,21 +36,21 @@ try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as error_message:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2019, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.0'
+__version__ = '1.4.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
 class AVR8Setup(object):
-    """
+    '''
         Define class AVR8Setup with attribute(s) and method(s).
         Generate AVR project skeleton.
         It defines:
@@ -67,7 +67,7 @@ class AVR8Setup(object):
                 | __init__ - Initial constructor.
                 | project_setup - Property methods for set/get operations.
                 | gen_pro_setup - Generate project skeleton.
-    """
+    '''
 
     __slots__ = (
         'VERBOSE',
@@ -80,13 +80,13 @@ class AVR8Setup(object):
     VERBOSE = 'GEN_AVR8::PRO::AVR8SETUP'
 
     def __init__(self, verbose=False):
-        """
+        '''
             Initial constructor.
 
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
-        """
+        '''
         verbose_message(AVR8Setup.VERBOSE, verbose, 'init setup')
         self.__mcu_sel = MCUSelector(verbose=verbose)
         self.__fosc_sel = OSCSelector(verbose=verbose)
@@ -96,24 +96,24 @@ class AVR8Setup(object):
 
     @property
     def project_setup(self):
-        """
+        '''
             Getter for writer object.
 
             :return: Write template object | None.
             :rtype: <WriteTemplate> | <NoneType>
             :exceptions: None
-        """
+        '''
         return self.__project_setup
 
     @project_setup.setter
     def project_setup(self, project_setup):
-        """
+        '''
             Setter for project setup.
 
             :param project_setup: Project setup.
             :type project_setup: <dict>
             :exceptions: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('dict:project_setup', project_setup)]
@@ -123,7 +123,7 @@ class AVR8Setup(object):
         self.__project_setup = project_setup
 
     def gen_pro_setup(self, verbose=False):
-        """
+        '''
             Generate AVR8 project setup.
 
             :param verbose: Enable/disable verbose option.
@@ -131,13 +131,13 @@ class AVR8Setup(object):
             :return: True (success) | False.
             :rtype: <bool>
             :exceptions: None
-        """
+        '''
         verbose_message(
             AVR8Setup.VERBOSE, verbose, 'generate project',
             self.__project_setup['type'], self.__project_setup['name']
         )
         yml2obj, status, statuses = Yaml2Object(
-            "{0}{1}".format(
+            '{0}{1}'.format(
                 TemplateDir.setup_conf_dir(verbose),
                 TemplateType.setup_template_type(
                     self.__project_setup['type'], verbose
@@ -155,7 +155,7 @@ class AVR8Setup(object):
             self.__writer.pro_dir = self.__project_setup['name']
             for template, module in zip(templates, modules):
                 project_data['template'] = self.__reader.read(
-                    template_file="{0}{1}/{2}".format(
+                    template_file='{0}{1}/{2}'.format(
                     TemplateDir.setup_template_dir(verbose),
                     self.__project_setup['type'], template
                     ), verbose=verbose

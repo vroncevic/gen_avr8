@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.4.0
+                1.4.1
               </div>
             
           
@@ -154,7 +154,7 @@
   <h1>Source code for gen_avr8</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> Module</span>
 <span class="sd">     __init__.py</span>
 <span class="sd"> Copyright</span>
@@ -172,7 +172,7 @@
 <span class="sd"> Info</span>
 <span class="sd">     Define class GenAVR8 with attribute(s) and method(s).</span>
 <span class="sd">     Load a base info, create an CLI interface and run operation(s).</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -184,21 +184,21 @@
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.success</span> <span class="kn">import</span> <span class="n">success_message</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Vladimir Roncevic&quot;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2019, Free software to use and distributed it.&quot;</span>
-<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Vladimir Roncevic&quot;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GNU General Public License (GPL)&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.4.0&quot;</span>
-<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Vladimir Roncevic&quot;</span>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;elektron.ronca@gmail.com&quot;</span>
-<span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Updated&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2019, Free software to use and distributed it.&#39;</span>
+<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.4.1&#39;</span>
+<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
+<span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
 <div class="viewcode-block" id="GenAVR8"><a class="viewcode-back" href="../gen_avr8.html#gen_avr8.GenAVR8">[docs]</a><span class="k">class</span> <span class="nc">GenAVR8</span><span class="p">(</span><span class="n">CfgCLI</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Define class GenAVR8 with attribute(s) and method(s).</span>
 <span class="sd">        Load a base info, create an CLI interface and run operation(s).</span>
 <span class="sd">        It defines:</span>
@@ -211,7 +211,7 @@
 <span class="sd">            :methods:</span>
 <span class="sd">                | __init__ - Initial constructor.</span>
 <span class="sd">                | process - Process and run tool option.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__CONFIG&#39;</span><span class="p">,</span> <span class="s1">&#39;__OPS&#39;</span><span class="p">)</span>
     <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8&#39;</span>
@@ -219,16 +219,16 @@
     <span class="n">__OPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-g&#39;</span><span class="p">,</span> <span class="s1">&#39;--gen&#39;</span><span class="p">,</span> <span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--type&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Initial constructor.</span>
 
 <span class="sd">            :param verbose: Enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenAVR8</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init configuration&#39;</span><span class="p">)</span>
         <span class="n">current_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
-        <span class="n">base_info</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="n">GenAVR8</span><span class="o">.</span><span class="n">__CONFIG</span><span class="p">)</span>
+        <span class="n">base_info</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="n">GenAVR8</span><span class="o">.</span><span class="n">__CONFIG</span><span class="p">)</span>
         <span class="n">CfgCLI</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_info</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_operational</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_new_option</span><span class="p">(</span>
@@ -240,12 +240,12 @@
                 <span class="n">help</span><span class="o">=</span><span class="s1">&#39;set app/lib type of project&#39;</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_new_option</span><span class="p">(</span>
-                <span class="n">GenAVR8</span><span class="o">.</span><span class="n">__OPS</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">GenAVR8</span><span class="o">.</span><span class="n">__OPS</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s1">&#39;activate verbose mode for generation&#39;</span>
             <span class="p">)</span>
 
 <div class="viewcode-block" id="GenAVR8.process"><a class="viewcode-back" href="../gen_avr8.html#gen_avr8.GenAVR8.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Process and run operation.</span>
 
 <span class="sd">            :param verbose: Enable/disable verbose option.</span>
@@ -253,7 +253,7 @@
 <span class="sd">            :return: True (success) | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_operational</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
@@ -272,8 +272,8 @@
                     <span class="n">generator</span> <span class="o">=</span> <span class="n">AVR8Setup</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">v</span> <span class="ow">or</span> <span class="n">verbose</span><span class="p">)</span>
                     <span class="n">generator</span><span class="o">.</span><span class="n">project_setup</span> <span class="o">=</span> <span class="n">pro_setup</span>
                     <span class="nb">print</span><span class="p">(</span>
-                        <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2"> [</span><span class="si">{3}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                            <span class="s2">&quot;[</span><span class="si">{0}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">GenAVR8</span><span class="o">.</span><span class="n">VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()),</span>
+                        <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1"> </span><span class="si">{2}</span><span class="s1"> [</span><span class="si">{3}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="s1">&#39;[</span><span class="si">{0}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">GenAVR8</span><span class="o">.</span><span class="n">VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()),</span>
                             <span class="s1">&#39;generating AVR8 project skeleton&#39;</span><span class="p">,</span>
                             <span class="n">opts</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">gen</span>
                         <span class="p">)</span>
