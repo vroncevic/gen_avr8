@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      write_template.py
  Copyright
@@ -18,7 +18,7 @@
  Info
      Define class WriteTemplate with attribute(s) and method(s).
      Write template content with parameters to a project module.
-"""
+'''
 
 import sys
 from os import getcwd, chmod, mkdir
@@ -31,21 +31,21 @@ try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as error_message:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2019, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.0'
+__version__ = '1.4.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
 class WriteTemplate(object):
-    """
+    '''
         Define class WriteTemplate with attribute(s) and method(s).
         Write template content with parameters to a project module.
         It defines:
@@ -59,54 +59,54 @@ class WriteTemplate(object):
                 | pro_dir - Property methods for set/get operations.
                 | check_module - Check project module.
                 | write - Write a template content to a project module.
-    """
+    '''
 
     __slots__ = ('VERBOSE', '__pro_dir')
     VERBOSE = 'GEN_AVR8::PRO::WRITE_TEMPLATE'
 
     def __init__(self, verbose=False):
-        """
+        '''
             Initial constructor.
 
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
-        """
+        '''
         verbose_message(WriteTemplate.VERBOSE, verbose, 'init writer')
         self.__pro_dir = None
 
     @property
     def pro_dir(self):
-        """
+        '''
             Property method for getting project dir.
 
             :return: Project dir | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
-        """
+        '''
         return self.__pro_dir
 
     @pro_dir.setter
     def pro_dir(self, pro_dir):
-        """
+        '''
             Property method for setting/creating project dir.
 
             :param pro_dir: Project dir.
             :type pro_dir: <str>
             :exceptions: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('str:pro_dir', pro_dir)]
         )
         if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
-        self.__pro_dir = "{0}/{1}".format(getcwd(), pro_dir)
+        self.__pro_dir = '{0}/{1}'.format(getcwd(), pro_dir)
         mkdir(self.__pro_dir)  # create project dir
-        mkdir("{0}/{1}".format(self.__pro_dir, 'build'))  # create build dir
+        mkdir('{0}/{1}'.format(self.__pro_dir, 'build'))  # create build dir
 
     def check_module(self, module, verbose=False):
-        """
+        '''
             Check project module.
 
             :param module: Module name.
@@ -116,7 +116,7 @@ class WriteTemplate(object):
             :return: 'build' | 'source'| None (wrong module name).
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('str:module', module)]
@@ -133,7 +133,7 @@ class WriteTemplate(object):
         return module_type
 
     def write(self, project_data, verbose=False):
-        """
+        '''
             Write a template content to a project module.
 
             :param project_data: Project data.
@@ -143,7 +143,7 @@ class WriteTemplate(object):
             :return: True (success) | False.
             :rtype: <bool>
             :exception: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('dict:project_data', project_data)]
@@ -154,19 +154,19 @@ class WriteTemplate(object):
         module_type = self.check_module(project_data['module'])
         if bool(module_type):
             project = {
-                'PRO': "{0}".format(project_data['name']),
-                'MCU': "{0}".format(project_data['mcu']),
-                'OSC': "{0}".format(project_data['osc'])
+                'PRO': '{0}'.format(project_data['name']),
+                'MCU': '{0}'.format(project_data['mcu']),
+                'OSC': '{0}'.format(project_data['osc'])
             }
             template = Template(project_data['template'])
             if template:
                 module = None
                 if module_type == 'source':
-                    module = "{0}/{1}".format(
+                    module = '{0}/{1}'.format(
                         self.__pro_dir, project_data['module']
                     )
                 if module_type == 'build':
-                    module = "{0}/{1}/{2}".format(
+                    module = '{0}/{1}/{2}'.format(
                         self.__pro_dir, 'build', project_data['module']
                     )
                 if module:

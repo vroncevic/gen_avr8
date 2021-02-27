@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.4.0
+                1.4.1
               </div>
             
           
@@ -156,7 +156,7 @@
   <h1>Source code for gen_avr8.pro</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: UTF-8 -*-</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> Module</span>
 <span class="sd">     __init__.py</span>
 <span class="sd"> Copyright</span>
@@ -174,7 +174,7 @@
 <span class="sd"> Info</span>
 <span class="sd">     Define class AVR8Setup with attribute(s) and method(s).</span>
 <span class="sd">     Generate AVR project skeleton.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -192,21 +192,21 @@
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_bad_call_error</span> <span class="kn">import</span> <span class="n">ATSBadCallError</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2019, Free software to use and distributed it.&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.4.0&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.4.1&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
 <div class="viewcode-block" id="AVR8Setup"><a class="viewcode-back" href="../../gen_avr8.pro.html#gen_avr8.pro.AVR8Setup">[docs]</a><span class="k">class</span> <span class="nc">AVR8Setup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Define class AVR8Setup with attribute(s) and method(s).</span>
 <span class="sd">        Generate AVR project skeleton.</span>
 <span class="sd">        It defines:</span>
@@ -223,7 +223,7 @@
 <span class="sd">                | __init__ - Initial constructor.</span>
 <span class="sd">                | project_setup - Property methods for set/get operations.</span>
 <span class="sd">                | gen_pro_setup - Generate project skeleton.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span>
@@ -236,13 +236,13 @@
     <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::AVR8SETUP&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Initial constructor.</span>
 
 <span class="sd">            :param verbose: Enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">AVR8Setup</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init setup&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__mcu_sel</span> <span class="o">=</span> <span class="n">MCUSelector</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__fosc_sel</span> <span class="o">=</span> <span class="n">OSCSelector</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
@@ -252,24 +252,24 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">project_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Getter for writer object.</span>
 
 <span class="sd">            :return: Write template object | None.</span>
 <span class="sd">            :rtype: &lt;WriteTemplate&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span>
 
     <span class="nd">@project_setup</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">project_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_setup</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Setter for project setup.</span>
 
 <span class="sd">            :param project_setup: Project setup.</span>
 <span class="sd">            :type project_setup: &lt;dict&gt;</span>
 <span class="sd">            :exceptions: ATSTypeError | ATSBadCallError</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">checker</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">ATSChecker</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
         <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
             <span class="p">[(</span><span class="s1">&#39;dict:project_setup&#39;</span><span class="p">,</span> <span class="n">project_setup</span><span class="p">)]</span>
@@ -279,7 +279,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span> <span class="o">=</span> <span class="n">project_setup</span>
 
 <div class="viewcode-block" id="AVR8Setup.gen_pro_setup"><a class="viewcode-back" href="../../gen_avr8.pro.html#gen_avr8.pro.AVR8Setup.gen_pro_setup">[docs]</a>    <span class="k">def</span> <span class="nf">gen_pro_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Generate AVR8 project setup.</span>
 
 <span class="sd">            :param verbose: Enable/disable verbose option.</span>
@@ -287,13 +287,13 @@
 <span class="sd">            :return: True (success) | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">verbose_message</span><span class="p">(</span>
             <span class="n">AVR8Setup</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;generate project&#39;</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="n">yml2obj</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">statuses</span> <span class="o">=</span> <span class="n">Yaml2Object</span><span class="p">(</span>
-            <span class="s2">&quot;</span><span class="si">{0}{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">TemplateDir</span><span class="o">.</span><span class="n">setup_conf_dir</span><span class="p">(</span><span class="n">verbose</span><span class="p">),</span>
                 <span class="n">TemplateType</span><span class="o">.</span><span class="n">setup_template_type</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">verbose</span>
@@ -311,7 +311,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="o">.</span><span class="n">pro_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">template</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">templates</span><span class="p">,</span> <span class="n">modules</span><span class="p">):</span>
                 <span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;template&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
-                    <span class="n">template_file</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}{1}</span><span class="s2">/</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">template_file</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">/</span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">TemplateDir</span><span class="o">.</span><span class="n">setup_template_dir</span><span class="p">(</span><span class="n">verbose</span><span class="p">),</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">template</span>
                     <span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>

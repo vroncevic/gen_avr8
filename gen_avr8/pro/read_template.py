@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      read_template.py
  Copyright
@@ -18,7 +18,7 @@
  Info
      Define class ReadTemplate with attribute(s) and method(s).
      Read a template file and return a content.
-"""
+'''
 
 import sys
 
@@ -29,21 +29,21 @@ try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as error_message:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error_message)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.0'
+__version__ = '1.4.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
 class ReadTemplate(FileChecking):
-    """
+    '''
         Define class ReadTemplate with attribute(s) and method(s).
         Read a template file and return a content.
         It defines:
@@ -55,27 +55,27 @@ class ReadTemplate(FileChecking):
             :methods:
                 | __init__ - Initial constructor.
                 | read - Read template file.
-    """
+    '''
 
     __slots__ = ('VERBOSE', '__FORMAT')
     VERBOSE = 'GEN_AVR8::PRO::READ_TEMPLATE'
     __FORMAT = 'template'
 
     def __init__(self, verbose=False):
-        """
+        '''
             Initial constructor.
 
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
-        """
+        '''
         verbose_message(
             ReadTemplate.VERBOSE, verbose, 'init reader'
         )
         FileChecking.__init__(self, verbose=verbose)
 
     def read(self, template_file, verbose=False):
-        """
+        '''
             Read template file.
 
             :param template_file: Template file path.
@@ -85,7 +85,7 @@ class ReadTemplate(FileChecking):
             :return: Template content for module | None.
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
-        """
+        '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params(
             [('str:template_file', template_file)]

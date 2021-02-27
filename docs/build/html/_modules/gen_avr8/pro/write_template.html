@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.4.0
+                1.4.1
               </div>
             
           
@@ -158,7 +158,7 @@
   <h1>Source code for gen_avr8.pro.write_template</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: UTF-8 -*-</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> Module</span>
 <span class="sd">     write_template.py</span>
 <span class="sd"> Copyright</span>
@@ -176,7 +176,7 @@
 <span class="sd"> Info</span>
 <span class="sd">     Define class WriteTemplate with attribute(s) and method(s).</span>
 <span class="sd">     Write template content with parameters to a project module.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span><span class="p">,</span> <span class="n">chmod</span><span class="p">,</span> <span class="n">mkdir</span>
@@ -189,21 +189,21 @@
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_bad_call_error</span> <span class="kn">import</span> <span class="n">ATSBadCallError</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2019, Free software to use and distributed it.&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.4.0&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.4.1&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
 <div class="viewcode-block" id="WriteTemplate"><a class="viewcode-back" href="../../../gen_avr8.pro.write_template.html#gen_avr8.pro.write_template.WriteTemplate">[docs]</a><span class="k">class</span> <span class="nc">WriteTemplate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Define class WriteTemplate with attribute(s) and method(s).</span>
 <span class="sd">        Write template content with parameters to a project module.</span>
 <span class="sd">        It defines:</span>
@@ -217,54 +217,54 @@
 <span class="sd">                | pro_dir - Property methods for set/get operations.</span>
 <span class="sd">                | check_module - Check project module.</span>
 <span class="sd">                | write - Write a template content to a project module.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__pro_dir&#39;</span><span class="p">)</span>
     <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::WRITE_TEMPLATE&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Initial constructor.</span>
 
 <span class="sd">            :param verbose: Enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">WriteTemplate</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init writer&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pro_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Property method for getting project dir.</span>
 
 <span class="sd">            :return: Project dir | None.</span>
 <span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span>
 
     <span class="nd">@pro_dir</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">pro_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pro_dir</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Property method for setting/creating project dir.</span>
 
 <span class="sd">            :param pro_dir: Project dir.</span>
 <span class="sd">            :type pro_dir: &lt;str&gt;</span>
 <span class="sd">            :exceptions: ATSTypeError | ATSBadCallError</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">checker</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">ATSChecker</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
         <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
             <span class="p">[(</span><span class="s1">&#39;str:pro_dir&#39;</span><span class="p">,</span> <span class="n">pro_dir</span><span class="p">)]</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">pro_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">pro_dir</span><span class="p">)</span>
         <span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">)</span>  <span class="c1"># create project dir</span>
-        <span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">))</span>  <span class="c1"># create build dir</span>
+        <span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">))</span>  <span class="c1"># create build dir</span>
 
 <div class="viewcode-block" id="WriteTemplate.check_module"><a class="viewcode-back" href="../../../gen_avr8.pro.write_template.html#gen_avr8.pro.write_template.WriteTemplate.check_module">[docs]</a>    <span class="k">def</span> <span class="nf">check_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Check project module.</span>
 
 <span class="sd">            :param module: Module name.</span>
@@ -274,7 +274,7 @@
 <span class="sd">            :return: &#39;build&#39; | &#39;source&#39;| None (wrong module name).</span>
 <span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: ATSTypeError | ATSBadCallError</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">checker</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">ATSChecker</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
         <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
             <span class="p">[(</span><span class="s1">&#39;str:module&#39;</span><span class="p">,</span> <span class="n">module</span><span class="p">)]</span>
@@ -291,7 +291,7 @@
         <span class="k">return</span> <span class="n">module_type</span></div>
 
 <div class="viewcode-block" id="WriteTemplate.write"><a class="viewcode-back" href="../../../gen_avr8.pro.write_template.html#gen_avr8.pro.write_template.WriteTemplate.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_data</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Write a template content to a project module.</span>
 
 <span class="sd">            :param project_data: Project data.</span>
@@ -301,7 +301,7 @@
 <span class="sd">            :return: True (success) | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exception: ATSTypeError | ATSBadCallError</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">checker</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">ATSChecker</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
         <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
             <span class="p">[(</span><span class="s1">&#39;dict:project_data&#39;</span><span class="p">,</span> <span class="n">project_data</span><span class="p">)]</span>
@@ -312,19 +312,19 @@
         <span class="n">module_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_module</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">module_type</span><span class="p">):</span>
             <span class="n">project</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;PRO&#39;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
-                <span class="s1">&#39;MCU&#39;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;mcu&#39;</span><span class="p">]),</span>
-                <span class="s1">&#39;OSC&#39;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;osc&#39;</span><span class="p">])</span>
+                <span class="s1">&#39;PRO&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;MCU&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;mcu&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;OSC&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;osc&#39;</span><span class="p">])</span>
             <span class="p">}</span>
             <span class="n">template</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;template&#39;</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">template</span><span class="p">:</span>
                 <span class="n">module</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="k">if</span> <span class="n">module_type</span> <span class="o">==</span> <span class="s1">&#39;source&#39;</span><span class="p">:</span>
-                    <span class="n">module</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">module</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">,</span> <span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">]</span>
                     <span class="p">)</span>
                 <span class="k">if</span> <span class="n">module_type</span> <span class="o">==</span> <span class="s1">&#39;build&#39;</span><span class="p">:</span>
-                    <span class="n">module</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/</span><span class="si">{1}</span><span class="s2">/</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">module</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">/</span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">__pro_dir</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="n">project_data</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">]</span>
                     <span class="p">)</span>
                 <span class="k">if</span> <span class="n">module</span><span class="p">:</span>
