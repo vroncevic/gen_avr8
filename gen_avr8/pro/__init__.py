@@ -4,7 +4,7 @@
  Module
      __init__.py
  Copyright
-     Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_avr8 is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -16,14 +16,13 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class AVR8Setup with attribute(s) and method(s).
+     Defined class AVR8Setup with attribute(s) and method(s).
      Generate AVR project skeleton.
 '''
 
 import sys
 
 try:
-    from ats_utilities.checker import ATSChecker
     from gen_avr8.pro.module_type import ModuleType
     from gen_avr8.pro.mcu_selector import MCUSelector
     from gen_avr8.pro.osc_selector import OSCSelector
@@ -31,19 +30,20 @@ try:
     from gen_avr8.pro.template_type import TemplateType
     from gen_avr8.pro.read_template import ReadTemplate
     from gen_avr8.pro.write_template import WriteTemplate
+    from ats_utilities.checker import ATSChecker
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.config_io.yaml.yaml2object import Yaml2Object
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2019, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,7 +51,7 @@ __status__ = 'Updated'
 
 class AVR8Setup(object):
     '''
-        Define class AVR8Setup with attribute(s) and method(s).
+        Defined class AVR8Setup with attribute(s) and method(s).
         Generate AVR project skeleton.
         It defines:
 
@@ -67,15 +67,12 @@ class AVR8Setup(object):
                 | __init__ - Initial constructor.
                 | project_setup - Property methods for set/get operations.
                 | gen_pro_setup - Generate project skeleton.
+                | __str__ - Dunder method for AVR8Setup.
     '''
 
     __slots__ = (
-        'VERBOSE',
-        '__mcu_sel',
-        '__fosc_sel',
-        '__reader',
-        '__writer',
-        '__project_setup'
+        'VERBOSE', '__mcu_sel', '__fosc_sel',
+        '__reader', '__writer', '__project_setup'
     )
     VERBOSE = 'GEN_AVR8::PRO::AVR8SETUP'
 
@@ -118,8 +115,10 @@ class AVR8Setup(object):
         error, status = checker.check_params(
             [('dict:project_setup', project_setup)]
         )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         self.__project_setup = project_setup
 
     def gen_pro_setup(self, verbose=False):
@@ -171,3 +170,17 @@ class AVR8Setup(object):
             if all(statuses) and len(templates) == len(statuses):
                 status = True
         return True if status else False
+
+    def __str__(self):
+        '''
+            Dunder method for AVR8Setup.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1}, {2}, {3}, {4}, {5})'.format(
+            self.__class__.__name__, str(self.__mcu_sel),
+            str(self.__fosc_sel), str(self.__reader),
+            str(self.__writer), str(self.__project_setup)
+        )

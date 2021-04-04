@@ -4,7 +4,7 @@
  Module
      template_dir.py
  Copyright
-     Copyright (C) 2021 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_avr8 is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -16,8 +16,8 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class TemplateDir with method(s).
-     Check project template directory.
+     Defined class TemplateDir with attribute(s) and method(s).
+     Created API for checking project template directory.
 '''
 
 import sys
@@ -26,15 +26,15 @@ from os.path import isdir
 try:
     from pathlib import Path
     from ats_utilities.console_io.verbose import verbose_message
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2021, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -42,8 +42,8 @@ __status__ = 'Updated'
 
 class TemplateDir(object):
     '''
-        Define class TemplateDir with attribute(s) and method(s).
-        Check project template directory.
+        Defined class TemplateDir with attribute(s) and method(s).
+        Created API for checking project template directory.
         It defines:
 
             :attributes:
@@ -55,6 +55,7 @@ class TemplateDir(object):
                 | check_dir - Check project directory.
                 | setup_conf_dir - Setup configuration directory.
                 | setup_template_dir - Setup template directory.
+                | __str__ - Dunder method for TemplateDir.
     '''
 
     __slots__ = ('VERBOSE', '__CONF_DIR', '__TEMPLATE_DIR')
@@ -124,3 +125,13 @@ class TemplateDir(object):
                 cls.VERBOSE, verbose, 'template directory', template_dir
             )
         return template_dir
+
+    def __str__(self):
+        '''
+            Dunder method for TemplateDir.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ()'.format(self.__class__.__name__)

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.4.1
+                1.5.1
               </div>
             
           
@@ -162,7 +162,7 @@
 <span class="sd"> Module</span>
 <span class="sd">     mcu_selector.py</span>
 <span class="sd"> Copyright</span>
-<span class="sd">     Copyright (C) 2019 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
+<span class="sd">     Copyright (C) 2018 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
 <span class="sd">     gen_avr8 is free software: you can redistribute it and/or modify it</span>
 <span class="sd">     under the terms of the GNU General Public License as published by the</span>
 <span class="sd">     Free Software Foundation, either version 3 of the License, or</span>
@@ -174,7 +174,7 @@
 <span class="sd">     You should have received a copy of the GNU General Public License along</span>
 <span class="sd">     with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <span class="sd"> Info</span>
-<span class="sd">     Define class MCUSelector with attribute(s) and method(s).</span>
+<span class="sd">     Defined class MCUSelector with attribute(s) and method(s).</span>
 <span class="sd">     Selecting MCU target for generating process of project structure.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
@@ -186,15 +186,15 @@
     <span class="kn">from</span> <span class="nn">ats_utilities.config_io.base_check</span> <span class="kn">import</span> <span class="n">FileChecking</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.config_io.yaml.yaml2object</span> <span class="kn">import</span> <span class="n">Yaml2Object</span>
-<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ats_error_message</span><span class="p">:</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">ats_error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2020, Free software to use and distributed it.&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2018, https://vroncevic.github.io/gen_avr8&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.4.1&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/master/LICENSE&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.5.1&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -202,7 +202,7 @@
 
 <div class="viewcode-block" id="MCUSelector"><a class="viewcode-back" href="../../../gen_avr8.pro.mcu_selector.html#gen_avr8.pro.mcu_selector.MCUSelector">[docs]</a><span class="k">class</span> <span class="nc">MCUSelector</span><span class="p">(</span><span class="n">FileChecking</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Define class MCUSelector with attribute(s) and method(s).</span>
+<span class="sd">        Defined class MCUSelector with attribute(s) and method(s).</span>
 <span class="sd">        Selecting MCU target for generating process of project structure.</span>
 <span class="sd">        It defines:</span>
 
@@ -215,6 +215,7 @@
 <span class="sd">                | __init__ - Initial constructor.</span>
 <span class="sd">                | get_mcu_list - Getter for MCU list object.</span>
 <span class="sd">                | choose_mcu - Select MCU target.</span>
+<span class="sd">                | __str__ - Dunder method for MCUSelector.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__MCU_LIST&#39;</span><span class="p">,</span> <span class="s1">&#39;__mcu_list&#39;</span><span class="p">)</span>
@@ -285,7 +286,20 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">mcu_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mcu_list</span><span class="p">[</span><span class="n">mcu_name_index</span><span class="p">]</span>
                     <span class="k">break</span>
-        <span class="k">return</span> <span class="n">mcu_name</span></div></div>
+        <span class="k">return</span> <span class="n">mcu_name</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Dunder method for MCUSelector.</span>
+
+<span class="sd">            :return: Object in a human-readable format.</span>
+<span class="sd">            :rtype: &lt;str&gt;</span>
+<span class="sd">            :exceptions: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">FileChecking</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__mcu_list</span><span class="p">)</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -299,7 +313,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
+        &copy; Copyright 2018, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
 
     </p>
   </div>

@@ -5,7 +5,7 @@
  Module
      gen_avr8_run.py
  Copyright
-     Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_avr8 is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -24,15 +24,15 @@ import sys
 
 try:
     from gen_avr8 import GenAVR8
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2019, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
