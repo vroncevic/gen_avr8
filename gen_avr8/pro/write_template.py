@@ -25,8 +25,8 @@ from os import getcwd, chmod, mkdir
 from string import Template
 
 try:
-    from ats_utilities.checker import ATSChecker
     from gen_avr8.pro.module_type import ModuleType
+    from ats_utilities.checker import ATSChecker
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
@@ -135,6 +135,9 @@ class WriteTemplate(object):
             module_type = 'source'
         if not is_source and is_build:
             module_type = 'build'
+        verbose_message(
+            WriteTemplate.VERBOSE, verbose, 'module type', module_type
+        )
         return module_type
 
     def write(self, project_data, verbose=False):

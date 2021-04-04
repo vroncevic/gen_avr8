@@ -139,6 +139,6 @@ class MCUSelector(FileChecking):
             :exceptions: None
         '''
         return '{0} ({1}, {2})'.format(
-            self.__class__.__name__, FileChecking.__str__(self).
+            self.__class__.__name__, FileChecking.__str__(self),
             str(self.__mcu_list)
         )

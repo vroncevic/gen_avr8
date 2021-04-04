@@ -155,8 +155,8 @@ class AVR8Setup(object):
             for template, module in zip(templates, modules):
                 project_data['template'] = self.__reader.read(
                     template_file='{0}{1}/{2}'.format(
-                    TemplateDir.setup_template_dir(verbose),
-                    self.__project_setup['type'], template
+                        TemplateDir.setup_template_dir(verbose),
+                        self.__project_setup['type'], template
                     ), verbose=verbose
                 )
                 project_data['module'] = ModuleType.pre_process_module(
