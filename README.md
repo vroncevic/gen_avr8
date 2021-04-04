@@ -46,7 +46,10 @@ Python package is located at **[pypi.org](https://pypi.org/project/gen_avr8/)**.
 
 You can install by using pip
 ```
+#python2
 pip install gen_avr8
+#python3
+pip3 install gen_avr8
 ```
 
 ##### Install using setuptools
@@ -57,9 +60,14 @@ To install modules, locate and run setup.py, type the following:
 ```
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
+#python2
 python setup.py install_lib
 python setup.py install_data
 python setup.py install_egg_info
+#python3
+python3 setup.py install_lib
+python3 setup.py install_data
+python3 setup.py install_egg_info
 ```
 
 ##### Install using docker

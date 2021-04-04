@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.4.1
+                1.5.1
               </div>
             
           
@@ -160,7 +160,7 @@
 <span class="sd"> Module</span>
 <span class="sd">     __init__.py</span>
 <span class="sd"> Copyright</span>
-<span class="sd">     Copyright (C) 2019 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
+<span class="sd">     Copyright (C) 2018 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
 <span class="sd">     gen_avr8 is free software: you can redistribute it and/or modify it</span>
 <span class="sd">     under the terms of the GNU General Public License as published by the</span>
 <span class="sd">     Free Software Foundation, either version 3 of the License, or</span>
@@ -172,14 +172,13 @@
 <span class="sd">     You should have received a copy of the GNU General Public License along</span>
 <span class="sd">     with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <span class="sd"> Info</span>
-<span class="sd">     Define class AVR8Setup with attribute(s) and method(s).</span>
+<span class="sd">     Defined class AVR8Setup with attribute(s) and method(s).</span>
 <span class="sd">     Generate AVR project skeleton.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.checker</span> <span class="kn">import</span> <span class="n">ATSChecker</span>
     <span class="kn">from</span> <span class="nn">gen_avr8.pro.module_type</span> <span class="kn">import</span> <span class="n">ModuleType</span>
     <span class="kn">from</span> <span class="nn">gen_avr8.pro.mcu_selector</span> <span class="kn">import</span> <span class="n">MCUSelector</span>
     <span class="kn">from</span> <span class="nn">gen_avr8.pro.osc_selector</span> <span class="kn">import</span> <span class="n">OSCSelector</span>
@@ -187,19 +186,20 @@
     <span class="kn">from</span> <span class="nn">gen_avr8.pro.template_type</span> <span class="kn">import</span> <span class="n">TemplateType</span>
     <span class="kn">from</span> <span class="nn">gen_avr8.pro.read_template</span> <span class="kn">import</span> <span class="n">ReadTemplate</span>
     <span class="kn">from</span> <span class="nn">gen_avr8.pro.write_template</span> <span class="kn">import</span> <span class="n">WriteTemplate</span>
+    <span class="kn">from</span> <span class="nn">ats_utilities.checker</span> <span class="kn">import</span> <span class="n">ATSChecker</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.config_io.yaml.yaml2object</span> <span class="kn">import</span> <span class="n">Yaml2Object</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_bad_call_error</span> <span class="kn">import</span> <span class="n">ATSBadCallError</span>
-<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ats_error_message</span><span class="p">:</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">ats_error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2019, Free software to use and distributed it.&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2018, https://vroncevic.github.io/gen_avr8&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.4.1&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/master/LICENSE&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.5.1&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -207,7 +207,7 @@
 
 <div class="viewcode-block" id="AVR8Setup"><a class="viewcode-back" href="../../gen_avr8.pro.html#gen_avr8.pro.AVR8Setup">[docs]</a><span class="k">class</span> <span class="nc">AVR8Setup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Define class AVR8Setup with attribute(s) and method(s).</span>
+<span class="sd">        Defined class AVR8Setup with attribute(s) and method(s).</span>
 <span class="sd">        Generate AVR project skeleton.</span>
 <span class="sd">        It defines:</span>
 
@@ -223,15 +223,12 @@
 <span class="sd">                | __init__ - Initial constructor.</span>
 <span class="sd">                | project_setup - Property methods for set/get operations.</span>
 <span class="sd">                | gen_pro_setup - Generate project skeleton.</span>
+<span class="sd">                | __str__ - Dunder method for AVR8Setup.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;__mcu_sel&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;__fosc_sel&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;__reader&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;__writer&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;__project_setup&#39;</span>
+        <span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__mcu_sel&#39;</span><span class="p">,</span> <span class="s1">&#39;__fosc_sel&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;__reader&#39;</span><span class="p">,</span> <span class="s1">&#39;__writer&#39;</span><span class="p">,</span> <span class="s1">&#39;__project_setup&#39;</span>
     <span class="p">)</span>
     <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::AVR8SETUP&#39;</span>
 
@@ -274,8 +271,10 @@
         <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
             <span class="p">[(</span><span class="s1">&#39;dict:project_setup&#39;</span><span class="p">,</span> <span class="n">project_setup</span><span class="p">)]</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span> <span class="o">=</span> <span class="n">project_setup</span>
 
 <div class="viewcode-block" id="AVR8Setup.gen_pro_setup"><a class="viewcode-back" href="../../gen_avr8.pro.html#gen_avr8.pro.AVR8Setup.gen_pro_setup">[docs]</a>    <span class="k">def</span> <span class="nf">gen_pro_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -326,7 +325,21 @@
                 <span class="p">)</span>
             <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">statuses</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">templates</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">statuses</span><span class="p">):</span>
                 <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">False</span></div></div>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Dunder method for AVR8Setup.</span>
+
+<span class="sd">            :return: Object in a human-readable format.</span>
+<span class="sd">            :rtype: &lt;str&gt;</span>
+<span class="sd">            :exceptions: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">, </span><span class="si">{4}</span><span class="s1">, </span><span class="si">{5}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__mcu_sel</span><span class="p">),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__fosc_sel</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="p">),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__project_setup</span><span class="p">)</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -340,7 +353,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
+        &copy; Copyright 2018, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
 
     </p>
   </div>

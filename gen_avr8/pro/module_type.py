@@ -4,7 +4,7 @@
  Module
      module_type.py
  Copyright
-     Copyright (C) 2021 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_avr8 is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -16,15 +16,15 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class ModuleType with attribute(s) and method(s).
+     Defined class ModuleType with attribute(s) and method(s).
      Check module type (it can be source module | build module).
 '''
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2021, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -32,7 +32,7 @@ __status__ = 'Updated'
 
 class ModuleType(object):
     '''
-        Define class ModuleType with attribute(s) and method(s).
+        Defined class ModuleType with attribute(s) and method(s).
         Check module type (it can be source module | build module).
         It defines:
 
@@ -44,6 +44,7 @@ class ModuleType(object):
                 | pre_process_module - Process module name.
                 | is_source_module - Check is source module.
                 | is_build_module - Check is build module.
+                | __str__ - Dunder method for ModuleType.
     '''
 
     __slots__ = ('__SOURCE', '__BUILD')
@@ -111,3 +112,13 @@ class ModuleType(object):
             if build in module:
                 build_type = True
         return build_type
+
+    def __str__(self):
+        '''
+            Dunder method for ModuleType.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ()'.format(self.__class__.__name__)

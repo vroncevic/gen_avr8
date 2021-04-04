@@ -52,15 +52,23 @@ To install **gen_avr8** type the following:
 
     tar xvzf gen_avr8-x.y.z.tar.gz
     cd gen_avr8-x.y.z/
+    #python2
     python setup.py install_lib
     python setup.py install_data
     python setup.py install_egg_info
+    #python3
+    python3 setup.py install_lib
+    python3 setup.py install_data
+    python3 setup.py install_egg_info
 
 You can use Docker to create image/container, or You can use pip to install:
 
 .. code-block:: bash
 
+    #python2
     pip install gen_avr8
+    #python3
+    pip3 install gen_avr8
 
 |GitHub docker checker|
 

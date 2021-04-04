@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.4.1
+                1.5.1
               </div>
             
           
@@ -188,13 +188,21 @@ other information that should be provided before the modules are installed.</p>
 <p>To install <strong>gen_avr8</strong> type the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf gen_avr8-x.y.z.tar.gz
 <span class="nb">cd</span> gen_avr8-x.y.z/
+<span class="c1">#python2</span>
 python setup.py install_lib
 python setup.py install_data
 python setup.py install_egg_info
+<span class="c1">#python3</span>
+python3 setup.py install_lib
+python3 setup.py install_data
+python3 setup.py install_egg_info
 </pre></div>
 </div>
 <p>You can use Docker to create image/container, or You can use pip to install:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install gen_avr8
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#python2</span>
+pip install gen_avr8
+<span class="c1">#python3</span>
+pip3 install gen_avr8
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/vroncevic/gen_avr8/actions?query=workflow%3A%22gen_avr8+docker+checker%22"><img alt="GitHub docker checker" src="https://github.com/vroncevic/gen_avr8/workflows/gen_avr8%20docker%20checker/badge.svg" /></a></p>
@@ -353,7 +361,7 @@ at your option, any later version of Python 3 you may have available.</p>
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
+        &copy; Copyright 2018, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
 
     </p>
   </div>

@@ -4,7 +4,7 @@
  Module
      write_template.py
  Copyright
-     Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_avr8 is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -30,15 +30,15 @@ try:
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2019, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.4.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -59,6 +59,7 @@ class WriteTemplate(object):
                 | pro_dir - Property methods for set/get operations.
                 | check_module - Check project module.
                 | write - Write a template content to a project module.
+                | __str__ - Dunder method for WriteTemplate.
     '''
 
     __slots__ = ('VERBOSE', '__pro_dir')
@@ -99,11 +100,13 @@ class WriteTemplate(object):
         error, status = checker.check_params(
             [('str:pro_dir', pro_dir)]
         )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         self.__pro_dir = '{0}/{1}'.format(getcwd(), pro_dir)
-        mkdir(self.__pro_dir)  # create project dir
-        mkdir('{0}/{1}'.format(self.__pro_dir, 'build'))  # create build dir
+        mkdir(self.__pro_dir)
+        mkdir('{0}/{1}'.format(self.__pro_dir, 'build'))
 
     def check_module(self, module, verbose=False):
         '''
@@ -121,8 +124,10 @@ class WriteTemplate(object):
         error, status = checker.check_params(
             [('str:module', module)]
         )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         is_source, is_build, module_type = False, False, None
         is_source = ModuleType.is_source_module(module)
         is_build = ModuleType.is_build_module(module)
@@ -148,8 +153,10 @@ class WriteTemplate(object):
         error, status = checker.check_params(
             [('dict:project_data', project_data)]
         )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         status = False
         module_type = self.check_module(project_data['module'])
         if bool(module_type):
@@ -180,3 +187,15 @@ class WriteTemplate(object):
                             chmod(module, 0o666)
                             status = True
         return True if status else False
+
+    def __str__(self):
+        '''
+            Dunder method for WriteTemplate.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1})'.format(
+            self.__class__.__name__, self.__pro_dir
+        )
