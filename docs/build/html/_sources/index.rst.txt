@@ -66,9 +66,9 @@ You can use Docker to create image/container, or You can use pip to install:
 .. code-block:: bash
 
     #python2
-    pip install gen_avr8
+    pip install gen-avr8
     #python3
-    pip3 install gen_avr8
+    pip3 install gen-avr8
 
 |GitHub docker checker|
 
@@ -82,7 +82,7 @@ Create AVR8 Project Blink, MCU/FOSC will be selected during generation process:
 
 .. code-block:: bash
 
-    python gen_avr8_run -g Blink -t app
+    python gen_avr8_run.py -g Blink -t app
 
 Dependencies
 -------------
@@ -210,7 +210,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2019 by `vroncevic.github.io/gen_avr8 <https://vroncevic.github.io/gen_avr8>`_
+Copyright (C) 2018 by `vroncevic.github.io/gen_avr8 <https://vroncevic.github.io/gen_avr8>`_
 
 **gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,

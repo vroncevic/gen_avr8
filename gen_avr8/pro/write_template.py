@@ -16,8 +16,8 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class WriteTemplate with attribute(s) and method(s).
-     Write template content with parameters to a project module.
+     Defined class WriteTemplate with attribute(s) and method(s).
+     Created API for Write template content with parameters.
 '''
 
 import sys
@@ -37,8 +37,8 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
-__version__ = '1.5.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
+__version__ = '1.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -46,8 +46,8 @@ __status__ = 'Updated'
 
 class WriteTemplate(object):
     '''
-        Define class WriteTemplate with attribute(s) and method(s).
-        Write template content with parameters to a project module.
+        Defined class WriteTemplate with attribute(s) and method(s).
+        Created API for Write template content with parameters.
         It defines:
 
             :attributes:
