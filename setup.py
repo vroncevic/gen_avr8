@@ -216,7 +216,7 @@ setup(
             ['{0}{1}'.format(TEMPLATE_DIR, 'lib/avr_lib_h.template')]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
+            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
             ['{0}{1}'.format(TEMPLATE_DIR, 'lib/objects.template')]
         ),
         (

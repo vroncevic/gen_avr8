@@ -175,6 +175,7 @@
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
@@ -275,14 +276,14 @@
                     <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-h&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-h&#39;</span><span class="p">)</span>
-            <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">pro</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">type</span><span class="p">):</span>
-                <span class="n">pro_setup</span> <span class="o">=</span> <span class="p">{}</span>
-                <span class="n">pro_setup</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pro</span>
-                <span class="n">pro_setup</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">type</span>
-                <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="nb">bool</span><span class="p">(</span><span class="n">pro_setup</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span> <span class="nb">bool</span><span class="p">(</span><span class="n">pro_setup</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])]):</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">project_exists</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+                <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">args</span><span class="o">.</span><span class="n">pro</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">project_exists</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">pro</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">type</span><span class="p">):</span>
                     <span class="n">generator</span> <span class="o">=</span> <span class="n">AVR8Setup</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">verbose</span> <span class="ow">or</span> <span class="n">verbose</span><span class="p">)</span>
-                    <span class="n">generator</span><span class="o">.</span><span class="n">project_setup</span> <span class="o">=</span> <span class="n">pro_setup</span>
+                    <span class="n">generator</span><span class="o">.</span><span class="n">project_setup</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">pro</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
                     <span class="nb">print</span><span class="p">(</span>
                         <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1"> </span><span class="si">{2}</span><span class="s1"> [</span><span class="si">{3}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                             <span class="s1">&#39;[</span><span class="si">{0}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">GenAVR8</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()),</span>
@@ -307,12 +308,19 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                             <span class="s1">&#39;generation failed&#39;</span><span class="p">,</span> <span class="n">ATSLogger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                         <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">error_message</span><span class="p">(</span>
+                        <span class="n">GenAVR8</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="s1">&#39;provide project name and type&#39;</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
+                        <span class="s1">&#39;provide project name and type&#39;</span><span class="p">,</span> <span class="n">ATSLogger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
+                    <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">error_message</span><span class="p">(</span>
-                    <span class="n">GenAVR8</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="s1">&#39;provide project name and type&#39;</span>
+                    <span class="n">GenAVR8</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="s1">&#39;project dir already exist&#39;</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
-                    <span class="s1">&#39;provide project name and type&#39;</span><span class="p">,</span> <span class="n">ATSLogger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
+                    <span class="s1">&#39;project dir already exist&#39;</span><span class="p">,</span> <span class="n">ATSLogger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                 <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">error_message</span><span class="p">(</span><span class="n">GenAVR8</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="s1">&#39;tool is not operational&#39;</span><span class="p">)</span>

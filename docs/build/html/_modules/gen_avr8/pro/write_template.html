@@ -345,12 +345,18 @@
                             <span class="p">)</span>
                             <span class="n">module_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">project</span><span class="p">))</span>
                             <span class="n">chmod</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="mo">0o666</span><span class="p">)</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">check_mode</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">check_format</span><span class="p">(</span>
-                                <span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
-                            <span class="p">)</span>
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_file_ok</span><span class="p">():</span>
+                            <span class="n">file_extension</span> <span class="o">=</span> <span class="kc">None</span>
+                            <span class="k">if</span> <span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
+                                <span class="n">file_extension</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">check_format</span><span class="p">(</span>
+                                    <span class="n">module</span><span class="p">,</span> <span class="n">file_extension</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+                                <span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">check_mode</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+                                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_file_ok</span><span class="p">():</span>
+                                    <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">file_extension</span> <span class="o">=</span> <span class="n">module</span>
                                 <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">status</span></div>
 

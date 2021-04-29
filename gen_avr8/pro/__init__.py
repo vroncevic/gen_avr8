@@ -64,7 +64,7 @@ class AVR8Setup:
                 | __project_setup - project setup.
             :methods:
                 | __init__ - initial constructor.
-                | project_setup - property methods for set/get operations.
+                | project_setup - property methods for set operations.
                 | gen_pro_setup - generate project skeleton.
                 | __str__ - dunder method for AVR8Setup.
     '''
@@ -84,37 +84,31 @@ class AVR8Setup:
         self.__fosc_sel = OSCSelector(verbose=verbose)
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(verbose=verbose)
-        self.__project_setup = None
+        self.__project_setup = dict()
 
-    @property
-    def project_setup(self):
-        '''
-            Getter for writer object.
-
-            :return: write template object | None.
-            :rtype: <WriteTemplate> | <NoneType>
-            :exceptions: None
-        '''
-        return self.__project_setup
-
-    @project_setup.setter
-    def project_setup(self, project_setup):
+    def project_setup(self, project_name, project_type, verbose=False):
         '''
             Setter for project setup.
 
-            :param project_setup: project setup.
-            :type project_setup: <dict>
+            :param project_name: project name.
+            :type project_name: <str>
+            :param project_type: project type.
+            :type project_type: <str>
+            :param verbose: enable/disable verbose option.
+            :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params([
-            ('dict:project_setup', project_setup)
+            ('str:project_name', project_name),
+            ('str:project_type', project_type)
         ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        self.__project_setup = project_setup
+        self.__project_setup.update({'name': project_name})
+        self.__project_setup.update({'type': project_type})
 
     def gen_pro_setup(self, verbose=False):
         '''

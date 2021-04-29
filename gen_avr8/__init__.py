@@ -21,6 +21,7 @@
 '''
 
 import sys
+from os import getcwd
 
 try:
     from pathlib import Path
@@ -121,14 +122,14 @@ class GenAVR8(CfgCLI):
                     sys.argv.append('-h')
             else:
                 sys.argv.append('-h')
-            args = self.parse_args(sys.argv)
-            if bool(args.pro) and bool(args.type):
-                pro_setup = {}
-                pro_setup['name'] = args.pro
-                pro_setup['type'] = args.type
-                if all([bool(pro_setup['name']), bool(pro_setup['type'])]):
+            args = self.parse_args(sys.argv[1:])
+            project_exists = Path(
+                '{0}/{1}'.format(getcwd(), args.pro)
+            ).exists()
+            if not project_exists:
+                if bool(args.pro) and bool(args.type):
                     generator = AVR8Setup(verbose=args.verbose or verbose)
-                    generator.project_setup = pro_setup
+                    generator.project_setup(args.pro, args.type)
                     print(
                         '{0} {1} {2} [{3}]'.format(
                             '[{0}]'.format(GenAVR8.GEN_VERBOSE.lower()),
@@ -153,12 +154,19 @@ class GenAVR8(CfgCLI):
                         self.logger.write_log(
                             'generation failed', ATSLogger.ATS_ERROR
                         )
+                else:
+                    error_message(
+                        GenAVR8.GEN_VERBOSE, 'provide project name and type'
+                    )
+                    self.logger.write_log(
+                        'provide project name and type', ATSLogger.ATS_ERROR
+                    )
             else:
                 error_message(
-                    GenAVR8.GEN_VERBOSE, 'provide project name and type'
+                    GenAVR8.GEN_VERBOSE, 'project dir already exist'
                 )
                 self.logger.write_log(
-                    'provide project name and type', ATSLogger.ATS_ERROR
+                    'project dir already exist', ATSLogger.ATS_ERROR
                 )
         else:
             error_message(GenAVR8.GEN_VERBOSE, 'tool is not operational')

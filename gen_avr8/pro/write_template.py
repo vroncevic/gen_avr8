@@ -187,12 +187,18 @@ class WriteTemplate(FileChecking):
                             )
                             module_file.write(template.substitute(project))
                             chmod(module, 0o666)
-                            self.check_path(module, verbose=verbose)
-                            self.check_mode('w', verbose=verbose)
-                            self.check_format(
-                                module, module.split('.')[1], verbose=verbose
-                            )
-                            if self.is_file_ok():
+                            file_extension = None
+                            if '.' in module:
+                                file_extension = module.split('.')[1]
+                                self.check_format(
+                                    module, file_extension, verbose=verbose
+                                )
+                                self.check_path(module, verbose=verbose)
+                                self.check_mode('w', verbose=verbose)
+                                if self.is_file_ok():
+                                    status = True
+                            else:
+                                file_extension = module
                                 status = True
         return status
 
