@@ -24,6 +24,7 @@ import sys
 
 try:
     from pathlib import Path
+    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.console_io.error import error_message
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -35,8 +36,8 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
-__version__ = '1.5.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -49,33 +50,33 @@ class MCUSelector(FileChecking):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __MCU_LIST - Configuration file with MCU list.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | MCU_LIST - configuration file with MCU list.
                 | __mcu_list - MCU list.
             :methods:
-                | __init__ - Initial constructor.
-                | get_mcu_list - Getter for MCU list object.
-                | choose_mcu - Select MCU target.
-                | __str__ - Dunder method for MCUSelector.
+                | __init__ - initial constructor.
+                | get_mcu_list - getter for MCU list object.
+                | choose_mcu - select MCU target.
+                | __str__ - dunder method for MCUSelector.
     '''
 
-    __slots__ = ('VERBOSE', '__MCU_LIST', '__mcu_list')
-    VERBOSE = 'GEN_AVR8::PRO::MCU_SELECTOR'
-    __MCU_LIST = '/../conf/mcu.yaml'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AVR8::PRO::MCU_SELECTOR'
+    MCU_LIST = '/../conf/mcu.yaml'
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(MCUSelector.VERBOSE, verbose, 'init MCU selector')
         FileChecking.__init__(self, verbose=verbose)
+        verbose_message(MCUSelector.GEN_VERBOSE, verbose, 'init MCU selector')
         mcu_list = '{0}{1}'.format(
-            Path(__file__).parent, MCUSelector.__MCU_LIST
+            Path(__file__).parent, MCUSelector.MCU_LIST
         )
         self.check_path(file_path=mcu_list, verbose=verbose)
         self.check_mode(file_mode='r', verbose=verbose)
@@ -103,13 +104,13 @@ class MCUSelector(FileChecking):
         '''
             Select MCU target.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: MCU name | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
-        verbose_message(MCUSelector.VERBOSE, verbose, 'select MCU')
+        verbose_message(MCUSelector.GEN_VERBOSE, verbose, 'select MCU')
         mcu_name_index, mcu_name = -1, None
         if bool(self.__mcu_list):
             while True:
@@ -123,7 +124,7 @@ class MCUSelector(FileChecking):
                     mcu_name_index = int(input(' select MCU: '))
                 if mcu_name_index not in range(len(self.__mcu_list)):
                     error_message(
-                        MCUSelector.VERBOSE, 'not an appropriate choice'
+                        MCUSelector.GEN_VERBOSE, 'not an appropriate choice'
                     )
                 else:
                     mcu_name = self.__mcu_list[mcu_name_index]
@@ -134,7 +135,7 @@ class MCUSelector(FileChecking):
         '''
             Dunder method for MCUSelector.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

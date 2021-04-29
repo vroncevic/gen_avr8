@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.5.1
+                1.7.1
               </div>
             
           
@@ -181,55 +181,53 @@
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2018, https://vroncevic.github.io/gen_avr8&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/master/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.5.1&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.7.1&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
-<div class="viewcode-block" id="ModuleType"><a class="viewcode-back" href="../../../gen_avr8.pro.module_type.html#gen_avr8.pro.module_type.ModuleType">[docs]</a><span class="k">class</span> <span class="nc">ModuleType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ModuleType"><a class="viewcode-back" href="../../../gen_avr8.pro.module_type.html#gen_avr8.pro.module_type.ModuleType">[docs]</a><span class="k">class</span> <span class="nc">ModuleType</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Defined class ModuleType with attribute(s) and method(s).</span>
 <span class="sd">        Check module type (it can be source module | build module).</span>
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | __slots__ - Setting class slots.</span>
-<span class="sd">                | __SOURCE - List of expected source extensions.</span>
-<span class="sd">                | __BUILD - List of expected build extensions/files.</span>
+<span class="sd">                | SOURCE - list of expected source extensions.</span>
+<span class="sd">                | BUILD - list of expected build extensions/files.</span>
 <span class="sd">            :methods:</span>
-<span class="sd">                | pre_process_module - Process module name.</span>
-<span class="sd">                | is_source_module - Check is source module.</span>
-<span class="sd">                | is_build_module - Check is build module.</span>
-<span class="sd">                | __str__ - Dunder method for ModuleType.</span>
+<span class="sd">                | pre_process_module - process module name.</span>
+<span class="sd">                | is_source_module - check is source module.</span>
+<span class="sd">                | is_build_module - check is build module.</span>
+<span class="sd">                | __str__ - dunder method for ModuleType.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__SOURCE&#39;</span><span class="p">,</span> <span class="s1">&#39;__BUILD&#39;</span><span class="p">)</span>
-    <span class="n">__SOURCE</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span> <span class="s1">&#39;.h&#39;</span><span class="p">]</span>
-    <span class="n">__BUILD</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.mk&#39;</span><span class="p">,</span> <span class="s1">&#39;Makefile&#39;</span><span class="p">]</span>
+    <span class="n">SOURCE</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span> <span class="s1">&#39;.h&#39;</span><span class="p">]</span>
+    <span class="n">BUILD</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.mk&#39;</span><span class="p">,</span> <span class="s1">&#39;Makefile&#39;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="ModuleType.pre_process_module"><a class="viewcode-back" href="../../../gen_avr8.pro.module_type.html#gen_avr8.pro.module_type.ModuleType.pre_process_module">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">pre_process_module</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pro_type</span><span class="p">,</span> <span class="n">pro_name</span><span class="p">,</span> <span class="n">module</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Process module name.</span>
 
-<span class="sd">            :param pro_type: Project type.</span>
+<span class="sd">            :param pro_type: project type.</span>
 <span class="sd">            :type pro_type: &lt;str&gt;</span>
-<span class="sd">            :param pro_name: Project name.</span>
+<span class="sd">            :param pro_name: project name.</span>
 <span class="sd">            :type pro_name: &lt;str&gt;</span>
-<span class="sd">            :param module: Module name.</span>
+<span class="sd">            :param module: module name.</span>
 <span class="sd">            :type module: &lt;str&gt;</span>
-<span class="sd">            :return: Processed module name.</span>
+<span class="sd">            :return: processed module name.</span>
 <span class="sd">            :rtype: &lt;str&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">module_name</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">is_source_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">pro_type</span> <span class="o">==</span> <span class="s1">&#39;lib&#39;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__SOURCE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
                     <span class="n">module_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">.c&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pro_name</span><span class="p">)</span>
-                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__SOURCE</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
                     <span class="n">module_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">.h&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pro_name</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">pro_type</span> <span class="o">==</span> <span class="s1">&#39;app&#39;</span><span class="p">:</span>
                 <span class="n">module_name</span> <span class="o">=</span> <span class="n">module</span>
@@ -242,14 +240,14 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Check is source module.</span>
 
-<span class="sd">            :param module: Module name.</span>
+<span class="sd">            :param module: module name.</span>
 <span class="sd">            :type module: &lt;str&gt;</span>
 <span class="sd">            :return: True | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">source_type</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__SOURCE</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
                 <span class="n">source_type</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">source_type</span></div>
@@ -259,14 +257,14 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Check is build module.</span>
 
-<span class="sd">            :param module: Module name.</span>
+<span class="sd">            :param module: module name.</span>
 <span class="sd">            :type module: &lt;str&gt;</span>
 <span class="sd">            :return: True | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">build_type</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">for</span> <span class="n">build</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__BUILD</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">build</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">BUILD</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">build</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
                 <span class="n">build_type</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">build_type</span></div>
@@ -275,7 +273,7 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Dunder method for ModuleType.</span>
 
-<span class="sd">            :return: Object in a human-readable format.</span>
+<span class="sd">            :return: object in a human-readable format.</span>
 <span class="sd">            :rtype: &lt;str&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>

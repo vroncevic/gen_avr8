@@ -31,8 +31,8 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
-__version__ = '1.5.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'

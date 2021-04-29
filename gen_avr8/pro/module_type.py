@@ -23,55 +23,53 @@
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
-__version__ = '1.5.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class ModuleType(object):
+class ModuleType:
     '''
         Defined class ModuleType with attribute(s) and method(s).
         Check module type (it can be source module | build module).
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | __SOURCE - List of expected source extensions.
-                | __BUILD - List of expected build extensions/files.
+                | SOURCE - list of expected source extensions.
+                | BUILD - list of expected build extensions/files.
             :methods:
-                | pre_process_module - Process module name.
-                | is_source_module - Check is source module.
-                | is_build_module - Check is build module.
-                | __str__ - Dunder method for ModuleType.
+                | pre_process_module - process module name.
+                | is_source_module - check is source module.
+                | is_build_module - check is build module.
+                | __str__ - dunder method for ModuleType.
     '''
 
-    __slots__ = ('__SOURCE', '__BUILD')
-    __SOURCE = ['.c', '.h']
-    __BUILD = ['.mk', 'Makefile']
+    SOURCE = ['.c', '.h']
+    BUILD = ['.mk', 'Makefile']
 
     @classmethod
     def pre_process_module(cls, pro_type, pro_name, module):
         '''
             Process module name.
 
-            :param pro_type: Project type.
+            :param pro_type: project type.
             :type pro_type: <str>
-            :param pro_name: Project name.
+            :param pro_name: project name.
             :type pro_name: <str>
-            :param module: Module name.
+            :param module: module name.
             :type module: <str>
-            :return: Processed module name.
+            :return: processed module name.
             :rtype: <str>
             :exceptions: None
         '''
         module_name = None
         if cls.is_source_module(module):
             if pro_type == 'lib':
-                if cls.__SOURCE[0] in module:
+                if cls.SOURCE[0] in module:
                     module_name = '{0}.c'.format(pro_name)
-                if cls.__SOURCE[1] in module:
+                if cls.SOURCE[1] in module:
                     module_name = '{0}.h'.format(pro_name)
             elif pro_type == 'app':
                 module_name = module
@@ -84,14 +82,14 @@ class ModuleType(object):
         '''
             Check is source module.
 
-            :param module: Module name.
+            :param module: module name.
             :type module: <str>
             :return: True | False.
             :rtype: <bool>
             :exceptions: None
         '''
         source_type = False
-        for source in cls.__SOURCE:
+        for source in cls.SOURCE:
             if source in module:
                 source_type = True
         return source_type
@@ -101,14 +99,14 @@ class ModuleType(object):
         '''
             Check is build module.
 
-            :param module: Module name.
+            :param module: module name.
             :type module: <str>
             :return: True | False.
             :rtype: <bool>
             :exceptions: None
         '''
         build_type = False
-        for build in cls.__BUILD:
+        for build in cls.BUILD:
             if build in module:
                 build_type = True
         return build_type
@@ -117,7 +115,7 @@ class ModuleType(object):
         '''
             Dunder method for ModuleType.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

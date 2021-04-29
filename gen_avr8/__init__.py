@@ -21,11 +21,14 @@
 '''
 
 import sys
+from os import getcwd
 
 try:
     from pathlib import Path
     from gen_avr8.pro import AVR8Setup
+    from ats_utilities.logging import ATSLogger
     from ats_utilities.cli.cfg_cli import CfgCLI
+    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
@@ -36,8 +39,8 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
-__version__ = '1.5.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -50,52 +53,62 @@ class GenAVR8(CfgCLI):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __CONFIG - Tool info file path.
-                | __OPS - Tool options (list).
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | CONFIG - tool info file path.
+                | OPS - tool options (list).
+                | logger - logger object API.
             :methods:
-                | __init__ - Initial constructor.
-                | process - Process and run tool option.
-                | __str__ - Dunder method for GenAVR8.
+                | __init__ - initial constructor.
+                | process - process and run tool option.
+                | __str__ - dunder method for GenAVR8.
     '''
 
-    __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
-    VERBOSE = 'GEN_AVR8'
-    __CONFIG = '/conf/gen_avr8.cfg'
-    __OPS = ['-g', '--gen', '-t', '--type', '-v']
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AVR8'
+    CONFIG = '/conf/gen_avr8.cfg'
+    LOG = '/log/gen_avr8.log'
+    OPS = ['-g', '--gen', '-t', '--type', '-v', '--verbose', '--version']
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(GenAVR8.VERBOSE, verbose, 'init tool info')
         current_dir = Path(__file__).resolve().parent
-        base_info = '{0}{1}'.format(current_dir, GenAVR8.__CONFIG)
+        base_info = '{0}{1}'.format(current_dir, GenAVR8.CONFIG)
         CfgCLI.__init__(self, base_info, verbose=verbose)
+        verbose_message(GenAVR8.GEN_VERBOSE, verbose, 'init tool info')
+        self.logger = ATSLogger(
+            GenAVR8.GEN_VERBOSE.lower(),
+            '{0}{1}'.format(current_dir, GenAVR8.LOG),
+            verbose=verbose
+        )
         if self.tool_operational:
             self.add_new_option(
-                GenAVR8.__OPS[0], GenAVR8.__OPS[1], dest='pro',
+                GenAVR8.OPS[0], GenAVR8.OPS[1], dest='pro',
                 help='generate AVR8 project skeleton'
             )
             self.add_new_option(
-                GenAVR8.__OPS[2], GenAVR8.__OPS[3], dest='type',
+                GenAVR8.OPS[2], GenAVR8.OPS[3], dest='type',
                 help='set app/lib type of project'
             )
             self.add_new_option(
-                GenAVR8.__OPS[4], action='store_true', default=False,
-                help='activate verbose mode for generation'
+                GenAVR8.OPS[4], GenAVR8.OPS[5], action='store_true',
+                default=False, help='activate verbose mode for generation'
+            )
+            self.add_new_option(
+                GenAVR8.OPS[6], action='version', version=__version__
             )
 
     def process(self, verbose=False):
         '''
             Process and run operation.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: True (success) | False.
             :rtype: <bool>
@@ -105,38 +118,62 @@ class GenAVR8(CfgCLI):
         if self.tool_operational:
             if len(sys.argv) >= 4:
                 options = [arg for i, arg in enumerate(sys.argv) if i %2 != 0]
-                if any([arg not in GenAVR8.__OPS for arg in options]):
-                    sys.argv = []
+                if any([arg not in GenAVR8.OPS for arg in options]):
                     sys.argv.append('-h')
             else:
                 sys.argv.append('-h')
-            opts, args = self.parse_args(sys.argv)
-            if bool(opts.gen) and bool(opts.type):
-                pro_setup = {}
-                pro_setup['name'] = opts.pro
-                pro_setup['type'] = opts.type
-                if all([bool(pro_setup['name']), bool(pro_setup['type'])]):
-                    generator = AVR8Setup(verbose=opts.v or verbose)
-                    generator.project_setup = pro_setup
+            args = self.parse_args(sys.argv[1:])
+            project_exists = Path(
+                '{0}/{1}'.format(getcwd(), args.pro)
+            ).exists()
+            if not project_exists:
+                if bool(args.pro) and bool(args.type):
+                    generator = AVR8Setup(verbose=args.verbose or verbose)
+                    generator.project_setup(args.pro, args.type)
                     print(
                         '{0} {1} {2} [{3}]'.format(
-                            '[{0}]'.format(GenAVR8.VERBOSE.lower()),
+                            '[{0}]'.format(GenAVR8.GEN_VERBOSE.lower()),
                             'generating AVR8 project skeleton',
-                            opts.type, opts.pro
+                            args.type, args.pro
                         )
                     )
-                    status = generator.gen_pro_setup(verbose=opts.v or verbose)
+                    status = generator.gen_pro_setup(
+                        verbose=args.verbose or verbose
+                    )
                     if status:
-                        success_message(GenAVR8.VERBOSE, 'done\n')
+                        success_message(GenAVR8.GEN_VERBOSE, 'done\n')
+                        self.logger.write_log(
+                            '{0} {1} done'.format(
+                                'generation of project', args.pro
+                            ), ATSLogger.ATS_INFO
+                        )
                     else:
                         error_message(
-                            GenAVR8.VERBOSE, 'failed to generate project'
+                            GenAVR8.GEN_VERBOSE, 'failed to generate project'
                         )
+                        self.logger.write_log(
+                            'generation failed', ATSLogger.ATS_ERROR
+                        )
+                else:
+                    error_message(
+                        GenAVR8.GEN_VERBOSE, 'provide project name and type'
+                    )
+                    self.logger.write_log(
+                        'provide project name and type', ATSLogger.ATS_ERROR
+                    )
             else:
-                error_message(GenAVR8.VERBOSE, 'failed to generate project')
+                error_message(
+                    GenAVR8.GEN_VERBOSE, 'project dir already exist'
+                )
+                self.logger.write_log(
+                    'project dir already exist', ATSLogger.ATS_ERROR
+                )
         else:
-            error_message(GenAVR8.VERBOSE, 'tool is not operational')
-        return True if status else False
+            error_message(GenAVR8.GEN_VERBOSE, 'tool is not operational')
+            self.logger.write_log(
+                'tool is not operational', ATSLogger.ATS_ERROR
+            )
+        return status
 
     def __str__(self):
         '''
@@ -146,6 +183,6 @@ class GenAVR8(CfgCLI):
             :rtype: <str>
             :exceptions: None
         '''
-        return '{0} ({1})'.format(
-            self.__class__.__name__, CfgCLI.__str__(self)
+        return '{0} ({1}, {2})'.format(
+            self.__class__.__name__, CfgCLI.__str__(self), str(self.logger)
         )

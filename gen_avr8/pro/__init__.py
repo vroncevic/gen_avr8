@@ -42,97 +42,86 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_avr8/blob/master/LICENSE'
-__version__ = '1.5.1'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class AVR8Setup(object):
+class AVR8Setup:
     '''
         Defined class AVR8Setup with attribute(s) and method(s).
         Generate AVR project skeleton.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
+                | GEN_VERBOSE - console text indicator for process-phase.
                 | __mcu_sel - MCU selector API.
                 | __fosc_sel - FOSC selector API.
-                | __reader - Reader API.
-                | __writer - Writer API.
-                | __project_setup - Project setup.
+                | __reader - reader API.
+                | __writer - writer API.
+                | __project_setup - project setup.
             :methods:
-                | __init__ - Initial constructor.
-                | project_setup - Property methods for set/get operations.
-                | gen_pro_setup - Generate project skeleton.
-                | __str__ - Dunder method for AVR8Setup.
+                | __init__ - initial constructor.
+                | project_setup - property methods for set operations.
+                | gen_pro_setup - generate project skeleton.
+                | __str__ - dunder method for AVR8Setup.
     '''
 
-    __slots__ = (
-        'VERBOSE', '__mcu_sel', '__fosc_sel',
-        '__reader', '__writer', '__project_setup'
-    )
-    VERBOSE = 'GEN_AVR8::PRO::AVR8SETUP'
+    GEN_VERBOSE = 'GEN_AVR8::PRO::AVR8SETUP'
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(AVR8Setup.VERBOSE, verbose, 'init setup')
+        verbose_message(AVR8Setup.GEN_VERBOSE, verbose, 'init setup')
         self.__mcu_sel = MCUSelector(verbose=verbose)
         self.__fosc_sel = OSCSelector(verbose=verbose)
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(verbose=verbose)
-        self.__project_setup = None
+        self.__project_setup = dict()
 
-    @property
-    def project_setup(self):
-        '''
-            Getter for writer object.
-
-            :return: Write template object | None.
-            :rtype: <WriteTemplate> | <NoneType>
-            :exceptions: None
-        '''
-        return self.__project_setup
-
-    @project_setup.setter
-    def project_setup(self, project_setup):
+    def project_setup(self, project_name, project_type, verbose=False):
         '''
             Setter for project setup.
 
-            :param project_setup: Project setup.
-            :type project_setup: <dict>
+            :param project_name: project name.
+            :type project_name: <str>
+            :param project_type: project type.
+            :type project_type: <str>
+            :param verbose: enable/disable verbose option.
+            :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('dict:project_setup', project_setup)]
-        )
+        error, status = checker.check_params([
+            ('str:project_name', project_name),
+            ('str:project_type', project_type)
+        ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        self.__project_setup = project_setup
+        self.__project_setup.update({'name': project_name})
+        self.__project_setup.update({'type': project_type})
 
     def gen_pro_setup(self, verbose=False):
         '''
             Generate AVR8 project setup.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: True (success) | False.
             :rtype: <bool>
             :exceptions: None
         '''
         verbose_message(
-            AVR8Setup.VERBOSE, verbose, 'generate project',
+            AVR8Setup.GEN_VERBOSE, verbose, 'generate project',
             self.__project_setup['type'], self.__project_setup['name']
         )
         yml2obj, status, statuses = Yaml2Object(
@@ -169,13 +158,13 @@ class AVR8Setup(object):
                 )
             if all(statuses) and len(templates) == len(statuses):
                 status = True
-        return True if status else False
+        return status
 
     def __str__(self):
         '''
             Dunder method for AVR8Setup.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

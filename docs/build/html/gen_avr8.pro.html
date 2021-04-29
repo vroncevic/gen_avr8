@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.5.1
+                1.7.1
               </div>
             
           
@@ -209,8 +209,7 @@ Generate AVR project skeleton.</dd>
 <dl class="class">
 <dt id="gen_avr8.pro.AVR8Setup">
 <em class="property">class </em><code class="descclassname">gen_avr8.pro.</code><code class="descname">AVR8Setup</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_avr8/pro.html#AVR8Setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_avr8.pro.AVR8Setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defined class AVR8Setup with attribute(s) and method(s).
+<dd><p>Defined class AVR8Setup with attribute(s) and method(s).
 Generate AVR project skeleton.
 It defines:</p>
 <blockquote>
@@ -219,21 +218,20 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
 <div class="line">__mcu_sel - MCU selector API.</div>
 <div class="line">__fosc_sel - FOSC selector API.</div>
-<div class="line">__reader - Reader API.</div>
-<div class="line">__writer - Writer API.</div>
-<div class="line">__project_setup - Project setup.</div>
+<div class="line">__reader - reader API.</div>
+<div class="line">__writer - writer API.</div>
+<div class="line">__project_setup - project setup.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">project_setup - Property methods for set/get operations.</div>
-<div class="line">gen_pro_setup - Generate project skeleton.</div>
-<div class="line">__str__ - Dunder method for AVR8Setup.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">project_setup - property methods for set operations.</div>
+<div class="line">gen_pro_setup - generate project skeleton.</div>
+<div class="line">__str__ - dunder method for AVR8Setup.</div>
 </div>
 </td>
 </tr>
@@ -241,8 +239,8 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
-<dt id="gen_avr8.pro.AVR8Setup.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::AVR8SETUP'</em><a class="headerlink" href="#gen_avr8.pro.AVR8Setup.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_avr8.pro.AVR8Setup.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::AVR8SETUP'</em><a class="headerlink" href="#gen_avr8.pro.AVR8Setup.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -253,7 +251,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True (success) | False.</td>
 </tr>
@@ -265,19 +263,23 @@ It defines:</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="gen_avr8.pro.AVR8Setup.project_setup">
-<code class="descname">project_setup</code><a class="headerlink" href="#gen_avr8.pro.AVR8Setup.project_setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for writer object.</p>
+<code class="descname">project_setup</code><span class="sig-paren">(</span><em>project_name</em>, <em>project_type</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_avr8/pro.html#AVR8Setup.project_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_avr8.pro.AVR8Setup.project_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter for project setup.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Write template object | None.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>project_name</strong> (<em>&lt;str&gt;</em>) – project name.</li>
+<li><strong>project_type</strong> (<em>&lt;str&gt;</em>) – project type.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;WriteTemplate&gt; | &lt;NoneType&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
+<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">ATSTypeError | ATSBadCallError</p>
+</td>
 </tr>
 </tbody>
 </table>

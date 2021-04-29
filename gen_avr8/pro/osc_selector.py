@@ -24,6 +24,7 @@ import sys
 
 try:
     from pathlib import Path
+    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.console_io.error import error_message
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -36,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.5.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -49,9 +50,9 @@ class OSCSelector(FileChecking):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __FOSC_LIST - Configuration file with FOSC list.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - Console text indicator for process-phase.
+                | FOSC_LIST - Configuration file with FOSC list.
                 | __fosc_list - FOSC list.
             :methods:
                 | __init__ - Initial constructor.
@@ -60,22 +61,22 @@ class OSCSelector(FileChecking):
                 | __str__ - Dunder method for OSCSelector.
     '''
 
-    __slots__ = ('VERBOSE', '__FOSC_LIST', '__fosc_list')
-    VERBOSE = 'GEN_AVR8::PRO::OSC_SELECTOR'
-    __FOSC_LIST = '/../conf/fosc.yaml'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AVR8::PRO::OSC_SELECTOR'
+    FOSC_LIST = '/../conf/fosc.yaml'
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(OSCSelector.VERBOSE, verbose, 'init form selector')
         FileChecking.__init__(self, verbose=verbose)
+        verbose_message(OSCSelector.GEN_VERBOSE, verbose, 'init form selector')
         fosc_list = '{0}{1}'.format(
-            Path(__file__).parent, OSCSelector.__FOSC_LIST
+            Path(__file__).parent, OSCSelector.FOSC_LIST
         )
         self.check_path(file_path=fosc_list, verbose=verbose)
         self.check_mode(file_mode='r', verbose=verbose)
@@ -93,7 +94,7 @@ class OSCSelector(FileChecking):
         '''
             Getter for FOSC list object.
 
-            :return: FOSC Configuration | None.
+            :return: FOSC configuration | None.
             :rtype: <list> | <NoneType>
             :exceptions: None
         '''
@@ -103,13 +104,13 @@ class OSCSelector(FileChecking):
         '''
             Select FOSC for target.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: FOSC | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
-        verbose_message(OSCSelector.VERBOSE, verbose, 'select FOSC')
+        verbose_message(OSCSelector.GEN_VERBOSE, verbose, 'select FOSC')
         fosc_name_index, fosc_name = -1, None
         if bool(self.__fosc_list):
             while True:
@@ -123,7 +124,7 @@ class OSCSelector(FileChecking):
                     fosc_name_index = int(input(' select FOSC: '))
                 if fosc_name_index not in range(len(self.__fosc_list)):
                     error_message(
-                        OSCSelector.VERBOSE, 'not an appropriate choice'
+                        OSCSelector.GEN_VERBOSE, 'not an appropriate choice'
                     )
                 else:
                     fosc_name = self.__fosc_list[fosc_name_index]
@@ -134,7 +135,7 @@ class OSCSelector(FileChecking):
         '''
             Dunder method for OSCSelector.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.5.1
+                1.7.1
               </div>
             
           
@@ -195,8 +195,7 @@ Created API for checking project template directory.</dd>
 <dl class="class">
 <dt id="gen_avr8.pro.template_dir.TemplateDir">
 <em class="property">class </em><code class="descclassname">gen_avr8.pro.template_dir.</code><code class="descname">TemplateDir</code><a class="reference internal" href="_modules/gen_avr8/pro/template_dir.html#TemplateDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_avr8.pro.template_dir.TemplateDir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defined class TemplateDir with attribute(s) and method(s).
+<dd><p>Defined class TemplateDir with attribute(s) and method(s).
 Created API for checking project template directory.
 It defines:</p>
 <blockquote>
@@ -205,18 +204,17 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__CONF_DIR - Configuration directory path.</div>
-<div class="line">__TEMPLATE_DIR - Template directory path.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">CONF_DIR - configuration directory path.</div>
+<div class="line">TEMPLATE_DIR - template directory path.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">check_dir - Check project directory.</div>
-<div class="line">setup_conf_dir - Setup configuration directory.</div>
-<div class="line">setup_template_dir - Setup template directory.</div>
-<div class="line">__str__ - Dunder method for TemplateDir.</div>
+<div class="line">check_dir - check project directory.</div>
+<div class="line">setup_conf_dir - setup configuration directory.</div>
+<div class="line">setup_template_dir - setup template directory.</div>
+<div class="line">__str__ - dunder method for TemplateDir.</div>
 </div>
 </td>
 </tr>
@@ -224,8 +222,18 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
-<dt id="gen_avr8.pro.template_dir.TemplateDir.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::TEMPLATE_DIR'</em><a class="headerlink" href="#gen_avr8.pro.template_dir.TemplateDir.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_avr8.pro.template_dir.TemplateDir.CONF_DIR">
+<code class="descname">CONF_DIR</code><em class="property"> = '/../conf/'</em><a class="headerlink" href="#gen_avr8.pro.template_dir.TemplateDir.CONF_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_avr8.pro.template_dir.TemplateDir.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::TEMPLATE_DIR'</em><a class="headerlink" href="#gen_avr8.pro.template_dir.TemplateDir.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_avr8.pro.template_dir.TemplateDir.TEMPLATE_DIR">
+<code class="descname">TEMPLATE_DIR</code><em class="property"> = '/../conf/template/'</em><a class="headerlink" href="#gen_avr8.pro.template_dir.TemplateDir.TEMPLATE_DIR" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
@@ -237,8 +245,8 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>target_dir</strong> (<em>&lt;str&gt;</em>) – Target directory to be checked.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+<li><strong>target_dir</strong> (<em>&lt;str&gt;</em>) – target directory to be checked.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
@@ -263,9 +271,9 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Template directory | None.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">template directory | None.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
 </tr>
@@ -283,9 +291,9 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Template directory | None.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">template directory | None.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; | &lt;NoneType&gt;</td>
 </tr>
