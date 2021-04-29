@@ -35,30 +35,28 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class TemplateType(object):
+class TemplateType:
     '''
         Defined class TemplateType with attribute(s) and method(s).
         Created API for checking project template type and template structure.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | TEMPLATE_TYPE - Project template structures.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | TEMPLATE_TYPE - project template structures.
             :methods:
-                | check_template_type - Check project template type.
-                | setup_template_type - Setup template type (app | lib).
-                | __str__ - Dunder method for TemplateType.
+                | check_template_type - check project template type.
+                | setup_template_type - setup template type (app | lib).
+                | __str__ - dunder method for TemplateType.
     '''
 
-    __slots__ = ('VERBOSE', 'TEMPLATE_TYPE', 'APP_TEMPLATE', 'LIB_TEMPLATE')
-    VERBOSE = 'GEN_AVR8::PRO::TEMPLATE_TYPE'
+    GEN_VERBOSE = 'GEN_AVR8::PRO::TEMPLATE_TYPE'
     APP_TEMPLATE, LIB_TEMPLATE = 'app', 'lib'
     TEMPLATE_TYPE = {
         APP_TEMPLATE: 'project_app.yaml',
@@ -70,47 +68,45 @@ class TemplateType(object):
         '''
             Check project template type (App | Lib).
 
-            :param template_type: Project Template type.
+            :param template_type: project template type.
             :type template_type: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: True project type ok else False.
+            :return: True project type for ok else False.
             :rtype: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:template_type', template_type)]
-        )
+        error, status = checker.check_params([
+            ('str:template_type', template_type)
+        ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
         verbose_message(
-            TemplateType.VERBOSE, verbose,
+            TemplateType.GEN_VERBOSE, verbose,
             'checking project type', template_type
         )
-        return bool(
-            template_type in TemplateType.TEMPLATE_TYPE.keys()
-        )
+        return bool(template_type in TemplateType.TEMPLATE_TYPE.keys())
 
     @classmethod
     def setup_template_type(cls, template_type, verbose=False):
         '''
             Setup template type (App | Lib).
 
-            :param template_type: Project Template type.
+            :param template_type: project template type.
             :type template_type: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Project type (app | lib) | None.
+            :return: project type (app | lib) | None.
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:template_type', template_type)]
-        )
+        error, status = checker.check_params([
+            ('str:template_type', template_type)
+        ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
@@ -123,7 +119,7 @@ class TemplateType(object):
         '''
             Dunder method for TemplateType.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

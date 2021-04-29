@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.6.1
+                1.7.1
               </div>
             
           
@@ -195,8 +195,7 @@ Check module type (it can be source module | build module).</dd>
 <dl class="class">
 <dt id="gen_avr8.pro.module_type.ModuleType">
 <em class="property">class </em><code class="descclassname">gen_avr8.pro.module_type.</code><code class="descname">ModuleType</code><a class="reference internal" href="_modules/gen_avr8/pro/module_type.html#ModuleType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_avr8.pro.module_type.ModuleType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defined class ModuleType with attribute(s) and method(s).
+<dd><p>Defined class ModuleType with attribute(s) and method(s).
 Check module type (it can be source module | build module).
 It defines:</p>
 <blockquote>
@@ -205,23 +204,32 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">__SOURCE - List of expected source extensions.</div>
-<div class="line">__BUILD - List of expected build extensions/files.</div>
+<div class="line">SOURCE - list of expected source extensions.</div>
+<div class="line">BUILD - list of expected build extensions/files.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">pre_process_module - Process module name.</div>
-<div class="line">is_source_module - Check is source module.</div>
-<div class="line">is_build_module - Check is build module.</div>
-<div class="line">__str__ - Dunder method for ModuleType.</div>
+<div class="line">pre_process_module - process module name.</div>
+<div class="line">is_source_module - check is source module.</div>
+<div class="line">is_build_module - check is build module.</div>
+<div class="line">__str__ - dunder method for ModuleType.</div>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
+<dl class="attribute">
+<dt id="gen_avr8.pro.module_type.ModuleType.BUILD">
+<code class="descname">BUILD</code><em class="property"> = ['.mk', 'Makefile']</em><a class="headerlink" href="#gen_avr8.pro.module_type.ModuleType.BUILD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_avr8.pro.module_type.ModuleType.SOURCE">
+<code class="descname">SOURCE</code><em class="property"> = ['.c', '.h']</em><a class="headerlink" href="#gen_avr8.pro.module_type.ModuleType.SOURCE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="classmethod">
 <dt id="gen_avr8.pro.module_type.ModuleType.is_build_module">
 <em class="property">classmethod </em><code class="descname">is_build_module</code><span class="sig-paren">(</span><em>module</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_avr8/pro/module_type.html#ModuleType.is_build_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_avr8.pro.module_type.ModuleType.is_build_module" title="Permalink to this definition">¶</a></dt>
@@ -230,7 +238,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>module</strong> (<em>&lt;str&gt;</em>) – Module name.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>module</strong> (<em>&lt;str&gt;</em>) – module name.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True | False.</td>
 </tr>
@@ -250,7 +258,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>module</strong> (<em>&lt;str&gt;</em>) – Module name.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>module</strong> (<em>&lt;str&gt;</em>) – module name.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True | False.</td>
 </tr>
@@ -271,13 +279,13 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>pro_type</strong> (<em>&lt;str&gt;</em>) – Project type.</li>
-<li><strong>pro_name</strong> (<em>&lt;str&gt;</em>) – Project name.</li>
-<li><strong>module</strong> (<em>&lt;str&gt;</em>) – Module name.</li>
+<li><strong>pro_type</strong> (<em>&lt;str&gt;</em>) – project type.</li>
+<li><strong>pro_name</strong> (<em>&lt;str&gt;</em>) – project name.</li>
+<li><strong>module</strong> (<em>&lt;str&gt;</em>) – module name.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Processed module name.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">processed module name.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;str&gt;</p>

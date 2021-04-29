@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -38,7 +38,7 @@ def install_directory():
     '''
         Return the installation directory, or None.
 
-        :return: Path (success) | None.
+        :return: path (success) | None.
         :rtype: <str> | <NoneType>
         :exceptions: None
     '''
@@ -102,7 +102,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_avr8',
-    version='1.6.1',
+    version='1.7.1',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -153,95 +153,95 @@ setup(
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/cflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/cflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/csflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/csflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/Makefile.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/Makefile.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/module.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/module.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/objects.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/objects.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/ocflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/ocflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/odflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/odflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/sources.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/sources.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/subdir.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/subdir.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/tools.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'app/tools.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/aflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/aflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/cflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/cflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/csflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/csflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/Makefile.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/Makefile.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/avr_lib_c.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/avr_lib_c.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/avr_lib_h.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/avr_lib_h.template')]
         ),
         (
             '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/objects.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/objects.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/ocflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/ocflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/odflags.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/odflags.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/sources.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/sources.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/subdir.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/subdir.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/tools.template']
+            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/tools.template')]
         ),
         (
             '{0}{1}{2}'.format(INSTALL_DIR, TOOL_DIR, 'log/'),
-            ['{0}{1}'.format(TOOL_DIR, 'log/gen_avr8.log']
+            ['{0}{1}'.format(TOOL_DIR, 'log/gen_avr8.log')]
         )
     ]
 )

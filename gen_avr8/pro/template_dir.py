@@ -34,74 +34,66 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class TemplateDir(object):
+class TemplateDir:
     '''
         Defined class TemplateDir with attribute(s) and method(s).
         Created API for checking project template directory.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __CONF_DIR - Configuration directory path.
-                | __TEMPLATE_DIR - Template directory path.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | CONF_DIR - configuration directory path.
+                | TEMPLATE_DIR - template directory path.
             :methods:
-                | check_dir - Check project directory.
-                | setup_conf_dir - Setup configuration directory.
-                | setup_template_dir - Setup template directory.
-                | __str__ - Dunder method for TemplateDir.
+                | check_dir - check project directory.
+                | setup_conf_dir - setup configuration directory.
+                | setup_template_dir - setup template directory.
+                | __str__ - dunder method for TemplateDir.
     '''
 
-    __slots__ = ('VERBOSE', '__CONF_DIR', '__TEMPLATE_DIR')
-    VERBOSE = 'GEN_AVR8::PRO::TEMPLATE_DIR'
-    __CONF_DIR, __TEMPLATE_DIR = '/../conf/', '/../conf/template/'
+    GEN_VERBOSE = 'GEN_AVR8::PRO::TEMPLATE_DIR'
+    CONF_DIR, TEMPLATE_DIR = '/../conf/', '/../conf/template/'
 
     @classmethod
     def check_dir(cls, target_dir, verbose=False):
         '''
             Checking project directory.
 
-            :param target_dir: Target directory to be checked.
+            :param target_dir: target directory to be checked.
             :type target_dir: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: True directory ok else False.
             :rtype: <bool>
             :exceptions: None
         '''
-        verbose_message(
-            cls.VERBOSE, verbose, 'check project directory'
-        )
-        return isdir(
-            '{0}{1}'.format(
-                Path(__file__).parent, target_dir
-            )
-        )
+        verbose_message(cls.GEN_VERBOSE, verbose, 'check project directory')
+        return isdir('{0}{1}'.format(Path(__file__).parent, target_dir))
 
     @classmethod
     def setup_conf_dir(cls, verbose=False):
         '''
             Setup configuration directory.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Template directory | None.
+            :return: template directory | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
         configuration_dir = None
-        if cls.check_dir(target_dir=cls.__CONF_DIR, verbose=verbose):
+        if cls.check_dir(target_dir=cls.CONF_DIR, verbose=verbose):
             configuration_dir = '{0}{1}'.format(
-                Path(__file__).parent, cls.__CONF_DIR
+                Path(__file__).parent, cls.CONF_DIR
             )
             verbose_message(
-                cls.VERBOSE, verbose, 'conf directory', configuration_dir
+                cls.GEN_VERBOSE, verbose, 'conf directory', configuration_dir
             )
         return configuration_dir
 
@@ -110,19 +102,19 @@ class TemplateDir(object):
         '''
             Setup template directory.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Template directory | None.
+            :return: template directory | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
         template_dir = None
-        if cls.check_dir(target_dir=cls.__TEMPLATE_DIR, verbose=verbose):
+        if cls.check_dir(target_dir=cls.TEMPLATE_DIR, verbose=verbose):
             template_dir = '{0}{1}'.format(
-                Path(__file__).parent, cls.__TEMPLATE_DIR
+                Path(__file__).parent, cls.TEMPLATE_DIR
             )
             verbose_message(
-                cls.VERBOSE, verbose, 'template directory', template_dir
+                cls.GEN_VERBOSE, verbose, 'template directory', template_dir
             )
         return template_dir
 
@@ -130,7 +122,7 @@ class TemplateDir(object):
         '''
             Dunder method for TemplateDir.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

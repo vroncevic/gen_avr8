@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.6.1
+                1.7.1
               </div>
             
           
@@ -195,8 +195,7 @@ Created API for checking project template type and template structure.</dd>
 <dl class="class">
 <dt id="gen_avr8.pro.template_type.TemplateType">
 <em class="property">class </em><code class="descclassname">gen_avr8.pro.template_type.</code><code class="descname">TemplateType</code><a class="reference internal" href="_modules/gen_avr8/pro/template_type.html#TemplateType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defined class TemplateType with attribute(s) and method(s).
+<dd><p>Defined class TemplateType with attribute(s) and method(s).
 Created API for checking project template type and template structure.
 It defines:</p>
 <blockquote>
@@ -205,16 +204,15 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">TEMPLATE_TYPE - Project template structures.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">TEMPLATE_TYPE - project template structures.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">check_template_type - Check project template type.</div>
-<div class="line">setup_template_type - Setup template type (app | lib).</div>
-<div class="line">__str__ - Dunder method for TemplateType.</div>
+<div class="line">check_template_type - check project template type.</div>
+<div class="line">setup_template_type - setup template type (app | lib).</div>
+<div class="line">__str__ - dunder method for TemplateType.</div>
 </div>
 </td>
 </tr>
@@ -227,6 +225,11 @@ It defines:</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="gen_avr8.pro.template_type.TemplateType.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::TEMPLATE_TYPE'</em><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="gen_avr8.pro.template_type.TemplateType.LIB_TEMPLATE">
 <code class="descname">LIB_TEMPLATE</code><em class="property"> = 'lib'</em><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType.LIB_TEMPLATE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -234,11 +237,6 @@ It defines:</p>
 <dl class="attribute">
 <dt id="gen_avr8.pro.template_type.TemplateType.TEMPLATE_TYPE">
 <code class="descname">TEMPLATE_TYPE</code><em class="property"> = {'app': 'project_app.yaml', 'lib': 'project_lib.yaml'}</em><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType.TEMPLATE_TYPE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="gen_avr8.pro.template_type.TemplateType.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::TEMPLATE_TYPE'</em><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
@@ -250,12 +248,12 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template_type</strong> (<em>&lt;str&gt;</em>) – Project Template type.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+<li><strong>template_type</strong> (<em>&lt;str&gt;</em>) – project template type.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True project type ok else False.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True project type for ok else False.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>
@@ -277,12 +275,12 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template_type</strong> (<em>&lt;str&gt;</em>) – Project Template type.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+<li><strong>template_type</strong> (<em>&lt;str&gt;</em>) – project template type.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Project type (app | lib) | None.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">project type (app | lib) | None.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;str&gt; | &lt;NoneType&gt;</p>

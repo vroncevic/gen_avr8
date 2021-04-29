@@ -24,6 +24,7 @@ import sys
 
 try:
     from ats_utilities.checker import ATSChecker
+    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -36,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -49,46 +50,46 @@ class ReadTemplate(FileChecking):
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __FORMAT - File format for template.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | FORMAT - file format for template.
             :methods:
-                | __init__ - Initial constructor.
-                | read - Read template file.
-                | __str__ - Dunder method for ReadTemplate.
+                | __init__ - initial constructor.
+                | read - read template file.
+                | __str__ - dunder method for ReadTemplate.
     '''
 
-    __slots__ = ('VERBOSE', '__FORMAT')
-    VERBOSE = 'GEN_AVR8::PRO::READ_TEMPLATE'
-    __FORMAT = 'template'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AVR8::PRO::READ_TEMPLATE'
+    FORMAT = 'template'
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(ReadTemplate.VERBOSE, verbose, 'init reader')
         FileChecking.__init__(self, verbose=verbose)
+        verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'init reader')
 
     def read(self, template_file, verbose=False):
         '''
             Read template file.
 
-            :param template_file: Template file path.
+            :param template_file: template file path.
             :type template_file: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Template content for module | None.
+            :return: template content for module | None.
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:template_file', template_file)]
-        )
+        error, status = checker.check_params([
+            ('str:template_file', template_file)
+        ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
@@ -98,11 +99,11 @@ class ReadTemplate(FileChecking):
         self.check_mode(file_mode='r', verbose=verbose)
         self.check_format(
             file_path=template_file,
-            file_format=ReadTemplate.__FORMAT,
+            file_format=ReadTemplate.FORMAT,
             verbose=verbose
         )
         if self.is_file_ok():
-            verbose_message(ReadTemplate.VERBOSE, verbose, 'load template')
+            verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'load template')
             with open(template_file, 'r') as template:
                 if bool(template):
                     setup_content = template.read()
@@ -112,7 +113,7 @@ class ReadTemplate(FileChecking):
         '''
             Dunder method for ReadTemplate.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

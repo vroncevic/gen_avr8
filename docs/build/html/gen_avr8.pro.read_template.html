@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.6.1
+                1.7.1
               </div>
             
           
@@ -205,16 +205,16 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__FORMAT - File format for template.</div>
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">FORMAT - file format for template.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">read - Read template file.</div>
-<div class="line">__str__ - Dunder method for ReadTemplate.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">read - read template file.</div>
+<div class="line">__str__ - dunder method for ReadTemplate.</div>
 </div>
 </td>
 </tr>
@@ -222,8 +222,18 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
+<dt id="gen_avr8.pro.read_template.ReadTemplate.FORMAT">
+<code class="descname">FORMAT</code><em class="property"> = 'template'</em><a class="headerlink" href="#gen_avr8.pro.read_template.ReadTemplate.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_avr8.pro.read_template.ReadTemplate.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_avr8.pro.read_template.ReadTemplate.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="gen_avr8.pro.read_template.ReadTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_avr8.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_avr8.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -235,12 +245,12 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template_file</strong> (<em>&lt;str&gt;</em>) – Template file path.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+<li><strong>template_file</strong> (<em>&lt;str&gt;</em>) – template file path.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Template content for module | None.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">template content for module | None.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;str&gt; | &lt;NoneType&gt;</p>

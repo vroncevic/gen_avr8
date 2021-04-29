@@ -17,7 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Defined class WriteTemplate with attribute(s) and method(s).
-     Created API for Write template content with parameters.
+     Created API for write template content with parameters.
 '''
 
 import sys
@@ -27,6 +27,8 @@ from string import Template
 try:
     from gen_avr8.pro.module_type import ModuleType
     from ats_utilities.checker import ATSChecker
+    from ats_utilities.cooperative import CooperativeMeta
+    from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
@@ -38,42 +40,43 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class WriteTemplate(object):
+class WriteTemplate(FileChecking):
     '''
         Defined class WriteTemplate with attribute(s) and method(s).
         Created API for Write template content with parameters.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __pro_dir - Current project directory.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | __pro_dir - current project directory.
             :methods:
-                | __init__ - Initial constructor.
-                | pro_dir - Property methods for set/get operations.
-                | check_module - Check project module.
-                | write - Write a template content to a project module.
-                | __str__ - Dunder method for WriteTemplate.
+                | __init__ - initial constructor.
+                | pro_dir - property methods for set/get operations.
+                | check_module - check project module.
+                | write - write a template content to a project module.
+                | __str__ - dunder method for WriteTemplate.
     '''
 
-    __slots__ = ('VERBOSE', '__pro_dir')
-    VERBOSE = 'GEN_AVR8::PRO::WRITE_TEMPLATE'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_AVR8::PRO::WRITE_TEMPLATE'
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(WriteTemplate.VERBOSE, verbose, 'init writer')
+        FileChecking.__init__(self, verbose=verbose)
+        verbose_message(WriteTemplate.GEN_VERBOSE, verbose, 'init writer')
         self.__pro_dir = None
 
     @property
@@ -81,7 +84,7 @@ class WriteTemplate(object):
         '''
             Property method for getting project dir.
 
-            :return: Project dir | None.
+            :return: project dir | None.
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
@@ -92,14 +95,12 @@ class WriteTemplate(object):
         '''
             Property method for setting/creating project dir.
 
-            :param pro_dir: Project dir.
+            :param pro_dir: project dir.
             :type pro_dir: <str>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:pro_dir', pro_dir)]
-        )
+        error, status = checker.check_params([('str:pro_dir', pro_dir)])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
@@ -112,18 +113,16 @@ class WriteTemplate(object):
         '''
             Check project module.
 
-            :param module: Module name.
+            :param module: module name.
             :type module: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: 'build' | 'source'| None (wrong module name).
             :rtype: <str> | <NoneType>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:module', module)]
-        )
+        error, status = checker.check_params([('str:module', module)])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
@@ -136,7 +135,7 @@ class WriteTemplate(object):
         if not is_source and is_build:
             module_type = 'build'
         verbose_message(
-            WriteTemplate.VERBOSE, verbose, 'module type', module_type
+            WriteTemplate.GEN_VERBOSE, verbose, 'module type', module_type
         )
         return module_type
 
@@ -144,18 +143,18 @@ class WriteTemplate(object):
         '''
             Write a template content to a project module.
 
-            :param project_data: Project data.
+            :param project_data: project data.
             :type project_data: <dict>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: True (success) | False.
             :rtype: <bool>
             :exception: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('dict:project_data', project_data)]
-        )
+        error, status = checker.check_params([
+            ('dict:project_data', project_data)
+        ])
         if status == ATSChecker.TYPE_ERROR:
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
@@ -183,22 +182,28 @@ class WriteTemplate(object):
                     with open(module, 'w') as module_file:
                         if bool(module_file):
                             verbose_message(
-                                WriteTemplate.VERBOSE, verbose,
+                                WriteTemplate.GEN_VERBOSE, verbose,
                                 'write project module file', module
                             )
                             module_file.write(template.substitute(project))
                             chmod(module, 0o666)
-                            status = True
-        return True if status else False
+                            self.check_path(module, verbose=verbose)
+                            self.check_mode('w', verbose=verbose)
+                            self.check_format(
+                                module, module.split('.')[1], verbose=verbose
+                            )
+                            if self.is_file_ok():
+                                status = True
+        return status
 
     def __str__(self):
         '''
             Dunder method for WriteTemplate.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''
-        return '{0} ({1})'.format(
-            self.__class__.__name__, self.__pro_dir
+        return '{0} ({1}, {2})'.format(
+            self.__class__.__name__, FileChecking.__str__(self), self.__pro_dir
         )

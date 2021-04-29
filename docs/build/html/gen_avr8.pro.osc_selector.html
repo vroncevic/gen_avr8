@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.6.1
+                1.7.1
               </div>
             
           
@@ -205,9 +205,9 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__FOSC_LIST - Configuration file with FOSC list.</div>
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">GEN_VERBOSE - Console text indicator for process-phase.</div>
+<div class="line">FOSC_LIST - Configuration file with FOSC list.</div>
 <div class="line">__fosc_list - FOSC list.</div>
 </div>
 </td>
@@ -224,8 +224,18 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
+<dt id="gen_avr8.pro.osc_selector.OSCSelector.FOSC_LIST">
+<code class="descname">FOSC_LIST</code><em class="property"> = '/../conf/fosc.yaml'</em><a class="headerlink" href="#gen_avr8.pro.osc_selector.OSCSelector.FOSC_LIST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_avr8.pro.osc_selector.OSCSelector.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::OSC_SELECTOR'</em><a class="headerlink" href="#gen_avr8.pro.osc_selector.OSCSelector.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="gen_avr8.pro.osc_selector.OSCSelector.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_AVR8::PRO::OSC_SELECTOR'</em><a class="headerlink" href="#gen_avr8.pro.osc_selector.OSCSelector.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_avr8.pro.osc_selector.OSCSelector.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -236,7 +246,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">FOSC | None.</td>
 </tr>
@@ -256,7 +266,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">FOSC Configuration | None.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">FOSC configuration | None.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;list&gt; | &lt;NoneType&gt;</td>
 </tr>
