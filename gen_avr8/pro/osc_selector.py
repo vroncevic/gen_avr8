@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.8.1'
+__version__ = '1.8.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,14 +51,14 @@ class OSCSelector(FileChecking):
 
             :attributes:
                 | __metaclass__ - setting cooperative metaclasses.
-                | GEN_VERBOSE - Console text indicator for process-phase.
-                | FOSC_LIST - Configuration file with FOSC list.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | FOSC_LIST - configuration file with FOSC list.
                 | __fosc_list - FOSC list.
             :methods:
-                | __init__ - Initial constructor.
-                | get_fosc_list - Getter for FOSC list object.
-                | choose_osc - Select FOSC for target.
-                | __str__ - Dunder method for OSCSelector.
+                | __init__ - initial constructor.
+                | get_fosc_list - getter for FOSC list object.
+                | choose_osc - select FOSC for target.
+                | __str__ - dunder method for OSCSelector.
     '''
 
     __metaclass__ = CooperativeMeta
