@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.8.1'
+__version__ = '1.8.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -75,8 +75,6 @@ def install_directory():
 
 INSTALL_DIR = install_directory()
 TOOL_DIR = 'gen_avr8/'
-CONF_DIR = '{0}{1}'.format(TOOL_DIR, 'conf/')
-TEMPLATE_DIR = '{0}{1}'.format(CONF_DIR, 'template/')
 if not bool(INSTALL_DIR):
     print('[setup] force exit from install process')
     sys.exit(127)
@@ -102,7 +100,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_avr8',
-    version='1.8.1',
+    version='1.8.2',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -115,133 +113,44 @@ setup(
     classifiers=PYP_CLASSIFIERS,
     packages=['gen_avr8', 'gen_avr8.pro'],
     install_requires=['ats-utilities'],
+    package_data = {
+        'gen_avr8': [
+            'conf/gen_avr8.cfg',
+            'conf/gen_avr8_util.cfg',
+            'conf/fosc.yaml',
+            'conf/mcu.yaml',
+            'conf/project_app.yaml',
+            'conf/project_lib.yaml',
+            'conf/template/app/cflags.template',
+            'conf/template/app/csflags.template',
+            'conf/template/app/Makefile.template',
+            'conf/template/app/module.template',
+            'conf/template/app/objects.template',
+            'conf/template/app/ocflags.template',
+            'conf/template/app/odflags.template',
+            'conf/template/app/sources.template',
+            'conf/template/app/subdir.template',
+            'conf/template/app/tools.template',
+            'conf/template/lib/aflags.template',
+            'conf/template/lib/cflags.template',
+            'conf/template/lib/csflags.template',
+            'conf/template/lib/Makefile.template',
+            'conf/template/lib/avr_lib_c.template',
+            'conf/template/lib/avr_lib_h.template',
+            'conf/template/lib/objects.template',
+            'conf/template/lib/ocflags.template',
+            'conf/template/lib/odflags.template',
+            'conf/template/lib/sources.template',
+            'conf/template/lib/subdir.template',
+            'conf/template/lib/tools.template',
+            'log/gen_avr8.log'
+        ]
+    },
     data_files=[
         (
             '/usr/local/bin/', [
                 '{0}{1}'.format(TOOL_DIR, 'run/gen_avr8_run.py')
             ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'gen_avr8.cfg')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'gen_avr8_util.cfg')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'fosc.yaml')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'mcu.yaml')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'project_app.yaml')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'project_lib.yaml')
-            ]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/cflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/csflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/Makefile.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/module.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/objects.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/ocflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/odflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/sources.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/subdir.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'app/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'app/tools.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/aflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/cflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/csflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/Makefile.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/avr_lib_c.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/avr_lib_h.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/objects.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/ocflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/odflags.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/sources.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/subdir.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TEMPLATE_DIR, 'lib/'),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'lib/tools.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TOOL_DIR, 'log/'),
-            ['{0}{1}'.format(TOOL_DIR, 'log/gen_avr8.log')]
         )
     ]
 )
