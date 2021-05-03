@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.8.2'
+__version__ = '1.8.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -125,27 +125,31 @@ class GenAVR8(CfgCLI):
                 sys.argv.append('-h')
             args = self.parse_args(sys.argv[1:])
             project_exists = Path(
-                '{0}/{1}'.format(getcwd(), args.pro)
+                '{0}/{1}'.format(getcwd(), getattr(args, 'pro'))
             ).exists()
             if not project_exists:
-                if bool(args.pro) and bool(args.type):
-                    generator = AVR8Setup(verbose=args.verbose or verbose)
-                    generator.project_setup(args.pro, args.type)
+                if bool(getattr(args, 'pro')) and bool(getattr(args, 'type')):
+                    generator = AVR8Setup(
+                        verbose=getattr(args, 'verbose') or verbose
+                    )
+                    generator.project_setup(
+                        getattr(args, 'pro'), getattr(args, 'type')
+                    )
                     print(
                         '{0} {1} {2} [{3}]'.format(
                             '[{0}]'.format(GenAVR8.GEN_VERBOSE.lower()),
                             'generating AVR8 project skeleton',
-                            args.type, args.pro
+                            getattr(args, 'type'), getattr(args, 'pro')
                         )
                     )
                     status = generator.gen_pro_setup(
-                        verbose=args.verbose or verbose
+                        verbose=getattr(args, 'verbose') or verbose
                     )
                     if status:
                         success_message(GenAVR8.GEN_VERBOSE, 'done\n')
                         self.logger.write_log(
                             '{0} {1} done'.format(
-                                'generation of project', args.pro
+                                'generation of project', getattr(args, 'pro')
                             ), ATSLogger.ATS_INFO
                         )
                     else:
