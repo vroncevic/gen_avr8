@@ -43,7 +43,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -116,7 +116,7 @@ class AVR8Setup:
 
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: True (success) | False.
+            :return: boolean status, True (success) | False.
             :rtype: <bool>
             :exceptions: None
         '''

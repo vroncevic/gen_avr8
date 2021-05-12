@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -90,7 +90,7 @@ class GenAVR8(CfgCLI):
         )
         if self.tool_operational:
             self.add_new_option(
-                GenAVR8.OPS[0], GenAVR8.OPS[1], dest='pro',
+                GenAVR8.OPS[0], GenAVR8.OPS[1], dest='gen',
                 help='generate AVR8 project skeleton'
             )
             self.add_new_option(
@@ -111,7 +111,7 @@ class GenAVR8(CfgCLI):
 
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: True (success) | False.
+            :return: boolean status, True (success) | False.
             :rtype: <bool>
             :exceptions: None
         '''
@@ -125,21 +125,21 @@ class GenAVR8(CfgCLI):
                 sys.argv.append('-h')
             args = self.parse_args(sys.argv[1:])
             project_exists = Path(
-                '{0}/{1}'.format(getcwd(), getattr(args, 'pro'))
+                '{0}/{1}'.format(getcwd(), getattr(args, 'gen'))
             ).exists()
             if not project_exists:
-                if bool(getattr(args, 'pro')) and bool(getattr(args, 'type')):
+                if bool(getattr(args, 'gen')) and bool(getattr(args, 'type')):
                     generator = AVR8Setup(
                         verbose=getattr(args, 'verbose') or verbose
                     )
                     generator.project_setup(
-                        getattr(args, 'pro'), getattr(args, 'type')
+                        getattr(args, 'gen'), getattr(args, 'type')
                     )
                     print(
                         '{0} {1} {2} [{3}]'.format(
                             '[{0}]'.format(GenAVR8.GEN_VERBOSE.lower()),
                             'generating AVR8 project skeleton',
-                            getattr(args, 'type'), getattr(args, 'pro')
+                            getattr(args, 'type'), getattr(args, 'gen')
                         )
                     )
                     status = generator.gen_pro_setup(
@@ -149,7 +149,7 @@ class GenAVR8(CfgCLI):
                         success_message(GenAVR8.GEN_VERBOSE, 'done\n')
                         self.logger.write_log(
                             '{0} {1} done'.format(
-                                'generation of project', getattr(args, 'pro')
+                                'generation of project', getattr(args, 'gen')
                             ), ATSLogger.ATS_INFO
                         )
                     else:

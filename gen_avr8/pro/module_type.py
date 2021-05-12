@@ -24,7 +24,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -84,7 +84,7 @@ class ModuleType:
 
             :param module: module name.
             :type module: <str>
-            :return: True | False.
+            :return: boolean status, True | False.
             :rtype: <bool>
             :exceptions: None
         '''
@@ -101,7 +101,7 @@ class ModuleType:
 
             :param module: module name.
             :type module: <str>
-            :return: True | False.
+            :return: boolean status, True | False.
             :rtype: <bool>
             :exceptions: None
         '''
