@@ -24,7 +24,6 @@ import sys
 
 try:
     from pathlib import Path
-    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.console_io.error import error_message
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -37,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -50,7 +49,6 @@ class MCUSelector(FileChecking):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | MCU_LIST - configuration file with MCU list.
                 | __mcu_list - MCU list.
@@ -61,7 +59,6 @@ class MCUSelector(FileChecking):
                 | __str__ - dunder method for MCUSelector.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_AVR8::PRO::MCU_SELECTOR'
     MCU_LIST = '/../conf/mcu.yaml'
 

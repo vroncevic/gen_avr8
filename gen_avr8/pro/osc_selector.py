@@ -24,7 +24,6 @@ import sys
 
 try:
     from pathlib import Path
-    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.console_io.error import error_message
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -37,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, Free software to use and distributed it.'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'GNU General Public License (GPL)'
-__version__ = '1.8.3'
+__version__ = '1.9.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -50,7 +49,6 @@ class OSCSelector(FileChecking):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | FOSC_LIST - configuration file with FOSC list.
                 | __fosc_list - FOSC list.
@@ -61,7 +59,6 @@ class OSCSelector(FileChecking):
                 | __str__ - dunder method for OSCSelector.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_AVR8::PRO::OSC_SELECTOR'
     FOSC_LIST = '/../conf/fosc.yaml'
 
