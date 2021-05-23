@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.9.3'
+__version__ = '1.9.4'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -100,7 +100,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_avr8',
-    version='1.9.3',
+    version='1.9.4',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -146,11 +146,9 @@ setup(
             'log/gen_avr8.log'
         ]
     },
-    data_files=[
-        (
-            '/usr/local/bin/', [
-                '{0}{1}'.format(TOOL_DIR, 'run/gen_avr8_run.py')
-            ]
-        )
-    ]
+    data_files=[(
+        '/usr/local/bin/', [
+            '{0}{1}'.format(TOOL_DIR, 'run/gen_avr8_run.py')
+        ]
+    )]
 )
