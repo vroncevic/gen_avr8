@@ -33,10 +33,10 @@ except ImportError as ats_error_message:
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2018, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.9.3'
+__license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
+__version__ = '1.9.4'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -71,7 +71,7 @@ class OSCSelector(FileChecking):
             :exceptions: None
         '''
         FileChecking.__init__(self, verbose=verbose)
-        verbose_message(OSCSelector.GEN_VERBOSE, verbose, 'init form selector')
+        verbose_message(OSCSelector.GEN_VERBOSE, verbose, 'init fosc selector')
         fosc_list = '{0}{1}'.format(
             Path(__file__).parent, OSCSelector.FOSC_LIST
         )
