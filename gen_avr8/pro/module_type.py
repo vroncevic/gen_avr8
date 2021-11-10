@@ -20,11 +20,20 @@
      Check module type (it can be source module | build module).
 '''
 
+import sys
+
+try:
+    from pathlib import Path
+    from ats_utilities.console_io.verbose import verbose_message
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
+
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.9.4'
+__version__ = '1.9.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -37,6 +46,7 @@ class ModuleType:
         It defines:
 
             :attributes:
+                | GEN_VERBOSE - console text indicator for process-phase.
                 | SOURCE - list of expected source extensions.
                 | BUILD - list of expected build extensions/files.
             :methods:
@@ -46,11 +56,12 @@ class ModuleType:
                 | __str__ - dunder method for ModuleType.
     '''
 
+    GEN_VERBOSE = 'GEN_AVR8::PRO::MODULE_TYPE'
     SOURCE = ['.c', '.h']
     BUILD = ['.mk', 'Makefile']
 
     @classmethod
-    def pre_process_module(cls, pro_type, pro_name, module):
+    def pre_process_module(cls, pro_type, pro_name, module, verbose=False):
         '''
             Process module name.
 
@@ -60,6 +71,8 @@ class ModuleType:
             :type pro_name: <str>
             :param module: module name.
             :type module: <str>
+            :param verbose: enable/disable verbose option.
+            :type verbose: <bool>
             :return: processed module name.
             :rtype: <str>
             :exceptions: None
@@ -75,6 +88,7 @@ class ModuleType:
                 module_name = module
         else:
             module_name = module
+        verbose_message(cls.GEN_VERBOSE, verbose, 'module type', module)
         return module_name
 
     @classmethod

@@ -24,6 +24,7 @@ import sys
 from os import getcwd
 
 try:
+    from six import add_metaclass
     from pathlib import Path
     from gen_avr8.pro import AVR8Setup
     from ats_utilities.logging import ATSLogger
@@ -40,12 +41,13 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.9.4'
+__version__ = '1.9.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
+@add_metaclass(CooperativeMeta)
 class GenAVR8(CfgCLI):
     '''
         Defined class GenAVR8 with attribute(s) and method(s).
@@ -53,7 +55,6 @@ class GenAVR8(CfgCLI):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | CONFIG - tool info file path.
                 | LOG - tool log file path.
@@ -65,7 +66,6 @@ class GenAVR8(CfgCLI):
                 | __str__ - dunder method for GenAVR8.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_AVR8'
     CONFIG = '/conf/gen_avr8.cfg'
     LOG = '/log/gen_avr8.log'
@@ -118,7 +118,7 @@ class GenAVR8(CfgCLI):
         status = False
         if self.tool_operational:
             if len(sys.argv) >= 4:
-                options = [arg for i, arg in enumerate(sys.argv) if i %2 != 0]
+                options = [arg for i, arg in enumerate(sys.argv) if i % 2 != 0]
                 if any([arg not in GenAVR8.OPS for arg in options]):
                     sys.argv.append('-h')
             else:

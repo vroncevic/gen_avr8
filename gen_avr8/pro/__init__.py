@@ -43,7 +43,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.9.4'
+__version__ = '1.9.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -151,7 +151,7 @@ class AVR8Setup:
                 project_data['module'] = ModuleType.pre_process_module(
                     self.__project_setup['type'],
                     self.__project_setup['name'],
-                    module
+                    module, verbose=verbose
                 )
                 statuses.append(
                     self.__writer.write(project_data, verbose=verbose)
