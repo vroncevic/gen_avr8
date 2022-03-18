@@ -1,0 +1,21 @@
+version: 2.1
+executors:
+  gen_avr8-executor:
+    docker:
+      - image: cimg/python:3.8.10
+        auth:
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
+jobs:
+  gen_avr8:
+    executor: gen_avr8-executor
+    steps:
+      - checkout
+      - run: |
+          python3 -m pip install --upgrade setuptools
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade build
+workflows:
+  gen_avr8-workflow:
+    jobs:
+      - gen_avr8
