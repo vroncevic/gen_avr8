@@ -26,7 +26,7 @@ other information that should be provided before the modules are installed.
 
 .. toctree::
    :maxdepth: 4
-   :caption: Contents:
+   :caption: Contents
 
    modules
    self
@@ -46,7 +46,7 @@ Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_avr8/releases
 
-To install **gen_avr8** type the following:
+To install **gen_avr8** type the following
 
 .. code-block:: bash
 
@@ -61,7 +61,7 @@ To install **gen_avr8** type the following:
     python3 setup.py install_data
     python3 setup.py install_egg_info
 
-You can use Docker to create image/container, or You can use pip to install:
+You can use Docker to create image/container, or You can use pip to install
 
 .. code-block:: bash
 
@@ -78,7 +78,7 @@ You can use Docker to create image/container, or You can use pip to install:
 Usage
 ------
 
-Create AVR8 Project Blink, MCU/FOSC will be selected during generation process:
+Create AVR8 Project Blink, MCU/FOSC will be selected during generation process
 
 .. code-block:: bash
 
@@ -87,14 +87,14 @@ Create AVR8 Project Blink, MCU/FOSC will be selected during generation process:
 Dependencies
 -------------
 
-**gen_avr8** tool-module requires other modules and libraries:
+**gen_avr8** tool-module requires other modules and libraries
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
 Supported mcus
 ---------------
 
-Current list of supported microcontrollers:
+Current list of supported microcontrollers
 
 .. code-block:: bash
 
@@ -136,23 +136,24 @@ Current list of supported microcontrollers:
 Generation flow of project setup
 ---------------------------------
 
-Base flow of generation process:
+Base flow of generation process
 
 .. image:: https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png
 
 Tool structure
 ---------------
 
-**gen_avr8** is based on Template mechanism:
+**gen_avr8** is based on Template mechanism
 
 .. image:: https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png
 
-Generator structure:
+Generator structure
 
 .. code-block:: bash
 
     gen_avr8/
     ├── conf/
+    |   ├── gen_avr8.logo
     │   ├── fosc.yaml
     │   ├── gen_avr8.cfg
     │   ├── gen_avr8_util.cfg
