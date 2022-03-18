@@ -21,9 +21,9 @@
 '''
 
 import sys
+from os.path import dirname, realpath
 
 try:
-    from pathlib import Path
     from ats_utilities.console_io.error import error_message
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -36,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.9.5'
+__version__ = '2.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -73,7 +73,7 @@ class MCUSelector(FileChecking):
         FileChecking.__init__(self, verbose=verbose)
         verbose_message(MCUSelector.GEN_VERBOSE, verbose, 'init MCU selector')
         mcu_list = '{0}{1}'.format(
-            Path(__file__).parent, MCUSelector.MCU_LIST
+            dirname(realpath(__file__)), MCUSelector.MCU_LIST
         )
         self.check_path(file_path=mcu_list, verbose=verbose)
         self.check_mode(file_mode='r', verbose=verbose)
@@ -115,10 +115,7 @@ class MCUSelector(FileChecking):
                 for index in range(len(self.__mcu_list)):
                     print('\t{0}: {1}'.format(index, self.__mcu_list[index]))
                 print('{0}\n'.format('#' * 30))
-                try:
-                    mcu_name_index = int(raw_input(' select MCU: '))
-                except NameError:
-                    mcu_name_index = int(input(' select MCU: '))
+                mcu_name_index = int(input(' select MCU: '))
                 if mcu_name_index not in range(len(self.__mcu_list)):
                     error_message(
                         MCUSelector.GEN_VERBOSE, 'not an appropriate choice'

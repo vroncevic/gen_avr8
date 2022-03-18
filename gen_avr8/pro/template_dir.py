@@ -21,10 +21,9 @@
 '''
 
 import sys
-from os.path import isdir
+from os.path import isdir, dirname, realpath
 
 try:
-    from pathlib import Path
     from ats_utilities.console_io.verbose import verbose_message
 except ImportError as ats_error_message:
     MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
@@ -34,7 +33,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.9.5'
+__version__ = '2.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -74,7 +73,7 @@ class TemplateDir:
             :exceptions: None
         '''
         verbose_message(cls.GEN_VERBOSE, verbose, 'check project directory')
-        return isdir('{0}{1}'.format(Path(__file__).parent, target_dir))
+        return isdir('{0}{1}'.format(dirname(realpath(__file__)), target_dir))
 
     @classmethod
     def setup_conf_dir(cls, verbose=False):
@@ -90,7 +89,7 @@ class TemplateDir:
         configuration_dir = None
         if cls.check_dir(target_dir=cls.CONF_DIR, verbose=verbose):
             configuration_dir = '{0}{1}'.format(
-                Path(__file__).parent, cls.CONF_DIR
+                dirname(realpath(__file__)), cls.CONF_DIR
             )
             verbose_message(
                 cls.GEN_VERBOSE, verbose, 'conf directory', configuration_dir
@@ -111,7 +110,7 @@ class TemplateDir:
         template_dir = None
         if cls.check_dir(target_dir=cls.TEMPLATE_DIR, verbose=verbose):
             template_dir = '{0}{1}'.format(
-                Path(__file__).parent, cls.TEMPLATE_DIR
+                dirname(realpath(__file__)), cls.TEMPLATE_DIR
             )
             verbose_message(
                 cls.GEN_VERBOSE, verbose, 'template directory', template_dir

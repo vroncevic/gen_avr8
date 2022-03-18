@@ -22,11 +22,12 @@
 
 import sys
 from os import getcwd
+from os.path import exists, dirname, realpath
 
 try:
     from six import add_metaclass
-    from pathlib import Path
     from gen_avr8.pro import AVR8Setup
+    from ats_utilities.splash import Splash
     from ats_utilities.logging import ATSLogger
     from ats_utilities.cli.cfg_cli import CfgCLI
     from ats_utilities.cooperative import CooperativeMeta
@@ -41,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.9.5'
+__version__ = '2.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -58,6 +59,7 @@ class GenAVR8(CfgCLI):
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | CONFIG - tool info file path.
                 | LOG - tool log file path.
+                | LOGO - logo for splash screen.
                 | OPS - list of tool options.
                 | logger - logger object API.
             :methods:
@@ -69,6 +71,7 @@ class GenAVR8(CfgCLI):
     GEN_VERBOSE = 'GEN_AVR8'
     CONFIG = '/conf/gen_avr8.cfg'
     LOG = '/log/gen_avr8.log'
+    LOGO = '/conf/gen_avr8.logo'
     OPS = ['-g', '--gen', '-t', '--type', '-v', '--verbose', '--version']
 
     def __init__(self, verbose=False):
@@ -79,7 +82,15 @@ class GenAVR8(CfgCLI):
             :type verbose: <bool>
             :exceptions: None
         '''
-        current_dir = Path(__file__).resolve().parent
+        current_dir = dirname(realpath(__file__))
+        gen_avr8_property = {
+            'ats_organization': 'vroncevic',
+            'ats_repository': 'gen_avr8',
+            'ats_name': 'gen_avr8',
+            'ats_logo_path': '{0}{1}'.format(current_dir, GenAVR8.LOGO),
+            'ats_use_github_infrastructure': True
+        }
+        splash = Splash(gen_avr8_property, verbose=verbose)
         base_info = '{0}{1}'.format(current_dir, GenAVR8.CONFIG)
         CfgCLI.__init__(self, base_info, verbose=verbose)
         verbose_message(GenAVR8.GEN_VERBOSE, verbose, 'init tool info')
@@ -124,9 +135,9 @@ class GenAVR8(CfgCLI):
             else:
                 sys.argv.append('-h')
             args = self.parse_args(sys.argv[1:])
-            project_exists = Path(
+            project_exists = exists(
                 '{0}/{1}'.format(getcwd(), getattr(args, 'gen'))
-            ).exists()
+            )
             if not project_exists:
                 if bool(getattr(args, 'gen')) and bool(getattr(args, 'type')):
                     generator = AVR8Setup(
