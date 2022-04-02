@@ -18,13 +18,12 @@ other information that should be provided before the modules are installed.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [Installation](#installation)
-  - [Install using pip](#install-using-pip)
-  - [Install using setuptools](#install-using-setuptools)
-  - [Install using docker](#install-using-docker)
+    - [Install using pip](#install-using-pip)
+    - [Install using setuptools](#install-using-setuptools)
+    - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
 - [Usage](#usage)
 - [Supported MCUS](#supported-mcus)
