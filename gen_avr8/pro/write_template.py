@@ -21,7 +21,7 @@
 '''
 
 import sys
-from os import getcwd, chmod, mkdir
+from os import getcwd, chmod, makedirs
 from string import Template
 
 try:
@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.1.5'
+__version__ = '2.2.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -103,8 +103,7 @@ class WriteTemplate(FileChecking):
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
         self.__pro_dir = '{0}/{1}'.format(getcwd(), pro_dir)
-        mkdir(self.__pro_dir)
-        mkdir('{0}/{1}'.format(self.__pro_dir, 'build'))
+        makedirs('{0}/{1}'.format(self.__pro_dir, 'build'), exist_ok=False)
 
     def check_module(self, module, verbose=False):
         '''

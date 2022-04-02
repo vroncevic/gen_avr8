@@ -24,7 +24,7 @@
 
 import sys
 import unittest
-from os.path import exists, dirname, realpath
+from os.path import exists
 
 try:
     from gen_avr8.pro.template_dir import TemplateDir
@@ -36,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2022, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '1.3.3'
+__version__ = '2.2.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
