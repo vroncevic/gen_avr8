@@ -1,21 +1,24 @@
 version: 2.1
-executors:
-  gen_avr8-executor:
-    docker:
-      - image: cimg/python:3.8.10
-        auth:
-          username: $DOCKER_HUB_USER
-          password: $DOCKER_HUB_PASSWORD
+orbs:
+  python: circleci/python@1.5.0
 jobs:
-  gen_avr8:
-    executor: gen_avr8-executor
+  build_and_test:
+    docker:
+      - image: cimg/python:3.9
     steps:
       - checkout
-      - run: |
-          python3 -m pip install --upgrade setuptools
-          python3 -m pip install --upgrade pip
-          python3 -m pip install --upgrade build
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Install pytest
+          command: pip install pytest
+      - run:
+          name: Run tests
+          command: python -m pytest
 workflows:
-  gen_avr8-workflow:
+  gen_avr8:
     jobs:
-      - gen_avr8
+      - build_and_test:
+          filters:
+            branches:
+              only: main

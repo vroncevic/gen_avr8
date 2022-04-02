@@ -5,7 +5,10 @@
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
 
-Developed in **[python](https://www.python.org/)** code: **100%**.
+Developed in **[python](https://www.python.org/)** code.
+
+[![codecov](https://codecov.io/gh/vroncevic/gen_avr8/branch/dev/graph/badge.svg?token=Y6VSNLJ45R)](https://codecov.io/gh/vroncevic/gen_avr8)
+[![CircleCI](https://circleci.com/gh/vroncevic/gen_avr8/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_avr8/tree/master)
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
@@ -27,6 +30,7 @@ other information that should be provided before the modules are installed.
 - [Generation flow of project setup](#generation-flow-of-project-setup)
 - [Tool structure](#tool-structure)
 - [Docs](#docs)
+- [Contributing](#contributing)
 - [Copyright and Licence](#copyright-and-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -37,16 +41,17 @@ other information that should be provided before the modules are installed.
 
 Currently there are three ways to install tool
 
-* Install process based on pip
-* Install process based on setup.py (setuptools)
-* Install process based on docker mechanism
+- Install process based on pip
+- Install process based on setup.py (setuptools)
+- Install process based on docker mechanism
 
 ##### Install using pip
 
 Python package is located at **[pypi.org](https://pypi.org/project/gen-avr8/)**.
 
 You can install by using pip
-```
+
+```bash
 #python2
 pip install gen-avr8
 #python3
@@ -58,7 +63,8 @@ pip3 install gen-avr8
 Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
 
 To install modules, locate and run setup.py, type the following
-```
+
+```bash
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
 #python2
@@ -81,46 +87,51 @@ You can use Dockerfile to create image/container.
 
 **gen_avr8** tool requires other modules/libraries
 
-* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
+- [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
 ### Usage
 
 Short example of usage **gen_avr8** tool
 
 Create workspace directory Blink
-```
+
+```bash
 mkdir Blink
 cd Blink/
 ```
 
 Crete AVR8 project files, by using parameters
-```
+
+```bash
 python gen_avr8_run.py -g Blink -t app
 ```
 
 Running build process
-```
+
+```bash
 cd build/
 make all
 ```
 
 In case for missing subtool from toolchain, please install the following packages with your favorite package manager
 
-* gcc-avr
-* binutils-avr
-* gdb-avr
-* avr-libc
-* avrdude
+- gcc-avr
+- binutils-avr
+- gdb-avr
+- avr-libc
+- avrdude
 
 Install directly from the shell as root user (**[debian](https://www.debian.org/)**)
-```
+
+```bash
 apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
 ```
 
 ### Supported MCUS
 
 Current list of supported microcontrollers
-```
+
+```bash
 attiny2313    atmega128      at90s2313
 attiny24      atmega1280     at90s2333
 attiny25      atmega1281     at90s4414
@@ -170,7 +181,8 @@ Base flow of generation process
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
 
 Generator structure
-```
+
+```bash
 gen_avr8/
 ├── conf/
 |   ├── gen_avr8.logo
@@ -227,8 +239,12 @@ gen_avr8/
 
 More documentation and info at
 
-* [gen-avr8.readthedocs.io](https://gen-avr8.readthedocs.io/en/latest/)
-* [www.python.org](https://www.python.org/)
+- [gen-avr8.readthedocs.io](https://gen-avr8.readthedocs.io/en/latest/)
+- [www.python.org](https://www.python.org/)
+
+### Contributing
+
+[Contributing to codecipher](CONTRIBUTING.md)
 
 ### Copyright and Licence
 
