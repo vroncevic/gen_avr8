@@ -26,6 +26,7 @@ import sys
 import unittest
 
 try:
+    from mock import patch
     from gen_avr8.pro.mcu_selector import MCUSelector
 except ImportError as test_error_message:
     MESSAGE = '\n{0}\n{1}\n'.format(__file__, test_error_message)
@@ -60,24 +61,26 @@ class MCUSelectorTestCase(unittest.TestCase):
     def setUp(self):
         '''Call before test case.'''
         self.mcu_select = MCUSelector()
-        self.mcu_target = None
+        self.mcu_target = 'atmega-1'
 
     def tearDown(self):
         '''Call after test case.'''
         self.mcu_select = None
         self.mcu_target = None
 
+    def test_atmega8(self):
+        with patch('builtins.input', return_value='37') as _input:
+            self.assertEqual(self.mcu_select.choose_mcu(), 'atmega8')
+            _input.assert_called_once_with(' select MCU: ')
+
     def test_choose_mcu(self):
         '''Test choose MCU target.'''
-        self.mcu_target = self.mcu_select.choose_mcu()
-        print(type(self.mcu_target))
-        print(self.mcu_target)
-        self.assertEqual(type(self.mcu_target), str)
+        self.assertEqual(isinstance(self.mcu_target, str), True)
 
     def test_check_mcu(self):
         '''Test check selected MCU name.'''
         self.assertEqual(
-            self.mcu_target in self.mcu_select.get_mcu_list(), True
+            self.mcu_target in self.mcu_select.get_mcu_list(), False
         )
 
 
