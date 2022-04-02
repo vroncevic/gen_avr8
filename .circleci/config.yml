@@ -10,6 +10,9 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - run:
+          name: Install mock
+          command: pip install mock
+      - run:
           name: Install pytest
           command: pip install pytest
       - run:
