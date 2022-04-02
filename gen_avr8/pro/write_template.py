@@ -21,7 +21,7 @@
 '''
 
 import sys
-from os import getcwd, chmod, mkdir
+from os import getcwd, chmod, makedirs
 from string import Template
 
 try:
@@ -103,8 +103,7 @@ class WriteTemplate(FileChecking):
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
         self.__pro_dir = '{0}/{1}'.format(getcwd(), pro_dir)
-        mkdir(self.__pro_dir)
-        mkdir('{0}/{1}'.format(self.__pro_dir, 'build'))
+        makedirs('{0}/{1}'.format(self.__pro_dir, 'build'), exist_ok=False)
 
     def check_module(self, module, verbose=False):
         '''

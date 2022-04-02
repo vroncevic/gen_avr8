@@ -2,7 +2,7 @@
 
 '''
  Module
-     test_template_dir.py
+     test_read_template.py
  Copyright
      Copyright (C) 2022 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_avr8 is free software: you can redistribute it and/or modify it
@@ -16,18 +16,18 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Defined class TemplateDirTestCase with attribute(s) and method(s).
-     Created test cases for checking functionalities of TemplateDir.
+     Defined class ReadTemplateTestCase with attribute(s) and method(s).
+     Created test cases for checking functionalities of ReadTemplate.
  Execute
-     python3 -m unittest -v test_template_dir
+     python3 -m unittest -v test_read_template
 '''
 
 import sys
 import unittest
-from os.path import exists
+from os.path import dirname, abspath
 
 try:
-    from gen_avr8.pro.template_dir import TemplateDir
+    from gen_avr8.pro.read_template import ReadTemplate
 except ImportError as test_error_message:
     MESSAGE = '\n{0}\n{1}\n'.format(__file__, test_error_message)
     sys.exit(MESSAGE)  # Force close python test ############################
@@ -42,53 +42,46 @@ __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class TemplateDirTestCase(unittest.TestCase):
+class ReadTemplateTestCase(unittest.TestCase):
     '''
-        Defined class TemplateDirTestCase with attribute(s) and method(s).
-        Created test cases for checking functionalities of TemplateDir.
+        Defined class ReadTemplateTestCase with attribute(s) and method(s).
+        Created test cases for checking functionalities of ReadTemplate.
         It defines:
 
             :attributes:
-                | config_dir - Project configuraiton dir path.
-                | template_dir - Project template dir path.
+                | template_reader - Project template reader.
+                | template_modules - Project templates.
             :methods:
                 | setUp - call before test case.
                 | tearDown - call after test case.
-                | test_is_app_dir_name_ok - Test app dir name check.
-                | test_is_lib_dir_name_ok - Test lib dir name check.
-                | test_setup_conf_dir - Test conf dir check.
-                | test_setup_template_dir - Test template dir check.
+                | test_read - Test read templates.
     '''
 
     def setUp(self):
         '''Call before test case.'''
-        self.config_dir = TemplateDir.setup_conf_dir()
-        self.template_dir = TemplateDir.setup_template_dir()
+        self.template_reader = ReadTemplate()
+        self.template_modules = [
+            '{0}/{1}'.format(
+                dirname(abspath(__file__)),
+                '../gen_avr8/conf/template/app/Makefile.template'
+            ),
+            '{0}/{1}'.format(
+                dirname(abspath(__file__)),
+                '../gen_avr8/conf/template/app/module.template'
+            )
+        ]
 
     def tearDown(self):
         '''Call after test case.'''
-        self.config_dir = None
-        self.template_dir = None
+        self.template_reader = None
+        self.template_modules = None
 
-    def test_is_app_dir_name_ok(self):
-        '''Test app dir name check.'''
-        self.assertEqual(
-            TemplateDir.check_dir('/../conf/template/app/'), True
-        )
-
-    def test_is_lib_dir_name_ok(self):
-        '''Test lib dir name check.'''
-        self.assertEqual(
-            TemplateDir.check_dir('/../conf/template/lib/'), True
-        )
-
-    def test_setup_conf_dir(self):
-        '''Test conf dir check.'''
-        self.assertEqual(exists(self.config_dir), True)
-
-    def test_setup_template_dir(self):
-        '''Test template dir check.'''
-        self.assertEqual(exists(self.template_dir), True)
+    def test_read(self):
+        '''Test read templates.'''
+        for template_module in self.template_modules:
+            self.assertEqual(
+                self.template_reader.read(template_module) is not None, True
+            )
 
 
 if __name__ == '__main__':
