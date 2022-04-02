@@ -24,7 +24,7 @@
 
 import sys
 import unittest
-from os.path import exists
+from os.path import exists, dirname, realpath
 
 try:
     from gen_avr8.pro.template_dir import TemplateDir
@@ -56,10 +56,6 @@ class TemplateDirTestCase(unittest.TestCase):
                 | tearDown - call after test case.
                 | test_is_app_dir_name_ok - Test app dir name check.
                 | test_is_lib_dir_name_ok - Test lib dir name check.
-                | test_is_adc_dir_name_ok - Test adc dir name check.
-                | test_is_eeprom_dir_name_ok - Test eeprom dir name check.
-                | test_is_gpio_dir_name_ok - Test gpio dir name check.
-                | test_is_uart_dir_name_ok - Test uart dir name check.
                 | test_setup_conf_dir - Test conf dir check.
                 | test_setup_template_dir - Test template dir check.
     '''
@@ -84,30 +80,6 @@ class TemplateDirTestCase(unittest.TestCase):
         '''Test lib dir name check.'''
         self.assertEqual(
             TemplateDir.check_dir('/../conf/template/lib/'), True
-        )
-
-    def test_is_adc_dir_name_ok(self):
-        '''Test adc dir name check.'''
-        self.assertEqual(
-            TemplateDir.check_dir('/../conf/template/adc/'), True
-        )
-
-    def test_is_eeprom_dir_name_ok(self):
-        '''Test eeprom dir name check.'''
-        self.assertEqual(
-            TemplateDir.check_dir('/../conf/template/eeprom/'), True
-        )
-
-    def test_is_gpio_dir_name_ok(self):
-        '''Test gpio dir name check.'''
-        self.assertEqual(
-            TemplateDir.check_dir('/../conf/template/gpio/'), True
-        )
-
-    def test_is_uart_dir_name_ok(self):
-        '''Test uart dir name check.'''
-        self.assertEqual(
-            TemplateDir.check_dir('/../conf/template/uart/'), True
         )
 
     def test_setup_conf_dir(self):
