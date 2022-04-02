@@ -25,6 +25,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openssl \
     libyaml-dev \
     python \
+    python-dev \
     python-wheel \
     python3 \
     python3-wheel \
