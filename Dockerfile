@@ -26,7 +26,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
     libyaml-dev \
     python \
     python-dev \
-    python-venv \
     python-wheel \
     python3 \
     python3-wheel \
