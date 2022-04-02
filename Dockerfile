@@ -25,10 +25,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openssl \
     libyaml-dev \
     python \
-    python-pip \
     python-wheel \
     python3 \
-    python3-pip \
     python3-wheel \
     python3-venv \
     python3-dev \
@@ -38,12 +36,19 @@ RUN DEBIAN_FRONTEND=noninteractive \
     avr-libc \
     avrdude
 
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+RUN python2 get-pip.py
 RUN python2 -m pip install --upgrade setuptools
 RUN python2 -m pip install --upgrade pip
 RUN python2 -m pip install --upgrade build
+RUN rm -f get-pip.py
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3 get-pip.py
 RUN python3 -m pip install --upgrade setuptools
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --upgrade build
+RUN rm -f get-pip.py
+COPY requirements.txt /
 RUN python3 -m venv env
 RUN mkdir /gen_avr8/
 COPY gen_avr8 /gen_avr8/
