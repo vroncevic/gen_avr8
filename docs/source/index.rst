@@ -4,7 +4,7 @@ AVR project skeleton generator
 **gen_avr8** is toolset for generation of AVR8 project skeleton for
 development embedded applications.
 
-Developed in `python <https://www.python.org/>`_ code: **100%**.
+Developed in `python <https://www.python.org/>`_ code.
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any

@@ -29,10 +29,11 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.0.5'
+__version__ = '2.1.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
+
 
 def install_directory():
     '''
@@ -73,8 +74,10 @@ def install_directory():
     print(message)
     return None
 
+
 INSTALL_DIR = install_directory()
 TOOL_DIR = 'gen_avr8/'
+CONF, TEMPLATE, LOG = 'conf', 'conf/template', 'log'
 if not bool(INSTALL_DIR):
     print('[setup] force exit from install process')
     sys.exit(127)
@@ -100,7 +103,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_avr8',
-    version='2.0.5',
+    version='2.1.5',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -113,38 +116,38 @@ setup(
     classifiers=PYP_CLASSIFIERS,
     packages=['gen_avr8', 'gen_avr8.pro'],
     install_requires=['ats-utilities'],
-    package_data = {
+    package_data={
         'gen_avr8': [
-            'conf/gen_avr8.logo',
-            'conf/gen_avr8.cfg',
-            'conf/gen_avr8_util.cfg',
-            'conf/fosc.yaml',
-            'conf/mcu.yaml',
-            'conf/project_app.yaml',
-            'conf/project_lib.yaml',
-            'conf/template/app/cflags.template',
-            'conf/template/app/csflags.template',
-            'conf/template/app/Makefile.template',
-            'conf/template/app/module.template',
-            'conf/template/app/objects.template',
-            'conf/template/app/ocflags.template',
-            'conf/template/app/odflags.template',
-            'conf/template/app/sources.template',
-            'conf/template/app/subdir.template',
-            'conf/template/app/tools.template',
-            'conf/template/lib/aflags.template',
-            'conf/template/lib/cflags.template',
-            'conf/template/lib/csflags.template',
-            'conf/template/lib/Makefile.template',
-            'conf/template/lib/avr_lib_c.template',
-            'conf/template/lib/avr_lib_h.template',
-            'conf/template/lib/objects.template',
-            'conf/template/lib/ocflags.template',
-            'conf/template/lib/odflags.template',
-            'conf/template/lib/sources.template',
-            'conf/template/lib/subdir.template',
-            'conf/template/lib/tools.template',
-            'log/gen_avr8.log'
+            '{0}/{1}'.format(CONF, 'gen_avr8.logo'),
+            '{0}/{1}'.format(CONF, 'gen_avr8.cfg'),
+            '{0}/{1}'.format(CONF, 'gen_avr8_util.cfg'),
+            '{0}/{1}'.format(CONF, 'fosc.yaml'),
+            '{0}/{1}'.format(CONF, 'mcu.yaml'),
+            '{0}/{1}'.format(CONF, 'project_app.yaml'),
+            '{0}/{1}'.format(CONF, 'project_lib.yaml'),
+            '{0}/{1}'.format(TEMPLATE, '/app/cflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/csflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/Makefile.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/module.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/objects.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/ocflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/odflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/sources.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/subdir.template'),
+            '{0}/{1}'.format(TEMPLATE, '/app/tools.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/aflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/cflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/csflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/Makefile.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/avr_lib_c.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/avr_lib_h.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/objects.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/ocflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/odflags.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/sources.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/subdir.template'),
+            '{0}/{1}'.format(TEMPLATE, '/lib/tools.template'),
+            '{0}/{1}'.format(LOG, 'log/gen_avr8.log')
         ]
     },
     data_files=[(
