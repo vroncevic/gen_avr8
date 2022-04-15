@@ -4,4 +4,4 @@ The following is a set of guidelines for contributing to gen_avr8 and its packag
 
 ## Code of Conduct
 
-gen_avr8 and everyone participating in it is governed by the [gen_avr8 Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [gen_avr8](mailto:elektron.ronca@gmail.com).
+gen_avr8 and everyone participating in it is governed by the [gen_avr8 code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [gen_avr8](mailto:elektron.ronca@gmail.com).
