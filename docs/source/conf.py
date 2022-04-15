@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 project = u'gen_avr8'
 copyright = u'2018, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
-version = u'2.2.5'
+version = u'2.3.5'
 release = u'https://github.com/vroncevic/gen_avr8/releases'
 extensions = [
     'sphinx.ext.autodoc', 'sphinx.ext.doctest',

@@ -2,19 +2,19 @@
 
 # AVR project skeleton generator
 
-**gen_avr8** is tool for generation of AVR8 project skeleton for development
+☯️ **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
 
-Developed in **[python](https://www.python.org/)** code.
+Developed in 🐍 **[python](https://www.python.org/)** code.
 
 [![codecov](https://codecov.io/gh/vroncevic/gen_avr8/branch/dev/graph/badge.svg?token=Y6VSNLJ45R)](https://codecov.io/gh/vroncevic/gen_avr8)
-[![CircleCI](https://circleci.com/gh/vroncevic/gen_avr8/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_avr8/tree/master)
+[![circleci](https://circleci.com/gh/vroncevic/gen_avr8/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_avr8/tree/master)
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-![Python package](https://github.com/vroncevic/gen_avr8/workflows/Python%20package%20gen_avr8/badge.svg?branch=master) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
+[![gen_avr8 py code checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_py_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_py_checker.yml) [![gen_avr8 python package checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -22,7 +22,8 @@ other information that should be provided before the modules are installed.
 
 - [Installation](#installation)
     - [Install using pip](#install-using-pip)
-    - [Install using setuptools](#install-using-setuptools)
+    - [Install using build](#install-using-build)
+    - [Install using py setup](#install-using-py-setup)
     - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
 - [Usage](#usage)
@@ -37,17 +38,17 @@ other information that should be provided before the modules are installed.
 
 ### Installation
 
-![Install Python2 Package gen_avr8](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python2%20Package%20gen_avr8/badge.svg?branch=master) ![Install Python3 Package gen_avr8](https://github.com/vroncevic/gen_avr8/workflows/Install%20Python3%20Package%20gen_avr8/badge.svg?branch=master)
+[![gen_avr8 build python3 package](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python2_publish.yml) [![gen_avr8 build python3 package](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_publish.yml)
 
-Currently there are three ways to install tool
-
-- Install process based on pip
-- Install process based on setup.py (setuptools)
-- Install process based on docker mechanism
+Currently there are three ways to install package
+* Install process based on using pip mechanism
+* Install process based on build mechanism
+* Install process based on setup.py mechanism
+* Install process based on docker mechanism
 
 ##### Install using pip
 
-Python package is located at **[pypi.org](https://pypi.org/project/gen-avr8/)**.
+Python 📦 is located at **[pypi.org](https://pypi.org/project/gen-avr8/)**.
 
 You can install by using pip
 
@@ -58,30 +59,65 @@ pip install gen-avr8
 pip3 install gen-avr8
 ```
 
-##### Install using setuptools
+##### Install using build
 
-Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)**, download and extract release archive to local host.
+Navigate to release **[page](https://github.com/vroncevic/gen_avr8/releases/)** download and extract release archive 📦.
 
-To install modules, locate and run setup.py, type the following
+To install **gen_avr8** type the following
 
 ```bash
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
-#python2
-python setup.py install_lib
-python setup.py install_data
-python setup.py install_egg_info
-#python3
+# python2
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+python2 get-pip.py 
+python2 -m pip install --upgrade setuptools
+python2 -m pip install --upgrade pip
+python2 -m pip install --upgrade build
+pip2 install -r requirements.txt
+python2 -m build --no-isolation --wheel
+pip2 install ./dist/gen_avr8-*-py2-none-any.whl
+rm -f get-pip.py
+chmod 755 /usr/local/lib/python2.7/dist-packages/usr/local/bin/gen_avr8_run.py
+ln -s /usr/local/lib/python2.7/dist-packages/usr/local/bin/gen_avr8_run.py /usr/local/bin/gen_avr8_run.py
+# python3
+wget https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py 
+python3 -m pip install --upgrade setuptools
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade build
+pip3 install -r requirements.txt
+python3 -m build --no-isolation --wheel
+pip3 install ./dist/gen_avr8-*-py3-none-any.whl
+rm -f get-pip.py
+chmod 755 /usr/local/lib/python3.9/dist-packages/usr/local/bin/gen_avr8_run.py
+ln -s /usr/local/lib/python3.9/dist-packages/usr/local/bin/gen_avr8_run.py /usr/local/bin/gen_avr8_run.py
+```
+
+##### Install using py setup
+
+Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)** download and extract release archive 📦.
+
+To install **gen_avr8**, locate and run setup.py with arguments
+
+```bash
+tar xvzf gen_avr8-x.y.z.tar.gz
+cd gen_avr8-x.y.z
+# python2
+pip2 install -r requirements.txt
+python2 setup.py install_lib
+python2 setup.py install_egg_info
+# python3
+pip3 install -r requirements.txt
 python3 setup.py install_lib
-python3 setup.py install_data
 python3 setup.py install_egg_info
 ```
 
 ##### Install using docker
 
-You can use Dockerfile to create image/container.
+You can use Dockerfile to create image/container 🚢.
 
-[![gen_avr8 docker checker](https://github.com/vroncevic/gen_avr8/workflows/gen_avr8%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_avr8/actions?query=workflow%3A%22gen_avr8+docker+checker%22)
+[![gen_avr8 docker checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_docker_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_docker_checker.yml)
 
 ### Dependencies
 
@@ -235,16 +271,17 @@ gen_avr8/
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen_avr8/badge/?version=latest)](https://gen_avr8.readthedocs.io/en/latest/?badge=latest)
+ [![pages-build-deployment](https://github.com/vroncevic/gen_avr8/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/pages/pages-build-deployment)
 
-More documentation and info at
+📗 More documentation and info at
 
-- [gen-avr8.readthedocs.io](https://gen-avr8.readthedocs.io/en/latest/)
-- [www.python.org](https://www.python.org/)
+* [gen_avr8.readthedocs.io](https://gen_avr8.readthedocs.io/en/latest/)
+* [www.python.org](https://www.python.org/)
 
 ### Contributing
 
-[Contributing to codecipher](CONTRIBUTING.md)
+🌎 🌍 🌏 [Contributing to gen_avr8](CONTRIBUTING.md)
 
 ### Copyright and Licence
 
