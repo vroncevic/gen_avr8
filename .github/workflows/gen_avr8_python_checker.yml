@@ -1,4 +1,4 @@
-name: gen_avr8 py checker
+name: gen_avr8_python_checker
 on:
   push:
     branches: [ master ]

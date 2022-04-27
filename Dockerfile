@@ -20,6 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     tree \
     htop \
     wget \
+    curl \
     unzip \
     ca-certificates \
     openssl \
@@ -62,7 +63,6 @@ COPY LICENSE /
 RUN pip2 install -r requirements.txt
 RUN pip3 install -r requirements.txt
 RUN rm -f requirements.txt
-RUN find /gen_avr8/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
 RUN python2 -m build --no-isolation --wheel
 RUN pip2 install /dist/gen_avr8-*-py2-none-any.whl
 RUN python3 -m build --no-isolation --wheel
@@ -74,3 +74,4 @@ RUN rm -f setup.cfg
 RUN rm -f pyproject.toml
 RUN rm -f MANIFEST.in
 RUN rm -f LICENSE
+
