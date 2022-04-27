@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html4" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AVR project skeleton generator &mdash; gen_avr8 https://github.com/vroncevic/gen_avr8/releases documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>AVR project skeleton generator &mdash; gen_avr8 https://github.com/vroncevic/gen_avr8/releases documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +27,7 @@
             <a href="#" class="icon icon-home"> gen_avr8
           </a>
               <div class="version">
-                2.3.5
+                2.4.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -39,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="modules.html">gen_avr8</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">AVR project skeleton generator</a></li>
@@ -69,17 +67,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="avr-project-skeleton-generator">
-<h1>AVR project skeleton generator<a class="headerlink" href="#avr-project-skeleton-generator" title="Permalink to this headline"></a></h1>
-<p><strong>gen_avr8</strong> is toolset for generation of AVR8 project skeleton for
+  <div class="section" id="avr-project-skeleton-generator">
+<h1>AVR project skeleton generator<a class="headerlink" href="#avr-project-skeleton-generator" title="Permalink to this headline">¶</a></h1>
+<p>☯️ <strong>gen_avr8</strong> is toolset for generation of AVR8 project skeleton for
 development embedded applications.</p>
-<p>Developed in <a class="reference external" href="https://www.python.org/">python</a> code.</p>
+<p>Developed in 🐍 <a class="reference external" href="https://www.python.org/">python</a> code.</p>
 <p>The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.</p>
-<p><a class="reference external" href="https://github.com/vroncevic/gen_avr8/workflows/Python%20package/badge.svg?branch=master"><img alt="Python package" src="https://github.com/vroncevic/gen_avr8/workflows/Python%20package/badge.svg" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_avr8/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/vroncevic/gen_avr8.svg" /></a> <a class="reference external" href="https://gen_avr8.readthedocs.io/projects/gen_avr8/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/gen_avr8/badge/?version=latest" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_avr8/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg" /></a></p>
+<p><a class="reference external" href="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python_checker"><img alt="python package" src="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python_checker?style=flat&amp;label=gen_avr8%20python%20checker" /></a> <a class="reference external" href="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_package_checker"><img alt="github issues" src="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_package_checker?style=flat&amp;label=gen_avr8%20package%20checker" /></a> <a class="reference external" href="https://gen_avr8.readthedocs.io/projects/gen_avr8/en/latest/?badge=latest"><img alt="documentation status" src="https://readthedocs.org/projects/gen_avr8/badge/?version=latest" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_avr8/graphs/contributors"><img alt="github contributors" src="https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg" /></a></p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="modules.html">gen_avr8</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gen_avr8.html">gen_avr8 package</a><ul>
@@ -95,11 +93,11 @@ other information that should be provided before the modules are installed.</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">AVR project skeleton generator</a></li>
 </ul>
 </div>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
-<p><a class="reference external" href="https://github.com/vroncevic/gen_avr8/workflows/Install%20Python2%20Package%20gen_avr8/badge.svg?branch=master"><img alt="Install Python2 Package" src="https://github.com/vroncevic/gen_avr8/workflows/Install%20Python2%20Package%20gen_avr8/badge.svg" /></a> <a class="reference external" href="https://github.com/vroncevic/gen_avr8/workflows/Install%20Python3%20Package%20gen_avr8/badge.svg?branch=master"><img alt="Install Python3 Package" src="https://github.com/vroncevic/gen_avr8/workflows/Install%20Python3%20Package%20gen_avr8/badge.svg" /></a></p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python2_build"><img alt="install python2 package" src="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python2_build?style=flat&amp;label=gen_avr8%20python2%20build" /></a> <a class="reference external" href="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python3_build"><img alt="install python3 package" src="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python3_build?style=flat&amp;label=gen_avr8%20python3%20build" /></a></p>
 <p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/gen_avr8/releases">page</a> download and extract release archive.</p>
-<p>To install <strong>gen_avr8</strong> type the following</p>
+<p>To install <strong>gen_avr8</strong> 📦 type the following</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf gen_avr8-x.y.z.tar.gz
 <span class="nb">cd</span> gen_avr8-x.y.z/
 <span class="c1">#python2</span>
@@ -112,31 +110,31 @@ python3 setup.py install_data
 python3 setup.py install_egg_info
 </pre></div>
 </div>
-<p>You can use Docker to create image/container, or You can use pip to install</p>
+<p>You can use Docker to create image/container, or You can use pip to install 📦</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#python2</span>
 pip install gen-avr8
 <span class="c1">#python3</span>
 pip3 install gen-avr8
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/vroncevic/gen_avr8/actions?query=workflow%3A%22gen_avr8+docker+checker%22"><img alt="GitHub docker checker" src="https://github.com/vroncevic/gen_avr8/workflows/gen_avr8%20docker%20checker/badge.svg" /></a></p>
-</section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_docker_checker"><img alt="github docker checker" src="https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_docker_checker?style=flat&amp;label=gen_avr8%20docker%20checker" /></a></p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>Create AVR8 Project Blink, MCU/FOSC will be selected during generation process</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python gen_avr8_run.py -g Blink -t app
 </pre></div>
 </div>
-</section>
-<section id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <p><strong>gen_avr8</strong> tool-module requires other modules and libraries</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://pypi.org/project/ats-utilities/">ats-utilities - Python App/Tool/Script Utilities</a></p></li>
+<li><a class="reference external" href="https://pypi.org/project/ats-utilities/">ats-utilities - Python App/Tool/Script Utilities</a></li>
 </ul>
-</section>
-<section id="supported-mcus">
-<h2>Supported mcus<a class="headerlink" href="#supported-mcus" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="supported-mcus">
+<h2>Supported mcus<a class="headerlink" href="#supported-mcus" title="Permalink to this headline">¶</a></h2>
 <p>Current list of supported microcontrollers</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>attiny2313    atmega128      at90s2313
 attiny24      atmega1280     at90s2333
@@ -174,17 +172,17 @@ attiny861     atmega169
               atmega88
 </pre></div>
 </div>
-</section>
-<section id="generation-flow-of-project-setup">
-<h2>Generation flow of project setup<a class="headerlink" href="#generation-flow-of-project-setup" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="generation-flow-of-project-setup">
+<h2>Generation flow of project setup<a class="headerlink" href="#generation-flow-of-project-setup" title="Permalink to this headline">¶</a></h2>
 <p>Base flow of generation process</p>
 <img alt="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png" />
-</section>
-<section id="tool-structure">
-<h2>Tool structure<a class="headerlink" href="#tool-structure" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="tool-structure">
+<h2>Tool structure<a class="headerlink" href="#tool-structure" title="Permalink to this headline">¶</a></h2>
 <p><strong>gen_avr8</strong> is based on Template mechanism</p>
 <img alt="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png" />
-<p>Generator structure</p>
+<p>🧰 Generator structure</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_avr8/
 ├── conf/
 <span class="p">|</span>   ├── gen_avr8.logo
@@ -235,27 +233,27 @@ attiny861     atmega169
     └── gen_avr8_run.py
 </pre></div>
 </div>
-</section>
-<section id="copyright-and-licence">
-<h2>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this headline"></a></h2>
-<p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: GPL v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="License: Apache 2.0" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a></p>
+</div>
+<div class="section" id="copyright-and-licence">
+<h2>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="license: gpl v3" src="https://img.shields.io/badge/license-gplv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/apache-2.0"><img alt="license: apache 2.0" src="https://img.shields.io/badge/license-apache%202.0-blue.svg" /></a></p>
 <p>Copyright (C) 2018 by <a class="reference external" href="https://vroncevic.github.io/gen_avr8">vroncevic.github.io/gen_avr8</a></p>
 <p><strong>gen_avr8</strong> is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.</p>
-<p>Lets help and support PSF.</p>
-<p><a class="reference external" href="https://www.python.org/psf/"><img alt="Python Software Foundation" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/psf-logo-alpha.png" /></a></p>
-<p><a class="reference external" href="https://psfmember.org/index.php?q=civicrm/contribute/transact&amp;reset=1&amp;id=2"><img alt="Donate" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" /></a></p>
-</section>
-<section id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h2>
+<p>🌎 🌍 🌏 Lets help and support PSF.</p>
+<p><a class="reference external" href="https://www.python.org/psf/"><img alt="python software foundation" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/psf-logo-alpha.png" /></a></p>
+<p><a class="reference external" href="https://psfmember.org/index.php?q=civicrm/contribute/transact&amp;reset=1&amp;id=2"><img alt="donate" src="https://www.paypalobjects.com/en_us/i/btn/btn_donatecc_lg.gif" /></a></p>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

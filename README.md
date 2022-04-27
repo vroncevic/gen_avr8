@@ -14,7 +14,7 @@ The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-[![gen_avr8 py code checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_py_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_py_checker.yml) [![gen_avr8 python package checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
+[![gen_avr8 python checker](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python_checker?style=flat&label=gen_avr8%20python%20checker)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml) [![gen_avr8 package checker](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_package_checker?style=flat&label=gen_avr8%20package%20checker)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -38,7 +38,11 @@ other information that should be provided before the modules are installed.
 
 ### Installation
 
-[![gen_avr8 build python3 package](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python2_publish.yml) [![gen_avr8 build python3 package](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_publish.yml)
+Used next development environment
+
+![debian linux os](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/debtux.png)
+
+[![gen_avr8 python2 build](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python2_build?style=flat&label=gen_avr8%20python2%20build)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python2_build.yml) [![gen_avr8 python3 build](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python3_build?style=flat&label=gen_avr8%20python3%20build)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml)
 
 Currently there are three ways to install package
 * Install process based on using pip mechanism
@@ -63,7 +67,7 @@ pip3 install gen-avr8
 
 Navigate to release **[page](https://github.com/vroncevic/gen_avr8/releases/)** download and extract release archive 📦.
 
-To install **gen_avr8** type the following
+To install **gen_avr8** 📦 type the following
 
 ```bash
 tar xvzf gen_avr8-x.y.z.tar.gz
@@ -98,7 +102,7 @@ ln -s /usr/local/lib/python3.9/dist-packages/usr/local/bin/gen_avr8_run.py /usr/
 
 Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)** download and extract release archive 📦.
 
-To install **gen_avr8**, locate and run setup.py with arguments
+To install **gen_avr8** 📦 locate and run setup.py with arguments
 
 ```bash
 tar xvzf gen_avr8-x.y.z.tar.gz
@@ -117,13 +121,13 @@ python3 setup.py install_egg_info
 
 You can use Dockerfile to create image/container 🚢.
 
-[![gen_avr8 docker checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_docker_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_docker_checker.yml)
+[![gen_avr8 docker checker](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_docker_checker?style=flat&label=gen_avr8%20docker%20checker)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_docker_checker.yml)
 
 ### Dependencies
 
 **gen_avr8** tool requires other modules/libraries
 
-- [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
+- [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/gen_avr8)
 
 ### Usage
 
@@ -216,7 +220,7 @@ Base flow of generation process
 
 ![Project modules](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
 
-Generator structure
+🧰 Generator structure
 
 ```bash
 gen_avr8/
@@ -272,7 +276,6 @@ gen_avr8/
 ### Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen_avr8/badge/?version=latest)](https://gen_avr8.readthedocs.io/en/latest/?badge=latest)
- [![pages-build-deployment](https://github.com/vroncevic/gen_avr8/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/pages/pages-build-deployment)
 
 📗 More documentation and info at
 
