@@ -1,23 +1,23 @@
 # -*- coding: UTF-8 -*-
 
 '''
- Module
-     osc_selector.py
- Copyright
-     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-     gen_avr8 is free software: you can redistribute it and/or modify it
-     under the terms of the GNU General Public License as published by the
-     Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     gen_avr8 is distributed in the hope that it will be useful, but
-     WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-     See the GNU General Public License for more details.
-     You should have received a copy of the GNU General Public License along
-     with this program. If not, see <http://www.gnu.org/licenses/>.
- Info
-     Defined class OSCSelector with attribute(s) and method(s).
-     Selecting FOSC for generating process of project structure.
+Module
+    osc_selector.py
+Copyright
+    Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+    gen_avr8 is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    gen_avr8 is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+Info
+    Defines class OSCSelector with attribute(s) and method(s).
+    Selects FOSC for generation process of project structure.
 '''
 
 import sys
@@ -45,13 +45,14 @@ __status__ = 'Updated'
 
 class OSCSelector(FileCheck):
     '''
-        Defined class OSCSelector with attribute(s) and method(s).
-        Selecting FOSC for generating process of project structure.
+        Defines class OSCSelector with attribute(s) and method(s).
+        Selects FOSC for generation process of project structure.
+
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
-                | FOSC_LIST - Configuration file with FOSC list.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _FOSC_LIST - Configuration file with FOSC list.
                 | _fosc_list - FOSC list.
             :methods:
                 | __init__ - Initial OSCSelector constructor.
@@ -59,20 +60,20 @@ class OSCSelector(FileCheck):
                 | choose_osc - Select FOSC for target.
     '''
 
-    GEN_VERBOSE = 'GEN_AVR8::PRO::OSC_SELECTOR'
-    FOSC_LIST = '/../conf/fosc.yaml'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::OSC_SELECTOR'
+    _FOSC_LIST: str = '/../conf/fosc.yaml'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial constructor.
+            Initial OSCSelector constructor.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :exceptions: None
         '''
         super().__init__(verbose)
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} init fosc selector'])
-        fosc_list: str = f'{dirname(realpath(__file__))}{self.FOSC_LIST}'
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} init fosc selector'])
+        fosc_list: str = f'{dirname(realpath(__file__))}{self._FOSC_LIST}'
         self.check_path(fosc_list, verbose)
         self.check_mode('r', verbose)
         self.check_format(fosc_list, 'yaml', verbose)
@@ -104,7 +105,7 @@ class OSCSelector(FileCheck):
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} select FOSC'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} select FOSC'])
         fosc_name_index: int = -1
         fosc_name: str | None = None
         if self._fosc_list:
@@ -116,7 +117,7 @@ class OSCSelector(FileCheck):
                 fosc_name_index = int(input(' select FOSC: '))
                 if fosc_name_index not in range(len(self._fosc_list)):
                     error_message(
-                        [f'{self.GEN_VERBOSE} not an appropriate choice']
+                        [f'{self._GEN_VERBOSE} not an appropriate choice']
                     )
                 else:
                     fosc_name = self._fosc_list[fosc_name_index]

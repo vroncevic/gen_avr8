@@ -49,21 +49,21 @@ class TemplateType:
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
-                | APP_TEMPLATE - Application type of project.
-                | LIB_TEMPLATE - Library type of project.
-                | TEMPLATE_TYPE - Project template structures.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _APP_TEMPLATE - Application type of project.
+                | _LIB_TEMPLATE - Library type of project.
+                | _TEMPLATE_TYPE - Project template structures.
             :methods:
                 | check_template_type - Check project template type.
                 | setup_template_type - Setup template type (app | lib).
     '''
 
-    GEN_VERBOSE: str = 'GEN_AVR8::PRO::TEMPLATE_TYPE'
-    APP_TEMPLATE: str = 'app'
-    LIB_TEMPLATE: str = 'lib'
-    TEMPLATE_TYPE: Dict[str, str] = {
-        APP_TEMPLATE: 'project_app.yaml',
-        LIB_TEMPLATE: 'project_lib.yaml'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::_TEMPLATE_TYPE'
+    _APP_TEMPLATE: str = 'app'
+    _LIB_TEMPLATE: str = 'lib'
+    _TEMPLATE_TYPE: Dict[str, str] = {
+        _APP_TEMPLATE: 'project_app.yaml',
+        _LIB_TEMPLATE: 'project_lib.yaml'
     }
 
     @classmethod
@@ -91,9 +91,9 @@ class TemplateType:
             raise ATSTypeError(error_msg)
         verbose_message(
             verbose,
-            [f'{cls.GEN_VERBOSE} checking project type', template_type]
+            [f'{cls._GEN_VERBOSE} checking project type', template_type]
         )
-        return template_type in cls.TEMPLATE_TYPE
+        return template_type in cls._TEMPLATE_TYPE
 
     @classmethod
     def setup_template_type(
@@ -119,5 +119,5 @@ class TemplateType:
         if error_id == checker.TYPE_ERROR:
             raise ATSTypeError(error_msg)
         if template_type and cls.check_template_type(template_type, verbose):
-            return cls.TEMPLATE_TYPE[template_type]
+            return cls._TEMPLATE_TYPE[template_type]
         return None

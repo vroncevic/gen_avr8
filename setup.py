@@ -39,7 +39,7 @@ def install_directory() -> str | None:
     '''
         Return the installation directory, or None.
 
-        :return: path (success) | None
+        :return: Path (success) | None
         :rtype: <str> | <NoneType>
         :exceptions: None
     '''

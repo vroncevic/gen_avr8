@@ -15,7 +15,7 @@ other information that should be provided before the modules are installed.
 .. |gen_avr8 python checker| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml
 
-.. |gen_avr8 package package| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg
+.. |gen_avr8 python package| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml
 
 .. |github issues| image:: https://img.shields.io/github/issues/vroncevic/gen_avr8.svg

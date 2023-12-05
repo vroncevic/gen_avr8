@@ -17,23 +17,23 @@ Copyright
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
     Defines class GenAVR8 with attribute(s) and method(s).
-    Loads a base info, create an CLI interface and run operation(s).
+    Loads base information, creates a CLI interface, and runs operations.
 '''
 
 import sys
-from typing import Any
+from typing import Any, Dict, List
 from os import getcwd
 from os.path import exists, dirname, realpath
 from argparse import Namespace
 
 try:
-    from gen_avr8.pro import AVR8Setup
     from ats_utilities.splash import Splash
     from ats_utilities.logging import ATSLogger
     from ats_utilities.cli.cfg_cli import CfgCLI
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
+    from gen_avr8.pro import AVR8Setup
 except ImportError as ats_error_message:
     # Force close python ATS ##################################################
     sys.exit(f'\n{__file__}\n{ats_error_message}\n')
@@ -51,27 +51,27 @@ __status__ = 'Updated'
 class GenAVR8(CfgCLI):
     '''
         Defines class GenAVR8 with attribute(s) and method(s).
-        Loads a base info, create an CLI interface and run operation(s).
+        Loads base information, creates a CLI interface, and runs operations.
 
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
-                | CONFIG - Tool info file path.
-                | LOG - Tool log file path.
-                | LOGO - Logo for splash screen.
-                | OPS - List of tool options.
-                | logger - Logger object API.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _CONFIG - Tool info file path.
+                | _LOG - Tool log file path.
+                | _LOGO - Logo for splash screen.
+                | _OPS - List of tool options.
+                | _logger - Logger object API.
             :methods:
                 | __init__ - Initial GenAVR8 constructor.
                 | process - process and run tool option.
     '''
 
-    GEN_VERBOSE = 'GEN_AVR8'
-    CONFIG = '/conf/gen_avr8.cfg'
-    LOG = '/log/gen_avr8.log'
-    LOGO = '/conf/gen_avr8.logo'
-    OPS: list[str] = [
+    _GEN_VERBOSE: str = 'GEN_AVR8'
+    _CONFIG: str = '/conf/gen_avr8.cfg'
+    _LOG: str = '/log/gen_avr8.log'
+    _LOGO: str = '/conf/gen_avr8.logo'
+    _OPS: List[str] = [
         '-g', '--gen', '-t', '--type', '-v', '--verbose', '--version'
     ]
 
@@ -84,35 +84,35 @@ class GenAVR8(CfgCLI):
             :exceptions: None
         '''
         current_dir: str = dirname(realpath(__file__))
-        gen_avr8_property: dict[Any, Any] = {
+        gen_avr8_property: Dict[Any, Any] = {
             'ats_organization': 'vroncevic',
             'ats_repository': 'gen_avr8',
             'ats_name': 'gen_avr8',
-            'ats_logo_path': f'{current_dir}{self.LOGO}',
+            'ats_logo_path': f'{current_dir}{self._LOGO}',
             'ats_use_github_infrastructure': True
         }
         Splash(gen_avr8_property, verbose)
-        base_info: str = f'{current_dir}{self.CONFIG}'
+        base_info: str = f'{current_dir}{self._CONFIG}'
         super().__init__(base_info, verbose)
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} init tool info'])
-        self.logger = ATSLogger(
-            self.GEN_VERBOSE.lower(), f'{current_dir}{self.LOG}', verbose
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} init tool info'])
+        self._logger: ATSLogger = ATSLogger(
+            self._GEN_VERBOSE.lower(), f'{current_dir}{self._LOG}', verbose
         )
         if self.tool_operational:
             self.add_new_option(
-                self.OPS[0], self.OPS[1], dest='gen',
+                self._OPS[0], self._OPS[1], dest='gen',
                 help='generate AVR8 project skeleton'
             )
             self.add_new_option(
-                self.OPS[2], self.OPS[3], dest='type',
+                self._OPS[2], self._OPS[3], dest='type',
                 help='set app/lib type of project'
             )
             self.add_new_option(
-                self.OPS[4], self.OPS[5], action='store_true',
+                self._OPS[4], self._OPS[5], action='store_true',
                 default=False, help='activate verbose mode for generation'
             )
             self.add_new_option(
-                self.OPS[6], action='version', version=__version__
+                self._OPS[6], action='version', version=__version__
             )
 
     def process(self, verbose: bool = False) -> bool:
@@ -125,13 +125,13 @@ class GenAVR8(CfgCLI):
             :rtype: <bool>
             :exceptions: None
         '''
-        status = False
+        status: bool = False
         if self.tool_operational:
             if len(sys.argv) >= 4:
-                options: list[str] = [
+                options: List[str] = [
                     arg for i, arg in enumerate(sys.argv) if i % 2 != 0
                 ]
-                if any(arg not in self.OPS for arg in options):
+                if any(arg not in self._OPS for arg in options):
                     sys.argv.append('-h')
             else:
                 sys.argv.append('-h')
@@ -149,7 +149,7 @@ class GenAVR8(CfgCLI):
                     )
                     print(
                         " ".join([
-                            f'[{self.GEN_VERBOSE.lower()}]',
+                            f'[{self._GEN_VERBOSE.lower()}]',
                             'gen AVR8 project skeleton',
                             str(getattr(args, 'type')),
                             str(getattr(args, 'gen'))
@@ -159,35 +159,35 @@ class GenAVR8(CfgCLI):
                         verbose=getattr(args, 'verbose') or verbose
                     )
                     if status:
-                        success_message([f'{self.GEN_VERBOSE} done\n'])
-                        self.logger.write_log(
+                        success_message([f'{self._GEN_VERBOSE} done\n'])
+                        self._logger.write_log(
                             f'gen project {getattr(args, "gen")} done',
-                            self.logger.ATS_INFO
+                            self._logger.ATS_INFO
                         )
                     else:
                         error_message(
-                            [f'{self.GEN_VERBOSE} failed to generate project']
+                            [f'{self._GEN_VERBOSE} failed to generate project']
                         )
-                        self.logger.write_log(
-                            'generation failed', self.logger.ATS_ERROR
+                        self._logger.write_log(
+                            'generation failed', self._logger.ATS_ERROR
                         )
                 else:
                     error_message(
-                        [f'{self.GEN_VERBOSE} provide project name and type']
+                        [f'{self._GEN_VERBOSE} provide project name and type']
                     )
-                    self.logger.write_log(
-                        'provide project name and type', self.logger.ATS_ERROR
+                    self._logger.write_log(
+                        'provide project name and type', self._logger.ATS_ERROR
                     )
             else:
                 error_message(
-                    [f'{self.GEN_VERBOSE} project dir already exist']
+                    [f'{self._GEN_VERBOSE} project dir already exist']
                 )
-                self.logger.write_log(
-                    'project dir already exist', self.logger.ATS_ERROR
+                self._logger.write_log(
+                    'project dir already exist', self._logger.ATS_ERROR
                 )
         else:
-            error_message([f'{self.GEN_VERBOSE} tool is not operational'])
-            self.logger.write_log(
-                'tool is not operational', self.logger.ATS_ERROR
+            error_message([f'{self._GEN_VERBOSE} tool is not operational'])
+            self._logger.write_log(
+                'tool is not operational', self._logger.ATS_ERROR
             )
         return status

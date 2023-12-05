@@ -100,7 +100,7 @@
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | GEN_VERBOSE - Console text indicator for process-phase.</span>
+<span class="sd">                | _GEN_VERBOSE - Console text indicator for process-phase.</span>
 <span class="sd">                | _mcu_sel - MCU selector API.</span>
 <span class="sd">                | _fosc_sel - FOSC selector API.</span>
 <span class="sd">                | _reader - Reader API.</span>
@@ -112,7 +112,7 @@
 <span class="sd">                | gen_pro_setup - Generate project skeleton.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">GEN_VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::AVR8SETUP&#39;</span>
+    <span class="n">_GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::AVR8SETUP&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -123,11 +123,11 @@
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="si">}</span><span class="s1"> init setup&#39;</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mcu_sel</span> <span class="o">=</span> <span class="n">MCUSelector</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fosc_sel</span> <span class="o">=</span> <span class="n">OSCSelector</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">ReadTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="n">verbose_message</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> init setup&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mcu_sel</span> <span class="o">=</span> <span class="n">MCUSelector</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fosc_sel</span> <span class="o">=</span> <span class="n">OSCSelector</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">ReadTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pro_setup</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
 <div class="viewcode-block" id="AVR8Setup.project_setup"><a class="viewcode-back" href="../../gen_avr8.pro.html#gen_avr8.pro.AVR8Setup.project_setup">[docs]</a>    <span class="k">def</span> <span class="nf">project_setup</span><span class="p">(</span>
@@ -157,7 +157,7 @@
             <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span>
         <span class="n">verbose_message</span><span class="p">(</span>
             <span class="n">verbose</span><span class="p">,</span>
-            <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="si">}</span><span class="s1"> setup </span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">project_type</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+            <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> setup </span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">project_type</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pro_setup</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">project_name</span><span class="p">})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pro_setup</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">project_type</span><span class="p">})</span></div>
@@ -174,7 +174,7 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">verbose_message</span><span class="p">(</span>
             <span class="n">verbose</span><span class="p">,</span> <span class="p">[</span>
-                <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="si">}</span><span class="s1"> gen project&#39;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> gen project&#39;</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_pro_setup</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_pro_setup</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
             <span class="p">]</span>

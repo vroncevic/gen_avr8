@@ -47,18 +47,18 @@ class ModuleType:
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
-                | SOURCE - List of expected source extensions.
-                | BUILD - List of expected build extensions/files.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _SOURCE - List of expected source extensions.
+                | _BUILD - List of expected build extensions/files.
             :methods:
                 | pre_process_module - Process module name.
                 | is_source_module - Checks is source module.
                 | is_build_module - Checks is build module.
     '''
 
-    GEN_VERBOSE: str = 'GEN_AVR8::PRO::MODULE_TYPE'
-    SOURCE: List[str] = ['.c', '.h']
-    BUILD: List[str] = ['.mk', 'Makefile']
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::MODULE_TYPE'
+    _SOURCE: List[str] = ['.c', '.h']
+    _BUILD: List[str] = ['.mk', 'Makefile']
 
     @classmethod
     def pre_process_module(
@@ -86,15 +86,15 @@ class ModuleType:
         module_name: str | None = None
         if module and cls.is_source_module(module):
             if pro_type == 'lib':
-                if module.endswith(cls.SOURCE[0]):
+                if module.endswith(cls._SOURCE[0]):
                     module_name = f'{pro_name}.c'
-                if module.endswith(cls.SOURCE[1]):
+                if module.endswith(cls._SOURCE[1]):
                     module_name = f'{pro_name}.h'
             elif pro_type == 'app':
                 module_name = module
         else:
             module_name = module
-        verbose_message(verbose, [f'{cls.GEN_VERBOSE} module type', module])
+        verbose_message(verbose, [f'{cls._GEN_VERBOSE} module type', module])
         return module_name
 
     @classmethod
@@ -110,7 +110,7 @@ class ModuleType:
         '''
         source_type_supported: bool = False
         if module:
-            for source_type_ext in cls.SOURCE:
+            for source_type_ext in cls._SOURCE:
                 if module.endswith(source_type_ext):
                     source_type_supported = True
         return source_type_supported
@@ -128,7 +128,7 @@ class ModuleType:
         '''
         build_type_supported = False
         if module:
-            for build_type_ext in cls.BUILD:
+            for build_type_ext in cls._BUILD:
                 if module.endswith(build_type_ext):
                     build_type_supported = True
         return build_type_supported

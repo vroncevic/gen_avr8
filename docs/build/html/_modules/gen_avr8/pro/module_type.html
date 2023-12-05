@@ -91,18 +91,18 @@
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | GEN_VERBOSE - Console text indicator for process-phase.</span>
-<span class="sd">                | SOURCE - List of expected source extensions.</span>
-<span class="sd">                | BUILD - List of expected build extensions/files.</span>
+<span class="sd">                | _GEN_VERBOSE - Console text indicator for process-phase.</span>
+<span class="sd">                | _SOURCE - List of expected source extensions.</span>
+<span class="sd">                | _BUILD - List of expected build extensions/files.</span>
 <span class="sd">            :methods:</span>
 <span class="sd">                | pre_process_module - Process module name.</span>
 <span class="sd">                | is_source_module - Checks is source module.</span>
 <span class="sd">                | is_build_module - Checks is build module.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::MODULE_TYPE&#39;</span>
-    <span class="n">SOURCE</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span> <span class="s1">&#39;.h&#39;</span><span class="p">]</span>
-    <span class="n">BUILD</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.mk&#39;</span><span class="p">,</span> <span class="s1">&#39;Makefile&#39;</span><span class="p">]</span>
+    <span class="n">_GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::MODULE_TYPE&#39;</span>
+    <span class="n">_SOURCE</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span> <span class="s1">&#39;.h&#39;</span><span class="p">]</span>
+    <span class="n">_BUILD</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.mk&#39;</span><span class="p">,</span> <span class="s1">&#39;Makefile&#39;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="ModuleType.pre_process_module"><a class="viewcode-back" href="../../../gen_avr8.pro.module_type.html#gen_avr8.pro.module_type.ModuleType.pre_process_module">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">pre_process_module</span><span class="p">(</span>
@@ -130,15 +130,15 @@
         <span class="n">module_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">module</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">is_source_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">pro_type</span> <span class="o">==</span> <span class="s1">&#39;lib&#39;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_SOURCE</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                     <span class="n">module_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pro_name</span><span class="si">}</span><span class="s1">.c&#39;</span>
-                <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_SOURCE</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
                     <span class="n">module_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pro_name</span><span class="si">}</span><span class="s1">.h&#39;</span>
             <span class="k">elif</span> <span class="n">pro_type</span> <span class="o">==</span> <span class="s1">&#39;app&#39;</span><span class="p">:</span>
                 <span class="n">module_name</span> <span class="o">=</span> <span class="n">module</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">module_name</span> <span class="o">=</span> <span class="n">module</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="si">}</span><span class="s1"> module type&#39;</span><span class="p">,</span> <span class="n">module</span><span class="p">])</span>
+        <span class="n">verbose_message</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> module type&#39;</span><span class="p">,</span> <span class="n">module</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">module_name</span></div>
 
 <div class="viewcode-block" id="ModuleType.is_source_module"><a class="viewcode-back" href="../../../gen_avr8.pro.module_type.html#gen_avr8.pro.module_type.ModuleType.is_source_module">[docs]</a>    <span class="nd">@classmethod</span>
@@ -154,7 +154,7 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">source_type_supported</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">module</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">source_type_ext</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">source_type_ext</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_SOURCE</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">source_type_ext</span><span class="p">):</span>
                     <span class="n">source_type_supported</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">source_type_supported</span></div>
@@ -172,7 +172,7 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">build_type_supported</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">module</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">build_type_ext</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">BUILD</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">build_type_ext</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_BUILD</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">build_type_ext</span><span class="p">):</span>
                     <span class="n">build_type_supported</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">build_type_supported</span></div></div>

@@ -88,7 +88,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="gen_avr8.pro.html#module-gen_avr8.pro">Module contents</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gen_avr8.pro.html#gen_avr8.pro.AVR8Setup"><code class="docutils literal notranslate"><span class="pre">AVR8Setup</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="gen_avr8.pro.html#gen_avr8.pro.AVR8Setup.GEN_VERBOSE"><code class="docutils literal notranslate"><span class="pre">AVR8Setup.GEN_VERBOSE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_avr8.pro.html#gen_avr8.pro.AVR8Setup._GEN_VERBOSE"><code class="docutils literal notranslate"><span class="pre">AVR8Setup._GEN_VERBOSE</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_avr8.pro.html#gen_avr8.pro.AVR8Setup.gen_pro_setup"><code class="docutils literal notranslate"><span class="pre">AVR8Setup.gen_pro_setup()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_avr8.pro.html#gen_avr8.pro.AVR8Setup.project_setup"><code class="docutils literal notranslate"><span class="pre">AVR8Setup.project_setup()</span></code></a></li>
 </ul>
@@ -118,7 +118,7 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
 </dd>
 <dt>Info</dt><dd><p>Defines class GenAVR8 with attribute(s) and method(s).
-Loads a base info, create an CLI interface and run operation(s).</p>
+Loads base information, creates a CLI interface, and runs operations.</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -126,18 +126,18 @@ Loads a base info, create an CLI interface and run operation(s).</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gen_avr8.</span></span><span class="sig-name descname"><span class="pre">GenAVR8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_avr8.html#GenAVR8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_avr8.GenAVR8" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CfgCLI</span></code></p>
 <p>Defines class GenAVR8 with attribute(s) and method(s).
-Loads a base info, create an CLI interface and run operation(s).</p>
+Loads base information, creates a CLI interface, and runs operations.</p>
 <p>It defines:</p>
 <blockquote>
 <div><dl class="field-list">
 <dt class="field-odd">attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
-<div class="line">GEN_VERBOSE - Console text indicator for process-phase.</div>
-<div class="line">CONFIG - Tool info file path.</div>
-<div class="line">LOG - Tool log file path.</div>
-<div class="line">LOGO - Logo for splash screen.</div>
-<div class="line">OPS - List of tool options.</div>
-<div class="line">logger - Logger object API.</div>
+<div class="line">_GEN_VERBOSE - Console text indicator for process-phase.</div>
+<div class="line">_CONFIG - Tool info file path.</div>
+<div class="line">_LOG - Tool log file path.</div>
+<div class="line">_LOGO - Logo for splash screen.</div>
+<div class="line">_OPS - List of tool options.</div>
+<div class="line">_logger - Logger object API.</div>
 </div>
 </dd>
 <dt class="field-even">methods<span class="colon">:</span></dt>
@@ -149,28 +149,28 @@ Loads a base info, create an CLI interface and run operation(s).</p>
 </dl>
 </div></blockquote>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_avr8.GenAVR8.CONFIG">
-<span class="sig-name descname"><span class="pre">CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/conf/gen_avr8.cfg'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8.CONFIG" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_avr8.GenAVR8._CONFIG">
+<span class="sig-name descname"><span class="pre">_CONFIG</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/conf/gen_avr8.cfg'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8._CONFIG" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_avr8.GenAVR8.GEN_VERBOSE">
-<span class="sig-name descname"><span class="pre">GEN_VERBOSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GEN_AVR8'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_avr8.GenAVR8._GEN_VERBOSE">
+<span class="sig-name descname"><span class="pre">_GEN_VERBOSE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GEN_AVR8'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8._GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_avr8.GenAVR8.LOG">
-<span class="sig-name descname"><span class="pre">LOG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/log/gen_avr8.log'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8.LOG" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_avr8.GenAVR8._LOG">
+<span class="sig-name descname"><span class="pre">_LOG</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/log/gen_avr8.log'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8._LOG" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_avr8.GenAVR8.LOGO">
-<span class="sig-name descname"><span class="pre">LOGO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/conf/gen_avr8.logo'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8.LOGO" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_avr8.GenAVR8._LOGO">
+<span class="sig-name descname"><span class="pre">_LOGO</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/conf/gen_avr8.logo'</span></em><a class="headerlink" href="#gen_avr8.GenAVR8._LOGO" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_avr8.GenAVR8.OPS">
-<span class="sig-name descname"><span class="pre">OPS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['-g',</span> <span class="pre">'--gen',</span> <span class="pre">'-t',</span> <span class="pre">'--type',</span> <span class="pre">'-v',</span> <span class="pre">'--verbose',</span> <span class="pre">'--version']</span></em><a class="headerlink" href="#gen_avr8.GenAVR8.OPS" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_avr8.GenAVR8._OPS">
+<span class="sig-name descname"><span class="pre">_OPS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['-g',</span> <span class="pre">'--gen',</span> <span class="pre">'-t',</span> <span class="pre">'--type',</span> <span class="pre">'-v',</span> <span class="pre">'--verbose',</span> <span class="pre">'--version']</span></em><a class="headerlink" href="#gen_avr8.GenAVR8._OPS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -212,11 +212,11 @@ Loads a base info, create an CLI interface and run operation(s).</p>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#module-gen_avr8">Module contents</a><ul>
 <li><a class="reference internal" href="#gen_avr8.GenAVR8"><code class="docutils literal notranslate"><span class="pre">GenAVR8</span></code></a><ul>
-<li><a class="reference internal" href="#gen_avr8.GenAVR8.CONFIG"><code class="docutils literal notranslate"><span class="pre">GenAVR8.CONFIG</span></code></a></li>
-<li><a class="reference internal" href="#gen_avr8.GenAVR8.GEN_VERBOSE"><code class="docutils literal notranslate"><span class="pre">GenAVR8.GEN_VERBOSE</span></code></a></li>
-<li><a class="reference internal" href="#gen_avr8.GenAVR8.LOG"><code class="docutils literal notranslate"><span class="pre">GenAVR8.LOG</span></code></a></li>
-<li><a class="reference internal" href="#gen_avr8.GenAVR8.LOGO"><code class="docutils literal notranslate"><span class="pre">GenAVR8.LOGO</span></code></a></li>
-<li><a class="reference internal" href="#gen_avr8.GenAVR8.OPS"><code class="docutils literal notranslate"><span class="pre">GenAVR8.OPS</span></code></a></li>
+<li><a class="reference internal" href="#gen_avr8.GenAVR8._CONFIG"><code class="docutils literal notranslate"><span class="pre">GenAVR8._CONFIG</span></code></a></li>
+<li><a class="reference internal" href="#gen_avr8.GenAVR8._GEN_VERBOSE"><code class="docutils literal notranslate"><span class="pre">GenAVR8._GEN_VERBOSE</span></code></a></li>
+<li><a class="reference internal" href="#gen_avr8.GenAVR8._LOG"><code class="docutils literal notranslate"><span class="pre">GenAVR8._LOG</span></code></a></li>
+<li><a class="reference internal" href="#gen_avr8.GenAVR8._LOGO"><code class="docutils literal notranslate"><span class="pre">GenAVR8._LOGO</span></code></a></li>
+<li><a class="reference internal" href="#gen_avr8.GenAVR8._OPS"><code class="docutils literal notranslate"><span class="pre">GenAVR8._OPS</span></code></a></li>
 <li><a class="reference internal" href="#gen_avr8.GenAVR8.process"><code class="docutils literal notranslate"><span class="pre">GenAVR8.process()</span></code></a></li>
 </ul>
 </li>

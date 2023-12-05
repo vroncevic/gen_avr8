@@ -23,7 +23,6 @@ Info
 import sys
 
 try:
-    from ats_utilities.checker import ATSChecker
     from ats_utilities.config_io.file_check import FileCheck
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -49,15 +48,15 @@ class ReadTemplate(FileCheck):
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
-                | FORMAT - File format for template.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _FORMAT - File format for template.
             :methods:
                 | __init__ - Initial ReadTemplate constructor.
                 | read - Read template file.
     '''
 
-    GEN_VERBOSE = 'GEN_AVR8::PRO::READ_TEMPLATE'
-    FORMAT = 'template'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::READ_TEMPLATE'
+    _FORMAT: str = 'template'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
@@ -68,7 +67,7 @@ class ReadTemplate(FileCheck):
             :exceptions: None
         '''
         super().__init__(verbose)
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} init reader'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} init reader'])
 
     def read(
         self, template_file: str | None, verbose: bool = False
@@ -89,14 +88,14 @@ class ReadTemplate(FileCheck):
         error_msg, error_id = self.check_params([
             ('str:template_file', template_file)
         ])
-        if error_id == ATSChecker.TYPE_ERROR:
+        if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
         setup_content: str | None = None
         self.check_path(template_file, verbose)
         self.check_mode('r', verbose)
-        self.check_format(template_file, self.FORMAT, verbose)
+        self.check_format(template_file, self._FORMAT, verbose)
         if template_file and self.is_file_ok():
-            verbose_message(verbose, [f'{self.GEN_VERBOSE} load template'])
+            verbose_message(verbose, [f'{self._GEN_VERBOSE} load template'])
             with open(template_file, 'r', encoding='utf-8') as template:
                 if template:
                     setup_content = template.read()

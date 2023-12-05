@@ -59,7 +59,7 @@ pip3 install gen-avr8
 
 ##### Install using build
 
-Navigate to release **[page](https://github.com/vroncevic/gen_avr8/releases/)** download and extract release archive 📦.
+Navigate to release **[page](https://github.com/vroncevic/gen_avr8/releases/)** download and extract release archive.
 
 To install **gen_avr8** type the following
 

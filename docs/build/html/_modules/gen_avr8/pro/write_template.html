@@ -70,10 +70,10 @@
 <span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">Template</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">gen_avr8.pro.module_type</span> <span class="kn">import</span> <span class="n">ModuleType</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.config_io.file_check</span> <span class="kn">import</span> <span class="n">FileCheck</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
+    <span class="kn">from</span> <span class="nn">gen_avr8.pro.module_type</span> <span class="kn">import</span> <span class="n">ModuleType</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ats_error_message</span><span class="p">:</span>
     <span class="c1"># Force close python ATS ##################################################</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{</span><span class="vm">__file__</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">ats_error_message</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -96,7 +96,7 @@
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | GEN_VERBOSE - Console text indicator for process-phase.</span>
+<span class="sd">                | _GEN_VERBOSE - Console text indicator for process-phase.</span>
 <span class="sd">                | _pro_dir - Current project directory.</span>
 <span class="sd">            :methods:</span>
 <span class="sd">                | __init__ - Initial WriteTemplate constructor.</span>
@@ -105,7 +105,7 @@
 <span class="sd">                | write - Write a template content to a project module.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">GEN_VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::WRITE_TEMPLATE&#39;</span>
+    <span class="n">_GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::WRITE_TEMPLATE&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -116,7 +116,7 @@
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="si">}</span><span class="s1"> init writer&#39;</span><span class="p">])</span>
+        <span class="n">verbose_message</span><span class="p">(</span><span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> init writer&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pro_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
@@ -124,7 +124,7 @@
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Property method for getting project dir.</span>
 
-<span class="sd">            :return: project dir | None</span>
+<span class="sd">            :return: Project dir | None</span>
 <span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -176,7 +176,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">is_source</span> <span class="ow">and</span> <span class="n">is_build</span><span class="p">:</span>
             <span class="n">module_type</span> <span class="o">=</span> <span class="s1">&#39;build&#39;</span>
         <span class="n">verbose_message</span><span class="p">(</span>
-            <span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="si">}</span><span class="s1"> module type&#39;</span><span class="p">,</span> <span class="n">module_type</span><span class="p">]</span>
+            <span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> module type&#39;</span><span class="p">,</span> <span class="n">module_type</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">module_type</span></div>
 
@@ -222,7 +222,7 @@
                             <span class="n">verbose_message</span><span class="p">(</span>
                                 <span class="n">verbose</span><span class="p">,</span>
                                 <span class="p">[</span>
-                                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="si">}</span><span class="s1"> write module&#39;</span><span class="p">,</span>
+                                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> write module&#39;</span><span class="p">,</span>
                                     <span class="n">module</span>
                                 <span class="p">]</span>
                             <span class="p">)</span>

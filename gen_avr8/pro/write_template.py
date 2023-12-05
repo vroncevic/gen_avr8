@@ -26,10 +26,10 @@ from os import getcwd, chmod, makedirs
 from string import Template
 
 try:
-    from gen_avr8.pro.module_type import ModuleType
     from ats_utilities.config_io.file_check import FileCheck
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
+    from gen_avr8.pro.module_type import ModuleType
 except ImportError as ats_error_message:
     # Force close python ATS ##################################################
     sys.exit(f'\n{__file__}\n{ats_error_message}\n')
@@ -52,7 +52,7 @@ class WriteTemplate(FileCheck):
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
                 | _pro_dir - Current project directory.
             :methods:
                 | __init__ - Initial WriteTemplate constructor.
@@ -61,7 +61,7 @@ class WriteTemplate(FileCheck):
                 | write - Write a template content to a project module.
     '''
 
-    GEN_VERBOSE = 'GEN_AVR8::PRO::WRITE_TEMPLATE'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::WRITE_TEMPLATE'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
@@ -72,7 +72,7 @@ class WriteTemplate(FileCheck):
             :exceptions: None
         '''
         super().__init__(verbose)
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} init writer'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} init writer'])
         self._pro_dir: str | None = None
 
     @property
@@ -80,7 +80,7 @@ class WriteTemplate(FileCheck):
         '''
             Property method for getting project dir.
 
-            :return: project dir | None
+            :return: Project dir | None
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
@@ -132,7 +132,7 @@ class WriteTemplate(FileCheck):
         if not is_source and is_build:
             module_type = 'build'
         verbose_message(
-            verbose, [f'{self.GEN_VERBOSE} module type', module_type]
+            verbose, [f'{self._GEN_VERBOSE} module type', module_type]
         )
         return module_type
 
@@ -178,7 +178,7 @@ class WriteTemplate(FileCheck):
                             verbose_message(
                                 verbose,
                                 [
-                                    f'{self.GEN_VERBOSE} write module',
+                                    f'{self._GEN_VERBOSE} write module',
                                     module
                                 ]
                             )

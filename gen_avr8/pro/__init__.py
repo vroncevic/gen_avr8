@@ -57,7 +57,7 @@ class AVR8Setup(ATSChecker):
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
                 | _mcu_sel - MCU selector API.
                 | _fosc_sel - FOSC selector API.
                 | _reader - Reader API.
@@ -69,7 +69,7 @@ class AVR8Setup(ATSChecker):
                 | gen_pro_setup - Generate project skeleton.
     '''
 
-    GEN_VERBOSE = 'GEN_AVR8::PRO::AVR8SETUP'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::AVR8SETUP'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
@@ -80,11 +80,11 @@ class AVR8Setup(ATSChecker):
             :exceptions: None
         '''
         super().__init__()
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} init setup'])
-        self._mcu_sel = MCUSelector(verbose=verbose)
-        self._fosc_sel = OSCSelector(verbose=verbose)
-        self._reader = ReadTemplate(verbose=verbose)
-        self._writer = WriteTemplate(verbose=verbose)
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} init setup'])
+        self._mcu_sel = MCUSelector(verbose)
+        self._fosc_sel = OSCSelector(verbose)
+        self._reader = ReadTemplate(verbose)
+        self._writer = WriteTemplate(verbose)
         self._pro_setup: Dict[Any, Any] = {}
 
     def project_setup(
@@ -114,7 +114,7 @@ class AVR8Setup(ATSChecker):
             raise ATSTypeError(error_msg)
         verbose_message(
             verbose,
-            [f'{self.GEN_VERBOSE} setup {project_name} {project_type}']
+            [f'{self._GEN_VERBOSE} setup {project_name} {project_type}']
         )
         self._pro_setup.update({'name': project_name})
         self._pro_setup.update({'type': project_type})
@@ -131,7 +131,7 @@ class AVR8Setup(ATSChecker):
         '''
         verbose_message(
             verbose, [
-                f'{self.GEN_VERBOSE} gen project',
+                f'{self._GEN_VERBOSE} gen project',
                 self._pro_setup['type'],
                 self._pro_setup['name']
             ]

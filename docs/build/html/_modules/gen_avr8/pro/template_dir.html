@@ -45,23 +45,23 @@
 <span></span><span class="c1"># -*- coding: UTF-8 -*-</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> Module</span>
-<span class="sd">     template_dir.py</span>
-<span class="sd"> Copyright</span>
-<span class="sd">     Copyright (C) 2018 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
-<span class="sd">     gen_avr8 is free software: you can redistribute it and/or modify it</span>
-<span class="sd">     under the terms of the GNU General Public License as published by the</span>
-<span class="sd">     Free Software Foundation, either version 3 of the License, or</span>
-<span class="sd">     (at your option) any later version.</span>
-<span class="sd">     gen_avr8 is distributed in the hope that it will be useful, but</span>
-<span class="sd">     WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="sd">     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span>
-<span class="sd">     See the GNU General Public License for more details.</span>
-<span class="sd">     You should have received a copy of the GNU General Public License along</span>
-<span class="sd">     with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
-<span class="sd"> Info</span>
-<span class="sd">     Defined class TemplateDir with attribute(s) and method(s).</span>
-<span class="sd">     Created API for checking project template directory.</span>
+<span class="sd">Module</span>
+<span class="sd">    template_dir.py</span>
+<span class="sd">Copyright</span>
+<span class="sd">    Copyright (C) 2018 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
+<span class="sd">    gen_avr8 is free software: you can redistribute it and/or modify it</span>
+<span class="sd">    under the terms of the GNU General Public License as published by the</span>
+<span class="sd">    Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">    (at your option) any later version.</span>
+<span class="sd">    gen_avr8 is distributed in the hope that it will be useful, but</span>
+<span class="sd">    WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span>
+<span class="sd">    See the GNU General Public License for more details.</span>
+<span class="sd">    You should have received a copy of the GNU General Public License along</span>
+<span class="sd">    with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="sd">Info</span>
+<span class="sd">    Defines class TemplateDir with attribute(s) and method(s).</span>
+<span class="sd">    Creates API for checking project template directory.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -85,91 +85,82 @@
 
 <div class="viewcode-block" id="TemplateDir"><a class="viewcode-back" href="../../../gen_avr8.pro.template_dir.html#gen_avr8.pro.template_dir.TemplateDir">[docs]</a><span class="k">class</span> <span class="nc">TemplateDir</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Defined class TemplateDir with attribute(s) and method(s).</span>
-<span class="sd">        Created API for checking project template directory.</span>
+<span class="sd">        Defines class TemplateDir with attribute(s) and method(s).</span>
+<span class="sd">        Creates API for checking project template directory.</span>
+
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | GEN_VERBOSE - Console text indicator for process-phase.</span>
-<span class="sd">                | CONF_DIR - configuration directory path.</span>
-<span class="sd">                | TEMPLATE_DIR - template directory path.</span>
+<span class="sd">                | _GEN_VERBOSE - Console text indicator for process-phase.</span>
+<span class="sd">                | _CONF_DIR - Configuration directory path.</span>
+<span class="sd">                | _TEMPLATE_DIR - Template directory path.</span>
 <span class="sd">            :methods:</span>
-<span class="sd">                | check_dir - check project directory.</span>
-<span class="sd">                | setup_conf_dir - setup configuration directory.</span>
-<span class="sd">                | setup_template_dir - setup template directory.</span>
-<span class="sd">                | __str__ - dunder method for TemplateDir.</span>
+<span class="sd">                | check_dir - Checka project directory.</span>
+<span class="sd">                | setup_conf_dir - Sets configuration directory.</span>
+<span class="sd">                | setup_template_dir - Sets template directory.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">GEN_VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::TEMPLATE_DIR&#39;</span>
-    <span class="n">CONF_DIR</span><span class="p">,</span> <span class="n">TEMPLATE_DIR</span> <span class="o">=</span> <span class="s1">&#39;/../conf/&#39;</span><span class="p">,</span> <span class="s1">&#39;/../conf/template/&#39;</span>
+    <span class="n">_GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::_TEMPLATE_DIR&#39;</span>
+    <span class="n">_CONF_DIR</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;/../conf/&#39;</span>
+    <span class="n">_TEMPLATE_DIR</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;/../conf/template/&#39;</span>
 
 <div class="viewcode-block" id="TemplateDir.check_dir"><a class="viewcode-back" href="../../../gen_avr8.pro.template_dir.html#gen_avr8.pro.template_dir.TemplateDir.check_dir">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">check_dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">check_dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">target_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Checking project directory.</span>
 
-<span class="sd">            :param target_dir: target directory to be checked.</span>
-<span class="sd">            :type target_dir: &lt;str&gt;</span>
+<span class="sd">            :param target_dir: Target directory to be checked | None</span>
+<span class="sd">            :type target_dir: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :param verbose: Enable/Disable verbose option</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
-<span class="sd">            :return: boolean status, True directory ok | False.</span>
+<span class="sd">            :return: True (directory ok) | False</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;check project directory&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="n">target_dir</span><span class="p">))</span></div>
+        <span class="n">verbose_message</span><span class="p">(</span>
+            <span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> check project directory&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">isdir</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="si">}{</span><span class="n">target_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TemplateDir.setup_conf_dir"><a class="viewcode-back" href="../../../gen_avr8.pro.template_dir.html#gen_avr8.pro.template_dir.TemplateDir.setup_conf_dir">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">setup_conf_dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setup_conf_dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Setup configuration directory.</span>
 
 <span class="sd">            :param verbose: Enable/Disable verbose option</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
-<span class="sd">            :return: template directory | None.</span>
+<span class="sd">            :return: Template directory | None</span>
 <span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">configuration_dir</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">check_dir</span><span class="p">(</span><span class="n">target_dir</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">CONF_DIR</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">):</span>
-            <span class="n">configuration_dir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="bp">cls</span><span class="o">.</span><span class="n">CONF_DIR</span>
-            <span class="p">)</span>
+        <span class="n">conf_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">check_dir</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_CONF_DIR</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+            <span class="n">conf_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="si">}{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_CONF_DIR</span><span class="si">}</span><span class="s1">&#39;</span>
             <span class="n">verbose_message</span><span class="p">(</span>
-                <span class="bp">cls</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;conf directory&#39;</span><span class="p">,</span> <span class="n">configuration_dir</span>
+                <span class="n">verbose</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> conf directory&#39;</span><span class="p">,</span> <span class="n">conf_dir</span><span class="p">]</span>
             <span class="p">)</span>
-        <span class="k">return</span> <span class="n">configuration_dir</span></div>
+        <span class="k">return</span> <span class="n">conf_dir</span></div>
 
 <div class="viewcode-block" id="TemplateDir.setup_template_dir"><a class="viewcode-back" href="../../../gen_avr8.pro.template_dir.html#gen_avr8.pro.template_dir.TemplateDir.setup_template_dir">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">setup_template_dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setup_template_dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Setup template directory.</span>
 
 <span class="sd">            :param verbose: Enable/Disable verbose option</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
-<span class="sd">            :return: template directory | None.</span>
+<span class="sd">            :return: Setup template directory | None</span>
 <span class="sd">            :rtype: &lt;str&gt; | &lt;NoneType&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">template_dir</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">check_dir</span><span class="p">(</span><span class="n">target_dir</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">TEMPLATE_DIR</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">):</span>
-            <span class="n">template_dir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="bp">cls</span><span class="o">.</span><span class="n">TEMPLATE_DIR</span>
-            <span class="p">)</span>
+        <span class="n">template_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">check_dir</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_TEMPLATE_DIR</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+            <span class="n">template_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="si">}{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_TEMPLATE_DIR</span><span class="si">}</span><span class="s1">&#39;</span>
             <span class="n">verbose_message</span><span class="p">(</span>
-                <span class="bp">cls</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;template directory&#39;</span><span class="p">,</span> <span class="n">template_dir</span>
+                <span class="n">verbose</span><span class="p">,</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> template directory&#39;</span><span class="p">,</span> <span class="n">template_dir</span>
+                <span class="p">]</span>
             <span class="p">)</span>
-        <span class="k">return</span> <span class="n">template_dir</span></div>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            Dunder method for TemplateDir.</span>
-
-<span class="sd">            :return: object in a human-readable format.</span>
-<span class="sd">            :rtype: &lt;str&gt;</span>
-<span class="sd">            :exceptions: None</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> ()&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">template_dir</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

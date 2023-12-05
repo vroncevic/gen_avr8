@@ -17,7 +17,7 @@ Copyright
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
     Defines class MCUSelector with attribute(s) and method(s).
-    Selects MCU target for generating process of project structure.
+    Selects MCU target for generation process of project structure.
 '''
 
 import sys
@@ -46,13 +46,13 @@ __status__ = 'Updated'
 class MCUSelector(FileCheck):
     '''
         Defines class MCUSelector with attribute(s) and method(s).
-        Selects MCU target for generating process of project structure.
+        Selects MCU target for generation process of project structure.
 
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - Console text indicator for process-phase.
-                | MCU_LIST - Configuration file with MCU list.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _MCU_LIST - Configuration file with MCU list.
                 | _mcu_list - MCU list.
             :methods:
                 | __init__ - Initial MCUSelector constructor.
@@ -60,8 +60,8 @@ class MCUSelector(FileCheck):
                 | choose_mcu - Select MCU target.
     '''
 
-    GEN_VERBOSE = 'GEN_AVR8::PRO::MCU_SELECTOR'
-    MCU_LIST = '/../conf/mcu.yaml'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::MCU_SELECTOR'
+    _MCU_LIST: str = '/../conf/mcu.yaml'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
@@ -72,8 +72,8 @@ class MCUSelector(FileCheck):
             :exceptions: None
         '''
         super().__init__(verbose)
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} init MCU selector'])
-        mcu_list: str = f'{dirname(realpath(__file__))}{self.MCU_LIST}'
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} init MCU selector'])
+        mcu_list: str = f'{dirname(realpath(__file__))}{self._MCU_LIST}'
         self.check_path(mcu_list, verbose)
         self.check_mode('r', verbose)
         self.check_format(mcu_list, 'yaml', verbose)
@@ -101,11 +101,11 @@ class MCUSelector(FileCheck):
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
-            :return: MCU name | None.
+            :return: MCU name | None
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
-        verbose_message(verbose, [f'{self.GEN_VERBOSE} select MCU'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} select MCU'])
         mcu_name_index: int = -1
         mcu_name: str | None = None
         if self._mcu_list:
@@ -117,7 +117,7 @@ class MCUSelector(FileCheck):
                 mcu_name_index = int(input(' select MCU: '))
                 if mcu_name_index not in range(len(self._mcu_list)):
                     error_message(
-                        [f'{self.GEN_VERBOSE} not an appropriate choice']
+                        [f'{self._GEN_VERBOSE} not an appropriate choice']
                     )
                 else:
                     mcu_name = self._mcu_list[mcu_name_index]
