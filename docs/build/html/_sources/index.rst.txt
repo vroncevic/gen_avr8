@@ -1,22 +1,25 @@
 AVR project skeleton generator
 ===============================
 
-☯️ **gen_avr8** is toolset for generation of AVR8 project skeleton for
+**gen_avr8** is toolset for generation of AVR8 project skeleton for
 development embedded applications.
 
-Developed in 🐍 `python <https://www.python.org/>`_ code.
+Developed in `python <https://www.python.org/>`_ code.
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-|python package| |github issues| |documentation status| |github contributors|
+|gen_avr8 python checker| |gen_avr8 python package| |github issues| |documentation status| |github contributors|
 
-.. |python package| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python_checker?style=flat&label=gen_avr8%20python%20checker
-   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python_checker
+.. |gen_avr8 python checker| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml
 
-.. |github issues| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_package_checker?style=flat&label=gen_avr8%20package%20checker
-   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_package_checker
+.. |gen_avr8 package package| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml
+
+.. |github issues| image:: https://img.shields.io/github/issues/vroncevic/gen_avr8.svg
+   :target: https://github.com/vroncevic/gen_avr8/issues
 
 .. |github contributors| image:: https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg
    :target: https://github.com/vroncevic/gen_avr8/graphs/contributors
@@ -34,46 +37,32 @@ other information that should be provided before the modules are installed.
 Installation
 -------------
 
-|install python2 package| |install python3 package|
+|gen_avr8 python3 build|
 
-.. |install python2 package| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python2_build?style=flat&label=gen_avr8%20python2%20build
-   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python2_build
-
-.. |install python3 package| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python3_build?style=flat&label=gen_avr8%20python3%20build
-   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python3_build
+.. |gen_avr8 python3 build| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml
 
 Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_avr8/releases
 
-To install **gen_avr8** 📦 type the following
+To install **gen_avr8** type the following
 
 .. code-block:: bash
 
     tar xvzf gen_avr8-x.y.z.tar.gz
     cd gen_avr8-x.y.z/
-    #python2
-    python setup.py install_lib
-    python setup.py install_data
-    python setup.py install_egg_info
     #python3
     python3 setup.py install_lib
     python3 setup.py install_data
     python3 setup.py install_egg_info
 
-You can use Docker to create image/container, or You can use pip to install 📦
+You can use Docker to create image/container, or You can use pip to install
 
 .. code-block:: bash
 
-    #python2
-    pip install gen-avr8
     #python3
     pip3 install gen-avr8
-
-|github docker checker|
-
-.. |github docker checker| image:: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_docker_checker?style=flat&label=gen_avr8%20docker%20checker
-   :target: https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_docker_checker
 
 Usage
 ------
@@ -91,7 +80,7 @@ Dependencies
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
-Supported mcus
+Supported MCUS
 ---------------
 
 Current list of supported microcontrollers
@@ -133,21 +122,12 @@ Current list of supported microcontrollers
                   atmega8535
                   atmega88
 
-Generation flow of project setup
----------------------------------
-
-Base flow of generation process
-
-.. image:: https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png
-
 Tool structure
 ---------------
 
 **gen_avr8** is based on Template mechanism
 
-.. image:: https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png
-
-🧰 Generator structure
+Generator structure
 
 .. code-block:: bash
 
@@ -211,13 +191,13 @@ Copyright and licence
 .. |license: apache 2.0| image:: https://img.shields.io/badge/license-apache%202.0-blue.svg
    :target: https://opensource.org/licenses/apache-2.0
 
-Copyright (C) 2018 by `vroncevic.github.io/gen_avr8 <https://vroncevic.github.io/gen_avr8>`_
+Copyright (C) 2018-2024 by `vroncevic.github.io/gen_avr8 <https://vroncevic.github.io/gen_avr8>`_
 
 **gen_avr8** is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.x/3.x or,
+it under the same terms as Python itself, either Python version 3.x or,
 at your option, any later version of Python 3 you may have available.
 
-🌎 🌍 🌏 Lets help and support PSF.
+Lets help and support PSF.
 
 |python software foundation|
 
@@ -227,7 +207,7 @@ at your option, any later version of Python 3 you may have available.
 |donate|
 
 .. |donate| image:: https://www.paypalobjects.com/en_us/i/btn/btn_donatecc_lg.gif
-   :target: https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2
+   :target: https://www.python.org/psf/donations/
 
 Indices and tables
 ------------------

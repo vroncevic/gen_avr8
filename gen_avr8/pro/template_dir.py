@@ -26,12 +26,12 @@ from os.path import isdir, dirname, realpath
 try:
     from ats_utilities.console_io.verbose import verbose_message
 except ImportError as ats_error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
-    sys.exit(MESSAGE)  # Force close python ATS ##############################
+    # Force close python ATS ##################################################
+    sys.exit(f'\n{__file__}\n{ats_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__ = ['Vladimir Roncevic']
+__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
 __version__ = '2.4.5'
 __maintainer__ = 'Vladimir Roncevic'
@@ -46,7 +46,7 @@ class TemplateDir:
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - console text indicator for process-phase.
+                | GEN_VERBOSE - Console text indicator for process-phase.
                 | CONF_DIR - configuration directory path.
                 | TEMPLATE_DIR - template directory path.
             :methods:
@@ -66,7 +66,7 @@ class TemplateDir:
 
             :param target_dir: target directory to be checked.
             :type target_dir: <str>
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: boolean status, True directory ok | False.
             :rtype: <bool>
@@ -80,7 +80,7 @@ class TemplateDir:
         '''
             Setup configuration directory.
 
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: template directory | None.
             :rtype: <str> | <NoneType>
@@ -101,7 +101,7 @@ class TemplateDir:
         '''
             Setup template directory.
 
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: template directory | None.
             :rtype: <str> | <NoneType>

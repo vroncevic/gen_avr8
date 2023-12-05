@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-FROM debian:10
+FROM debian:12
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -yq --no-install-recommends \
@@ -25,9 +25,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
     ca-certificates \
     openssl \
     libyaml-dev \
-    python \
-    python-dev \
-    python-wheel \
     python3 \
     python3-wheel \
     python3-venv \
@@ -38,12 +35,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
     avr-libc \
     avrdude
 
-RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
-RUN python2 get-pip.py
-RUN python2 -m pip install --upgrade setuptools
-RUN python2 -m pip install --upgrade pip
-RUN python2 -m pip install --upgrade build
-RUN rm -f get-pip.py
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python3 get-pip.py
 RUN python3 -m pip install --upgrade setuptools
@@ -60,11 +51,8 @@ COPY MANIFEST.in /
 COPY setup.py /
 COPY README.md /
 COPY LICENSE /
-RUN pip2 install -r requirements.txt
 RUN pip3 install -r requirements.txt
 RUN rm -f requirements.txt
-RUN python2 -m build --no-isolation --wheel
-RUN pip2 install /dist/gen_avr8-*-py2-none-any.whl
 RUN python3 -m build --no-isolation --wheel
 RUN pip3 install /dist/gen_avr8-*-py3-none-any.whl
 RUN rm -rf /gen_avr8/
@@ -74,4 +62,3 @@ RUN rm -f setup.cfg
 RUN rm -f pyproject.toml
 RUN rm -f MANIFEST.in
 RUN rm -f LICENSE
-

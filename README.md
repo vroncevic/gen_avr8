@@ -2,19 +2,16 @@
 
 # AVR project skeleton generator
 
-☯️ **gen_avr8** is tool for generation of AVR8 project skeleton for development
+**gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
 
-Developed in 🐍 **[python](https://www.python.org/)** code.
-
-[![codecov](https://codecov.io/gh/vroncevic/gen_avr8/branch/dev/graph/badge.svg?token=Y6VSNLJ45R)](https://codecov.io/gh/vroncevic/gen_avr8)
-[![circleci](https://circleci.com/gh/vroncevic/gen_avr8/tree/master.svg?style=svg)](https://circleci.com/gh/vroncevic/gen_avr8/tree/master)
+Developed in **[python](https://www.python.org/)** code.
 
 The README is used to introduce the tool modules and provide instructions on
 how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-[![gen_avr8 python checker](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python_checker?style=flat&label=gen_avr8%20python%20checker)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml) [![gen_avr8 package checker](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_package_checker?style=flat&label=gen_avr8%20package%20checker)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
+[![gen_avr8 python checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml) [![gen_avr8 package checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -28,7 +25,6 @@ other information that should be provided before the modules are installed.
 - [Dependencies](#dependencies)
 - [Usage](#usage)
 - [Supported MCUS](#supported-mcus)
-- [Generation flow of project setup](#generation-flow-of-project-setup)
 - [Tool structure](#tool-structure)
 - [Docs](#docs)
 - [Contributing](#contributing)
@@ -42,7 +38,7 @@ Used next development environment
 
 ![debian linux os](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/debtux.png)
 
-[![gen_avr8 python2 build](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python2_build?style=flat&label=gen_avr8%20python2%20build)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python2_build.yml) [![gen_avr8 python3 build](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_python3_build?style=flat&label=gen_avr8%20python3%20build)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml)
+[![gen_avr8 python3 build](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml)
 
 Currently there are three ways to install package
 * Install process based on using pip mechanism
@@ -52,13 +48,11 @@ Currently there are three ways to install package
 
 ##### Install using pip
 
-Python 📦 is located at **[pypi.org](https://pypi.org/project/gen-avr8/)**.
+Python is located at **[pypi.org](https://pypi.org/project/gen-avr8/)**.
 
 You can install by using pip
 
 ```bash
-#python2
-pip install gen-avr8
 #python3
 pip3 install gen-avr8
 ```
@@ -67,23 +61,11 @@ pip3 install gen-avr8
 
 Navigate to release **[page](https://github.com/vroncevic/gen_avr8/releases/)** download and extract release archive 📦.
 
-To install **gen_avr8** 📦 type the following
+To install **gen_avr8** type the following
 
 ```bash
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z/
-# python2
-wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
-python2 get-pip.py 
-python2 -m pip install --upgrade setuptools
-python2 -m pip install --upgrade pip
-python2 -m pip install --upgrade build
-pip2 install -r requirements.txt
-python2 -m build --no-isolation --wheel
-pip2 install ./dist/gen_avr8-*-py2-none-any.whl
-rm -f get-pip.py
-chmod 755 /usr/local/lib/python2.7/dist-packages/usr/local/bin/gen_avr8_run.py
-ln -s /usr/local/lib/python2.7/dist-packages/usr/local/bin/gen_avr8_run.py /usr/local/bin/gen_avr8_run.py
 # python3
 wget https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py 
@@ -100,17 +82,13 @@ ln -s /usr/local/lib/python3.9/dist-packages/usr/local/bin/gen_avr8_run.py /usr/
 
 ##### Install using py setup
 
-Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)** download and extract release archive 📦.
+Navigate to **[release page](https://github.com/vroncevic/gen_avr8/releases)** download and extract release archive.
 
-To install **gen_avr8** 📦 locate and run setup.py with arguments
+To install **gen_avr8** locate and run setup.py with arguments
 
 ```bash
 tar xvzf gen_avr8-x.y.z.tar.gz
 cd gen_avr8-x.y.z
-# python2
-pip2 install -r requirements.txt
-python2 setup.py install_lib
-python2 setup.py install_egg_info
 # python3
 pip3 install -r requirements.txt
 python3 setup.py install_lib
@@ -119,9 +97,7 @@ python3 setup.py install_egg_info
 
 ##### Install using docker
 
-You can use Dockerfile to create image/container 🚢.
-
-[![gen_avr8 docker checker](https://img.shields.io/github/workflow/status/vroncevic/gen_avr8/gen_avr8_docker_checker?style=flat&label=gen_avr8%20docker%20checker)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_docker_checker.yml)
+You can use Dockerfile to create image/container.
 
 ### Dependencies
 
@@ -208,19 +184,11 @@ attiny861     atmega169
               atmega88
 ```
 
-### Generation flow of project setup
-
-Base flow of generation process
-
-![Generation flow](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_flow.png)
-
 ### Tool structure
 
 **gen_avr8** is based on Template mechanism
 
-![Project modules](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8.png)
-
-🧰 Generator structure
+Generator structure
 
 ```bash
 gen_avr8/
@@ -277,20 +245,20 @@ gen_avr8/
 
 [![Documentation Status](https://readthedocs.org/projects/gen_avr8/badge/?version=latest)](https://gen_avr8.readthedocs.io/en/latest/?badge=latest)
 
-📗 More documentation and info at
+More documentation and info at
 
 * [gen_avr8.readthedocs.io](https://gen_avr8.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
 
 ### Contributing
 
-🌎 🌍 🌏 [Contributing to gen_avr8](CONTRIBUTING.md)
+[Contributing to gen_avr8](CONTRIBUTING.md)
 
 ### Copyright and Licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2018 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
+Copyright (C) 2018-2024 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
 
 **gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,
@@ -300,4 +268,4 @@ Lets help and support PSF.
 
 [![Python Software Foundation](https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/psf-logo-alpha.png)](https://www.python.org/psf/)
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.python.org/psf/donations/)
