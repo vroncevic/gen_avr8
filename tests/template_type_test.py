@@ -52,6 +52,7 @@ class TemplateTypeTestCase(TestCase):
         It defines:
 
             :attributes:
+                | _CONF - Template directory.
                 | app_template - Project template dir path.
                 | lib_template - Project template dir path.
             :methods:

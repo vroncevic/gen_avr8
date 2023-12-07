@@ -28,6 +28,7 @@ from unittest import TestCase, main
 from os.path import dirname, abspath
 
 try:
+    from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from gen_avr8.pro.read_template import ReadTemplate
 except ImportError as test_error_message:
     # Force close python test #################################################
@@ -52,19 +53,22 @@ class ReadTemplateTestCase(TestCase):
         It defines:
 
             :attributes:
+                | _MAKEFILE - Template for Makefile.
+                | _MODULE - Template for module.
                 | template_reader - Project template reader.
                 | template_modules - Project templates.
             :methods:
                 | setUp - Call before test case.
                 | tearDown - Call after test case.
                 | test_read - Test read templates.
+                | test_read_none - Test read none templates.
     '''
 
     _MAKEFILE: str = '../gen_avr8/conf/template/app/Makefile.template'
     _MODULE: str = '../gen_avr8/conf/template/app/module.template'
 
     def setUp(self) -> None:
-        '''Call before test case.'''
+        '''Call before test case'''
         self.template_reader: ReadTemplate | None = ReadTemplate()
         self.template_modules: List[str] | None = [
             f'{dirname(abspath(__file__))}/{self._MAKEFILE}',
@@ -72,17 +76,23 @@ class ReadTemplateTestCase(TestCase):
         ]
 
     def tearDown(self) -> None:
-        '''Call after test case.'''
+        '''Call after test case'''
         self.template_reader = None
         self.template_modules = None
 
     def test_read(self) -> None:
-        '''Test read templates.'''
+        '''Test read templates'''
         if self.template_reader and self.template_modules:
             for template_module in self.template_modules:
                 self.assertTrue(
                     self.template_reader.read(template_module) is not None
                 )
+
+    def test_read_none(self) -> None:
+        '''Test read none templates'''
+        with self.assertRaises(ATSTypeError):
+            if self.template_reader:
+                self.template_reader.read(None)
 
 
 if __name__ == '__main__':

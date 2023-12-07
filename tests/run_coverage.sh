@@ -7,6 +7,6 @@
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-rm -rf simple_test/
+rm -rf simple_test/ new_pro/ tester/
 python3 -m coverage run -m --source=../gen_avr8 unittest discover -s ./ -p '*_test.py'
 python3 -m coverage html

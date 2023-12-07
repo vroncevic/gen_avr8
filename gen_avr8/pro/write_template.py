@@ -101,7 +101,7 @@ class WriteTemplate(FileCheck):
         if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
         self._pro_dir = f'{getcwd()}/{pro_dir}'
-        makedirs(f'{self._pro_dir}/build', exist_ok=False)
+        makedirs(f'{self._pro_dir}/build', exist_ok=True)
 
     def check_module(
         self, module: str | None, verbose: bool = False

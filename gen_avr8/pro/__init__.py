@@ -129,6 +129,11 @@ class AVR8Setup(ATSChecker):
             :rtype: <bool>
             :exceptions: None
         '''
+        status: bool = False
+        if 'name' not in self._pro_setup or 'type' not in self._pro_setup:
+            return status
+        if not self._pro_setup['name'] or not self._pro_setup['type']:
+            return status
         verbose_message(
             verbose, [
                 f'{self._GEN_VERBOSE} gen project',
@@ -137,22 +142,29 @@ class AVR8Setup(ATSChecker):
             ]
         )
         conf_dir: str | None = TemplateDir.setup_conf_dir(verbose)
+        if not conf_dir:
+            return status
         setup_template: str | None = TemplateType.setup_template_type(
             self._pro_setup['type'], verbose
         )
+        if not setup_template:
+            return status
         yml2obj: Yaml2Object = Yaml2Object(f'{conf_dir}{setup_template}')
-        status: bool = False
         all_stat: List[bool] = []
         if yml2obj:
             pro_cfg: Dict[str, str] | None = yml2obj.read_configuration()
             pro_data: Dict[Any, Any] = {}
             if pro_cfg:
-                templates: List[str] | Any = pro_cfg['templates'].split(' ')
-                modules: List[str] | Any = pro_cfg['modules'].split(' ')
+                templates: List[str] | None = pro_cfg['templates'].split(' ')
+                modules: List[str] | None = pro_cfg['modules'].split(' ')
+                if not templates or not modules:
+                    return status
                 pro_data['name'] = self._pro_setup['name']
                 pro_data['type'] = self._pro_setup['type']
                 pro_data['mcu'] = self._mcu_sel.choose_mcu(verbose)
                 pro_data['osc'] = self._fosc_sel.choose_osc(verbose)
+                if not pro_data['mcu'] or not pro_data['osc']:
+                    return status
                 self._writer.pro_dir = self._pro_setup['name']
                 for template, module in zip(templates, modules):
                     template_dir: str | None = TemplateDir.setup_template_dir(

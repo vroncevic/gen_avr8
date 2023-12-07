@@ -2,7 +2,7 @@
 
 '''
 Module
-    mcu_selector_test.py
+    avr8_setup_test.py
 Copyright
     Copyright (C) 2022 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_avr8 is free software: you can redistribute it and/or modify it
@@ -19,17 +19,15 @@ Info
     Defines class MCUSelectorTestCase with attribute(s) and method(s).
     Creates test cases for checking functionalities of MCUSelector.
 Execute
-    python3 -m unittest -v mcu_selector_test
+    python3 -m unittest -v avr8_setup_test
 '''
 
 import sys
-import io
-from typing import List, Any
-from unittest.mock import patch
 from unittest import TestCase, main
 
 try:
-    from gen_avr8.pro.mcu_selector import MCUSelector
+    from ats_utilities.exceptions.ats_type_error import ATSTypeError
+    from gen_avr8.pro import AVR8Setup
 except ImportError as test_error_message:
     # Force close python test #################################################
     sys.exit(f'\n{__file__}\n{test_error_message}\n')
@@ -69,41 +67,53 @@ class MCUSelectorTestCase(TestCase):
     def tearDown(self) -> None:
         '''Call after test case.'''
 
-    @patch('builtins.input', return_value='37')
-    def test_selected_atmega8(self, mock_input: Any) -> None:
-        '''Test chooses MCU atmega8 target'''
-        mcu_select: MCUSelector | None = MCUSelector()
-        if mcu_select:
-            self.assertEqual(mcu_select.choose_mcu(), 'atmega8')
-            mock_input.assert_called_once_with(' select MCU: ')
+    def test_create(self) -> None:
+        '''Test create'''
+        avr_setup: AVR8Setup | None = AVR8Setup()
+        self.assertIsNotNone(avr_setup)
 
-    @patch('builtins.input', return_value='42')
-    def test_selected_attiny24(self, mock_input: Any) -> None:
-        '''Test chooses MCU attiny24 target'''
-        mcu_select: MCUSelector | None = MCUSelector()
-        if mcu_select:
-            called_mcu: Any = mock_input()
-            self.assertTrue(called_mcu == '42')
-            self.assertEqual(mcu_select.choose_mcu(), 'attiny24')
+    def test_pro_setup(self) -> None:
+        '''Test create'''
+        avr_setup: AVR8Setup | None = AVR8Setup()
+        if avr_setup:
+            self.assertIsInstance(avr_setup, AVR8Setup)
+            avr_setup.project_setup('new_simple_test', 'app')
 
-    @patch('sys.stdout', new_callable=io.StringIO)
-    @patch('builtins.input', side_effect=['137', '37'])
-    def test_selected_unknown(self, mock_input: Any, mock_output: Any) -> None:
-        '''Test chooses unknown MCU target'''
-        mcu_select: MCUSelector | None = MCUSelector()
-        if mcu_select and mock_input and mock_output:
-            mcu_select.choose_mcu()
-            content = str(mock_output.getvalue())
-            self.assertTrue("not an appropriate choice" in content)
+    def test_pro_setup_name_none(self) -> None:
+        '''Test create'''
+        avr_setup: AVR8Setup | None = AVR8Setup()
+        if avr_setup:
+            with self.assertRaises(ATSTypeError):
+                self.assertIsInstance(avr_setup, AVR8Setup)
+                avr_setup.project_setup(None, 'app')
 
-    def test_checks_mcu(self) -> None:
-        '''Test checks selected MCU name'''
-        mcu_select: MCUSelector | None = MCUSelector()
-        mcu_target: str | None = 'atmega8'
-        if mcu_select:
-            mcu_list: List[str] | None = mcu_select.get_mcu_list()
-            if mcu_list:
-                self.assertTrue(mcu_target in mcu_list)
+    def test_pro_setup_type_none(self) -> None:
+        '''Test create'''
+        avr_setup: AVR8Setup | None = AVR8Setup()
+        if avr_setup:
+            with self.assertRaises(ATSTypeError):
+                self.assertIsInstance(avr_setup, AVR8Setup)
+                avr_setup.project_setup('new_simple_test', None)
+
+    def test_pro_gen_setup_without_params(self) -> None:
+        '''Test project generation without params'''
+        avr_setup: AVR8Setup | None = AVR8Setup()
+        if avr_setup:
+            self.assertFalse(avr_setup.gen_pro_setup())
+
+    def test_pro_gen_setup_with_empty_params(self) -> None:
+        '''Test project generation without params'''
+        avr_setup: AVR8Setup | None = AVR8Setup()
+        if avr_setup:
+            avr_setup.project_setup('', '')
+            self.assertFalse(avr_setup.gen_pro_setup())
+
+    def test_pro_gen_setup_with_params(self) -> None:
+        '''Test project generation with params'''
+        avr_setup: AVR8Setup | None = AVR8Setup()
+        if avr_setup:
+            avr_setup.project_setup('new_simple_test', 'app')
+            self.assertTrue(avr_setup.gen_pro_setup())
 
 
 if __name__ == '__main__':
