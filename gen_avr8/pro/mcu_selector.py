@@ -52,8 +52,8 @@ class MCUSelector(FileCheck):
 
             :attributes:
                 | _GEN_VERBOSE - Console text indicator for process-phase.
-                | _MCU_LIST - Configuration file with MCU list.
-                | _mcu_list - MCU list.
+                | _MCU_LIST - Configuration file path with suported MCU list.
+                | _mcu_list - Microcontroller list.
             :methods:
                 | __init__ - Initial MCUSelector constructor.
                 | get_mcu_list - Getter for MCU list object.
@@ -77,13 +77,12 @@ class MCUSelector(FileCheck):
         self.check_path(mcu_list, verbose)
         self.check_mode('r', verbose)
         self.check_format(mcu_list, 'yaml', verbose)
+        self._mcu_list: List[str] | None = None
         if self.is_file_ok():
             yml2obj = Yaml2Object(mcu_list)
             mcu_cfg: Dict[str, str] | None = yml2obj.read_configuration()
-            if mcu_cfg:
-                self._mcu_list: List[str] | None = mcu_cfg['mcu'].split(' ')
-        else:
-            self._mcu_list = None
+            if mcu_cfg and 'mcu' in mcu_cfg:
+                self._mcu_list = mcu_cfg['mcu'].split(' ')
 
     def get_mcu_list(self) -> List[str] | None:
         '''
@@ -106,10 +105,10 @@ class MCUSelector(FileCheck):
             :exceptions: None
         '''
         verbose_message(verbose, [f'{self._GEN_VERBOSE} select MCU'])
-        mcu_name_index: int = -1
         mcu_name: str | None = None
         if self._mcu_list:
             while True:
+                mcu_name_index: int = -1
                 print(f'{"#" * 30}\n')
                 for index, item in enumerate(self._mcu_list):
                     print(f"\t{index}: {item}")
@@ -119,6 +118,7 @@ class MCUSelector(FileCheck):
                     error_message(
                         [f'{self._GEN_VERBOSE} not an appropriate choice']
                     )
+                    continue
                 else:
                     mcu_name = self._mcu_list[mcu_name_index]
                     break

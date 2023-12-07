@@ -92,7 +92,7 @@ class ModuleType:
                     module_name = f'{pro_name}.h'
             elif pro_type == 'app':
                 module_name = module
-        else:
+        elif module and cls.is_build_module(module):
             module_name = module
         verbose_message(verbose, [f'{cls._GEN_VERBOSE} module type', module])
         return module_name

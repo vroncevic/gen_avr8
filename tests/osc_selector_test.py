@@ -23,7 +23,8 @@ Execute
 '''
 
 import sys
-from typing import List
+import io
+from typing import Any, List
 from unittest.mock import patch
 from unittest import TestCase, main
 
@@ -52,46 +53,46 @@ class OSCSelectorTestCase(TestCase):
         It defines:
 
             :attributes:
-                | osc_select - OSCSelector object.
-                | osc_target - Selected OSC target.
+                | None
             :methods:
                 | setUp - Call before test case.
                 | tearDown - Call after test case.
                 | test_selected_osc - Test choose OSC target.
-                | test_is_target_str_type - Test is target str type.
+                | test_selected_unknown - Test chooses unknown OSC target.
                 | test_checks_osc - Test checks selected OSC name.
     '''
 
     def setUp(self) -> None:
         '''Call before test case'''
-        self.osc_select = OSCSelector()
-        self.osc_target = '-1234567890'
 
     def tearDown(self) -> None:
         '''Call after test case'''
-        self.osc_select = None
-        self.osc_target = None
 
-    def test_selected_osc(self) -> None:
+    @patch('builtins.input', return_value='9')
+    def test_selected_osc(self, mock_input: Any) -> None:
         '''Test for selected OSC'''
-        with patch('builtins.input', return_value='9') as select:
-            if select:
-                if self.osc_select:
-                    self.assertEqual(
-                        self.osc_select.choose_osc(), '16000000UL'
-                    )
-                    select.assert_called_once_with(' select FOSC: ')
+        osc_select: OSCSelector | None = OSCSelector()
+        if osc_select:
+            self.assertEqual(osc_select.choose_osc(), '16000000UL')
+            mock_input.assert_called_once_with(' select FOSC: ')
 
-    def test_is_target_str_type(self) -> None:
-        '''Test is target str type.'''
-        self.assertTrue(isinstance(self.osc_target, str))
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch('builtins.input', side_effect=['137', '9'])
+    def test_selected_unknown(self, mock_input: Any, mock_output: Any) -> None:
+        '''Test chooses unknown OSC target'''
+        osc_select: OSCSelector | None = OSCSelector()
+        if osc_select and mock_input and mock_output:
+            osc_select.choose_osc()
+            content = str(mock_output.getvalue())
+            self.assertTrue("not an appropriate choice" in content)
 
     def test_checks_osc(self) -> None:
         '''Test checks selected OSC name.'''
-        if self.osc_select:
-            osc_list: List[str] | None = self.osc_select.get_fosc_list()
+        osc_select: OSCSelector | None = OSCSelector()
+        if osc_select:
+            osc_list: List[str] | None = osc_select.get_fosc_list()
             if osc_list:
-                self.assertFalse(self.osc_target in osc_list)
+                self.assertTrue('16000000UL' in osc_list)
 
 
 if __name__ == '__main__':

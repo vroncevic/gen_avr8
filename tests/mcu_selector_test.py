@@ -23,9 +23,10 @@ Execute
 '''
 
 import sys
+import io
+from typing import List, Any
 from unittest.mock import patch
 from unittest import TestCase, main
-from typing import List
 
 try:
     from gen_avr8.pro.mcu_selector import MCUSelector
@@ -52,44 +53,57 @@ class MCUSelectorTestCase(TestCase):
         It defines:
 
             :attributes:
-                | mcu_select - MCUSelector object.
-                | mcu_target - Selected MCU target.
+                | None
             :methods:
                 | setUp - Call before test case.
                 | tearDown - Call after test case.
                 | test_selected_atmega8 - Test chooses MCU atmega8 target.
-                | test_target_mcu_is_str - Test checks type of target.
+                | test_selected_attiny24 - Test chooses MCU attiny24 target.
+                | test_selected_unknown - Test chooses unknown MCU target.
                 | test_checks_mcu - Test checks selected MCU name.
     '''
 
     def setUp(self) -> None:
         '''Call before test case.'''
-        self.mcu_select = MCUSelector()
-        self.mcu_target = 'atmega-1'
 
     def tearDown(self) -> None:
         '''Call after test case.'''
-        self.mcu_select = None
-        self.mcu_target = None
 
-    def test_selected_atmega8(self) -> None:
+    @patch('builtins.input', return_value='37')
+    def test_selected_atmega8(self, mock_input: Any) -> None:
         '''Test chooses MCU atmega8 target'''
-        with patch('builtins.input', return_value='37') as select:
-            if select:
-                if self.mcu_select:
-                    self.assertEqual(self.mcu_select.choose_mcu(), 'atmega8')
-                    select.assert_called_once_with(' select MCU: ')
+        mcu_select: MCUSelector | None = MCUSelector()
+        if mcu_select:
+            self.assertEqual(mcu_select.choose_mcu(), 'atmega8')
+            mock_input.assert_called_once_with(' select MCU: ')
 
-    def test_target_mcu_is_str(self) -> None:
-        '''Test checks type of target'''
-        self.assertEqual(isinstance(self.mcu_target, str), True)
+    @patch('builtins.input', return_value='42')
+    def test_selected_attiny24(self, mock_input: Any) -> None:
+        '''Test chooses MCU attiny24 target'''
+        mcu_select: MCUSelector | None = MCUSelector()
+        if mcu_select:
+            called_mcu: Any = mock_input()
+            self.assertTrue(called_mcu == '42')
+            self.assertEqual(mcu_select.choose_mcu(), 'attiny24')
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch('builtins.input', side_effect=['137', '37'])
+    def test_selected_unknown(self, mock_input: Any, mock_output: Any) -> None:
+        '''Test chooses unknown MCU target'''
+        mcu_select: MCUSelector | None = MCUSelector()
+        if mcu_select and mock_input and mock_output:
+            mcu_select.choose_mcu()
+            content = str(mock_output.getvalue())
+            self.assertTrue("not an appropriate choice" in content)
 
     def test_checks_mcu(self) -> None:
         '''Test checks selected MCU name'''
-        if self.mcu_select:
-            mcu_list: List[str] | None = self.mcu_select.get_mcu_list()
+        mcu_select: MCUSelector | None = MCUSelector()
+        mcu_target: str | None = 'atmega8'
+        if mcu_select:
+            mcu_list: List[str] | None = mcu_select.get_mcu_list()
             if mcu_list:
-                self.assertFalse(self.mcu_target in mcu_list)
+                self.assertTrue(mcu_target in mcu_list)
 
 
 if __name__ == '__main__':

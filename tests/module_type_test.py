@@ -50,8 +50,7 @@ class ModuleTypeTestCase(TestCase):
         It defines:
 
             :attributes:
-                | app_module - Project app module.
-                | build_module - Project build module.
+                | None
             :methods:
                 | setUp - Call before test case.
                 | tearDown - Call after test case.
@@ -62,27 +61,59 @@ class ModuleTypeTestCase(TestCase):
 
     def setUp(self) -> None:
         '''Call before test case.'''
-        self.app_module = 'simple_test.c'
-        self.build_module = 'Makefile'
 
     def tearDown(self) -> None:
         '''Call after test case.'''
-        self.app_module = None
-        self.build_module = None
 
-    def test_pre_process_module(self) -> None:
+    def test_pre_process_src_module(self) -> None:
         '''Test pre-process module.'''
         self.assertEqual(
-            ModuleType.pre_process_module('app', 'simple_test', 'c'), 'c'
+            ModuleType.pre_process_module(
+                'app', 'simple_test', 'test.c'
+            ), 'test.c'
+        )
+
+    def test_pre_process_lib_h_module(self) -> None:
+        '''Test pre-process module.'''
+        self.assertEqual(
+            ModuleType.pre_process_module(
+                'lib', 'simple_test', 'simple_test.h'
+            ), 'simple_test.h'
+        )
+
+    def test_pre_process_lib_c_module(self) -> None:
+        '''Test pre-process module.'''
+        self.assertEqual(
+            ModuleType.pre_process_module(
+                'lib', 'simple_test', 'simple_test.c'
+            ), 'simple_test.c'
+        )
+
+    def test_pre_process_module_lib(self) -> None:
+        '''Test pre-process module.'''
+        self.assertEqual(
+            ModuleType.pre_process_module(
+                'lib', 'simple_test', 'Makefile'
+            ), 'Makefile'
+        )
+
+    def test_pre_process_module_app(self) -> None:
+        '''Test pre-process module.'''
+        self.assertEqual(
+            ModuleType.pre_process_module(
+                'app', 'simple_test', 'Makefile'
+            ), 'Makefile'
         )
 
     def test_is_source_module(self) -> None:
         '''Test is source module.'''
-        self.assertEqual(ModuleType.is_source_module(self.app_module), True)
+        app_module = 'simple_test.c'
+        self.assertTrue(ModuleType.is_source_module(app_module))
 
     def test_is_build_module(self) -> None:
         '''Test is build module.'''
-        self.assertEqual(ModuleType.is_build_module(self.build_module), True)
+        build_module = 'Makefile'
+        self.assertTrue(ModuleType.is_build_module(build_module))
 
 
 if __name__ == '__main__':

@@ -77,13 +77,12 @@ class OSCSelector(FileCheck):
         self.check_path(fosc_list, verbose)
         self.check_mode('r', verbose)
         self.check_format(fosc_list, 'yaml', verbose)
+        self._fosc_list: List[str] | None = None
         if self.is_file_ok():
             yml2obj = Yaml2Object(fosc_list)
             fosc_cfg: Dict[str, str] | None = yml2obj.read_configuration()
-            if fosc_cfg:
-                self._fosc_list: List[str] | None = fosc_cfg['osc'].split(' ')
-        else:
-            self._fosc_list = None
+            if fosc_cfg and 'osc' in fosc_cfg:
+                self._fosc_list = fosc_cfg['osc'].split(' ')
 
     def get_fosc_list(self) -> List[str] | None:
         '''
@@ -119,6 +118,7 @@ class OSCSelector(FileCheck):
                     error_message(
                         [f'{self._GEN_VERBOSE} not an appropriate choice']
                     )
+                    continue
                 else:
                     fosc_name = self._fosc_list[fosc_name_index]
                     break

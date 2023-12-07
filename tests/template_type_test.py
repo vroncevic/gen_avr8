@@ -27,6 +27,7 @@ from unittest import TestCase, main
 from os.path import exists, dirname, realpath
 
 try:
+    from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from gen_avr8.pro.template_type import TemplateType
 except ImportError as test_error_message:
     # Force close python test #################################################
@@ -56,56 +57,73 @@ class TemplateTypeTestCase(TestCase):
             :methods:
                 | setUp - Call before test case.
                 | tearDown - Call after test case.
-                | test_template_type_app - Test app template type check.
-                | test_template_type_lib - Test lib template type check.
-                | test_setup_template_app - Test setup template app check.
-                | test_setup_template_lib - Test setup template lib check.
-                | test_setup_app_dir - Test app template dir check.
-                | test_setup_lib_dir - Test lib template dir check.
+                | test_template_type_app - Test app template type.
+                | test_template_type_lib - Test lib template type.
+                | test_template_type_none - Test app template type None.
+                | test_setup_template_app - Test setup template app.
+                | test_setup_template_lib - Test setup template lib.
+                | test_setup_template_none - Test setup template lib None.
+                | test_setup_template_not_supported - Template not supported.
+                | test_setup_app_dir - Test app template dir.
+                | test_setup_lib_dir - Test lib template dir.
     '''
 
     _CONF: str = '../gen_avr8/conf/template'
 
     def setUp(self) -> None:
-        '''Call before test case.'''
+        '''Call before test case'''
         cwd: str = dirname(realpath(__file__))
         self.app_template: str | None = f'{cwd}/{self._CONF}/app'
         self.lib_template: str | None = f'{cwd}/{self._CONF}/lib'
 
     def tearDown(self) -> None:
-        '''Call after test case.'''
+        '''Call after test case'''
         self.app_template = None
         self.lib_template = None
 
     def test_template_type_app(self) -> None:
-        '''Test app template type check.'''
+        '''Test app template type'''
         self.assertTrue(TemplateType.check_template_type('app'))
 
     def test_template_type_lib(self) -> None:
-        '''Test lib template type check.'''
+        '''Test lib template type'''
         self.assertTrue(TemplateType.check_template_type('lib'))
 
+    def test_template_type_none(self) -> None:
+        '''Test app template type None'''
+        with self.assertRaises(ATSTypeError):
+            TemplateType.check_template_type(None)
+
     def test_setup_template_app(self) -> None:
-        '''Test setup template app check.'''
+        '''Test setup template app'''
         self.assertEqual(
             TemplateType.setup_template_type('app'),
             'project_app.yaml'
         )
 
     def test_setup_template_lib(self) -> None:
-        '''Test setup template lib check.'''
+        '''Test setup template lib'''
         self.assertEqual(
             TemplateType.setup_template_type('lib'),
             'project_lib.yaml'
         )
 
+    def test_setup_template_none(self) -> None:
+        '''Test setup template lib None'''
+        with self.assertRaises(ATSTypeError):
+            TemplateType.setup_template_type(None)
+
+    def test_setup_template_not_supported(self) -> None:
+        '''Template not supported'''
+        self.assertIsNone(TemplateType.setup_template_type('ext'))
+
     def test_setup_app_dir(self) -> None:
-        '''Test app template dir check.'''
+        '''Test app template dir'''
         if self.app_template:
             self.assertTrue(exists(self.app_template))
 
     def test_setup_lib_dir(self) -> None:
-        '''Test lib template dir check.'''
+        '''Test lib template dir'''
         if self.lib_template:
             self.assertTrue(exists(self.lib_template))
 
