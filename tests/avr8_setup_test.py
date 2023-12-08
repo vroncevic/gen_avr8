@@ -23,7 +23,9 @@ Execute
 '''
 
 import sys
+from typing import Any
 from unittest import TestCase, main
+from unittest.mock import patch
 
 try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -95,23 +97,26 @@ class MCUSelectorTestCase(TestCase):
                 self.assertIsInstance(avr_setup, AVR8Setup)
                 avr_setup.project_setup('new_simple_test', None)
 
-    def test_pro_gen_setup_without_params(self) -> None:
+    @patch('builtins.input', side_effect=['37', '9'])
+    def test_pro_gen_setup_without_params(self, mock_input: Any) -> None:
         '''Test project generation without params'''
         avr_setup: AVR8Setup | None = AVR8Setup()
-        if avr_setup:
+        if avr_setup and mock_input:
             self.assertFalse(avr_setup.gen_pro_setup())
 
-    def test_pro_gen_setup_with_empty_params(self) -> None:
+    @patch('builtins.input', side_effect=['37', '9'])
+    def test_pro_gen_setup_with_empty_params(self, mock_input: Any) -> None:
         '''Test project generation without params'''
         avr_setup: AVR8Setup | None = AVR8Setup()
-        if avr_setup:
+        if avr_setup and mock_input:
             avr_setup.project_setup('', '')
             self.assertFalse(avr_setup.gen_pro_setup())
 
-    def test_pro_gen_setup_with_params(self) -> None:
+    @patch('builtins.input', side_effect=['37', '9'])
+    def test_pro_gen_setup_with_params(self, mock_input: Any) -> None:
         '''Test project generation with params'''
         avr_setup: AVR8Setup | None = AVR8Setup()
-        if avr_setup:
+        if avr_setup and mock_input:
             avr_setup.project_setup('new_simple_test', 'app')
             self.assertTrue(avr_setup.gen_pro_setup())
 

@@ -129,13 +129,25 @@ class GenAVR8(CfgCLI):
         if self.tool_operational:
             if len(sys.argv) >= 4:
                 options: List[str] = [
-                    arg for i, arg in enumerate(sys.argv) if i % 2 != 0
+                    arg for i, arg in enumerate(sys.argv) if i % 2 == 0
                 ]
-                if any(arg not in self._OPS for arg in options):
-                    sys.argv.append('-h')
+                if any(arg not in self._OPS for arg in options[1:]):
+                    error_message(
+                        [f'{self._GEN_VERBOSE} provide project name and type']
+                    )
+                    self._logger.write_log(
+                        'provide project name and type', self._logger.ATS_ERROR
+                    )
+                    return status
             else:
-                sys.argv.append('-h')
-            args: Any | Namespace = self.parse_args(sys.argv[1:])
+                error_message(
+                    [f'{self._GEN_VERBOSE} provide project name and type']
+                )
+                self._logger.write_log(
+                    'provide project name and type', self._logger.ATS_ERROR
+                )
+                return status
+            args: Any | Namespace = self.parse_args(sys.argv[2:])
             project_exists: bool = exists(
                 f'{getcwd()}/{str(getattr(args, "gen"))}'
             )
@@ -171,13 +183,6 @@ class GenAVR8(CfgCLI):
                         self._logger.write_log(
                             'generation failed', self._logger.ATS_ERROR
                         )
-                else:
-                    error_message(
-                        [f'{self._GEN_VERBOSE} provide project name and type']
-                    )
-                    self._logger.write_log(
-                        'provide project name and type', self._logger.ATS_ERROR
-                    )
             else:
                 error_message(
                     [f'{self._GEN_VERBOSE} project dir already exist']

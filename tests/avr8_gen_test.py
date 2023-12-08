@@ -23,10 +23,10 @@ Execute
 '''
 
 import sys
+from os import makedirs, rmdir, getcwd
 from typing import Any
 from unittest import TestCase, main
 from unittest.mock import patch
-from argparse import Namespace
 
 try:
     from gen_avr8 import GenAVR8
@@ -72,17 +72,80 @@ class MCUSelectorTestCase(TestCase):
         avr_gen: GenAVR8 | None = GenAVR8()
         self.assertIsNotNone(avr_gen)
 
-    @patch(
-        'argparse.ArgumentParser.parse_args',
-        return_value=Namespace(
-            gen='tester', type='app', verbose=False
-        )
-    )
-    @patch('builtins.input', return_value='9')
-    def test_process(self, mock_input: Any, mock_parse: Any) -> None:
+    def test_process_no_args(self) -> None:
         '''Test create'''
         avr_gen: GenAVR8 | None = GenAVR8()
-        if avr_gen and mock_input and mock_parse:
+        if avr_gen:
+            self.assertIsInstance(avr_gen, GenAVR8)
+            self.assertFalse(avr_gen.process())
+
+    def test_process_missing_args(self) -> None:
+        '''Test create'''
+        sys.argv.clear()
+        sys.argv.insert(0, 'python3')
+        sys.argv.insert(1, 'gen_avr8_run.py')
+        avr_gen: GenAVR8 | None = GenAVR8()
+        if avr_gen:
+            self.assertIsInstance(avr_gen, GenAVR8)
+            self.assertFalse(avr_gen.process())
+
+    def test_pro_dir_already_exists(self) -> None:
+        '''Test create'''
+        sys.argv.clear()
+        sys.argv.insert(0, 'python3')
+        sys.argv.insert(1, 'gen_avr8_run.py')
+        sys.argv.insert(2, '-g')
+        sys.argv.insert(3, 'tester2')
+        sys.argv.insert(4, '-t')
+        sys.argv.insert(5, 'app')
+        makedirs(f'{getcwd()}/tester2', exist_ok=False)
+        avr_gen: GenAVR8 | None = GenAVR8()
+        if avr_gen:
+            self.assertIsInstance(avr_gen, GenAVR8)
+            self.assertFalse(avr_gen.process())
+        rmdir('tester2')
+
+    def test_process_wrong_args(self) -> None:
+        '''Test create'''
+        sys.argv.clear()
+        sys.argv.insert(0, 'python3')
+        sys.argv.insert(1, 'gen_avr8_run.py')
+        sys.argv.insert(2, '-g')
+        sys.argv.insert(3, 'tester')
+        sys.argv.insert(4, '-z')
+        sys.argv.insert(5, 'app')
+        avr_gen: GenAVR8 | None = GenAVR8()
+        if avr_gen:
+            self.assertIsInstance(avr_gen, GenAVR8)
+            self.assertFalse(avr_gen.process())
+
+    def test_tool_not_operational(self) -> None:
+        '''Test create'''
+        sys.argv.clear()
+        sys.argv.insert(0, 'python3')
+        sys.argv.insert(1, 'gen_avr8_run.py')
+        sys.argv.insert(2, '-g')
+        sys.argv.insert(3, 'tester')
+        sys.argv.insert(4, '-t')
+        sys.argv.insert(5, 'app')
+        avr_gen: GenAVR8 | None = GenAVR8()
+        if avr_gen:
+            avr_gen.tool_operational = False
+            self.assertIsInstance(avr_gen, GenAVR8)
+            self.assertFalse(avr_gen.process())
+
+    @patch('builtins.input', side_effect=['37', '9'])
+    def test_process(self, mock_input: Any) -> None:
+        '''Test create'''
+        sys.argv.clear()
+        sys.argv.insert(0, 'python3')
+        sys.argv.insert(1, 'gen_avr8_run.py')
+        sys.argv.insert(2, '-g')
+        sys.argv.insert(3, 'tester')
+        sys.argv.insert(4, '-t')
+        sys.argv.insert(5, 'app')
+        avr_gen: GenAVR8 | None = GenAVR8()
+        if avr_gen and mock_input:
             self.assertIsInstance(avr_gen, GenAVR8)
             self.assertTrue(avr_gen.process())
 

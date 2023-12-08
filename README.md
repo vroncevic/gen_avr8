@@ -247,7 +247,7 @@ gen_avr8/
 
 More documentation and info at
 
-* [gen_avr8.readthedocs.io](https://gen_avr8.readthedocs.io/en/latest/)
+* [gen_avr8.readthedocs.io](https://gen_avr8.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 
 ### Contributing
