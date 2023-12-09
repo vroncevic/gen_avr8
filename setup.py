@@ -21,9 +21,7 @@ Info
 '''
 
 from __future__ import print_function
-import sys
-from typing import Generator
-from os.path import abspath, dirname, join, exists
+from os.path import abspath, dirname, join
 from setuptools import setup
 
 __author__ = 'Vladimir Roncevic'
@@ -35,51 +33,10 @@ __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
-
-def install_directory() -> str | None:
-    '''
-        Return the installation directory, or None.
-
-        :return: Path (success) | None
-        :rtype: <str> | <NoneType>
-        :exceptions: None
-    '''
-    py_version: str = f'{sys.version_info[0]}.{sys.version_info[1]}'
-    paths: tuple[str, str] | Generator[str, None, None]
-    if py_version:
-        if '--github' in sys.argv:
-            index: int = sys.argv.index('--github')
-            sys.argv.pop(index)
-            paths = (
-                f'{sys.prefix}/lib/python{py_version}/dist-packages/',
-                f'{sys.prefix}/lib/python{py_version}/site-packages/'
-            )
-        else:
-            paths = (s for s in (
-                f'{sys.prefix}/local/lib/python{py_version}/dist-packages/',
-                f'{sys.prefix}/local/lib/python{py_version}/site-packages/'
-            ))
-        message: str | None = None
-        for path in paths:
-            message = f'[setup] check path {path}'
-            print(message)
-            if exists(path):
-                message = f'[setup] use path {path}'
-                print(message)
-                return path
-        message = f'[setup] no install path found, check {sys.prefix}\n'
-        print(message)
-    return None
-
-
-# INSTALL_DIR: str | None = install_directory()
 TOOL_DIR: str = 'gen_avr8/'
 CONF: str = 'conf'
 TEMPLATE: str = 'conf/template'
 LOG: str = 'log'
-# if not INSTALL_DIR:
-#     print('[setup] force exit from install process')
-#     sys.exit(127)
 THIS_DIR: str = abspath(dirname(__file__))
 long_description: str | None = None
 with open(join(THIS_DIR, 'README.md'), encoding='utf-8') as readme:
