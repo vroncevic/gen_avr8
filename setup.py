@@ -72,14 +72,14 @@ def install_directory() -> str | None:
     return None
 
 
-INSTALL_DIR: str | None = install_directory()
+# INSTALL_DIR: str | None = install_directory()
 TOOL_DIR: str = 'gen_avr8/'
 CONF: str = 'conf'
 TEMPLATE: str = 'conf/template'
 LOG: str = 'log'
-if not INSTALL_DIR:
-    print('[setup] force exit from install process')
-    sys.exit(127)
+# if not INSTALL_DIR:
+#     print('[setup] force exit from install process')
+#     sys.exit(127)
 THIS_DIR: str = abspath(dirname(__file__))
 long_description: str | None = None
 with open(join(THIS_DIR, 'README.md'), encoding='utf-8') as readme:
