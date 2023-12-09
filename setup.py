@@ -47,7 +47,7 @@ def install_directory() -> str | None:
     '''
     py_version: str = f'{sys.version_info[0]}.{sys.version_info[1]}'
     paths: tuple[str, str] | Generator[str, None, None]
-    directory_path = '/opt/hostedtoolcache/Python/3.10.13/x64'
+    directory_path = '/opt/hostedtoolcache/Python/3.10.13/x64/python/'
     files_in_directory = [file for file in listdir(directory_path)]
     print(files_in_directory)
     if py_version:
