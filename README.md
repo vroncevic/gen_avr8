@@ -243,11 +243,11 @@ gen_avr8/
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen_avr8/badge/?version=latest)](https://gen_avr8.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
 
 More documentation and info at
 
-* [gen_avr8.readthedocs.io](https://gen_avr8.readthedocs.io)
+* [gen_avr8.readthedocs.io](https://gen-avr8.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 
 ### Contributing
