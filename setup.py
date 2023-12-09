@@ -50,6 +50,12 @@ def install_directory() -> str | None:
     directory_path = '/opt/hostedtoolcache/Python/3.10.13/x64/'
     files_in_directory = [file for file in listdir(directory_path)]
     print(files_in_directory)
+    directory_path = '/opt/hostedtoolcache/Python/3.10.13/'
+    files_in_directory = [file for file in listdir(directory_path)]
+    print(files_in_directory)
+    directory_path = '/opt/hostedtoolcache/Python/'
+    files_in_directory = [file for file in listdir(directory_path)]
+    print(files_in_directory)
     if py_version:
         if '--github' in sys.argv:
             index: int = sys.argv.index('--github')
