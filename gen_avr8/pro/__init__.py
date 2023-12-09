@@ -1,28 +1,33 @@
 # -*- coding: UTF-8 -*-
 
 '''
- Module
-     __init__.py
- Copyright
-     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-     gen_avr8 is free software: you can redistribute it and/or modify it
-     under the terms of the GNU General Public License as published by the
-     Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     gen_avr8 is distributed in the hope that it will be useful, but
-     WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-     See the GNU General Public License for more details.
-     You should have received a copy of the GNU General Public License along
-     with this program. If not, see <http://www.gnu.org/licenses/>.
- Info
-     Defined class AVR8Setup with attribute(s) and method(s).
-     Generate AVR project skeleton.
+Module
+    __init__.py
+Copyright
+    Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+    gen_avr8 is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    gen_avr8 is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+Info
+    Defines class AVR8Setup with attribute(s) and method(s).
+    Generates AVR project skeleton.
 '''
 
 import sys
+from typing import Any, Dict, List
 
 try:
+    from ats_utilities.checker import ATSChecker
+    from ats_utilities.console_io.verbose import verbose_message
+    from ats_utilities.config_io.yaml.yaml2object import Yaml2Object
+    from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from gen_avr8.pro.module_type import ModuleType
     from gen_avr8.pro.mcu_selector import MCUSelector
     from gen_avr8.pro.osc_selector import OSCSelector
@@ -30,18 +35,13 @@ try:
     from gen_avr8.pro.template_type import TemplateType
     from gen_avr8.pro.read_template import ReadTemplate
     from gen_avr8.pro.write_template import WriteTemplate
-    from ats_utilities.checker import ATSChecker
-    from ats_utilities.console_io.verbose import verbose_message
-    from ats_utilities.config_io.yaml.yaml2object import Yaml2Object
-    from ats_utilities.exceptions.ats_type_error import ATSTypeError
-    from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as ats_error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
-    sys.exit(MESSAGE)  # Force close python ATS ##############################
+    # Force close python ATS ##################################################
+    sys.exit(f'\n{__file__}\n{ats_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__ = ['Vladimir Roncevic']
+__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
 __version__ = '2.4.5'
 __maintainer__ = 'Vladimir Roncevic'
@@ -49,127 +49,137 @@ __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class AVR8Setup:
+class AVR8Setup(ATSChecker):
     '''
-        Defined class AVR8Setup with attribute(s) and method(s).
-        Generate AVR project skeleton.
+        Defines class AVR8Setup with attribute(s) and method(s).
+        Generates AVR project skeleton.
+
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - console text indicator for process-phase.
-                | __mcu_sel - MCU selector API.
-                | __fosc_sel - FOSC selector API.
-                | __reader - reader API.
-                | __writer - writer API.
-                | __project_setup - project setup.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _mcu_sel - MCU selector API.
+                | _fosc_sel - FOSC selector API.
+                | _reader - Reader API.
+                | _writer - Writer API.
+                | _pro_setup - Project setup.
             :methods:
-                | __init__ - initial constructor.
-                | project_setup - property methods for set operations.
-                | gen_pro_setup - generate project skeleton.
-                | __str__ - dunder method for AVR8Setup.
+                | __init__ - Initial AVR8Setup constructor.
+                | project_setup - Property methods for set operations.
+                | gen_pro_setup - Generate project skeleton.
     '''
 
-    GEN_VERBOSE = 'GEN_AVR8::PRO::AVR8SETUP'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::AVR8SETUP'
 
-    def __init__(self, verbose=False):
+    def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial constructor.
+            Initial AVR8Setup constructor.
 
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :exceptions: None
         '''
-        verbose_message(AVR8Setup.GEN_VERBOSE, verbose, 'init setup')
-        self.__mcu_sel = MCUSelector(verbose=verbose)
-        self.__fosc_sel = OSCSelector(verbose=verbose)
-        self.__reader = ReadTemplate(verbose=verbose)
-        self.__writer = WriteTemplate(verbose=verbose)
-        self.__project_setup = dict()
+        super().__init__()
+        verbose_message(verbose, [f'{self._GEN_VERBOSE} init setup'])
+        self._mcu_sel = MCUSelector(verbose)
+        self._fosc_sel = OSCSelector(verbose)
+        self._reader = ReadTemplate(verbose)
+        self._writer = WriteTemplate(verbose)
+        self._pro_setup: Dict[Any, Any] = {}
 
-    def project_setup(self, project_name, project_type, verbose=False):
+    def project_setup(
+        self,
+        project_name: str | None,
+        project_type: str | None,
+        verbose: bool = False
+    ) -> None:
         '''
             Setter for project setup.
 
-            :param project_name: project name.
-            :type project_name: <str>
-            :param project_type: project type.
-            :type project_type: <str>
-            :param verbose: enable/disable verbose option.
+            :param project_name: Project name | None
+            :type project_name: <str> | <NoneType>
+            :param project_type: Project type | None
+            :type project_type: <str> | <NoneType>
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
-            :exceptions: ATSTypeError | ATSBadCallError
+            :exceptions: ATSTypeError
         '''
-        checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params([
+        error_msg: str | None = None
+        error_id: int | None = None
+        error_msg, error_id = self.check_params([
             ('str:project_name', project_name),
             ('str:project_type', project_type)
         ])
-        if status == ATSChecker.TYPE_ERROR:
-            raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR:
-            raise ATSBadCallError(error)
-        self.__project_setup.update({'name': project_name})
-        self.__project_setup.update({'type': project_type})
+        if error_id == self.TYPE_ERROR:
+            raise ATSTypeError(error_msg)
+        verbose_message(
+            verbose,
+            [f'{self._GEN_VERBOSE} setup {project_name} {project_type}']
+        )
+        self._pro_setup.update({'name': project_name})
+        self._pro_setup.update({'type': project_type})
 
-    def gen_pro_setup(self, verbose=False):
+    def gen_pro_setup(self, verbose: bool = False) -> bool:
         '''
             Generate AVR8 project setup.
 
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
-            :return: boolean status, True (success) | False.
+            :return: True (success operation) | False
             :rtype: <bool>
             :exceptions: None
         '''
+        status: bool = False
+        if 'name' not in self._pro_setup or 'type' not in self._pro_setup:
+            return status
+        if not self._pro_setup['name'] or not self._pro_setup['type']:
+            return status
         verbose_message(
-            AVR8Setup.GEN_VERBOSE, verbose, 'generate project',
-            self.__project_setup['type'], self.__project_setup['name']
+            verbose, [
+                f'{self._GEN_VERBOSE} gen project',
+                self._pro_setup['type'],
+                self._pro_setup['name']
+            ]
         )
-        yml2obj, status, statuses = Yaml2Object(
-            '{0}{1}'.format(
-                TemplateDir.setup_conf_dir(verbose),
-                TemplateType.setup_template_type(
-                    self.__project_setup['type'], verbose
-                )
-            )
-        ), False, []
-        if bool(yml2obj):
-            pro_cfg, project_data = yml2obj.read_configuration(), {}
-            templates = pro_cfg['templates'].split(' ')
-            modules = pro_cfg['modules'].split(' ')
-            project_data['name'] = self.__project_setup['name']
-            project_data['type'] = self.__project_setup['type']
-            project_data['mcu'] = self.__mcu_sel.choose_mcu(verbose=verbose)
-            project_data['osc'] = self.__fosc_sel.choose_osc(verbose=verbose)
-            self.__writer.pro_dir = self.__project_setup['name']
-            for template, module in zip(templates, modules):
-                project_data['template'] = self.__reader.read(
-                    template_file='{0}{1}/{2}'.format(
-                        TemplateDir.setup_template_dir(verbose),
-                        self.__project_setup['type'], template
-                    ), verbose=verbose
-                )
-                project_data['module'] = ModuleType.pre_process_module(
-                    self.__project_setup['type'],
-                    self.__project_setup['name'],
-                    module, verbose=verbose
-                )
-                statuses.append(
-                    self.__writer.write(project_data, verbose=verbose)
-                )
-            if all(statuses) and len(templates) == len(statuses):
-                status = True
+        conf_dir: str | None = TemplateDir.setup_conf_dir(verbose)
+        if not conf_dir:
+            return status
+        setup_template: str | None = TemplateType.setup_template_type(
+            self._pro_setup['type'], verbose
+        )
+        if not setup_template:
+            return status
+        yml2obj: Yaml2Object = Yaml2Object(f'{conf_dir}{setup_template}')
+        all_stat: List[bool] = []
+        if yml2obj:
+            pro_cfg: Dict[str, str] | None = yml2obj.read_configuration()
+            pro_data: Dict[Any, Any] = {}
+            if pro_cfg:
+                templates: List[str] | None = pro_cfg['templates'].split(' ')
+                modules: List[str] | None = pro_cfg['modules'].split(' ')
+                if not templates or not modules:
+                    return status
+                pro_data['name'] = self._pro_setup['name']
+                pro_data['type'] = self._pro_setup['type']
+                pro_data['mcu'] = self._mcu_sel.choose_mcu(verbose)
+                pro_data['osc'] = self._fosc_sel.choose_osc(verbose)
+                if not pro_data['mcu'] or not pro_data['osc']:
+                    return status
+                self._writer.pro_dir = self._pro_setup['name']
+                for template, module in zip(templates, modules):
+                    template_dir: str | None = TemplateDir.setup_template_dir(
+                        verbose
+                    )
+                    pro_data['template'] = self._reader.read(
+                        f'{template_dir}{self._pro_setup["type"]}/{template}',
+                        verbose
+                    )
+                    pro_data['module'] = ModuleType.pre_process_module(
+                        self._pro_setup['type'],
+                        self._pro_setup['name'],
+                        module, verbose
+                    )
+                    all_stat.append(self._writer.write(pro_data, verbose))
+                if all(all_stat) and len(templates) == len(all_stat):
+                    status = True
         return status
-
-    def __str__(self):
-        '''
-            Dunder method for AVR8Setup.
-
-            :return: object in a human-readable format.
-            :rtype: <str>
-            :exceptions: None
-        '''
-        return '{0} ({1}, {2}, {3}, {4}, {5})'.format(
-            self.__class__.__name__, str(self.__mcu_sel),
-            str(self.__fosc_sel), str(self.__reader),
-            str(self.__writer), str(self.__project_setup)
-        )

@@ -5,6 +5,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    gen_avr8.pro.mcu_selector
    gen_avr8.pro.module_type
@@ -18,6 +19,7 @@ Module contents
 ---------------
 
 .. automodule:: gen_avr8.pro
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
