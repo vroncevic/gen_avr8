@@ -22,6 +22,8 @@ Info
 
 from __future__ import print_function
 import sys
+from typing import Generator
+from os import listdir
 from os.path import abspath, dirname, join, exists
 from setuptools import setup
 
@@ -44,6 +46,10 @@ def install_directory() -> str | None:
         :exceptions: None
     '''
     py_version: str = f'{sys.version_info[0]}.{sys.version_info[1]}'
+    paths: tuple[str, str] | Generator[str, None, None]
+    directory_path = '/opt/hostedtoolcache/Python/3.10.13/x64'
+    files_in_directory = [file for file in listdir(directory_path)]
+    print(files_in_directory)
     if py_version:
         if '--github' in sys.argv:
             index: int = sys.argv.index('--github')
