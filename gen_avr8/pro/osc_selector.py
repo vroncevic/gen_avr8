@@ -35,9 +35,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -55,9 +55,9 @@ class OSCSelector(FileCheck):
                 | _FOSC_LIST - Configuration file with FOSC list.
                 | _fosc_list - FOSC list.
             :methods:
-                | __init__ - Initial OSCSelector constructor.
-                | get_fosc_list - Getter for FOSC list object.
-                | choose_osc - Select FOSC for target.
+                | __init__ - Initials OSCSelector constructor.
+                | get_fosc_list - Gets for FOSC list object.
+                | choose_osc - Selects FOSC for target.
     '''
 
     _GEN_VERBOSE: str = 'GEN_AVR8::PRO::OSC_SELECTOR'
@@ -65,7 +65,7 @@ class OSCSelector(FileCheck):
 
     def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial OSCSelector constructor.
+            Initials OSCSelector constructor.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -86,7 +86,7 @@ class OSCSelector(FileCheck):
 
     def get_fosc_list(self) -> List[str] | None:
         '''
-            Getter for FOSC list object.
+            Gets for FOSC list object.
 
             :return: FOSC configuration | None
             :rtype: <List[str]> | <NoneType>

@@ -17,10 +17,11 @@ Copyright
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
     Defines class TemplateDir with attribute(s) and method(s).
-    Creates API for checking project template directory.
+    Creates an API for checking project template directory.
 '''
 
 import sys
+from typing import List
 from os.path import isdir, dirname, realpath
 
 try:
@@ -31,9 +32,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -42,7 +43,7 @@ __status__ = 'Updated'
 class TemplateDir:
     '''
         Defines class TemplateDir with attribute(s) and method(s).
-        Creates API for checking project template directory.
+        Creates an API for checking project template directory.
 
         It defines:
 
@@ -51,7 +52,7 @@ class TemplateDir:
                 | _CONF_DIR - Configuration directory path.
                 | _TEMPLATE_DIR - Template directory path.
             :methods:
-                | check_dir - Checka project directory.
+                | check_dir - Checks project directory.
                 | setup_conf_dir - Sets configuration directory.
                 | setup_template_dir - Sets template directory.
     '''
@@ -63,7 +64,7 @@ class TemplateDir:
     @classmethod
     def check_dir(cls, target_dir: str | None, verbose: bool = False) -> bool:
         '''
-            Checking project directory.
+            Checks project directory.
 
             :param target_dir: Target directory to be checked | None
             :type target_dir: <str> | <NoneType>
@@ -81,7 +82,7 @@ class TemplateDir:
     @classmethod
     def setup_conf_dir(cls, verbose: bool = False) -> str | None:
         '''
-            Setup configuration directory.
+            Sets configuration directory.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -100,7 +101,7 @@ class TemplateDir:
     @classmethod
     def setup_template_dir(cls, verbose: bool = False) -> str | None:
         '''
-            Setup template directory.
+            Sets template directory.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>

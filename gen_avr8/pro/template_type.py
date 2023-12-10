@@ -17,11 +17,11 @@ Copyright
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
     Defines class TemplateType with attribute(s) and method(s).
-    Creates API for checking project template type and template structure.
+    Creates an API for checking template type and template structure.
 '''
 
 import sys
-from typing import Dict
+from typing import Dict, List
 
 try:
     from ats_utilities.checker import ATSChecker
@@ -33,9 +33,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -44,7 +44,7 @@ __status__ = 'Updated'
 class TemplateType:
     '''
         Defines class TemplateType with attribute(s) and method(s).
-        Creates API for checking project template type and template structure.
+        Creates an API for checking template type and template structure.
 
         It defines:
 
@@ -54,11 +54,11 @@ class TemplateType:
                 | _LIB_TEMPLATE - Library type of project.
                 | _TEMPLATE_TYPE - Project template structures.
             :methods:
-                | check_template_type - Check project template type.
-                | setup_template_type - Setup template type (app | lib).
+                | check_template_type - Checks project template type.
+                | setup_template_type - Sets template type (app | lib).
     '''
 
-    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::_TEMPLATE_TYPE'
+    _GEN_VERBOSE: str = 'GEN_AVR8::PRO::TEMPLATE_TYPE'
     _APP_TEMPLATE: str = 'app'
     _LIB_TEMPLATE: str = 'lib'
     _TEMPLATE_TYPE: Dict[str, str] = {
@@ -71,7 +71,7 @@ class TemplateType:
         cls, template_type: str | None, verbose: bool = False
     ) -> bool:
         '''
-            Check project template type (App | Lib).
+            Checks project template type (App | Lib).
 
             :param template_type: Project template type | None
             :type template_type: <str> | <NoneType>
@@ -100,7 +100,7 @@ class TemplateType:
         cls, template_type: str | None, verbose: bool = False
     ) -> str | None:
         '''
-            Setup template type (App | Lib).
+            Sets template type (App | Lib).
 
             :param template_type: Project template type
             :type template_type: <str>
