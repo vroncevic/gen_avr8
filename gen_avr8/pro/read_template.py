@@ -17,10 +17,11 @@ Copyright
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
     Defines class ReadTemplate with attribute(s) and method(s).
-    Creates API for read a template file and return a content.
+    Creates an API for reading a template file and return a content.
 '''
 
 import sys
+from typing import List
 
 try:
     from ats_utilities.config_io.file_check import FileCheck
@@ -32,9 +33,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -43,7 +44,7 @@ __status__ = 'Updated'
 class ReadTemplate(FileCheck):
     '''
         Defines class ReadTemplate with attribute(s) and method(s).
-        Creates API for read a template file and return a content.
+        Creates an API for reading a template file and return a content.
 
         It defines:
 
@@ -51,8 +52,8 @@ class ReadTemplate(FileCheck):
                 | _GEN_VERBOSE - Console text indicator for process-phase.
                 | _FORMAT - File format for template.
             :methods:
-                | __init__ - Initial ReadTemplate constructor.
-                | read - Read template file.
+                | __init__ - Initials ReadTemplate constructor.
+                | read - Reads template file.
     '''
 
     _GEN_VERBOSE: str = 'GEN_AVR8::PRO::READ_TEMPLATE'
@@ -60,7 +61,7 @@ class ReadTemplate(FileCheck):
 
     def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial ReadTemplate constructor.
+            Initials ReadTemplate constructor.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -73,7 +74,7 @@ class ReadTemplate(FileCheck):
         self, template_file: str | None, verbose: bool = False
     ) -> str | None:
         '''
-            Read template file.
+            Reads template file.
 
             :param template_file: Template file path | None
             :type template_file: <str> | <NoneType>

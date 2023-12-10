@@ -61,11 +61,11 @@
 <span class="sd">    with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <span class="sd">Info</span>
 <span class="sd">    Defines class TemplateType with attribute(s) and method(s).</span>
-<span class="sd">    Creates API for checking project template type and template structure.</span>
+<span class="sd">    Creates an API for checking template type and template structure.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.checker</span> <span class="kn">import</span> <span class="n">ATSChecker</span>
@@ -77,9 +77,9 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2018, https://vroncevic.github.io/gen_avr8&#39;</span>
-<span class="n">__credits__</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
+<span class="n">__credits__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.5&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.6&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -88,7 +88,7 @@
 <div class="viewcode-block" id="TemplateType"><a class="viewcode-back" href="../../../gen_avr8.pro.template_type.html#gen_avr8.pro.template_type.TemplateType">[docs]</a><span class="k">class</span> <span class="nc">TemplateType</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Defines class TemplateType with attribute(s) and method(s).</span>
-<span class="sd">        Creates API for checking project template type and template structure.</span>
+<span class="sd">        Creates an API for checking template type and template structure.</span>
 
 <span class="sd">        It defines:</span>
 
@@ -98,11 +98,11 @@
 <span class="sd">                | _LIB_TEMPLATE - Library type of project.</span>
 <span class="sd">                | _TEMPLATE_TYPE - Project template structures.</span>
 <span class="sd">            :methods:</span>
-<span class="sd">                | check_template_type - Check project template type.</span>
-<span class="sd">                | setup_template_type - Setup template type (app | lib).</span>
+<span class="sd">                | check_template_type - Checks project template type.</span>
+<span class="sd">                | setup_template_type - Sets template type (app | lib).</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">_GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::_TEMPLATE_TYPE&#39;</span>
+    <span class="n">_GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8::PRO::TEMPLATE_TYPE&#39;</span>
     <span class="n">_APP_TEMPLATE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;app&#39;</span>
     <span class="n">_LIB_TEMPLATE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;lib&#39;</span>
     <span class="n">_TEMPLATE_TYPE</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -115,7 +115,7 @@
         <span class="bp">cls</span><span class="p">,</span> <span class="n">template_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            Check project template type (App | Lib).</span>
+<span class="sd">            Checks project template type (App | Lib).</span>
 
 <span class="sd">            :param template_type: Project template type | None</span>
 <span class="sd">            :type template_type: &lt;str&gt; | &lt;NoneType&gt;</span>
@@ -144,7 +144,7 @@
         <span class="bp">cls</span><span class="p">,</span> <span class="n">template_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            Setup template type (App | Lib).</span>
+<span class="sd">            Sets template type (App | Lib).</span>
 
 <span class="sd">            :param template_type: Project template type</span>
 <span class="sd">            :type template_type: &lt;str&gt;</span>

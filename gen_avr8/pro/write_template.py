@@ -17,11 +17,11 @@ Copyright
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
     Defines class WriteTemplate with attribute(s) and method(s).
-    Creates API for write template content with parameters.
+    Creates an API for writing template content with parameters.
 '''
 
 import sys
-from typing import Dict
+from typing import Dict, List
 from os import getcwd, chmod, makedirs
 from string import Template
 
@@ -36,9 +36,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -47,7 +47,7 @@ __status__ = 'Updated'
 class WriteTemplate(FileCheck):
     '''
         Defines class WriteTemplate with attribute(s) and method(s).
-        Creates API for Write template content with parameters.
+        Creates an API for writing template content with parameters.
 
         It defines:
 
@@ -55,17 +55,17 @@ class WriteTemplate(FileCheck):
                 | _GEN_VERBOSE - Console text indicator for process-phase.
                 | _pro_dir - Current project directory.
             :methods:
-                | __init__ - Initial WriteTemplate constructor.
+                | __init__ - Initials WriteTemplate constructor.
                 | pro_dir - Property methods for set/get operations.
-                | check_module - Check project module.
-                | write - Write a template content to a project module.
+                | check_module - Checks project module.
+                | write - Writes a template content to a project module.
     '''
 
     _GEN_VERBOSE: str = 'GEN_AVR8::PRO::WRITE_TEMPLATE'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial WriteTemplate constructor.
+            Initials WriteTemplate constructor.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -107,7 +107,7 @@ class WriteTemplate(FileCheck):
         self, module: str | None, verbose: bool = False
     ) -> str | None:
         '''
-            Check project module.
+            Checks project module.
 
             :param module: Module name | None
             :type module: <str> | <NoneType>
@@ -136,11 +136,9 @@ class WriteTemplate(FileCheck):
         )
         return module_type
 
-    def write(
-        self, pro_data: Dict[str, str], verbose: bool = False
-    ) -> bool:
+    def write(self, pro_data: Dict[str, str], verbose: bool = False) -> bool:
         '''
-            Write a template content to a project module.
+            Writes a template content to a project module.
 
             :param pro_data: Project data
             :type pro_data: <Dict[str, str]>

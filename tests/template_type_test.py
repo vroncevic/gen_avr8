@@ -23,6 +23,7 @@ Execute
 '''
 
 import sys
+from typing import List
 from unittest import TestCase, main
 from os.path import exists, dirname, realpath
 
@@ -35,9 +36,9 @@ except ImportError as test_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2022, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'

@@ -82,9 +82,9 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2018, https://vroncevic.github.io/gen_avr8&#39;</span>
-<span class="n">__credits__</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
+<span class="n">__credits__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.5&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.6&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -105,8 +105,8 @@
 <span class="sd">                | _OPS - List of tool options.</span>
 <span class="sd">                | _logger - Logger object API.</span>
 <span class="sd">            :methods:</span>
-<span class="sd">                | __init__ - Initial GenAVR8 constructor.</span>
-<span class="sd">                | process - process and run tool option.</span>
+<span class="sd">                | __init__ - Initials GenAVR8 constructor.</span>
+<span class="sd">                | process - processes and runs tool operation.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">_GEN_VERBOSE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GEN_AVR8&#39;</span>
@@ -119,7 +119,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            Initial GenAVR8 constructor.</span>
+<span class="sd">            Initials GenAVR8 constructor.</span>
 
 <span class="sd">            :param verbose: Enable/Disable verbose option</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
@@ -159,7 +159,7 @@
 
 <div class="viewcode-block" id="GenAVR8.process"><a class="viewcode-back" href="../gen_avr8.html#gen_avr8.GenAVR8.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            Process and run operation.</span>
+<span class="sd">            Processes and runs tool operation.</span>
 
 <span class="sd">            :param verbose: Enable/Disable verbose option</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
@@ -196,7 +196,7 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">project_exists</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;gen&#39;</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)):</span>
                     <span class="n">generator</span><span class="p">:</span> <span class="n">AVR8Setup</span> <span class="o">=</span> <span class="n">AVR8Setup</span><span class="p">(</span>
-                        <span class="n">verbose</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
+                        <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
                     <span class="p">)</span>
                     <span class="n">generator</span><span class="o">.</span><span class="n">project_setup</span><span class="p">(</span>
                         <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;gen&#39;</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">))</span>
@@ -210,7 +210,7 @@
                         <span class="p">])</span>
                     <span class="p">)</span>
                     <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_pro_setup</span><span class="p">(</span>
-                        <span class="n">verbose</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
+                        <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
                         <span class="n">success_message</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">])</span>
@@ -227,7 +227,7 @@
                         <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">error_message</span><span class="p">(</span>
-                    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> project dir already exist&#39;</span><span class="p">]</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="si">}</span><span class="s1"> project dir already exists&#39;</span><span class="p">]</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
                     <span class="s1">&#39;project dir already exist&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>

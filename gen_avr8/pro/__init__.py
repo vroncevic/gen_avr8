@@ -41,9 +41,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -64,16 +64,16 @@ class AVR8Setup(ATSChecker):
                 | _writer - Writer API.
                 | _pro_setup - Project setup.
             :methods:
-                | __init__ - Initial AVR8Setup constructor.
+                | __init__ - Initials AVR8Setup constructor.
                 | project_setup - Property methods for set operations.
-                | gen_pro_setup - Generate project skeleton.
+                | gen_pro_setup - Generates project skeleton.
     '''
 
     _GEN_VERBOSE: str = 'GEN_AVR8::PRO::AVR8SETUP'
 
     def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial AVR8Setup constructor.
+            Initials AVR8Setup constructor.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -94,7 +94,7 @@ class AVR8Setup(ATSChecker):
         verbose: bool = False
     ) -> None:
         '''
-            Setter for project setup.
+            Property methods for set operations.
 
             :param project_name: Project name | None
             :type project_name: <str> | <NoneType>
@@ -121,7 +121,7 @@ class AVR8Setup(ATSChecker):
 
     def gen_pro_setup(self, verbose: bool = False) -> bool:
         '''
-            Generate AVR8 project setup.
+            Generates AVR8 project setup.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>

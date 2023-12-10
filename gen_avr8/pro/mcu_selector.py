@@ -35,9 +35,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -55,9 +55,9 @@ class MCUSelector(FileCheck):
                 | _MCU_LIST - Configuration file path with suported MCU list.
                 | _mcu_list - Microcontroller list.
             :methods:
-                | __init__ - Initial MCUSelector constructor.
-                | get_mcu_list - Getter for MCU list object.
-                | choose_mcu - Select MCU target.
+                | __init__ - Initials MCUSelector constructor.
+                | get_mcu_list - Gets for MCU list object.
+                | choose_mcu - Selects MCU target.
     '''
 
     _GEN_VERBOSE: str = 'GEN_AVR8::PRO::MCU_SELECTOR'
@@ -65,7 +65,7 @@ class MCUSelector(FileCheck):
 
     def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial MCUSelector constructor.
+            Initials MCUSelector constructor.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -86,7 +86,7 @@ class MCUSelector(FileCheck):
 
     def get_mcu_list(self) -> List[str] | None:
         '''
-            Getter for MCU list object.
+            Gets for MCU list object.
 
             :return: MCU list | None
             :rtype: <list> | <NoneType>
@@ -96,7 +96,7 @@ class MCUSelector(FileCheck):
 
     def choose_mcu(self, verbose: bool = False) -> str | None:
         '''
-            Select MCU target.
+            Selects MCU target.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>

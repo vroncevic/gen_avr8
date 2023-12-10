@@ -40,9 +40,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -63,8 +63,8 @@ class GenAVR8(CfgCLI):
                 | _OPS - List of tool options.
                 | _logger - Logger object API.
             :methods:
-                | __init__ - Initial GenAVR8 constructor.
-                | process - process and run tool option.
+                | __init__ - Initials GenAVR8 constructor.
+                | process - processes and runs tool operation.
     '''
 
     _GEN_VERBOSE: str = 'GEN_AVR8'
@@ -77,7 +77,7 @@ class GenAVR8(CfgCLI):
 
     def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial GenAVR8 constructor.
+            Initials GenAVR8 constructor.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -117,7 +117,7 @@ class GenAVR8(CfgCLI):
 
     def process(self, verbose: bool = False) -> bool:
         '''
-            Process and run operation.
+            Processes and runs tool operation.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
@@ -154,7 +154,7 @@ class GenAVR8(CfgCLI):
             if not project_exists:
                 if bool(getattr(args, 'gen')) and bool(getattr(args, 'type')):
                     generator: AVR8Setup = AVR8Setup(
-                        verbose=getattr(args, 'verbose') or verbose
+                        getattr(args, 'verbose') or verbose
                     )
                     generator.project_setup(
                         str(getattr(args, 'gen')), str(getattr(args, 'type'))
@@ -168,7 +168,7 @@ class GenAVR8(CfgCLI):
                         ])
                     )
                     status: bool = generator.gen_pro_setup(
-                        verbose=getattr(args, 'verbose') or verbose
+                        getattr(args, 'verbose') or verbose
                     )
                     if status:
                         success_message([f'{self._GEN_VERBOSE} done\n'])
@@ -185,7 +185,7 @@ class GenAVR8(CfgCLI):
                         )
             else:
                 error_message(
-                    [f'{self._GEN_VERBOSE} project dir already exist']
+                    [f'{self._GEN_VERBOSE} project dir already exists']
                 )
                 self._logger.write_log(
                     'project dir already exist', self._logger.ATS_ERROR

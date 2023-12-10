@@ -68,7 +68,7 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
 </dd>
 <dt>Info</dt><dd><p>Defines class TemplateType with attribute(s) and method(s).
-Creates API for checking project template type and template structure.</p>
+Creates an API for checking template type and template structure.</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -76,7 +76,7 @@ Creates API for checking project template type and template structure.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gen_avr8.pro.template_type.</span></span><span class="sig-name descname"><span class="pre">TemplateType</span></span><a class="reference internal" href="_modules/gen_avr8/pro/template_type.html#TemplateType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Defines class TemplateType with attribute(s) and method(s).
-Creates API for checking project template type and template structure.</p>
+Creates an API for checking template type and template structure.</p>
 <p>It defines:</p>
 <blockquote>
 <div><dl class="field-list">
@@ -90,8 +90,8 @@ Creates API for checking project template type and template structure.</p>
 </dd>
 <dt class="field-even">methods<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
-<div class="line">check_template_type - Check project template type.</div>
-<div class="line">setup_template_type - Setup template type (app | lib).</div>
+<div class="line">check_template_type - Checks project template type.</div>
+<div class="line">setup_template_type - Sets template type (app | lib).</div>
 </div>
 </dd>
 </dl>
@@ -103,7 +103,7 @@ Creates API for checking project template type and template structure.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gen_avr8.pro.template_type.TemplateType._GEN_VERBOSE">
-<span class="sig-name descname"><span class="pre">_GEN_VERBOSE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GEN_AVR8::PRO::_TEMPLATE_TYPE'</span></em><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType._GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">_GEN_VERBOSE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GEN_AVR8::PRO::TEMPLATE_TYPE'</span></em><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType._GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -119,7 +119,7 @@ Creates API for checking project template type and template structure.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gen_avr8.pro.template_type.TemplateType.check_template_type">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_template_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gen_avr8/pro/template_type.html#TemplateType.check_template_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType.check_template_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check project template type (App | Lib).</p>
+<dd><p>Checks project template type (App | Lib).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -142,7 +142,7 @@ Creates API for checking project template type and template structure.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gen_avr8.pro.template_type.TemplateType.setup_template_type">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_template_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gen_avr8/pro/template_type.html#TemplateType.setup_template_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_avr8.pro.template_type.TemplateType.setup_template_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup template type (App | Lib).</p>
+<dd><p>Sets template type (App | Lib).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

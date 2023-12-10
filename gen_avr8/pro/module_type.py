@@ -31,9 +31,9 @@ except ImportError as ats_error_message:
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_avr8'
-__credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.5'
+__version__ = '2.5.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,7 +51,7 @@ class ModuleType:
                 | _SOURCE - List of expected source extensions.
                 | _BUILD - List of expected build extensions/files.
             :methods:
-                | pre_process_module - Process module name.
+                | pre_process_module - Processes module name.
                 | is_source_module - Checks is source module.
                 | is_build_module - Checks is build module.
     '''
@@ -69,7 +69,7 @@ class ModuleType:
         verbose: bool = False
     ) -> str | None:
         '''
-            Process module name.
+            Processes module name.
 
             :param pro_type: Project type | None
             :type pro_type: <str> | <NoneType>
@@ -100,7 +100,7 @@ class ModuleType:
     @classmethod
     def is_source_module(cls, module: str | None) -> bool:
         '''
-            Check is source module.
+            Checks is source module.
 
             :param module: module name | None
             :type module: <str> | <NoneType>
@@ -118,7 +118,7 @@ class ModuleType:
     @classmethod
     def is_build_module(cls, module: str | None) -> bool:
         '''
-            Check is build module.
+            Checks is build module.
 
             :param module: Module name | None
             :type module: <str> | <NoneType>
