@@ -4,7 +4,7 @@
 Module
     write_template_test.py
 Copyright
-    Copyright (C) 2022 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2018 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_avr8 is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -36,10 +36,10 @@ except ImportError as test_error_message:
     sys.exit(f'\n{__file__}\n{test_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2022, https://vroncevic.github.io/gen_avr8'
+__copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.6'
+__version__ = '2.5.7'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -49,7 +49,7 @@ class WriteTemplateTestCase(TestCase):
     '''
         Defines class WriteTemplateTestCase with attribute(s) and method(s).
         Creates test cases for checking functionalities of WriteTemplate.
-        WriteTemplate unittests.
+        WriteTemplate unit tests.
 
         It defines:
 

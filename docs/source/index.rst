@@ -132,53 +132,55 @@ Generator structure
 .. code-block:: bash
 
     gen_avr8/
-    ├── conf/
-    |   ├── gen_avr8.logo
-    │   ├── fosc.yaml
-    │   ├── gen_avr8.cfg
-    │   ├── gen_avr8_util.cfg
-    │   ├── mcu.yaml
-    │   ├── project_app.yaml
-    │   ├── project_lib.yaml
-    │   └── template/
-    │       ├── app/
-    │       │   ├── cflags.template
-    │       │   ├── csflags.template
-    │       │   ├── Makefile.template
-    │       │   ├── module.template
-    │       │   ├── objects.template
-    │       │   ├── ocflags.template
-    │       │   ├── odflags.template
-    │       │   ├── sources.template
-    │       │   ├── subdir.template
-    │       │   └── tools.template
-    │       └── lib/
-    │           ├── aflags.template
-    │           ├── avr_lib_c.template
-    │           ├── avr_lib_h.template
-    │           ├── cflags.template
-    │           ├── csflags.template
-    │           ├── Makefile.template
-    │           ├── objects.template
-    │           ├── ocflags.template
-    │           ├── odflags.template
-    │           ├── sources.template
-    │           ├── subdir.template
-    │           └── tools.template
-    ├── __init__.py
-    ├── log/
-    │   └── gen_avr8.log
-    ├── pro/
-    │   ├── __init__.py
-    │   ├── mcu_selector.py
-    │   ├── module_type.py
-    │   ├── osc_selector.py
-    │   ├── read_template.py
-    │   ├── template_dir.py
-    │   ├── template_type.py
-    │   └── write_template.py
-    └── run/
-        └── gen_avr8_run.py
+        ├── conf/
+        |   ├── gen_avr8.logo
+        │   ├── fosc.yaml
+        │   ├── gen_avr8.cfg
+        │   ├── gen_avr8_util.cfg
+        │   ├── mcu.yaml
+        │   ├── project_app.yaml
+        │   ├── project_lib.yaml
+        │   └── template/
+        │       ├── app/
+        │       │   ├── cflags.template
+        │       │   ├── csflags.template
+        │       │   ├── Makefile.template
+        │       │   ├── module.template
+        │       │   ├── objects.template
+        │       │   ├── ocflags.template
+        │       │   ├── odflags.template
+        │       │   ├── sources.template
+        │       │   ├── subdir.template
+        │       │   └── tools.template
+        │       └── lib/
+        │           ├── aflags.template
+        │           ├── avr_lib_c.template
+        │           ├── avr_lib_h.template
+        │           ├── cflags.template
+        │           ├── csflags.template
+        │           ├── Makefile.template
+        │           ├── objects.template
+        │           ├── ocflags.template
+        │           ├── odflags.template
+        │           ├── sources.template
+        │           ├── subdir.template
+        │           └── tools.template
+        ├── __init__.py
+        ├── log/
+        │   └── gen_avr8.log
+        ├── pro/
+        │   ├── __init__.py
+        │   ├── mcu_selector.py
+        │   ├── module_type.py
+        │   ├── osc_selector.py
+        │   ├── read_template.py
+        │   ├── template_dir.py
+        │   ├── template_type.py
+        │   └── write_template.py
+        └── run/
+            └── gen_avr8_run.py
+
+    8 directories, 40 files
 
 Copyright and licence
 ----------------------
@@ -191,7 +193,7 @@ Copyright and licence
 .. |license: apache 2.0| image:: https://img.shields.io/badge/license-apache%202.0-blue.svg
    :target: https://opensource.org/licenses/apache-2.0
 
-Copyright (C) 2018-2024 by `vroncevic.github.io/gen_avr8 <https://vroncevic.github.io/gen_avr8>`_
+Copyright (C) 2018 - 2024-2024 by `vroncevic.github.io/gen_avr8 <https://vroncevic.github.io/gen_avr8>`_
 
 **gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,
