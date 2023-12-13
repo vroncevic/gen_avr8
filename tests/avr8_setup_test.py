@@ -4,7 +4,7 @@
 Module
     avr8_setup_test.py
 Copyright
-    Copyright (C) 2022 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2018 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_avr8 is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -16,8 +16,8 @@ Copyright
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Info
-    Defines class MCUSelectorTestCase with attribute(s) and method(s).
-    Creates test cases for checking functionalities of MCUSelector.
+    Defines class AVR8SetupTestCase with attribute(s) and method(s).
+    Creates test cases for checking functionalities of AVR8Setup.
 Execute
     python3 -m unittest -v avr8_setup_test
 '''
@@ -35,20 +35,20 @@ except ImportError as test_error_message:
     sys.exit(f'\n{__file__}\n{test_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2022, https://vroncevic.github.io/gen_avr8'
+__copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.6'
+__version__ = '2.5.7'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class MCUSelectorTestCase(TestCase):
+class AVR8SetupTestCase(TestCase):
     '''
-        Defines class MCUSelectorTestCase with attribute(s) and method(s).
-        Creates test cases for checking functionalities of MCUSelector.
-        MCUSelector unitteests.
+        Defines class AVR8SetupTestCase with attribute(s) and method(s).
+        Creates test cases for checking functionalities of AVR8Setup.
+        AVR8Setup unit tests.
 
         It defines:
 
@@ -57,10 +57,13 @@ class MCUSelectorTestCase(TestCase):
             :methods:
                 | setUp - Call before test case.
                 | tearDown - Call after test case.
-                | test_selected_atmega8 - Test chooses MCU atmega8 target.
-                | test_selected_attiny24 - Test chooses MCU attiny24 target.
-                | test_selected_unknown - Test chooses unknown MCU target.
-                | test_checks_mcu - Test checks selected MCU name.
+                | test_create - Test create (not None).
+                | test_pro_setup - Test project setup.
+                | test_pro_setup_name_none - Test pro setup None name.
+                | test_pro_setup_type_none - Test pro setup None type.
+                | test_pro_gen_setup_without_params - Test no params.
+                | test_pro_gen_setup_with_empty_params - Test empty params.
+                | test_pro_gen_setup_with_params - Test with with params.
     '''
 
     def setUp(self) -> None:
@@ -70,19 +73,19 @@ class MCUSelectorTestCase(TestCase):
         '''Call after test case.'''
 
     def test_create(self) -> None:
-        '''Test create'''
+        '''Test create (not None)'''
         avr_setup: AVR8Setup | None = AVR8Setup()
         self.assertIsNotNone(avr_setup)
 
     def test_pro_setup(self) -> None:
-        '''Test create'''
+        '''Test project setup'''
         avr_setup: AVR8Setup | None = AVR8Setup()
         if avr_setup:
             self.assertIsInstance(avr_setup, AVR8Setup)
             avr_setup.project_setup('new_simple_test', 'app')
 
     def test_pro_setup_name_none(self) -> None:
-        '''Test create'''
+        '''Test pro setup None name'''
         avr_setup: AVR8Setup | None = AVR8Setup()
         if avr_setup:
             with self.assertRaises(ATSTypeError):
@@ -90,7 +93,7 @@ class MCUSelectorTestCase(TestCase):
                 avr_setup.project_setup(None, 'app')
 
     def test_pro_setup_type_none(self) -> None:
-        '''Test create'''
+        '''Test pro setup None type'''
         avr_setup: AVR8Setup | None = AVR8Setup()
         if avr_setup:
             with self.assertRaises(ATSTypeError):
@@ -99,14 +102,14 @@ class MCUSelectorTestCase(TestCase):
 
     @patch('builtins.input', side_effect=['37', '9'])
     def test_pro_gen_setup_without_params(self, mock_input: Any) -> None:
-        '''Test project generation without params'''
+        '''Test no params'''
         avr_setup: AVR8Setup | None = AVR8Setup()
         if avr_setup and mock_input:
             self.assertFalse(avr_setup.gen_pro_setup())
 
     @patch('builtins.input', side_effect=['37', '9'])
     def test_pro_gen_setup_with_empty_params(self, mock_input: Any) -> None:
-        '''Test project generation without params'''
+        '''Test empty params'''
         avr_setup: AVR8Setup | None = AVR8Setup()
         if avr_setup and mock_input:
             avr_setup.project_setup('', '')
@@ -114,7 +117,7 @@ class MCUSelectorTestCase(TestCase):
 
     @patch('builtins.input', side_effect=['37', '9'])
     def test_pro_gen_setup_with_params(self, mock_input: Any) -> None:
-        '''Test project generation with params'''
+        '''Test with with params'''
         avr_setup: AVR8Setup | None = AVR8Setup()
         if avr_setup and mock_input:
             avr_setup.project_setup('new_simple_test', 'app')

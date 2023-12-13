@@ -4,7 +4,7 @@
 Module
     module_type_test.py
 Copyright
-    Copyright (C) 2022 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2018 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_avr8 is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -33,10 +33,10 @@ except ImportError as test_error_message:
     sys.exit(f'\n{__file__}\n{test_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2022, https://vroncevic.github.io/gen_avr8'
+__copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.6'
+__version__ = '2.5.7'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -55,7 +55,11 @@ class ModuleTypeTestCase(TestCase):
             :methods:
                 | setUp - Call before test case.
                 | tearDown - Call after test case.
-                | test_pre_process_module - Test pre-process module.
+                | test_pre_process_src_module - Test pre-process c/h modules.
+                | test_pre_process_lib_h_module - Test pre-process h module.
+                | test_pre_process_lib_c_module - Test pre-process c module.
+                | test_pre_process_module_lib - Test pre-process a-mk module.
+                | test_pre_process_module_app - Test pre-process l-mk module.
                 | test_is_source_module - Test is source module.
                 | test_is_build_module - Test is build module.
     '''
@@ -67,15 +71,14 @@ class ModuleTypeTestCase(TestCase):
         '''Call after test case.'''
 
     def test_pre_process_src_module(self) -> None:
-        '''Test pre-process module.'''
+        '''Test pre-process c/h modules'''
         self.assertEqual(
-            ModuleType.pre_process_module(
-                'app', 'simple_test', 'test.c'
-            ), 'test.c'
+            ModuleType.pre_process_module('app', 'simple_test', 'test.c'),
+            'test.c'
         )
 
     def test_pre_process_lib_h_module(self) -> None:
-        '''Test pre-process module.'''
+        '''Test pre-process h module'''
         self.assertEqual(
             ModuleType.pre_process_module(
                 'lib', 'simple_test', 'simple_test.h'
@@ -83,7 +86,7 @@ class ModuleTypeTestCase(TestCase):
         )
 
     def test_pre_process_lib_c_module(self) -> None:
-        '''Test pre-process module.'''
+        '''Test pre-process h module'''
         self.assertEqual(
             ModuleType.pre_process_module(
                 'lib', 'simple_test', 'simple_test.c'
@@ -91,28 +94,26 @@ class ModuleTypeTestCase(TestCase):
         )
 
     def test_pre_process_module_lib(self) -> None:
-        '''Test pre-process module.'''
+        '''Test pre-process l-mk module'''
         self.assertEqual(
-            ModuleType.pre_process_module(
-                'lib', 'simple_test', 'Makefile'
-            ), 'Makefile'
+            ModuleType.pre_process_module('lib', 'simple_test', 'Makefile'),
+            'Makefile'
         )
 
     def test_pre_process_module_app(self) -> None:
-        '''Test pre-process module.'''
+        '''Test pre-process a-mk module'''
         self.assertEqual(
-            ModuleType.pre_process_module(
-                'app', 'simple_test', 'Makefile'
-            ), 'Makefile'
+            ModuleType.pre_process_module('app', 'simple_test', 'Makefile'),
+            'Makefile'
         )
 
     def test_is_source_module(self) -> None:
-        '''Test is source module.'''
+        '''Test is source module'''
         app_module = 'simple_test.c'
         self.assertTrue(ModuleType.is_source_module(app_module))
 
     def test_is_build_module(self) -> None:
-        '''Test is build module.'''
+        '''Test is build module'''
         build_module = 'Makefile'
         self.assertTrue(ModuleType.is_build_module(build_module))
 

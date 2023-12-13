@@ -4,7 +4,7 @@
 Module
     gen_avr8_run.py
 Copyright
-    Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2018 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_avr8 is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -29,20 +29,20 @@ sys.path.insert(0, os.path.abspath('../../'))
 project: str = 'gen_avr8'
 project_copyright: str = '2018, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author: str = 'Vladimir Roncevic <elektron.ronca@gmail.com>'
-version: str = '2.5.6'
+version: str = '2.5.7'
 release: str = 'https://github.com/vroncevic/gen_avr8/releases'
-extensions: list[str] = [
+extensions: List[str] = [
     'sphinx.ext.autodoc', 'sphinx.ext.doctest',
     'sphinx.ext.coverage', 'sphinx.ext.viewcode',
 ]
-templates_path: list[str] = ['_templates']
+templates_path: List[str] = ['_templates']
 source_suffix: str = '.rst'
 master_doc: str = 'index'
 language: str = 'en'
 exclude_patterns: List[str] = []
 pygments_style: str = 'sphinx'
 html_theme: str = 'classic'
-html_static_path: list[str] = ['_static']
+html_static_path: List[str] = ['_static']
 htmlhelp_basename: str = 'gen_avr8doc'
 latex_elements: Dict[Any, Any] = {}
 latex_documents: List[Tuple[Any, ...]] = [(
@@ -58,4 +58,4 @@ texinfo_documents: List[Tuple[Any, ...]] = [(
     'gen_avr8', 'One line description of project.', 'Miscellaneous'
 )]
 epub_title: str = project
-epub_exclude_files: list[str] = ['search.html']
+epub_exclude_files: List[str] = ['search.html']
