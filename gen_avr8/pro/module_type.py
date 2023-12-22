@@ -33,7 +33,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.7'
+__version__ = '2.5.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -94,7 +94,9 @@ class ModuleType:
                 module_name = module
         elif module and cls.is_build_module(module):
             module_name = module
-        verbose_message(verbose, [f'{cls._GEN_VERBOSE} module type', module])
+        verbose_message(
+            verbose, [f'{cls._GEN_VERBOSE.lower()} module type', module]
+        )
         return module_name
 
     @classmethod

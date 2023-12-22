@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.7'
+__version__ = '2.5.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -72,7 +72,9 @@ class MCUSelector(FileCheck):
             :exceptions: None
         '''
         super().__init__(verbose)
-        verbose_message(verbose, [f'{self._GEN_VERBOSE} init MCU selector'])
+        verbose_message(
+            verbose, [f'{self._GEN_VERBOSE.lower()} init MCU selector']
+        )
         mcu_list: str = f'{dirname(realpath(__file__))}{self._MCU_LIST}'
         self.check_path(mcu_list, verbose)
         self.check_mode('r', verbose)
@@ -104,7 +106,7 @@ class MCUSelector(FileCheck):
             :rtype: <str> | <NoneType>
             :exceptions: None
         '''
-        verbose_message(verbose, [f'{self._GEN_VERBOSE} select MCU'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} select MCU'])
         mcu_name: str | None = None
         if self._mcu_list:
             while True:
@@ -116,7 +118,7 @@ class MCUSelector(FileCheck):
                 mcu_name_index = int(input(' select MCU: '))
                 if mcu_name_index not in range(len(self._mcu_list)):
                     error_message(
-                        [f'{self._GEN_VERBOSE} not an appropriate choice']
+                        [f'{self._GEN_VERBOSE.lower()} not an option']
                     )
                     continue
                 else:

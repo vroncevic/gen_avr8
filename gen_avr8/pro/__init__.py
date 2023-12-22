@@ -43,7 +43,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.7'
+__version__ = '2.5.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -80,7 +80,7 @@ class AVR8Setup(ATSChecker):
             :exceptions: None
         '''
         super().__init__()
-        verbose_message(verbose, [f'{self._GEN_VERBOSE} init setup'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} init setup'])
         self._mcu_sel = MCUSelector(verbose)
         self._fosc_sel = OSCSelector(verbose)
         self._reader = ReadTemplate(verbose)
@@ -114,7 +114,7 @@ class AVR8Setup(ATSChecker):
             raise ATSTypeError(error_msg)
         verbose_message(
             verbose,
-            [f'{self._GEN_VERBOSE} setup {project_name} {project_type}']
+            [f'{self._GEN_VERBOSE.lower()} set {project_name} {project_type}']
         )
         self._pro_setup.update({'name': project_name})
         self._pro_setup.update({'type': project_type})
@@ -136,7 +136,7 @@ class AVR8Setup(ATSChecker):
             return status
         verbose_message(
             verbose, [
-                f'{self._GEN_VERBOSE} gen project',
+                f'{self._GEN_VERBOSE.lower()} gen project',
                 self._pro_setup['type'],
                 self._pro_setup['name']
             ]

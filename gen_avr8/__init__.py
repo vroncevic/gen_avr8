@@ -42,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.7'
+__version__ = '2.5.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -94,7 +94,9 @@ class GenAVR8(CfgCLI):
         Splash(gen_avr8_property, verbose)
         base_info: str = f'{current_dir}{self._CONFIG}'
         super().__init__(base_info, verbose)
-        verbose_message(verbose, [f'{self._GEN_VERBOSE} init tool info'])
+        verbose_message(
+            verbose, [f'{self._GEN_VERBOSE.lower()} init tool info']
+        )
         self._logger: ATSLogger = ATSLogger(
             self._GEN_VERBOSE.lower(), f'{current_dir}{self._LOG}', verbose
         )
@@ -133,7 +135,7 @@ class GenAVR8(CfgCLI):
                 ]
                 if any(arg not in self._OPS for arg in options[1:]):
                     error_message(
-                        [f'{self._GEN_VERBOSE} provide project name and type']
+                        [f'{self._GEN_VERBOSE.lower()} provide name and type']
                     )
                     self._logger.write_log(
                         'provide project name and type', self._logger.ATS_ERROR
@@ -141,7 +143,7 @@ class GenAVR8(CfgCLI):
                     return status
             else:
                 error_message(
-                    [f'{self._GEN_VERBOSE} provide project name and type']
+                    [f'{self._GEN_VERBOSE.lower()} provide name and type']
                 )
                 self._logger.write_log(
                     'provide project name and type', self._logger.ATS_ERROR
@@ -171,27 +173,31 @@ class GenAVR8(CfgCLI):
                         getattr(args, 'verbose') or verbose
                     )
                     if status:
-                        success_message([f'{self._GEN_VERBOSE} done\n'])
+                        success_message(
+                            [f'{self._GEN_VERBOSE.lower()} done\n']
+                        )
                         self._logger.write_log(
                             f'gen project {getattr(args, "gen")} done',
                             self._logger.ATS_INFO
                         )
                     else:
                         error_message(
-                            [f'{self._GEN_VERBOSE} failed to generate project']
+                            [f'{self._GEN_VERBOSE.lower()} failed to generate']
                         )
                         self._logger.write_log(
                             'generation failed', self._logger.ATS_ERROR
                         )
             else:
                 error_message(
-                    [f'{self._GEN_VERBOSE} project dir already exists']
+                    [f'{self._GEN_VERBOSE.lower()} project dir already exists']
                 )
                 self._logger.write_log(
                     'project dir already exist', self._logger.ATS_ERROR
                 )
         else:
-            error_message([f'{self._GEN_VERBOSE} tool is not operational'])
+            error_message(
+                [f'{self._GEN_VERBOSE.lower()} tool is not operational']
+            )
             self._logger.write_log(
                 'tool is not operational', self._logger.ATS_ERROR
             )

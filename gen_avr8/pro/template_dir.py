@@ -34,7 +34,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.7'
+__version__ = '2.5.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -75,7 +75,7 @@ class TemplateDir:
             :exceptions: None
         '''
         verbose_message(
-            verbose, [f'{cls._GEN_VERBOSE} check project directory']
+            verbose, [f'{cls._GEN_VERBOSE.lower()} check project directory']
         )
         return isdir(f'{dirname(realpath(__file__))}{target_dir}')
 
@@ -94,7 +94,7 @@ class TemplateDir:
         if cls.check_dir(cls._CONF_DIR, verbose):
             conf_dir = f'{dirname(realpath(__file__))}{cls._CONF_DIR}'
             verbose_message(
-                verbose, [f'{cls._GEN_VERBOSE} conf directory', conf_dir]
+                verbose, [f'{cls._GEN_VERBOSE.lower()} conf dir ', conf_dir]
             )
         return conf_dir
 
@@ -114,7 +114,7 @@ class TemplateDir:
             template_dir = f'{dirname(realpath(__file__))}{cls._TEMPLATE_DIR}'
             verbose_message(
                 verbose, [
-                    f'{cls._GEN_VERBOSE} template directory', template_dir
+                    f'{cls._GEN_VERBOSE.lower()} template dir ', template_dir
                 ]
             )
         return template_dir

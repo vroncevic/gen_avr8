@@ -1,4 +1,5 @@
 theme: jekyll-theme-minimal
 markdown: kramdown
+safe: true
 kramdown:
   parse_block_html: true

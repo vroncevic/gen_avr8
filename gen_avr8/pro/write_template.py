@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.7'
+__version__ = '2.5.8'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -72,7 +72,7 @@ class WriteTemplate(FileCheck):
             :exceptions: None
         '''
         super().__init__(verbose)
-        verbose_message(verbose, [f'{self._GEN_VERBOSE} init writer'])
+        verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} init writer'])
         self._pro_dir: str | None = None
 
     @property
@@ -132,7 +132,7 @@ class WriteTemplate(FileCheck):
         if not is_source and is_build:
             module_type = 'build'
         verbose_message(
-            verbose, [f'{self._GEN_VERBOSE} module type', module_type]
+            verbose, [f'{self._GEN_VERBOSE.lower()} module type', module_type]
         )
         return module_type
 
@@ -176,7 +176,7 @@ class WriteTemplate(FileCheck):
                             verbose_message(
                                 verbose,
                                 [
-                                    f'{self._GEN_VERBOSE} write module',
+                                    f'{self._GEN_VERBOSE.lower()} write ',
                                     module
                                 ]
                             )
