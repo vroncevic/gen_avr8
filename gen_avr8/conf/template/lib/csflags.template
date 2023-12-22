@@ -1,5 +1,5 @@
 # csflags.mk
-# Copyright (C) 2021 Vladimir Roncevic <elektron.ronca@gmail.com>
+# Copyright (C) ${YEAR} Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 # ${PRO} is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
@@ -16,5 +16,5 @@
 
 CSFLAGS := \
 	--format=avr \
-	--mcu=atmega16
+	--mcu=${MCU}
 
