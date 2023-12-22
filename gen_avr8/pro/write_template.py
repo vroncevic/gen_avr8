@@ -23,6 +23,7 @@ Info
 import sys
 from typing import Dict, List
 from os import getcwd, chmod, makedirs
+from datetime import datetime
 from string import Template
 
 try:
@@ -161,7 +162,8 @@ class WriteTemplate(FileCheck):
             project: Dict[str, str] = {
                 'PRO': f'{pro_data["name"]}',
                 'MCU': f'{pro_data["mcu"]}',
-                'OSC': f'{pro_data["osc"]}'
+                'OSC': f'{pro_data["osc"]}',
+                'YEAR': f'{datetime.now().year}'
             }
             template = Template(pro_data['template'])
             if template:
