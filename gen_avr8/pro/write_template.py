@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.8'
+__version__ = '2.5.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -158,7 +158,7 @@ class WriteTemplate(FileCheck):
             raise ATSTypeError(error_msg)
         status = False
         module_type: str | None = self.check_module(pro_data['module'])
-        if module_type:
+        if bool(module_type):
             project: Dict[str, str] = {
                 'PRO': f'{pro_data["name"]}',
                 'MCU': f'{pro_data["mcu"]}',
@@ -166,15 +166,15 @@ class WriteTemplate(FileCheck):
                 'YEAR': f'{datetime.now().year}'
             }
             template = Template(pro_data['template'])
-            if template:
+            if bool(template):
                 module: str | None = None
                 if module_type == 'source':
                     module = f'{self._pro_dir}/{pro_data["module"]}'
                 if module_type == 'build':
                     module = f'{self._pro_dir}/build/{pro_data["module"]}'
-                if module:
+                if bool(module):
                     with open(module, 'w', encoding='utf-8') as module_file:
-                        if module_file:
+                        if bool(module_file):
                             verbose_message(
                                 verbose,
                                 [
@@ -188,10 +188,10 @@ class WriteTemplate(FileCheck):
                             if '.' in module:
                                 file_extension = module.split('.')[1]
                                 self.check_format(
-                                    module, file_extension, verbose=verbose
+                                    module, file_extension, verbose
                                 )
-                                self.check_path(module, verbose=verbose)
-                                self.check_mode('w', verbose=verbose)
+                                self.check_path(module, verbose)
+                                self.check_mode('w', verbose)
                                 if self.is_file_ok():
                                     status = True
                             else:

@@ -75,6 +75,8 @@
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.error</span> <span class="kn">import</span> <span class="n">error_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.success</span> <span class="kn">import</span> <span class="n">success_message</span>
+    <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
+    <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_value_error</span> <span class="kn">import</span> <span class="n">ATSValueError</span>
     <span class="kn">from</span> <span class="nn">gen_avr8.pro</span> <span class="kn">import</span> <span class="n">AVR8Setup</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ats_error_message</span><span class="p">:</span>
     <span class="c1"># Force close python ATS ##################################################</span>
@@ -84,7 +86,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;(C) 2024, https://vroncevic.github.io/gen_avr8&#39;</span>
 <span class="n">__credits__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.8&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.9&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -126,10 +128,10 @@
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">current_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
-        <span class="n">gen_avr8_property</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">gen_avr8_property</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;ats_organization&#39;</span><span class="p">:</span> <span class="s1">&#39;vroncevic&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;ats_repository&#39;</span><span class="p">:</span> <span class="s1">&#39;gen_avr8&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;ats_name&#39;</span><span class="p">:</span> <span class="s1">&#39;gen_avr8&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ats_repository&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ats_name&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
             <span class="s1">&#39;ats_logo_path&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_LOGO</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
             <span class="s1">&#39;ats_use_github_infrastructure&#39;</span><span class="p">:</span> <span class="kc">True</span>
         <span class="p">}</span>
@@ -145,11 +147,11 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_operational</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_new_option</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;gen&#39;</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s1">&#39;generate AVR8 project skeleton&#39;</span>
+                <span class="n">help</span><span class="o">=</span><span class="s1">&#39;generate AVR8 project skeleton (provide name)&#39;</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_new_option</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s1">&#39;set app/lib type of project&#39;</span>
+                <span class="n">help</span><span class="o">=</span><span class="s1">&#39;set type of project (app | lib)&#39;</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_new_option</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
@@ -177,18 +179,24 @@
                 <span class="p">]</span>
                 <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">arg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_OPS</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">options</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
                     <span class="n">error_message</span><span class="p">(</span>
-                        <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> provide name and type&#39;</span><span class="p">]</span>
+                        <span class="p">[</span>
+                            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;provide name (-g name) and type (-t app | lib)&#39;</span>
+                        <span class="p">]</span>
                     <span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
-                        <span class="s1">&#39;provide project name and type&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
+                        <span class="s1">&#39;missing project name or type&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                     <span class="p">)</span>
                     <span class="k">return</span> <span class="n">status</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">error_message</span><span class="p">(</span>
-                    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> provide name and type&#39;</span><span class="p">]</span>
+                    <span class="p">[</span>
+                        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;provide name (-g name) and type (-t app | lib)&#39;</span>
+                    <span class="p">]</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
-                    <span class="s1">&#39;provide project name and type&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
+                    <span class="s1">&#39;missing project name or type&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                 <span class="p">)</span>
                 <span class="k">return</span> <span class="n">status</span>
             <span class="n">args</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="n">Namespace</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
@@ -200,20 +208,29 @@
                     <span class="n">generator</span><span class="p">:</span> <span class="n">AVR8Setup</span> <span class="o">=</span> <span class="n">AVR8Setup</span><span class="p">(</span>
                         <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
                     <span class="p">)</span>
-                    <span class="n">generator</span><span class="o">.</span><span class="n">project_setup</span><span class="p">(</span>
-                        <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;gen&#39;</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">))</span>
-                    <span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span>
-                        <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-                            <span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;gen AVR8 project skeleton&#39;</span><span class="p">,</span>
-                            <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)),</span>
-                            <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;gen&#39;</span><span class="p">))</span>
-                        <span class="p">])</span>
-                    <span class="p">)</span>
-                    <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_pro_setup</span><span class="p">(</span>
-                        <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
-                    <span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">generator</span><span class="o">.</span><span class="n">project_setup</span><span class="p">(</span>
+                            <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;gen&#39;</span><span class="p">)),</span>
+                            <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">))</span>
+                        <span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                                <span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;gen AVR8 project skeleton&#39;</span><span class="p">,</span>
+                                <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)),</span>
+                                <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;gen&#39;</span><span class="p">))</span>
+                            <span class="p">])</span>
+                        <span class="p">)</span>
+                        <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_pro_setup</span><span class="p">(</span>
+                            <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">verbose</span>
+                        <span class="p">)</span>
+                    <span class="k">except</span> <span class="p">(</span><span class="n">ATSTypeError</span><span class="p">,</span> <span class="n">ATSValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                        <span class="n">error_message</span><span class="p">(</span>
+                            <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+                        <span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
+                        <span class="p">)</span>
                     <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
                         <span class="n">success_message</span><span class="p">(</span>
                             <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
@@ -231,10 +248,14 @@
                         <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">error_message</span><span class="p">(</span>
-                    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> project dir already exists&#39;</span><span class="p">]</span>
+                    <span class="p">[</span>
+                        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_GEN_VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s1">&#39;project with name [</span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gen&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">] exists&#39;</span>
+                    <span class="p">]</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span>
-                    <span class="s1">&#39;project dir already exist&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
+                    <span class="sa">f</span><span class="s1">&#39;project with name [</span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gen&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">] exists&#39;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">ATS_ERROR</span>
                 <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">error_message</span><span class="p">(</span>

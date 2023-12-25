@@ -43,7 +43,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.8'
+__version__ = '2.5.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -62,7 +62,7 @@ class AVR8Setup(ATSChecker):
                 | _fosc_sel - FOSC selector API.
                 | _reader - Reader API.
                 | _writer - Writer API.
-                | _pro_setup - Project setup.
+                | _setup - Project setup.
             :methods:
                 | __init__ - Initials AVR8Setup constructor.
                 | project_setup - Property methods for set operations.
@@ -85,7 +85,7 @@ class AVR8Setup(ATSChecker):
         self._fosc_sel = OSCSelector(verbose)
         self._reader = ReadTemplate(verbose)
         self._writer = WriteTemplate(verbose)
-        self._pro_setup: Dict[Any, Any] = {}
+        self._setup: Dict[Any, Any] = {}
 
     def project_setup(
         self,
@@ -116,8 +116,8 @@ class AVR8Setup(ATSChecker):
             verbose,
             [f'{self._GEN_VERBOSE.lower()} set {project_name} {project_type}']
         )
-        self._pro_setup.update({'name': project_name})
-        self._pro_setup.update({'type': project_type})
+        self._setup.update({'name': project_name})
+        self._setup.update({'type': project_type})
 
     def gen_pro_setup(self, verbose: bool = False) -> bool:
         '''
@@ -130,53 +130,54 @@ class AVR8Setup(ATSChecker):
             :exceptions: None
         '''
         status: bool = False
-        if 'name' not in self._pro_setup or 'type' not in self._pro_setup:
+        if any(['name' not in self._setup, 'type' not in self._setup]):
             return status
-        if not self._pro_setup['name'] or not self._pro_setup['type']:
+        if any([
+            not bool(self._setup['name']), not bool(self._setup['type'])
+        ]):
             return status
         verbose_message(
             verbose, [
                 f'{self._GEN_VERBOSE.lower()} gen project',
-                self._pro_setup['type'],
-                self._pro_setup['name']
+                self._setup['type'], self._setup['name']
             ]
         )
         conf_dir: str | None = TemplateDir.setup_conf_dir(verbose)
-        if not conf_dir:
+        if not bool(conf_dir):
             return status
         setup_template: str | None = TemplateType.setup_template_type(
-            self._pro_setup['type'], verbose
+            self._setup['type'], verbose
         )
-        if not setup_template:
+        if not bool(setup_template):
             return status
         yml2obj: Yaml2Object = Yaml2Object(f'{conf_dir}{setup_template}')
         all_stat: List[bool] = []
-        if yml2obj:
+        if bool(yml2obj):
             pro_cfg: Dict[str, str] | None = yml2obj.read_configuration()
             pro_data: Dict[Any, Any] = {}
-            if pro_cfg:
+            if bool(pro_cfg):
                 templates: List[str] | None = pro_cfg['templates'].split(' ')
                 modules: List[str] | None = pro_cfg['modules'].split(' ')
-                if not templates or not modules:
+                if any([not bool(templates), not bool(modules)]):
                     return status
-                pro_data['name'] = self._pro_setup['name']
-                pro_data['type'] = self._pro_setup['type']
+                pro_data['name'] = self._setup['name']
+                pro_data['type'] = self._setup['type']
                 pro_data['mcu'] = self._mcu_sel.choose_mcu(verbose)
                 pro_data['osc'] = self._fosc_sel.choose_osc(verbose)
-                if not pro_data['mcu'] or not pro_data['osc']:
+                if any([not bool(pro_data['mcu']), not bool(pro_data['osc'])]):
                     return status
-                self._writer.pro_dir = self._pro_setup['name']
+                self._writer.pro_dir = self._setup['name']
                 for template, module in zip(templates, modules):
                     template_dir: str | None = TemplateDir.setup_template_dir(
                         verbose
                     )
                     pro_data['template'] = self._reader.read(
-                        f'{template_dir}{self._pro_setup["type"]}/{template}',
+                        f'{template_dir}{self._setup["type"]}/{template}',
                         verbose
                     )
                     pro_data['module'] = ModuleType.pre_process_module(
-                        self._pro_setup['type'],
-                        self._pro_setup['name'],
+                        self._setup['type'],
+                        self._setup['name'],
                         module, verbose
                     )
                     all_stat.append(self._writer.write(pro_data, verbose))

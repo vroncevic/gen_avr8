@@ -51,6 +51,8 @@ COPY MANIFEST.in /
 COPY setup.py /
 COPY README.md /
 COPY LICENSE /
+RUN mkdir /tests/
+COPY tests /tests/
 RUN pip3 install -r requirements.txt
 RUN rm -f requirements.txt
 RUN python3 -m build --no-isolation --wheel

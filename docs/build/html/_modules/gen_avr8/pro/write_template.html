@@ -83,7 +83,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;(C) 2024, https://vroncevic.github.io/gen_avr8&#39;</span>
 <span class="n">__credits__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.8&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.9&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -202,7 +202,7 @@
             <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span>
         <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">module_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_module</span><span class="p">(</span><span class="n">pro_data</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">module_type</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">module_type</span><span class="p">):</span>
             <span class="n">project</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;PRO&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pro_data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;MCU&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pro_data</span><span class="p">[</span><span class="s2">&quot;mcu&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -210,15 +210,15 @@
                 <span class="s1">&#39;YEAR&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span><span class="si">}</span><span class="s1">&#39;</span>
             <span class="p">}</span>
             <span class="n">template</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">pro_data</span><span class="p">[</span><span class="s1">&#39;template&#39;</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">template</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">template</span><span class="p">):</span>
                 <span class="n">module</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="k">if</span> <span class="n">module_type</span> <span class="o">==</span> <span class="s1">&#39;source&#39;</span><span class="p">:</span>
                     <span class="n">module</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pro_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">pro_data</span><span class="p">[</span><span class="s2">&quot;module&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="k">if</span> <span class="n">module_type</span> <span class="o">==</span> <span class="s1">&#39;build&#39;</span><span class="p">:</span>
                     <span class="n">module</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_pro_dir</span><span class="si">}</span><span class="s1">/build/</span><span class="si">{</span><span class="n">pro_data</span><span class="p">[</span><span class="s2">&quot;module&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
-                <span class="k">if</span> <span class="n">module</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">module_file</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">module_file</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">module_file</span><span class="p">):</span>
                             <span class="n">verbose_message</span><span class="p">(</span>
                                 <span class="n">verbose</span><span class="p">,</span>
                                 <span class="p">[</span>
@@ -232,10 +232,10 @@
                             <span class="k">if</span> <span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
                                 <span class="n">file_extension</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">check_format</span><span class="p">(</span>
-                                    <span class="n">module</span><span class="p">,</span> <span class="n">file_extension</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+                                    <span class="n">module</span><span class="p">,</span> <span class="n">file_extension</span><span class="p">,</span> <span class="n">verbose</span>
                                 <span class="p">)</span>
-                                <span class="bp">self</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-                                <span class="bp">self</span><span class="o">.</span><span class="n">check_mode</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">check_mode</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
                                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_file_ok</span><span class="p">():</span>
                                     <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
                             <span class="k">else</span><span class="p">:</span>
