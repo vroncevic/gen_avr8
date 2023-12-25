@@ -33,6 +33,8 @@ try:
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
+    from ats_utilities.exceptions.ats_type_error import ATSTypeError
+    from ats_utilities.exceptions.ats_value_error import ATSValueError
     from gen_avr8.pro import AVR8Setup
 except ImportError as ats_error_message:
     # Force close python ATS ##################################################
@@ -42,7 +44,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.8'
+__version__ = '2.5.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -84,10 +86,10 @@ class GenAVR8(CfgCLI):
             :exceptions: None
         '''
         current_dir: str = dirname(realpath(__file__))
-        gen_avr8_property: Dict[Any, Any] = {
+        gen_avr8_property: Dict[str, str | bool] = {
             'ats_organization': 'vroncevic',
-            'ats_repository': 'gen_avr8',
-            'ats_name': 'gen_avr8',
+            'ats_repository': f'{self._GEN_VERBOSE.lower()}',
+            'ats_name': f'{self._GEN_VERBOSE.lower()}',
             'ats_logo_path': f'{current_dir}{self._LOGO}',
             'ats_use_github_infrastructure': True
         }
@@ -103,11 +105,11 @@ class GenAVR8(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 self._OPS[0], self._OPS[1], dest='gen',
-                help='generate AVR8 project skeleton'
+                help='generate AVR8 project skeleton (provide name)'
             )
             self.add_new_option(
                 self._OPS[2], self._OPS[3], dest='type',
-                help='set app/lib type of project'
+                help='set type of project (app | lib)'
             )
             self.add_new_option(
                 self._OPS[4], self._OPS[5], action='store_true',
@@ -135,18 +137,24 @@ class GenAVR8(CfgCLI):
                 ]
                 if any(arg not in self._OPS for arg in options[1:]):
                     error_message(
-                        [f'{self._GEN_VERBOSE.lower()} provide name and type']
+                        [
+                            f'{self._GEN_VERBOSE.lower()}',
+                            'provide name (-g name) and type (-t app | lib)'
+                        ]
                     )
                     self._logger.write_log(
-                        'provide project name and type', self._logger.ATS_ERROR
+                        'missing project name or type', self._logger.ATS_ERROR
                     )
                     return status
             else:
                 error_message(
-                    [f'{self._GEN_VERBOSE.lower()} provide name and type']
+                    [
+                        f'{self._GEN_VERBOSE.lower()}',
+                        'provide name (-g name) and type (-t app | lib)'
+                    ]
                 )
                 self._logger.write_log(
-                    'provide project name and type', self._logger.ATS_ERROR
+                    'missing project name or type', self._logger.ATS_ERROR
                 )
                 return status
             args: Any | Namespace = self.parse_args(sys.argv[2:])
@@ -158,20 +166,29 @@ class GenAVR8(CfgCLI):
                     generator: AVR8Setup = AVR8Setup(
                         getattr(args, 'verbose') or verbose
                     )
-                    generator.project_setup(
-                        str(getattr(args, 'gen')), str(getattr(args, 'type'))
-                    )
-                    print(
-                        " ".join([
-                            f'[{self._GEN_VERBOSE.lower()}]',
-                            'gen AVR8 project skeleton',
-                            str(getattr(args, 'type')),
-                            str(getattr(args, 'gen'))
-                        ])
-                    )
-                    status: bool = generator.gen_pro_setup(
-                        getattr(args, 'verbose') or verbose
-                    )
+                    try:
+                        generator.project_setup(
+                            str(getattr(args, 'gen')),
+                            str(getattr(args, 'type'))
+                        )
+                        print(
+                            " ".join([
+                                f'[{self._GEN_VERBOSE.lower()}]',
+                                'gen AVR8 project skeleton',
+                                str(getattr(args, 'type')),
+                                str(getattr(args, 'gen'))
+                            ])
+                        )
+                        status: bool = generator.gen_pro_setup(
+                            getattr(args, 'verbose') or verbose
+                        )
+                    except (ATSTypeError, ATSValueError) as e:
+                        error_message(
+                            [f'{self._GEN_VERBOSE.lower()} {str(e)}']
+                        )
+                        self._logger.write_log(
+                            f'{str(e)}', self._logger.ATS_ERROR
+                        )
                     if status:
                         success_message(
                             [f'{self._GEN_VERBOSE.lower()} done\n']
@@ -189,10 +206,14 @@ class GenAVR8(CfgCLI):
                         )
             else:
                 error_message(
-                    [f'{self._GEN_VERBOSE.lower()} project dir already exists']
+                    [
+                        f'{self._GEN_VERBOSE.lower()}',
+                        f'project with name [{getattr(args, "gen")}] exists'
+                    ]
                 )
                 self._logger.write_log(
-                    'project dir already exist', self._logger.ATS_ERROR
+                    f'project with name [{getattr(args, "gen")}] exists',
+                    self._logger.ATS_ERROR
                 )
         else:
             error_message(

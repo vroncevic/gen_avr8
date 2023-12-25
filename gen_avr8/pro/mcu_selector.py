@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.8'
+__version__ = '2.5.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -81,9 +81,9 @@ class MCUSelector(FileCheck):
         self.check_format(mcu_list, 'yaml', verbose)
         self._mcu_list: List[str] | None = None
         if self.is_file_ok():
-            yml2obj = Yaml2Object(mcu_list)
+            yml2obj: Yaml2Object | None = Yaml2Object(mcu_list)
             mcu_cfg: Dict[str, str] | None = yml2obj.read_configuration()
-            if mcu_cfg and 'mcu' in mcu_cfg:
+            if bool(mcu_cfg) and 'mcu' in mcu_cfg:
                 self._mcu_list = mcu_cfg['mcu'].split(' ')
 
     def get_mcu_list(self) -> List[str] | None:

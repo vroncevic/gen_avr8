@@ -33,7 +33,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.8'
+__version__ = '2.5.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -84,7 +84,7 @@ class ModuleType:
             :exceptions: None
         '''
         module_name: str | None = None
-        if module and cls.is_source_module(module):
+        if bool(module) and cls.is_source_module(module):
             if pro_type == 'lib':
                 if module.endswith(cls._SOURCE[0]):
                     module_name = f'{pro_name}.c'
@@ -92,7 +92,7 @@ class ModuleType:
                     module_name = f'{pro_name}.h'
             elif pro_type == 'app':
                 module_name = module
-        elif module and cls.is_build_module(module):
+        elif bool(module) and cls.is_build_module(module):
             module_name = module
         verbose_message(
             verbose, [f'{cls._GEN_VERBOSE.lower()} module type', module]
@@ -111,7 +111,7 @@ class ModuleType:
             :exceptions: None
         '''
         source_type_supported: bool = False
-        if module:
+        if bool(module):
             for source_type_ext in cls._SOURCE:
                 if module.endswith(source_type_ext):
                     source_type_supported = True
@@ -129,7 +129,7 @@ class ModuleType:
             :exceptions: None
         '''
         build_type_supported = False
-        if module:
+        if bool(module):
             for build_type_ext in cls._BUILD:
                 if module.endswith(build_type_ext):
                     build_type_supported = True

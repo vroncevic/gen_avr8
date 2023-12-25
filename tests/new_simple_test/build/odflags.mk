@@ -1,5 +1,5 @@
 # odflags.mk
-# Copyright (C) 2020 Vladimir Roncevic <elektron.ronca@gmail.com>
+# Copyright (C) 2023 Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 # new_simple_test is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the

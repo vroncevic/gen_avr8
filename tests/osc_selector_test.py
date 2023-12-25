@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.8'
+__version__ = '2.5.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -84,7 +84,7 @@ class OSCSelectorTestCase(TestCase):
         if osc_select and mock_input and mock_output:
             osc_select.choose_osc()
             content = str(mock_output.getvalue())
-            self.assertTrue("not an appropriate choice" in content)
+            self.assertTrue("not an option" in content)
 
     def test_checks_osc(self) -> None:
         '''Test checks selected OSC name.'''

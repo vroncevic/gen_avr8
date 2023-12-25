@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.8'
+__version__ = '2.5.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -81,9 +81,9 @@ class OSCSelector(FileCheck):
         self.check_format(fosc_list, 'yaml', verbose)
         self._fosc_list: List[str] | None = None
         if self.is_file_ok():
-            yml2obj = Yaml2Object(fosc_list)
+            yml2obj: Yaml2Object | None = Yaml2Object(fosc_list)
             fosc_cfg: Dict[str, str] | None = yml2obj.read_configuration()
-            if fosc_cfg and 'osc' in fosc_cfg:
+            if bool(fosc_cfg) and 'osc' in fosc_cfg:
                 self._fosc_list = fosc_cfg['osc'].split(' ')
 
     def get_fosc_list(self) -> List[str] | None:
