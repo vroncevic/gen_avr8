@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.9'
+__version__ = '2.6.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -61,7 +61,7 @@ APPROVED_LICENSES: List[str] = [
 PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_avr8',
-    version='2.5.9',
+    version='2.6.0',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -76,6 +76,7 @@ setup(
     install_requires=['ats-utilities'],
     package_data={
         'gen_avr8': [
+            'py.typed',
             f'{CONF}/gen_avr8.logo',
             f'{CONF}/gen_avr8.cfg',
             f'{CONF}/gen_avr8_util.cfg',

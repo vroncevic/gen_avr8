@@ -29,6 +29,7 @@ from os.path import exists, dirname, realpath
 
 try:
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
+    from ats_utilities.exceptions.ats_value_error import ATSValueError
     from gen_avr8.pro.template_type import TemplateType
 except ImportError as test_error_message:
     # Force close python test #################################################
@@ -38,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.9'
+__version__ = '2.6.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -64,7 +65,7 @@ class TemplateTypeTestCase(TestCase):
                 | test_template_type_none - Test app template type None.
                 | test_setup_template_app - Test setup template app.
                 | test_setup_template_lib - Test setup template lib.
-                | test_setup_template_none - Test setup template lib None.
+                | test_setup_template_empty - Test setup template lib empty.
                 | test_setup_template_not_supported - Template not supported.
                 | test_setup_app_dir - Test app template dir.
                 | test_setup_lib_dir - Test lib template dir.
@@ -110,10 +111,10 @@ class TemplateTypeTestCase(TestCase):
             'project_lib.yaml'
         )
 
-    def test_setup_template_none(self) -> None:
-        '''Test setup template lib None'''
-        with self.assertRaises(ATSTypeError):
-            TemplateType.setup_template_type(None)
+    def test_setup_template_empty(self) -> None:
+        '''Test setup template lib empty'''
+        with self.assertRaises(ATSValueError):
+            TemplateType.setup_template_type('')
 
     def test_setup_template_not_supported(self) -> None:
         '''Template not supported'''

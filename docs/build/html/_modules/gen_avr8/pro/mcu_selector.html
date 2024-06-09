@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gen_avr8.pro.mcu_selector &#8212; gen_avr8 https://github.com/vroncevic/gen_avr8/releases documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=514cf933" />
     
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/documentation_options.js?v=df5b5c07"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -81,13 +77,15 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;(C) 2024, https://vroncevic.github.io/gen_avr8&#39;</span>
 <span class="n">__credits__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">,</span> <span class="s1">&#39;Python Software Foundation&#39;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.5.9&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.6.0&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
-<div class="viewcode-block" id="MCUSelector"><a class="viewcode-back" href="../../../gen_avr8.pro.mcu_selector.html#gen_avr8.pro.mcu_selector.MCUSelector">[docs]</a><span class="k">class</span> <span class="nc">MCUSelector</span><span class="p">(</span><span class="n">FileCheck</span><span class="p">):</span>
+<div class="viewcode-block" id="MCUSelector">
+<a class="viewcode-back" href="../../../gen_avr8.pro.mcu_selector.html#gen_avr8.pro.mcu_selector.MCUSelector">[docs]</a>
+<span class="k">class</span> <span class="nc">MCUSelector</span><span class="p">(</span><span class="n">FileCheck</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Defines class MCUSelector with attribute(s) and method(s).</span>
 <span class="sd">        Selects MCU target for generation process of project structure.</span>
@@ -130,7 +128,9 @@
             <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">mcu_cfg</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;mcu&#39;</span> <span class="ow">in</span> <span class="n">mcu_cfg</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_mcu_list</span> <span class="o">=</span> <span class="n">mcu_cfg</span><span class="p">[</span><span class="s1">&#39;mcu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MCUSelector.get_mcu_list"><a class="viewcode-back" href="../../../gen_avr8.pro.mcu_selector.html#gen_avr8.pro.mcu_selector.MCUSelector.get_mcu_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_mcu_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="MCUSelector.get_mcu_list">
+<a class="viewcode-back" href="../../../gen_avr8.pro.mcu_selector.html#gen_avr8.pro.mcu_selector.MCUSelector.get_mcu_list">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_mcu_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Gets for MCU list object.</span>
 
@@ -140,7 +140,10 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mcu_list</span></div>
 
-<div class="viewcode-block" id="MCUSelector.choose_mcu"><a class="viewcode-back" href="../../../gen_avr8.pro.mcu_selector.html#gen_avr8.pro.mcu_selector.MCUSelector.choose_mcu">[docs]</a>    <span class="k">def</span> <span class="nf">choose_mcu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="MCUSelector.choose_mcu">
+<a class="viewcode-back" href="../../../gen_avr8.pro.mcu_selector.html#gen_avr8.pro.mcu_selector.MCUSelector.choose_mcu">[docs]</a>
+    <span class="k">def</span> <span class="nf">choose_mcu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Selects MCU target.</span>
 
@@ -168,7 +171,9 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">mcu_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mcu_list</span><span class="p">[</span><span class="n">mcu_name_index</span><span class="p">]</span>
                     <span class="k">break</span>
-        <span class="k">return</span> <span class="n">mcu_name</span></div></div>
+        <span class="k">return</span> <span class="n">mcu_name</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -208,8 +213,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2024, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2024, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

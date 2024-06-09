@@ -27,6 +27,7 @@ try:
     from ats_utilities.checker import ATSChecker
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
+    from ats_utilities.exceptions.ats_value_error import ATSValueError
 except ImportError as ats_error_message:
     # Force close python ATS ##################################################
     sys.exit(f'\n{__file__}\n{ats_error_message}\n')
@@ -35,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.9'
+__version__ = '2.6.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -97,7 +98,7 @@ class TemplateType:
 
     @classmethod
     def setup_template_type(
-        cls, template_type: str | None, verbose: bool = False
+        cls, template_type: str, verbose: bool = False
     ) -> str | None:
         '''
             Sets template type (App | Lib).
@@ -108,7 +109,7 @@ class TemplateType:
             :type verbose: <bool>
             :return: Project type (app | lib) | None
             :rtype: <str> | <NoneType>
-            :exceptions: ATSTypeError
+            :exceptions: ATSTypeError | ATSValueError
         '''
         checker: ATSChecker = ATSChecker()
         error_msg: str | None = None
@@ -118,6 +119,8 @@ class TemplateType:
         ])
         if error_id == checker.TYPE_ERROR:
             raise ATSTypeError(error_msg)
+        if not bool(template_type):
+            raise ATSValueError('missing template type')
         if all([
             bool(template_type),
             cls.check_template_type(template_type, verbose)
