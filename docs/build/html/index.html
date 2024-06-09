@@ -1,21 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>AVR project skeleton generator &#8212; gen_avr8 https://github.com/vroncevic/gen_avr8/releases documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/documentation_options.js?v=df5b5c07"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,7 +40,7 @@
           <div class="body" role="main">
             
   <section id="avr-project-skeleton-generator">
-<h1>AVR project skeleton generator<a class="headerlink" href="#avr-project-skeleton-generator" title="Permalink to this heading">¶</a></h1>
+<h1>AVR project skeleton generator<a class="headerlink" href="#avr-project-skeleton-generator" title="Link to this heading">¶</a></h1>
 <p><strong>gen_avr8</strong> is toolset for generation of AVR8 project skeleton for
 development embedded applications.</p>
 <p>Developed in <a class="reference external" href="https://www.python.org/">python</a> code.</p>
@@ -73,7 +69,7 @@ other information that should be provided before the modules are installed.</p>
 </ul>
 </div>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
 <p><a class="reference external" href="https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml"><img alt="gen_avr8 python3 build" src="https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml/badge.svg" /></a></p>
 <p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/gen_avr8/releases">page</a> download and extract release archive.</p>
 <p>To install <strong>gen_avr8</strong> type the following</p>
@@ -92,21 +88,21 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen-avr8
 </div>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
 <p>Create AVR8 Project Blink, MCU/FOSC will be selected during generation process</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>gen_avr8_run.py<span class="w"> </span>-g<span class="w"> </span>Blink<span class="w"> </span>-t<span class="w"> </span>app
 </pre></div>
 </div>
 </section>
 <section id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">¶</a></h2>
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h2>
 <p><strong>gen_avr8</strong> tool-module requires other modules and libraries</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/ats-utilities/">ats-utilities - Python App/Tool/Script Utilities</a></p></li>
 </ul>
 </section>
 <section id="supported-mcus">
-<h2>Supported MCUS<a class="headerlink" href="#supported-mcus" title="Permalink to this heading">¶</a></h2>
+<h2>Supported MCUS<a class="headerlink" href="#supported-mcus" title="Link to this heading">¶</a></h2>
 <p>Current list of supported microcontrollers</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>attiny2313<span class="w">    </span>atmega128<span class="w">      </span>at90s2313
 attiny24<span class="w">      </span>atmega1280<span class="w">     </span>at90s2333
@@ -146,7 +142,7 @@ attiny861<span class="w">     </span>atmega169
 </div>
 </section>
 <section id="tool-structure">
-<h2>Tool structure<a class="headerlink" href="#tool-structure" title="Permalink to this heading">¶</a></h2>
+<h2>Tool structure<a class="headerlink" href="#tool-structure" title="Link to this heading">¶</a></h2>
 <p><strong>gen_avr8</strong> is based on Template mechanism</p>
 <p>Generator structure</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_avr8/
@@ -203,7 +199,7 @@ attiny861<span class="w">     </span>atmega169
 </div>
 </section>
 <section id="copyright-and-licence">
-<h2>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this heading">¶</a></h2>
+<h2>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Link to this heading">¶</a></h2>
 <p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="license: gpl v3" src="https://img.shields.io/badge/license-gplv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/apache-2.0"><img alt="license: apache 2.0" src="https://img.shields.io/badge/license-apache%202.0-blue.svg" /></a></p>
 <p>Copyright (C) 2018 - 2024 by <a class="reference external" href="https://vroncevic.github.io/gen_avr8">vroncevic.github.io/gen_avr8</a></p>
 <p><strong>gen_avr8</strong> is free software; you can redistribute it and/or modify
@@ -214,7 +210,7 @@ at your option, any later version of Python 3 you may have available.</p>
 <p><a class="reference external" href="https://www.python.org/psf/donations/"><img alt="donate" src="https://www.paypalobjects.com/en_us/i/btn/btn_donatecc_lg.gif" /></a></p>
 </section>
 <section id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h2>
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -289,8 +285,8 @@ at your option, any later version of Python 3 you may have available.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2024, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2024, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

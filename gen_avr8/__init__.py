@@ -21,9 +21,9 @@ Info
 '''
 
 import sys
-from typing import Any, Dict, List
-from os import getcwd
+from typing import Any, List, Dict
 from os.path import exists, dirname, realpath
+from os import getcwd
 from argparse import Namespace
 
 try:
@@ -44,7 +44,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.9'
+__version__ = '2.6.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -66,16 +66,14 @@ class GenAVR8(CfgCLI):
                 | _logger - Logger object API.
             :methods:
                 | __init__ - Initials GenAVR8 constructor.
-                | process - processes and runs tool operation.
+                | process - Processes and runs tool operation.
     '''
 
     _GEN_VERBOSE: str = 'GEN_AVR8'
     _CONFIG: str = '/conf/gen_avr8.cfg'
     _LOG: str = '/log/gen_avr8.log'
     _LOGO: str = '/conf/gen_avr8.logo'
-    _OPS: List[str] = [
-        '-g', '--gen', '-t', '--type', '-v', '--verbose', '--version'
-    ]
+    _OPS: List[str] = ['-n', '--name', '-t', '--type', '-v', '--verbose']
 
     def __init__(self, verbose: bool = False) -> None:
         '''
@@ -104,7 +102,7 @@ class GenAVR8(CfgCLI):
         )
         if self.tool_operational:
             self.add_new_option(
-                self._OPS[0], self._OPS[1], dest='gen',
+                self._OPS[0], self._OPS[1], dest='name',
                 help='generate AVR8 project skeleton (provide name)'
             )
             self.add_new_option(
@@ -114,9 +112,6 @@ class GenAVR8(CfgCLI):
             self.add_new_option(
                 self._OPS[4], self._OPS[5], action='store_true',
                 default=False, help='activate verbose mode for generation'
-            )
-            self.add_new_option(
-                self._OPS[6], action='version', version=__version__
             )
 
     def process(self, verbose: bool = False) -> bool:
@@ -131,90 +126,59 @@ class GenAVR8(CfgCLI):
         '''
         status: bool = False
         if self.tool_operational:
-            if len(sys.argv) >= 4:
-                options: List[str] = [
-                    arg for i, arg in enumerate(sys.argv) if i % 2 == 0
-                ]
-                if any(arg not in self._OPS for arg in options[1:]):
+            try:
+                args: Any | Namespace = self.parse_args(sys.argv)
+                if not bool(getattr(args, "name")):
                     error_message(
-                        [
-                            f'{self._GEN_VERBOSE.lower()}',
-                            'provide name (-g name) and type (-t app | lib)'
-                        ]
-                    )
-                    self._logger.write_log(
-                        'missing project name or type', self._logger.ATS_ERROR
+                        [f'{self._GEN_VERBOSE.lower()} missing name argument']
                     )
                     return status
-            else:
-                error_message(
-                    [
+                if not bool(getattr(args, "type")):
+                    error_message(
+                        [f'{self._GEN_VERBOSE.lower()} missing type argument']
+                    )
+                    return status
+                if exists(f'{getcwd()}/{str(getattr(args, "name"))}'):
+                    error_message([
                         f'{self._GEN_VERBOSE.lower()}',
-                        'provide name (-g name) and type (-t app | lib)'
-                    ]
-                )
-                self._logger.write_log(
-                    'missing project name or type', self._logger.ATS_ERROR
-                )
-                return status
-            args: Any | Namespace = self.parse_args(sys.argv[2:])
-            project_exists: bool = exists(
-                f'{getcwd()}/{str(getattr(args, "gen"))}'
-            )
-            if not project_exists:
-                if bool(getattr(args, 'gen')) and bool(getattr(args, 'type')):
-                    generator: AVR8Setup = AVR8Setup(
+                        f'project with name [{getattr(args, "name")}] exists'
+                    ])
+                    return status
+                gen: AVR8Setup = AVR8Setup(getattr(args, 'verbose') or verbose)
+                try:
+                    gen.project_setup(
+                        str(getattr(args, 'name')), str(getattr(args, 'type'))
+                    )
+                    print(
+                        " ".join([
+                            f'[{self._GEN_VERBOSE.lower()}]',
+                            'generate AVR8 project skeleton',
+                            str(getattr(args, 'type')),
+                            str(getattr(args, 'name'))
+                        ])
+                    )
+                    status: bool = gen.gen_pro_setup(
                         getattr(args, 'verbose') or verbose
                     )
-                    try:
-                        generator.project_setup(
-                            str(getattr(args, 'gen')),
-                            str(getattr(args, 'type'))
-                        )
-                        print(
-                            " ".join([
-                                f'[{self._GEN_VERBOSE.lower()}]',
-                                'gen AVR8 project skeleton',
-                                str(getattr(args, 'type')),
-                                str(getattr(args, 'gen'))
-                            ])
-                        )
-                        status: bool = generator.gen_pro_setup(
-                            getattr(args, 'verbose') or verbose
-                        )
-                    except (ATSTypeError, ATSValueError) as e:
-                        error_message(
-                            [f'{self._GEN_VERBOSE.lower()} {str(e)}']
-                        )
-                        self._logger.write_log(
-                            f'{str(e)}', self._logger.ATS_ERROR
-                        )
-                    if status:
-                        success_message(
-                            [f'{self._GEN_VERBOSE.lower()} done\n']
-                        )
-                        self._logger.write_log(
-                            f'gen project {getattr(args, "gen")} done',
-                            self._logger.ATS_INFO
-                        )
-                    else:
-                        error_message(
-                            [f'{self._GEN_VERBOSE.lower()} failed to generate']
-                        )
-                        self._logger.write_log(
-                            'generation failed', self._logger.ATS_ERROR
-                        )
-            else:
+                except (ATSTypeError, ATSValueError) as e:
+                    error_message([f'{self._GEN_VERBOSE.lower()} {str(e)}'])
+                    self._logger.write_log(f'{str(e)}', self._logger.ATS_ERROR)
+                if status:
+                    success_message([f'{self._GEN_VERBOSE.lower()} done\n'])
+                    self._logger.write_log(
+                        f'generation {getattr(args, "name")} done',
+                        self._logger.ATS_INFO
+                    )
+                else:
+                    error_message([f'{self._GEN_VERBOSE.lower()} failed'])
+                    self._logger.write_log(
+                        'generation failed', self._logger.ATS_ERROR
+                    )
+            except SystemExit:
                 error_message(
-                    [
-                        f'{self._GEN_VERBOSE.lower()}',
-                        f'project with name [{getattr(args, "gen")}] exists'
-                    ]
+                    [f'{self._GEN_VERBOSE.lower()} expected argument -n']
                 )
-                self._logger.write_log(
-                    f'project with name [{getattr(args, "gen")}] exists',
-                    self._logger.ATS_ERROR
-                )
+                return status
         else:
             error_message(
                 [f'{self._GEN_VERBOSE.lower()} tool is not operational']

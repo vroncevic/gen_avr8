@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_logo.png" width="25%">
-
 # AVR project skeleton generator
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_logo.png" width="25%">
 
 **gen_avr8** is tool for generation of AVR8 project skeleton for development
 of embedded applications.
@@ -119,7 +119,7 @@ cd Blink/
 Crete AVR8 project files, by using parameters
 
 ```bash
-python gen_avr8_run.py -g Blink -t app
+python gen_avr8_run.py -n Blink -t app
 ```
 
 Running build process

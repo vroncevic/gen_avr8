@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.5.9'
+__version__ = '2.6.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -87,8 +87,6 @@ class GenAVR8TestCase(TestCase):
     def test_process_missing_args(self) -> None:
         '''Test for missing args'''
         sys.argv.clear()
-        sys.argv.insert(0, 'python3')
-        sys.argv.insert(1, 'gen_avr8_run.py')
         avr_gen: GenAVR8 | None = GenAVR8()
         if avr_gen:
             self.assertIsInstance(avr_gen, GenAVR8)
@@ -97,12 +95,10 @@ class GenAVR8TestCase(TestCase):
     def test_pro_dir_already_exists(self) -> None:
         '''Test pro dir exists'''
         sys.argv.clear()
-        sys.argv.insert(0, 'python3')
-        sys.argv.insert(1, 'gen_avr8_run.py')
-        sys.argv.insert(2, '-g')
-        sys.argv.insert(3, 'tester2')
-        sys.argv.insert(4, '-t')
-        sys.argv.insert(5, 'app')
+        sys.argv.insert(0, '-n')
+        sys.argv.insert(1, 'tester2')
+        sys.argv.insert(2, '-t')
+        sys.argv.insert(3, 'app')
         makedirs(f'{getcwd()}/tester2', exist_ok=False)
         avr_gen: GenAVR8 | None = GenAVR8()
         if avr_gen:
@@ -113,12 +109,10 @@ class GenAVR8TestCase(TestCase):
     def test_process_wrong_args(self) -> None:
         '''Test wrong args'''
         sys.argv.clear()
-        sys.argv.insert(0, 'python3')
-        sys.argv.insert(1, 'gen_avr8_run.py')
-        sys.argv.insert(2, '-g')
-        sys.argv.insert(3, 'tester')
-        sys.argv.insert(4, '-z')
-        sys.argv.insert(5, 'app')
+        sys.argv.insert(0, '-n')
+        sys.argv.insert(1, 'tester')
+        sys.argv.insert(2, '-z')
+        sys.argv.insert(3, 'app')
         avr_gen: GenAVR8 | None = GenAVR8()
         if avr_gen:
             self.assertIsInstance(avr_gen, GenAVR8)
@@ -127,12 +121,10 @@ class GenAVR8TestCase(TestCase):
     def test_tool_not_operational(self) -> None:
         '''Test tool not operational'''
         sys.argv.clear()
-        sys.argv.insert(0, 'python3')
-        sys.argv.insert(1, 'gen_avr8_run.py')
-        sys.argv.insert(2, '-g')
-        sys.argv.insert(3, 'tester')
-        sys.argv.insert(4, '-t')
-        sys.argv.insert(5, 'app')
+        sys.argv.insert(0, '-n')
+        sys.argv.insert(1, 'tester')
+        sys.argv.insert(2, '-t')
+        sys.argv.insert(3, 'app')
         avr_gen: GenAVR8 | None = GenAVR8()
         if avr_gen:
             avr_gen.tool_operational = False
@@ -143,12 +135,10 @@ class GenAVR8TestCase(TestCase):
     def test_process(self, mock_input: Any) -> None:
         '''Test success process'''
         sys.argv.clear()
-        sys.argv.insert(0, 'python3')
-        sys.argv.insert(1, 'gen_avr8_run.py')
-        sys.argv.insert(2, '-g')
-        sys.argv.insert(3, 'tester')
-        sys.argv.insert(4, '-t')
-        sys.argv.insert(5, 'app')
+        sys.argv.insert(0, '-n')
+        sys.argv.insert(1, 'tester')
+        sys.argv.insert(2, '-t')
+        sys.argv.insert(3, 'app')
         avr_gen: GenAVR8 | None = GenAVR8()
         if avr_gen and mock_input:
             self.assertIsInstance(avr_gen, GenAVR8)
