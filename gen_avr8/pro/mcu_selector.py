@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Dict, List
+from typing import Dict, List, Optional
 from os.path import dirname, realpath
 
 try:
@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -79,35 +79,35 @@ class MCUSelector(FileCheck):
         self.check_path(mcu_list, verbose)
         self.check_mode('r', verbose)
         self.check_format(mcu_list, 'yaml', verbose)
-        self._mcu_list: List[str] | None = None
+        self._mcu_list: Optional[List[str]] = None
         if self.is_file_ok():
-            yml2obj: Yaml2Object | None = Yaml2Object(mcu_list)
-            mcu_cfg: Dict[str, str] | None = yml2obj.read_configuration()
+            yml2obj: Optional[Yaml2Object] = Yaml2Object(mcu_list)
+            mcu_cfg: Optional[Dict[str, str]] = yml2obj.read_configuration()
             if bool(mcu_cfg) and 'mcu' in mcu_cfg:
                 self._mcu_list = mcu_cfg['mcu'].split(' ')
 
-    def get_mcu_list(self) -> List[str] | None:
+    def get_mcu_list(self) -> Optional[List[str]]:
         '''
             Gets for MCU list object.
 
             :return: MCU list | None
-            :rtype: <list> | <NoneType>
+            :rtype: <Optional[List[str]]>
             :exceptions: None
         '''
         return self._mcu_list
 
-    def choose_mcu(self, verbose: bool = False) -> str | None:
+    def choose_mcu(self, verbose: bool = False) -> Optional[str]:
         '''
             Selects MCU target.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: MCU name | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: None
         '''
         verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} select MCU'])
-        mcu_name: str | None = None
+        mcu_name: Optional[str] = None
         if self._mcu_list:
             while True:
                 mcu_name_index: int = -1

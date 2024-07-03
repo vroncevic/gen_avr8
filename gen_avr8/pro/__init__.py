@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 try:
     from ats_utilities.checker import ATSChecker
@@ -43,7 +43,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -89,23 +89,23 @@ class AVR8Setup(ATSChecker):
 
     def project_setup(
         self,
-        project_name: str | None,
-        project_type: str | None,
+        project_name: Optional[str],
+        project_type: Optional[str],
         verbose: bool = False
     ) -> None:
         '''
             Property methods for set operations.
 
             :param project_name: Project name | None
-            :type project_name: <str> | <NoneType>
+            :type project_name: <Optional[str]>
             :param project_type: Project type | None
-            :type project_type: <str> | <NoneType>
+            :type project_type: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :exceptions: ATSTypeError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([
             ('str:project_name', project_name),
             ('str:project_type', project_type)
@@ -142,10 +142,10 @@ class AVR8Setup(ATSChecker):
                 self._setup['type'], self._setup['name']
             ]
         )
-        conf_dir: str | None = TemplateDir.setup_conf_dir(verbose)
+        conf_dir: Optional[str] = TemplateDir.setup_conf_dir(verbose)
         if not bool(conf_dir):
             return status
-        setup_template: str | None = TemplateType.setup_template_type(
+        setup_template: Optional[str] = TemplateType.setup_template_type(
             self._setup['type'], verbose
         )
         if not bool(setup_template):
@@ -168,9 +168,9 @@ class AVR8Setup(ATSChecker):
                     return status
                 self._writer.pro_dir = self._setup['name']
                 for template, module in zip(templates, modules):
-                    template_dir: str | None = TemplateDir.setup_template_dir(
-                        verbose
-                    )
+                    template_dir: Optional[
+                        str
+                    ] = TemplateDir.setup_template_dir(verbose)
                     pro_data['template'] = self._reader.read(
                         f'{template_dir}{self._setup["type"]}/{template}',
                         verbose

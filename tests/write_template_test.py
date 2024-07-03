@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -124,7 +124,7 @@ class WriteTemplateTestCase(TestCase):
             self.template_writer.pro_dir = project_setup['name']
             for template_module in self.template_modules:
                 if project_setup and self.template_reader:
-                    template: str | None = self.template_reader.read(
+                    template: Optional[str] = self.template_reader.read(
                         template_module
                     )
                     project_setup['template'] = str(template)

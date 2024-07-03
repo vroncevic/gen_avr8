@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 try:
     from ats_utilities.checker import ATSChecker
@@ -36,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -69,13 +69,13 @@ class TemplateType:
 
     @classmethod
     def check_template_type(
-        cls, template_type: str | None, verbose: bool = False
+        cls, template_type: Optional[str], verbose: bool = False
     ) -> bool:
         '''
             Checks project template type (App | Lib).
 
             :param template_type: Project template type | None
-            :type template_type: <str> | <NoneType>
+            :type template_type: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: True (project type for ok) | False
@@ -83,8 +83,8 @@ class TemplateType:
             :exceptions: ATSTypeError
         '''
         checker: ATSChecker = ATSChecker()
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = checker.check_params([
             ('str:template_type', template_type)
         ])
@@ -99,7 +99,7 @@ class TemplateType:
     @classmethod
     def setup_template_type(
         cls, template_type: str, verbose: bool = False
-    ) -> str | None:
+    ) -> Optional[str]:
         '''
             Sets template type (App | Lib).
 
@@ -108,12 +108,12 @@ class TemplateType:
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: Project type (app | lib) | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: ATSTypeError | ATSValueError
         '''
         checker: ATSChecker = ATSChecker()
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = checker.check_params([
             ('str:template_type', template_type)
         ])

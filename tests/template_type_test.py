@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -76,8 +76,8 @@ class TemplateTypeTestCase(TestCase):
     def setUp(self) -> None:
         '''Call before test case'''
         cwd: str = dirname(realpath(__file__))
-        self.app_template: str | None = f'{cwd}/{self._CONF}/app'
-        self.lib_template: str | None = f'{cwd}/{self._CONF}/lib'
+        self.app_template: Optional[str] = f'{cwd}/{self._CONF}/app'
+        self.lib_template: Optional[str] = f'{cwd}/{self._CONF}/lib'
 
     def tearDown(self) -> None:
         '''Call after test case'''

@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -99,7 +99,7 @@ class MCUSelectorTestCase(TestCase):
     def test_checks_mcu(self) -> None:
         '''Test checks selected MCU name'''
         mcu_select: MCUSelector | None = MCUSelector()
-        mcu_target: str | None = 'atmega8'
+        mcu_target: Optional[str] = 'atmega8'
         if mcu_select:
             mcu_list: List[str] | None = mcu_select.get_mcu_list()
             if mcu_list:

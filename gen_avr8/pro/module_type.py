@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import List
+from typing import List, Optional
 
 try:
     from ats_utilities.console_io.verbose import verbose_message
@@ -33,7 +33,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -63,27 +63,27 @@ class ModuleType:
     @classmethod
     def pre_process_module(
         cls,
-        pro_type: str | None,
-        pro_name: str | None,
-        module: str | None,
+        pro_type: Optional[str],
+        pro_name: Optional[str],
+        module: Optional[str],
         verbose: bool = False
-    ) -> str | None:
+    ) -> Optional[str]:
         '''
             Processes module name.
 
             :param pro_type: Project type | None
-            :type pro_type: <str> | <NoneType>
+            :type pro_type: <Optional[str]>
             :param pro_name: Project name | None
-            :type pro_name: <str> | <NoneType>
+            :type pro_name: <Optional[str]>
             :param module: Module name | None
-            :type module: <str> | <NoneType>
+            :type module: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: Processed module name | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: None
         '''
-        module_name: str | None = None
+        module_name: Optional[str] = None
         if bool(module) and cls.is_source_module(module):
             if pro_type == 'lib':
                 if module.endswith(cls._SOURCE[0]):
@@ -100,12 +100,12 @@ class ModuleType:
         return module_name
 
     @classmethod
-    def is_source_module(cls, module: str | None) -> bool:
+    def is_source_module(cls, module: Optional[str]) -> bool:
         '''
             Checks is source module.
 
             :param module: module name | None
-            :type module: <str> | <NoneType>
+            :type module: <Optional[str]>
             :return: True (module is source type) | False
             :rtype: <bool>
             :exceptions: None
@@ -118,12 +118,12 @@ class ModuleType:
         return source_type_supported
 
     @classmethod
-    def is_build_module(cls, module: str | None) -> bool:
+    def is_build_module(cls, module: Optional[str]) -> bool:
         '''
             Checks is build module.
 
             :param module: Module name | None
-            :type module: <str> | <NoneType>
+            :type module: <Optional[str]>
             :return: True (module is build type) | False
             :rtype: <bool>
             :exceptions: None

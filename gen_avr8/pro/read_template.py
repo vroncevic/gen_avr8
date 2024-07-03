@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import List
+from typing import List, Optional
 
 try:
     from ats_utilities.config_io.file_check import FileCheck
@@ -35,7 +35,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -71,27 +71,27 @@ class ReadTemplate(FileCheck):
         verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} init reader'])
 
     def read(
-        self, template_file: str | None, verbose: bool = False
-    ) -> str | None:
+        self, template_file: Optional[str], verbose: bool = False
+    ) -> Optional[str]:
         '''
             Reads template file.
 
             :param template_file: Template file path | None
-            :type template_file: <str> | <NoneType>
+            :type template_file: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: Template content for module | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: ATSTypeError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([
             ('str:template_file', template_file)
         ])
         if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
-        setup_content: str | None = None
+        setup_content: Optional[str] = None
         self.check_path(template_file, verbose)
         self.check_mode('r', verbose)
         self.check_format(template_file, self._FORMAT, verbose)
