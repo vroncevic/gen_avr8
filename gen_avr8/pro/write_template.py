@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Dict, List
+from typing import Dict, List, Optional
 from os import getcwd, chmod, makedirs
 from datetime import datetime
 from string import Template
@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -74,30 +74,30 @@ class WriteTemplate(FileCheck):
         '''
         super().__init__(verbose)
         verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} init writer'])
-        self._pro_dir: str | None = None
+        self._pro_dir: Optional[str] = None
 
     @property
-    def pro_dir(self) -> str | None:
+    def pro_dir(self) -> Optional[str]:
         '''
             Property method for getting project dir.
 
             :return: Project dir | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: None
         '''
         return self._pro_dir
 
     @pro_dir.setter
-    def pro_dir(self, pro_dir: str | None) -> None:
+    def pro_dir(self, pro_dir: Optional[str]) -> None:
         '''
             Property method for setting/creating project dir.
 
             :param pro_dir: Project dir | None
-            :type pro_dir: <str> | <NoneType>
+            :type pro_dir: <Optional[str]>
             :exceptions: ATSTypeError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([('str:pro_dir', pro_dir)])
         if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
@@ -105,27 +105,27 @@ class WriteTemplate(FileCheck):
         makedirs(f'{self._pro_dir}/build', exist_ok=True)
 
     def check_module(
-        self, module: str | None, verbose: bool = False
-    ) -> str | None:
+        self, module: Optional[str], verbose: bool = False
+    ) -> Optional[str]:
         '''
             Checks project module.
 
             :param module: Module name | None
-            :type module: <str> | <NoneType>
+            :type module: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: 'build' | 'source'| None (wrong module name).
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: ATSTypeError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([('str:module', module)])
         if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
         is_source: bool = False
         is_build: bool = False
-        module_type: str | None = None
+        module_type: Optional[str] = None
         is_source = ModuleType.is_source_module(module)
         is_build = ModuleType.is_build_module(module)
         if is_source and not is_build:
@@ -149,15 +149,15 @@ class WriteTemplate(FileCheck):
             :rtype: <bool>
             :exception: ATSTypeError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([
             ('dict:pro_data', pro_data)
         ])
         if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)
         status = False
-        module_type: str | None = self.check_module(pro_data['module'])
+        module_type: Optional[str] = self.check_module(pro_data['module'])
         if bool(module_type):
             project: Dict[str, str] = {
                 'PRO': f'{pro_data["name"]}',
@@ -167,7 +167,7 @@ class WriteTemplate(FileCheck):
             }
             template = Template(pro_data['template'])
             if bool(template):
-                module: str | None = None
+                module: Optional[str] = None
                 if module_type == 'source':
                     module = f'{self._pro_dir}/{pro_data["module"]}'
                 if module_type == 'build':
@@ -184,7 +184,7 @@ class WriteTemplate(FileCheck):
                             )
                             module_file.write(template.substitute(project))
                             chmod(module, 0o666)
-                            file_extension: str | None = None
+                            file_extension: Optional[str] = None
                             if '.' in module:
                                 file_extension = module.split('.')[1]
                                 self.check_format(

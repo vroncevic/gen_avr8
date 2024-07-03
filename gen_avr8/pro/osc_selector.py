@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Dict, List
+from typing import Dict, List, Optional
 from os.path import dirname, realpath
 
 try:
@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -79,36 +79,36 @@ class OSCSelector(FileCheck):
         self.check_path(fosc_list, verbose)
         self.check_mode('r', verbose)
         self.check_format(fosc_list, 'yaml', verbose)
-        self._fosc_list: List[str] | None = None
+        self._fosc_list: Optional[List[str]] = None
         if self.is_file_ok():
-            yml2obj: Yaml2Object | None = Yaml2Object(fosc_list)
+            yml2obj: Optional[Yaml2Object] = Yaml2Object(fosc_list)
             fosc_cfg: Dict[str, str] | None = yml2obj.read_configuration()
             if bool(fosc_cfg) and 'osc' in fosc_cfg:
                 self._fosc_list = fosc_cfg['osc'].split(' ')
 
-    def get_fosc_list(self) -> List[str] | None:
+    def get_fosc_list(self) -> Optional[List[str]]:
         '''
             Gets for FOSC list object.
 
             :return: FOSC configuration | None
-            :rtype: <List[str]> | <NoneType>
+            :rtype: <Optional[List[str]]>
             :exceptions: None
         '''
         return self._fosc_list
 
-    def choose_osc(self, verbose: bool = False) -> str | None:
+    def choose_osc(self, verbose: bool = False) -> Optional[str]:
         '''
             Select FOSC for target.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: FOSC | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: None
         '''
         verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} select FOSC'])
         fosc_name_index: int = -1
-        fosc_name: str | None = None
+        fosc_name: Optional[str] = None
         if self._fosc_list:
             while True:
                 print(f'{"#" * 30}\n')

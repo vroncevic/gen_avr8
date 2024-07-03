@@ -23,7 +23,7 @@ Execute
 '''
 
 import sys
-from typing import List
+from typing import List, Optional
 from unittest import TestCase, main
 from os.path import exists
 
@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -65,8 +65,8 @@ class TemplateDirTestCase(TestCase):
 
     def setUp(self) -> None:
         '''Call before test case.'''
-        self.config_dir: str | None = TemplateDir.setup_conf_dir()
-        self.template_dir: str | None = TemplateDir.setup_template_dir()
+        self.config_dir: Optional[str] = TemplateDir.setup_conf_dir()
+        self.template_dir: Optional[str] = TemplateDir.setup_template_dir()
 
     def tearDown(self) -> None:
         '''Call after test case.'''

@@ -145,56 +145,61 @@ attiny861<span class="w">     </span>atmega169
 <h2>Tool structure<a class="headerlink" href="#tool-structure" title="Link to this heading">¶</a></h2>
 <p><strong>gen_avr8</strong> is based on Template mechanism</p>
 <p>Generator structure</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_avr8/
-<span class="w">    </span>├──<span class="w"> </span>conf/
-<span class="w">    </span><span class="p">|</span><span class="w">   </span>├──<span class="w"> </span>gen_avr8.logo
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>fosc.yaml
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>gen_avr8.cfg
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>gen_avr8_util.cfg
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>mcu.yaml
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>project_app.yaml
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>project_lib.yaml
-<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>template/
-<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>app/
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>cflags.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>csflags.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>module.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>objects.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>ocflags.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>odflags.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>sources.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>subdir.template
-<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>└──<span class="w"> </span>tools.template
-<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>lib/
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>aflags.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>avr_lib_c.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>avr_lib_h.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>cflags.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>csflags.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>Makefile.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>objects.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>ocflags.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>odflags.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>sources.template
-<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>subdir.template
-<span class="w">    </span>│<span class="w">           </span>└──<span class="w"> </span>tools.template
-<span class="w">    </span>├──<span class="w"> </span>__init__.py
-<span class="w">    </span>├──<span class="w"> </span>log/
-<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>gen_avr8.log
-<span class="w">    </span>├──<span class="w"> </span>pro/
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>mcu_selector.py
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>module_type.py
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>osc_selector.py
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>read_template.py
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>template_dir.py
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>template_type.py
-<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>write_template.py
-<span class="w">    </span>└──<span class="w"> </span>run/
-<span class="w">        </span>└──<span class="w"> </span>gen_avr8_run.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>gen_avr8/
+<span class="w">     </span>├──<span class="w"> </span>conf/
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>fosc.yaml
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>gen_avr8.cfg
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>gen_avr8.logo
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>gen_avr8_util.cfg
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>mcu.yaml
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>project_app.yaml
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>project_lib.yaml
+<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>template/
+<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>adc/
+<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>app/
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>cflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>csflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>module.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>objects.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>ocflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>odflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>sources.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>subdir.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>└──<span class="w"> </span>tools.template
+<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>eeprom/
+<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>gpio/
+<span class="w">     </span>│<span class="w">       </span>├──<span class="w"> </span>lib/
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>aflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>avr_lib_c.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>avr_lib_h.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>cflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>csflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>Makefile.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>objects.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>ocflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>odflags.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>sources.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>subdir.template
+<span class="w">     </span>│<span class="w">       </span>│<span class="w">   </span>└──<span class="w"> </span>tools.template
+<span class="w">     </span>│<span class="w">       </span>└──<span class="w"> </span>uart
+<span class="w">     </span>├──<span class="w"> </span>__init__.py
+<span class="w">     </span>├──<span class="w"> </span>log/
+<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>gen_avr8.log
+<span class="w">     </span>├──<span class="w"> </span>pro/
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>mcu_selector.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>module_type.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>osc_selector.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>read_template.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>template_dir.py
+<span class="w">     </span>│<span class="w">   </span>├──<span class="w"> </span>template_type.py
+<span class="w">     </span>│<span class="w">   </span>└──<span class="w"> </span>write_template.py
+<span class="w">     </span>├──<span class="w"> </span>py.typed
+<span class="w">     </span>└──<span class="w"> </span>run/
+<span class="w">         </span>└──<span class="w"> </span>gen_avr8_run.py
 
-<span class="m">8</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">40</span><span class="w"> </span>files
+<span class="m">12</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">41</span><span class="w"> </span>files
 </pre></div>
 </div>
 </section>

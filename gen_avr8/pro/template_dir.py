@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import List
+from typing import List, Optional
 from os.path import isdir, dirname, realpath
 
 try:
@@ -34,7 +34,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.0'
+__version__ = '2.6.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -62,12 +62,14 @@ class TemplateDir:
     _TEMPLATE_DIR: str = '/../conf/template/'
 
     @classmethod
-    def check_dir(cls, target_dir: str | None, verbose: bool = False) -> bool:
+    def check_dir(
+        cls, target_dir: Optional[str], verbose: bool = False
+    ) -> bool:
         '''
             Checks project directory.
 
             :param target_dir: Target directory to be checked | None
-            :type target_dir: <str> | <NoneType>
+            :type target_dir: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: True (directory ok) | False
@@ -80,17 +82,17 @@ class TemplateDir:
         return isdir(f'{dirname(realpath(__file__))}{target_dir}')
 
     @classmethod
-    def setup_conf_dir(cls, verbose: bool = False) -> str | None:
+    def setup_conf_dir(cls, verbose: bool = False) -> Optional[str]:
         '''
             Sets configuration directory.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: Template directory | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: None
         '''
-        conf_dir: str | None = None
+        conf_dir: Optional[str] = None
         if cls.check_dir(cls._CONF_DIR, verbose):
             conf_dir = f'{dirname(realpath(__file__))}{cls._CONF_DIR}'
             verbose_message(
@@ -99,17 +101,17 @@ class TemplateDir:
         return conf_dir
 
     @classmethod
-    def setup_template_dir(cls, verbose: bool = False) -> str | None:
+    def setup_template_dir(cls, verbose: bool = False) -> Optional[str]:
         '''
             Sets template directory.
 
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: Setup template directory | None
-            :rtype: <str> | <NoneType>
+            :rtype: <Optional[str]>
             :exceptions: None
         '''
-        template_dir: str | None = None
+        template_dir: Optional[str] = None
         if cls.check_dir(cls._TEMPLATE_DIR, verbose):
             template_dir = f'{dirname(realpath(__file__))}{cls._TEMPLATE_DIR}'
             verbose_message(

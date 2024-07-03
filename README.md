@@ -191,56 +191,61 @@ attiny861     atmega169
 Generator structure
 
 ```bash
-gen_avr8/
-    ├── conf/
-    |   ├── gen_avr8.logo
-    │   ├── fosc.yaml
-    │   ├── gen_avr8.cfg
-    │   ├── gen_avr8_util.cfg
-    │   ├── mcu.yaml
-    │   ├── project_app.yaml
-    │   ├── project_lib.yaml
-    │   └── template/
-    │       ├── app/
-    │       │   ├── cflags.template
-    │       │   ├── csflags.template
-    │       │   ├── Makefile.template
-    │       │   ├── module.template
-    │       │   ├── objects.template
-    │       │   ├── ocflags.template
-    │       │   ├── odflags.template
-    │       │   ├── sources.template
-    │       │   ├── subdir.template
-    │       │   └── tools.template
-    │       └── lib/
-    │           ├── aflags.template
-    │           ├── avr_lib_c.template
-    │           ├── avr_lib_h.template
-    │           ├── cflags.template
-    │           ├── csflags.template
-    │           ├── Makefile.template
-    │           ├── objects.template
-    │           ├── ocflags.template
-    │           ├── odflags.template
-    │           ├── sources.template
-    │           ├── subdir.template
-    │           └── tools.template
-    ├── __init__.py
-    ├── log/
-    │   └── gen_avr8.log
-    ├── pro/
-    │   ├── __init__.py
-    │   ├── mcu_selector.py
-    │   ├── module_type.py
-    │   ├── osc_selector.py
-    │   ├── read_template.py
-    │   ├── template_dir.py
-    │   ├── template_type.py
-    │   └── write_template.py
-    └── run/
-        └── gen_avr8_run.py
-
-8 directories, 40 files
+    gen_avr8/
+        ├── conf/
+        │   ├── fosc.yaml
+        │   ├── gen_avr8.cfg
+        │   ├── gen_avr8.logo
+        │   ├── gen_avr8_util.cfg
+        │   ├── mcu.yaml
+        │   ├── project_app.yaml
+        │   ├── project_lib.yaml
+        │   └── template/
+        │       ├── adc/
+        │       ├── app/
+        │       │   ├── cflags.template
+        │       │   ├── csflags.template
+        │       │   ├── Makefile.template
+        │       │   ├── module.template
+        │       │   ├── objects.template
+        │       │   ├── ocflags.template
+        │       │   ├── odflags.template
+        │       │   ├── sources.template
+        │       │   ├── subdir.template
+        │       │   └── tools.template
+        │       ├── eeprom/
+        │       ├── gpio/
+        │       ├── lib/
+        │       │   ├── aflags.template
+        │       │   ├── avr_lib_c.template
+        │       │   ├── avr_lib_h.template
+        │       │   ├── cflags.template
+        │       │   ├── csflags.template
+        │       │   ├── Makefile.template
+        │       │   ├── objects.template
+        │       │   ├── ocflags.template
+        │       │   ├── odflags.template
+        │       │   ├── sources.template
+        │       │   ├── subdir.template
+        │       │   └── tools.template
+        │       └── uart
+        ├── __init__.py
+        ├── log/
+        │   └── gen_avr8.log
+        ├── pro/
+        │   ├── __init__.py
+        │   ├── mcu_selector.py
+        │   ├── module_type.py
+        │   ├── osc_selector.py
+        │   ├── read_template.py
+        │   ├── template_dir.py
+        │   ├── template_type.py
+        │   └── write_template.py
+        ├── py.typed
+        └── run/
+            └── gen_avr8_run.py
+    
+    12 directories, 41 files
 ```
 
 ### Docs
