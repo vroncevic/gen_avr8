@@ -24,7 +24,7 @@ Execute
 
 import sys
 import io
-from typing import List, Any
+from typing import List, Any, Optional
 from unittest.mock import patch
 from unittest import TestCase, main
 
