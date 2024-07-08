@@ -23,7 +23,7 @@ Execute
 '''
 
 import sys
-from typing import Any, List
+from typing import Any, List, Optional
 from unittest import TestCase, main
 from unittest.mock import patch
 
@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.1'
+__version__ = '2.6.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -74,19 +74,19 @@ class AVR8SetupTestCase(TestCase):
 
     def test_create(self) -> None:
         '''Test create (not None)'''
-        avr_setup: AVR8Setup | None = AVR8Setup()
+        avr_setup: Optional[AVR8Setup] = AVR8Setup()
         self.assertIsNotNone(avr_setup)
 
     def test_pro_setup(self) -> None:
         '''Test project setup'''
-        avr_setup: AVR8Setup | None = AVR8Setup()
+        avr_setup: Optional[AVR8Setup] = AVR8Setup()
         if avr_setup:
             self.assertIsInstance(avr_setup, AVR8Setup)
             avr_setup.project_setup('new_simple_test', 'app')
 
     def test_pro_setup_name_none(self) -> None:
         '''Test pro setup None name'''
-        avr_setup: AVR8Setup | None = AVR8Setup()
+        avr_setup: Optional[AVR8Setup] = AVR8Setup()
         if avr_setup:
             with self.assertRaises(ATSTypeError):
                 self.assertIsInstance(avr_setup, AVR8Setup)
@@ -94,7 +94,7 @@ class AVR8SetupTestCase(TestCase):
 
     def test_pro_setup_type_none(self) -> None:
         '''Test pro setup None type'''
-        avr_setup: AVR8Setup | None = AVR8Setup()
+        avr_setup: Optional[AVR8Setup] = AVR8Setup()
         if avr_setup:
             with self.assertRaises(ATSTypeError):
                 self.assertIsInstance(avr_setup, AVR8Setup)
@@ -103,14 +103,14 @@ class AVR8SetupTestCase(TestCase):
     @patch('builtins.input', side_effect=['37', '9'])
     def test_pro_gen_setup_without_params(self, mock_input: Any) -> None:
         '''Test no params'''
-        avr_setup: AVR8Setup | None = AVR8Setup()
+        avr_setup: Optional[AVR8Setup] = AVR8Setup()
         if avr_setup and mock_input:
             self.assertFalse(avr_setup.gen_pro_setup())
 
     @patch('builtins.input', side_effect=['37', '9'])
     def test_pro_gen_setup_with_empty_params(self, mock_input: Any) -> None:
         '''Test empty params'''
-        avr_setup: AVR8Setup | None = AVR8Setup()
+        avr_setup: Optional[AVR8Setup] = AVR8Setup()
         if avr_setup and mock_input:
             avr_setup.project_setup('', '')
             self.assertFalse(avr_setup.gen_pro_setup())
@@ -118,7 +118,7 @@ class AVR8SetupTestCase(TestCase):
     @patch('builtins.input', side_effect=['37', '9'])
     def test_pro_gen_setup_with_params(self, mock_input: Any) -> None:
         '''Test with with params'''
-        avr_setup: AVR8Setup | None = AVR8Setup()
+        avr_setup: Optional[AVR8Setup] = AVR8Setup()
         if avr_setup and mock_input:
             avr_setup.project_setup('new_simple_test', 'app')
             self.assertTrue(avr_setup.gen_pro_setup())

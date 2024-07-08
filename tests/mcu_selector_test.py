@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.1'
+__version__ = '2.6.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -72,7 +72,7 @@ class MCUSelectorTestCase(TestCase):
     @patch('builtins.input', return_value='37')
     def test_selected_atmega8(self, mock_input: Any) -> None:
         '''Test chooses MCU atmega8 target'''
-        mcu_select: MCUSelector | None = MCUSelector()
+        mcu_select: Optional[MCUSelector] = MCUSelector()
         if mcu_select:
             self.assertEqual(mcu_select.choose_mcu(), 'atmega8')
             mock_input.assert_called_once_with(' select MCU: ')
@@ -80,7 +80,7 @@ class MCUSelectorTestCase(TestCase):
     @patch('builtins.input', return_value='42')
     def test_selected_attiny24(self, mock_input: Any) -> None:
         '''Test chooses MCU attiny24 target'''
-        mcu_select: MCUSelector | None = MCUSelector()
+        mcu_select: Optional[MCUSelector] = MCUSelector()
         if mcu_select:
             called_mcu: Any = mock_input()
             self.assertTrue(called_mcu == '42')
@@ -90,7 +90,7 @@ class MCUSelectorTestCase(TestCase):
     @patch('builtins.input', side_effect=['137', '37'])
     def test_selected_unknown(self, mock_input: Any, mock_output: Any) -> None:
         '''Test chooses unknown MCU target'''
-        mcu_select: MCUSelector | None = MCUSelector()
+        mcu_select: Optional[MCUSelector] = MCUSelector()
         if mcu_select and mock_input and mock_output:
             mcu_select.choose_mcu()
             content = str(mock_output.getvalue())
@@ -98,7 +98,7 @@ class MCUSelectorTestCase(TestCase):
 
     def test_checks_mcu(self) -> None:
         '''Test checks selected MCU name'''
-        mcu_select: MCUSelector | None = MCUSelector()
+        mcu_select: Optional[MCUSelector] = MCUSelector()
         mcu_target: Optional[str] = 'atmega8'
         if mcu_select:
             mcu_list: List[str] | None = mcu_select.get_mcu_list()

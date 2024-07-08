@@ -18,13 +18,13 @@ include tools.mk
 include cflags.mk
 
 C_SRCS += \
-../${PRO}.c
+	../${PRO}.c
 
 OBJS += \
-./${PRO}.o
+	./${PRO}.o
 
 C_DEPS += \
-./${PRO}.d
+	./${PRO}.d
 
 %.o: ../%.c
 	@echo 'Building file: $$<'

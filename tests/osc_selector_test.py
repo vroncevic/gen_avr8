@@ -24,7 +24,7 @@ Execute
 
 import sys
 import io
-from typing import Any, List
+from typing import Any, List, Optional
 from unittest.mock import patch
 from unittest import TestCase, main
 
@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.1'
+__version__ = '2.6.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -71,7 +71,7 @@ class OSCSelectorTestCase(TestCase):
     @patch('builtins.input', return_value='9')
     def test_selected_osc(self, mock_input: Any) -> None:
         '''Test choose OSC target'''
-        osc_select: OSCSelector | None = OSCSelector()
+        osc_select: Optional[OSCSelector] = OSCSelector()
         if osc_select:
             self.assertEqual(osc_select.choose_osc(), '16000000UL')
             mock_input.assert_called_once_with(' select FOSC: ')
@@ -80,7 +80,7 @@ class OSCSelectorTestCase(TestCase):
     @patch('builtins.input', side_effect=['137', '9'])
     def test_selected_unknown(self, mock_input: Any, mock_output: Any) -> None:
         '''Test chooses unknown OSC target'''
-        osc_select: OSCSelector | None = OSCSelector()
+        osc_select: Optional[OSCSelector] = OSCSelector()
         if osc_select and mock_input and mock_output:
             osc_select.choose_osc()
             content = str(mock_output.getvalue())
@@ -88,7 +88,7 @@ class OSCSelectorTestCase(TestCase):
 
     def test_checks_osc(self) -> None:
         '''Test checks selected OSC name.'''
-        osc_select: OSCSelector | None = OSCSelector()
+        osc_select: Optional[OSCSelector] = OSCSelector()
         if osc_select:
             osc_list: List[str] | None = osc_select.get_fosc_list()
             if osc_list:

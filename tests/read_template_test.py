@@ -23,7 +23,7 @@ Execute
 '''
 
 import sys
-from typing import List
+from typing import List, Optional
 from unittest import TestCase, main
 from os.path import dirname, abspath
 
@@ -38,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_avr8'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.1'
+__version__ = '2.6.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -69,7 +69,7 @@ class ReadTemplateTestCase(TestCase):
 
     def setUp(self) -> None:
         '''Call before test case'''
-        self.template_reader: ReadTemplate | None = ReadTemplate()
+        self.template_reader: Optional[ReadTemplate] = ReadTemplate()
         self.template_modules: List[str] | None = [
             f'{dirname(abspath(__file__))}/{self._MAKEFILE}',
             f'{dirname(abspath(__file__))}/{self._MODULE}'
