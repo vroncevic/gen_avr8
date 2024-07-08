@@ -1,6 +1,7 @@
 name: gen_avr8_toc
 on:
   push:
+    branches: [ master ]
     paths:
       - '**.md'
 jobs:

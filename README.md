@@ -248,6 +248,21 @@ Generator structure
     12 directories, 41 files
 ```
 
+### Code coverage
+
+| Name | Stmts | Miss | Cover |
+|------|-------|------|-------|
+| `gen_avr8/__init__.py` | 76 | 12 | 84% |
+| `gen_avr8/pro/__init__.py` | 81 | 6 | 93% |
+| `gen_avr8/pro/mcu_selector.py` | 53 | 2 | 96% |
+| `gen_avr8/pro/module_type.py` | 49 | 2 | 96% |
+| `gen_avr8/pro/osc_selector.py` | 53 | 2 | 96% |
+| `gen_avr8/pro/read_template.py` | 38 | 2 | 95% |
+| `gen_avr8/pro/template_dir.py` | 37 | 2 | 95% |
+| `gen_avr8/pro/template_type.py` | 45 | 3 | 93% |
+| `gen_avr8/pro/write_template.py` | 89 | 2 | 98% |
+| **Total** | 521 | 33 | 94% |
+
 ### Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
