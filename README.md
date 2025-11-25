@@ -26,6 +26,7 @@ other information that should be provided before the modules are installed.
 - [Usage](#usage)
 - [Supported MCUS](#supported-mcus)
 - [Tool structure](#tool-structure)
+- [Code coverage](#code-coverage)
 - [Docs](#docs)
 - [Contributing](#contributing)
 - [Copyright and Licence](#copyright-and-licence)
@@ -252,16 +253,16 @@ Generator structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_avr8/__init__.py` | 76 | 12 | 84% |
-| `gen_avr8/pro/__init__.py` | 81 | 6 | 93% |
-| `gen_avr8/pro/mcu_selector.py` | 53 | 2 | 96% |
-| `gen_avr8/pro/module_type.py` | 49 | 2 | 96% |
-| `gen_avr8/pro/osc_selector.py` | 53 | 2 | 96% |
-| `gen_avr8/pro/read_template.py` | 38 | 2 | 95% |
-| `gen_avr8/pro/template_dir.py` | 37 | 2 | 95% |
-| `gen_avr8/pro/template_type.py` | 45 | 3 | 93% |
-| `gen_avr8/pro/write_template.py` | 89 | 2 | 98% |
-| **Total** | 521 | 33 | 94% |
+| `gen_avr8/__init__.py` | 74 | 10 | 86%|
+| `gen_avr8/pro/__init__.py` | 79 | 4 | 95%|
+| `gen_avr8/pro/mcu_selector.py` | 51 | 0 | 100%|
+| `gen_avr8/pro/module_type.py` | 47 | 0 | 100%|
+| `gen_avr8/pro/osc_selector.py` | 51 | 0 | 100%|
+| `gen_avr8/pro/read_template.py` | 36 | 0 | 100%|
+| `gen_avr8/pro/template_dir.py` | 35 | 0 | 100%|
+| `gen_avr8/pro/template_type.py` | 43 | 1 | 98%|
+| `gen_avr8/pro/write_template.py` | 87 | 0 | 100%|
+| **Total** | 503 | 15 | 97% |
 
 ### Docs
 
@@ -280,7 +281,7 @@ More documentation and info at
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2018 - 2024 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
+Copyright (C) 2018 - 2026 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
 
 **gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,
