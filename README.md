@@ -1,15 +1,14 @@
-# AVR project skeleton generator
+# Create avr8 project skeleton
 
 <img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_avr8/dev/docs/gen_avr8_logo.png" width="25%">
 
-**gen_avr8** is tool for generation of AVR8 project skeleton for development
-of embedded applications.
+**gen_avr8** is tool for creating avr8 project skeleton.
 
 Developed in **[python](https://www.python.org/)** code.
 
-The README is used to introduce the tool modules and provide instructions on
-how to install the tool modules, any machine dependencies it may have and any
-other information that should be provided before the modules are installed.
+The README is used to introduce the tool and provide instructions on
+how to install the tool, any machine dependencies it may have and any
+other information that should be provided before the tool is installed.
 
 [![gen_avr8 python checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml) [![gen_avr8 package checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
@@ -17,23 +16,23 @@ other information that should be provided before the modules are installed.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Installation](#installation)
+- [🚀 Installation](#-installation)
     - [Install using pip](#install-using-pip)
     - [Install using build](#install-using-build)
     - [Install using py setup](#install-using-py-setup)
     - [Install using docker](#install-using-docker)
-- [Dependencies](#dependencies)
-- [Usage](#usage)
-- [Supported MCUS](#supported-mcus)
-- [Tool structure](#tool-structure)
-- [Code coverage](#code-coverage)
-- [Docs](#docs)
-- [Contributing](#contributing)
-- [Copyright and Licence](#copyright-and-licence)
+- [📦 Dependencies](#-dependencies)
+- [📁 Tool structure](#-tool-structure)
+  - [✨ Features](#-features)
+- [📊 Code coverage](#-code-coverage)
+- [🛠 Usage](#-usage)
+- [📚 Docs](#-docs)
+- [👥 Contributing](#-contributing)
+- [📄 Copyright and licence](#-copyright-and-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### Installation
+### 🚀 Installation
 
 Used next development environment
 
@@ -41,7 +40,7 @@ Used next development environment
 
 [![gen_avr8 python3 build](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python3_build.yml)
 
-Currently there are three ways to install package
+Currently there are four ways to install package
 * Install process based on using pip mechanism
 * Install process based on build mechanism
 * Install process based on setup.py mechanism
@@ -49,13 +48,13 @@ Currently there are three ways to install package
 
 ##### Install using pip
 
-Python is located at **[pypi.org](https://pypi.org/project/gen-avr8/)**.
+**gen_avr8** is located at **[pypi.org](https://pypi.org/project/gen_avr8/)**.
 
 You can install by using pip
 
 ```bash
-#python3
-pip3 install gen-avr8
+# python3
+pip3 install gen_avr8
 ```
 
 ##### Install using build
@@ -70,6 +69,8 @@ cd gen_avr8-x.y.z/
 # python3
 wget https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py 
+# python3
+python3 get-pip.py
 python3 -m pip install --upgrade setuptools
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade build
@@ -77,8 +78,6 @@ pip3 install -r requirements.txt
 python3 -m build --no-isolation --wheel
 pip3 install ./dist/gen_avr8-*-py3-none-any.whl
 rm -f get-pip.py
-chmod 755 /usr/local/lib/python3.9/dist-packages/usr/local/bin/gen_avr8_run.py
-ln -s /usr/local/lib/python3.9/dist-packages/usr/local/bin/gen_avr8_run.py /usr/local/bin/gen_avr8_run.py
 ```
 
 ##### Install using py setup
@@ -100,171 +99,164 @@ python3 setup.py install_egg_info
 
 You can use Dockerfile to create image/container.
 
-### Dependencies
+### 📦 Dependencies
 
-**gen_avr8** tool requires other modules/libraries
+**gen_avr8** requires next modules and libraries
 
-- [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/gen_avr8)
+* [ats-utilities - Python App/Tool/Script Utilities](https://pypi.org/project/ats-utilities/)
 
-### Usage
+### 📁 Tool structure
 
-Short example of usage **gen_avr8** tool
+**gen_avr8** is based on OOP.
 
-Create workspace directory Blink
+Tool structure
 
-```bash
-mkdir Blink
-cd Blink/
-```
-
-Crete AVR8 project files, by using parameters
-
-```bash
-python gen_avr8_run.py -n Blink -t app
-```
-
-Running build process
-
-```bash
-cd build/
-make all
-```
-
-In case for missing subtool from toolchain, please install the following packages with your favorite package manager
-
-- gcc-avr
-- binutils-avr
-- gdb-avr
-- avr-libc
-- avrdude
-
-Install directly from the shell as root user (**[debian](https://www.debian.org/)**)
-
-```bash
-apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
-```
-
-### Supported MCUS
-
-Current list of supported microcontrollers
-
-```bash
-attiny2313    atmega128      at90s2313
-attiny24      atmega1280     at90s2333
-attiny25      atmega1281     at90s4414
-attiny26      atmega1284p    at90s4433
-attiny261     atmega16       at90s4434
-attiny44      atmega163      at90s8515
-attiny45      atmega164p     at90s8535
-attiny461     atmega165
-attiny84      atmega165p
-attiny85      atmega168
-attiny861     atmega169
-              atmega169p
-              atmega2560
-              atmega2561
-              atmega32
-              atmega324p
-              atmega325
-              atmega3250
-              atmega329
-              atmega3290
-              atmega32u4
-              atmega48
-              atmega64
-              atmega640
-              atmega644
-              atmega644p
-              atmega645
-              atmega6450
-              atmega649
-              atmega6490
-              atmega8
-              atmega8515
-              atmega8535
-              atmega88
-```
-
-### Tool structure
-
-**gen_avr8** is based on Template mechanism
-
-Generator structure
+<details>
+<summary><b>Click to expand framework structure</b></summary>
 
 ```bash
     gen_avr8/
-        ├── conf/
-        │   ├── fosc.yaml
-        │   ├── gen_avr8.cfg
-        │   ├── gen_avr8.logo
-        │   ├── gen_avr8_util.cfg
-        │   ├── mcu.yaml
-        │   ├── project_app.yaml
-        │   ├── project_lib.yaml
-        │   └── template/
-        │       ├── adc/
-        │       ├── app/
-        │       │   ├── cflags.template
-        │       │   ├── csflags.template
-        │       │   ├── Makefile.template
-        │       │   ├── module.template
-        │       │   ├── objects.template
-        │       │   ├── ocflags.template
-        │       │   ├── odflags.template
-        │       │   ├── sources.template
-        │       │   ├── subdir.template
-        │       │   └── tools.template
-        │       ├── eeprom/
-        │       ├── gpio/
-        │       ├── lib/
-        │       │   ├── aflags.template
-        │       │   ├── avr_lib_c.template
-        │       │   ├── avr_lib_h.template
-        │       │   ├── cflags.template
-        │       │   ├── csflags.template
-        │       │   ├── Makefile.template
-        │       │   ├── objects.template
-        │       │   ├── ocflags.template
-        │       │   ├── odflags.template
-        │       │   ├── sources.template
-        │       │   ├── subdir.template
-        │       │   └── tools.template
-        │       └── uart
-        ├── __init__.py
-        ├── log/
-        │   └── gen_avr8.log
-        ├── pro/
-        │   ├── __init__.py
-        │   ├── mcu_selector.py
-        │   ├── module_type.py
-        │   ├── osc_selector.py
-        │   ├── read_template.py
-        │   ├── template_dir.py
-        │   ├── template_type.py
-        │   └── write_template.py
-        ├── py.typed
-        └── run/
-            └── gen_avr8_run.py
-    
-    12 directories, 41 files
-```
+         ├── core/
+         │   ├── __init__.py
+         │   ├── model/
+         │   │   ├── __init__.py
+         │   │   └── project_setup.py
+         │   └── service/
+         │       ├── engine.py
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
+         ├── engine.py
+         ├── infrastructure/
+         │   ├── cli/
+         │   │   ├── engine.py
+         │   │   ├── icli.py
+         │   │   ├── __init__.py
+         │   │   └── setup/
+         │   │       ├── bundle.py
+         │   │       ├── dep_validator.py
+         │   │       ├── dependencies.py
+         │   │       ├── factory.py
+         │   │       ├── __init__.py
+         │   │       ├── keys.py
+         │   │       ├── opt_validator.py
+         │   │       ├── options.py
+         │   │       ├── registry.py
+         │   │       └── validator.py
+         │   ├── command/
+         │   │   ├── command.py
+         │   │   ├── gen_avr8_command_definition.py
+         │   │   ├── gen_avr8_command_executor.py
+         │   │   ├── icommand_definition.py
+         │   │   ├── icommand_executor.py
+         │   │   └── __init__.py
+         │   ├── config/
+         │   │   ├── gen_avr8.cfg
+         │   │   ├── gen_avr8.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   ├── __init__.py
+         │   └── subprocessor.py
+         ├── __init__.py
+         ├── py.typed
+         └── setup/
+             ├── bundle.py
+             ├── dep_validator.py
+             ├── dependencies.py
+             ├── factory.py
+             ├── __init__.py
+             ├── keys.py
+             ├── opt_validator.py
+             ├── options.py
+             ├── registry.py
+             └── validator.py
 
-### Code coverage
+      10 directories, 45 files
+```
+</details>
+
+#### ✨ Features
+
+* Automatically scaffolds ARM 32-bit assembly projects with build/make files.
+* Provides a modular and extensible architecture based on OOP and SOLID principles.
+* Includes command line interface (CLI) support via a command/executor structure.
+* Robust validation of project bundles, dependencies, and options.
+* Comes with configurable templates and JSON schema definitions.
+* High code quality with full type checking and 100% unit test coverage.
+
+### 📊 Code coverage
+
+<details>
+<summary><b>Click to expand code coverage</b></summary>
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_avr8/__init__.py` | 74 | 10 | 86%|
-| `gen_avr8/pro/__init__.py` | 79 | 4 | 95%|
-| `gen_avr8/pro/mcu_selector.py` | 51 | 0 | 100%|
-| `gen_avr8/pro/module_type.py` | 47 | 0 | 100%|
-| `gen_avr8/pro/osc_selector.py` | 51 | 0 | 100%|
-| `gen_avr8/pro/read_template.py` | 36 | 0 | 100%|
-| `gen_avr8/pro/template_dir.py` | 35 | 0 | 100%|
-| `gen_avr8/pro/template_type.py` | 43 | 1 | 98%|
-| `gen_avr8/pro/write_template.py` | 87 | 0 | 100%|
-| **Total** | 503 | 15 | 97% |
+| `gen_avr8/__init__.py` | 8 | 0 | 100%|
+| `gen_avr8/core/__init__.py` | 9 | 0 | 100%|
+| `gen_avr8/core/model/__init__.py` | 9 | 0 | 100%|
+| `gen_avr8/core/model/project_setup.py` | 14 | 0 | 100%|
+| `gen_avr8/core/service/__init__.py` | 9 | 0 | 100%|
+| `gen_avr8/core/service/engine.py` | 27 | 3 | 89%|
+| `gen_avr8/core/service/iservice.py` | 14 | 0 | 100%|
+| `gen_avr8/core/service/isubprocessor.py` | 14 | 0 | 100%|
+| `gen_avr8/engine.py` | 57 | 0 | 100%|
+| `gen_avr8/infrastructure/__init__.py` | 8 | 0 | 100%|
+| `gen_avr8/infrastructure/cli/__init__.py` | 9 | 0 | 100%|
+| `gen_avr8/infrastructure/cli/engine.py` | 39 | 7 | 82%|
+| `gen_avr8/infrastructure/cli/icli.py` | 16 | 2 | 88%|
+| `gen_avr8/infrastructure/cli/setup/__init__.py` | 9 | 0 | 100%|
+| `gen_avr8/infrastructure/cli/setup/bundle.py` | 22 | 1 | 95%|
+| `gen_avr8/infrastructure/cli/setup/dep_validator.py` | 28 | 0 | 100%|
+| `gen_avr8/infrastructure/cli/setup/dependencies.py` | 18 | 0 | 100%|
+| `gen_avr8/infrastructure/cli/setup/factory.py` | 32 | 32 | 0%|
+| `gen_avr8/infrastructure/cli/setup/keys.py` | 26 | 1 | 96%|
+| `gen_avr8/infrastructure/cli/setup/opt_validator.py` | 28 | 28 | 0%|
+| `gen_avr8/infrastructure/cli/setup/options.py` | 15 | 15 | 0%|
+| `gen_avr8/infrastructure/cli/setup/registry.py` | 21 | 0 | 100%|
+| `gen_avr8/infrastructure/cli/setup/validator.py` | 35 | 0 | 100%|
+| `gen_avr8/infrastructure/command/__init__.py` | 9 | 0 | 100%|
+| `gen_avr8/infrastructure/command/command.py` | 16 | 0 | 100%|
+| `gen_avr8/infrastructure/command/gen_avr8_command_definition.py` | 24 | 1 | 96%|
+| `gen_avr8/infrastructure/command/gen_avr8_command_executor.py` | 21 | 2 | 90%|
+| `gen_avr8/infrastructure/command/icommand_definition.py` | 15 | 0 | 100%|
+| `gen_avr8/infrastructure/command/icommand_executor.py` | 14 | 1 | 93%|
+| `gen_avr8/infrastructure/subprocessor.py` | 55 | 19 | 65%|
+| `gen_avr8/setup/__init__.py` | 9 | 0 | 100%|
+| `gen_avr8/setup/bundle.py` | 23 | 1 | 96%|
+| `gen_avr8/setup/dep_validator.py` | 28 | 0 | 100%|
+| `gen_avr8/setup/dependencies.py` | 19 | 0 | 100%|
+| `gen_avr8/setup/factory.py` | 45 | 1 | 98%|
+| `gen_avr8/setup/keys.py` | 27 | 1 | 96%|
+| `gen_avr8/setup/opt_validator.py` | 26 | 9 | 65%|
+| `gen_avr8/setup/options.py` | 12 | 0 | 100%|
+| `gen_avr8/setup/registry.py` | 29 | 0 | 100%|
+| `gen_avr8/setup/validator.py` | 40 | 0 | 100%|
+| **Total** | 879 | 124 | 86% |
 
-### Docs
+</details>
+
+### 🛠 Usage
+
+Install package
+
+```bash
+pip3 install gen_avr8
+```
+
+Prepare main entry point by downloading [main.py](https://raw.githubusercontent.com/vroncevic/gen_avr8/main/main.py) or create your own.
+
+
+```bash
+wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_avr8/main/main.py
+```
+
+Running tool for creating new ARM Pico M project
+
+```bash
+python3 main.py create --name mytool --output ./demo/
+```
+
+### 📚 Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen-avr8/badge/?version=latest)](https://gen-avr8.readthedocs.io/en/latest/?badge=latest)
 
@@ -273,15 +265,15 @@ More documentation and info at
 * [gen_avr8.readthedocs.io](https://gen-avr8.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 
-### Contributing
+### 👥 Contributing
 
 [Contributing to gen_avr8](CONTRIBUTING.md)
 
-### Copyright and Licence
+### 📄 Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2018 - 2026 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
+Copyright (C) 2025 - 2026 by [vroncevic.github.io/gen_avr8](https://vroncevic.github.io/gen_avr8/)
 
 **gen_avr8** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,
