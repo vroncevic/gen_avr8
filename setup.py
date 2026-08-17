@@ -28,7 +28,7 @@ __author__: str = 'Vladimir Roncevic'
 __copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_avr8'
 __credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__: str = '2.6.4'
+__version__: str = '2.6.5'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Updated'
@@ -49,25 +49,27 @@ def find_package_data(pkg: str) -> list[str]:
         Finds all files in package to include in package_data.
 
         :param pkg: Package folder name.
-        :type pkg: <str>
         :return: List of package files relative to the package folder.
-        :rtype: <list[str]>
         :exceptions: None.
     '''
     package_data: list[str] = []
+
     for root, dirs, files in walk(pkg):
         dirs[:] = [d for d in dirs if d != '__pycache__']
+
         for file in files:
             if file.endswith('.pyc') or file == '.editorconfig':
                 continue
+
             full_path: str = join(root, file)
             rel_path: str = relpath(full_path, pkg)
             package_data.append(rel_path)
+
     return package_data
 
 setup(
     name='gen_avr8',
-    version='2.6.4',
+    version='2.6.5',
     description='Python package for generation of AVR8 project',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',

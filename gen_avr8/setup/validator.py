@@ -22,6 +22,7 @@ Info
 from __future__ import annotations
 
 from ats_utilities.base.setup.bundle import BaseBundle
+from ats_utilities.exceptions import ATSValueError, ATSTypeError
 from ats_utilities.validation.check_value import not_none
 from ats_utilities.validation.check_type import istype
 
@@ -34,7 +35,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_avr8'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__ = '2.6.4'
+__version__ = '2.6.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -48,6 +49,7 @@ class GenAVR8BundleValidator:
 
             :methods:
                 | validate - Validates the gen_avr8 bundle.
+                | is_valid - Checks if the gen_avr8 bundle is valid.
     '''
 
     @classmethod
@@ -85,3 +87,18 @@ class GenAVR8BundleValidator:
         istype(bundle.service, IService, ctx, msg_service_istype)
         istype(bundle.subprocessor, ISubProcessor, ctx, msg_subprocessor_istype)
         istype(bundle.cli, ICLI, ctx, msg_cli_istype)
+
+    @classmethod
+    def is_valid(cls, genavr8bundle: GenAVR8Bundle) -> bool:
+        '''
+            Checks if the genavr8bundle is valid.
+
+            :param genavr8bundle: The genavr8bundle to be checked.
+            :return: True if valid, False otherwise.
+        '''
+        try:
+            cls.validate(genavr8bundle)
+            return True
+
+        except (ATSValueError, ATSTypeError):
+            return False
