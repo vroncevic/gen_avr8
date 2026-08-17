@@ -1,14 +1,14 @@
 name: gen_avr8_python3_build
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'gen_avr8/**'
       - 'MANIFEST.in'
       - 'pyproject.toml'
       - 'setup.py'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'gen_avr8/**'
       - 'MANIFEST.in'

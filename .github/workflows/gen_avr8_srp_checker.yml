@@ -5,12 +5,12 @@ permissions:
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'gen_avr8/**/*.py'
       - 'setup.py'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'gen_avr8/**/*.py'
       - 'setup.py'
