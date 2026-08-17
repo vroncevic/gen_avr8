@@ -5,4 +5,4 @@ gen_avr8
    :maxdepth: 4
 
    gen_avr8
-
+   main

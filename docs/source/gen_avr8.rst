@@ -7,7 +7,17 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   gen_avr8.pro
+   gen_avr8.core
+   gen_avr8.infrastructure
+   gen_avr8.setup
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   gen_avr8.engine
 
 Module contents
 ---------------
