@@ -9,13 +9,22 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-|gen_avr8 python checker| |gen_avr8 python package| |github issues| |documentation status| |github contributors|
+|gen_avr8 python checker| |gen_avr8 python package| |gen_avr8 interface checker| |gen_avr8 isp checker| |gen_avr8 srp checker| |github issues| |documentation status| |github contributors|
 
 .. |gen_avr8 python checker| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml
 
 .. |gen_avr8 python package| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml
+
+.. |gen_avr8 interface checker| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_interface_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_interface_checker.yml
+
+.. |gen_avr8 isp checker| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_isp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_isp_checker.yml
+
+.. |gen_avr8 srp checker| image:: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_srp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_srp_checker.yml
 
 .. |github issues| image:: https://img.shields.io/github/issues/vroncevic/gen_avr8.svg
    :target: https://github.com/vroncevic/gen_avr8/issues

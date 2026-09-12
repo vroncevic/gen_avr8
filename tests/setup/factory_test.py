@@ -32,4 +32,4 @@ class TestGenAVR8BundleFactory(unittest.TestCase):
             GenAVR8BundleFactory.create_bundle(options)
 
     def test_get_version(self) -> None:
-        self.assertEqual(GenAVR8BundleFactory.get_version(), '2.6.5')
+        self.assertEqual(GenAVR8BundleFactory.get_version(), '2.6.6')

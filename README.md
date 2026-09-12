@@ -10,7 +10,7 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-[![gen_avr8 python checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml) [![gen_avr8 package checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
+[![gen_avr8 python checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_python_checker.yml) [![gen_avr8 package checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_package.yml) [![gen_avr8 interface checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_interface_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_interface_checker.yml) [![gen_avr8 isp checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_isp_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_isp_checker.yml) [![gen_avr8 srp checker](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_srp_checker.yml/badge.svg)](https://github.com/vroncevic/gen_avr8/actions/workflows/gen_avr8_srp_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_avr8.svg)](https://github.com/vroncevic/gen_avr8/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -191,7 +191,7 @@ Tool structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_avr8/__init__.py` | 8 | 0 | 100%|
+| `gen_avr8/__init__.py` | 9 | 0 | 100%|
 | `gen_avr8/core/__init__.py` | 9 | 0 | 100%|
 | `gen_avr8/core/model/__init__.py` | 9 | 0 | 100%|
 | `gen_avr8/core/model/project_setup.py` | 14 | 0 | 100%|
@@ -200,7 +200,7 @@ Tool structure
 | `gen_avr8/core/service/iservice.py` | 14 | 0 | 100%|
 | `gen_avr8/core/service/isubprocessor.py` | 14 | 0 | 100%|
 | `gen_avr8/engine.py` | 57 | 0 | 100%|
-| `gen_avr8/infrastructure/__init__.py` | 8 | 0 | 100%|
+| `gen_avr8/infrastructure/__init__.py` | 9 | 0 | 100%|
 | `gen_avr8/infrastructure/cli/__init__.py` | 9 | 0 | 100%|
 | `gen_avr8/infrastructure/cli/engine.py` | 39 | 0 | 100%|
 | `gen_avr8/infrastructure/cli/icli.py` | 14 | 0 | 100%|
@@ -217,21 +217,21 @@ Tool structure
 | `gen_avr8/infrastructure/command/__init__.py` | 9 | 0 | 100%|
 | `gen_avr8/infrastructure/command/command.py` | 16 | 0 | 100%|
 | `gen_avr8/infrastructure/command/gen_avr8_command_definition.py` | 24 | 0 | 100%|
-| `gen_avr8/infrastructure/command/gen_avr8_command_executor.py` | 21 | 0 | 100%|
+| `gen_avr8/infrastructure/command/gen_avr8_command_executor.py` | 23 | 0 | 100%|
 | `gen_avr8/infrastructure/command/icommand_definition.py` | 14 | 0 | 100%|
-| `gen_avr8/infrastructure/command/icommand_executor.py` | 13 | 0 | 100%|
+| `gen_avr8/infrastructure/command/icommand_executor.py` | 14 | 0 | 100%|
 | `gen_avr8/infrastructure/subprocessor.py` | 62 | 0 | 100%|
 | `gen_avr8/setup/__init__.py` | 9 | 0 | 100%|
 | `gen_avr8/setup/bundle.py` | 23 | 0 | 100%|
 | `gen_avr8/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_avr8/setup/dependencies.py` | 19 | 0 | 100%|
-| `gen_avr8/setup/factory.py` | 48 | 0 | 100%|
+| `gen_avr8/setup/factory.py` | 49 | 0 | 100%|
 | `gen_avr8/setup/keys.py` | 27 | 0 | 100%|
 | `gen_avr8/setup/opt_validator.py` | 34 | 0 | 100%|
 | `gen_avr8/setup/options.py` | 12 | 0 | 100%|
 | `gen_avr8/setup/registry.py` | 32 | 0 | 100%|
 | `gen_avr8/setup/validator.py` | 48 | 0 | 100%|
-| **Total** | 942 | 0 | 100% |
+| **Total** | 948 | 0 | 100% |
 
 </details>
 
