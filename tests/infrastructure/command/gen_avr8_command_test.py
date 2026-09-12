@@ -55,3 +55,8 @@ class TestGenAVR8Command(unittest.TestCase):
         definition = GenAVR8CommandDefinition()
         executor = GenAVR8CommandExecutor(definition)
         self.assertTrue(isinstance(str(executor), str))
+
+    def test_executor_get_definition(self) -> None:
+        definition = GenAVR8CommandDefinition()
+        executor = GenAVR8CommandExecutor(definition)
+        self.assertEqual(executor.get_definition(), definition)

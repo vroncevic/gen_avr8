@@ -18,12 +18,13 @@ Copyright
 Info
     Initialization module for the gen_avr8.
 '''
+from __future__ import annotations
 
 __author__: str = 'Vladimir Roncevic'
 __copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_avr8'
 __credits__: list[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__: str = 'https://github.com/vroncevic/gen_avr8/blob/dev/LICENSE'
-__version__: str = '2.6.5'
+__version__: str = '2.6.6'
 __maintainer__: str = 'Vladimir Roncevic'
 __email__: str = 'elektron.ronca@gmail.com'
 __status__: str = 'Development'
